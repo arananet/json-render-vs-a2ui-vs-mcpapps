@@ -36,6 +36,14 @@ protocol cannot express is **recorded as an outcome rather than worked around**
 from the traces the adapters record while the scenarios run, and a test fails if
 it drifts from the code.
 
+**Research manuscript:** [English paper by Eduardo Arana (Arananet)](paper/manuscript.md),
+[illustrated PDF](paper/manuscript.pdf), [generated LaTeX](paper/manuscript.tex),
+[figure sources and provenance](paper/figures/README.md), [reproduction guide](paper/REPRODUCTION.md),
+and [local execution evidence](paper/EXECUTION.md). Human review is pending.
+The paper bounds the historical labels below: S2 uses sequential fixed-order
+writes, and differences concern SDK/adapter/host configurations, not isolated
+protocol causality. Generated comparison documentation is retained unchanged.
+
 ## The headline
 
 | Capability | json-render | A2UI | MCP Apps |

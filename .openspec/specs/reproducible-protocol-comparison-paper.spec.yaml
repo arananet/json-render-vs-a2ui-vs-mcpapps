@@ -19,12 +19,16 @@ description: |
   besanson/sarc-authority-derivation. Generate LaTeX and a PDF when the available
   toolchain permits. The user requested the paper and explicitly prohibited push.
 acceptance_criteria:
+- "Add original evidence-backed Mermaid topology/enforcement and fixed-order S2 figures with editable sources, grayscale-safe pre-rendered assets, captions and cross references; no new experiments or performance scores."
+- "Build a readable local academic PDF where safe installed tooling permits, and prepare self-contained TeX sources with preconverted figures, an explicit date, and no runtime conversion or shell escape; no arXiv validation or acceptance is implied."
 - "The English manuscript identifies Eduardo Arana as author and Arananet as affiliation, and includes research questions, methodology, bounded results, related work, limitations, and a claim-to-evidence table."
 - "The manuscript separates SDK behavior, adapter topology, host policy, and protocol requirements; S2 is described as fixed-order writes, not a scheduling benchmark."
 - "The reproduction guide records prerequisites, commands, expected semantic outcomes, environment and revision provenance, failed attempts, and unverified requirements without claiming independent reproduction."
 - "LaTeX and PDF are generated from the manuscript if available tools succeed; missing tools or build failures are reported without claiming a successful build."
 - "Documentation checks validate author metadata, required sections, local evidence links, and correspondence of generated LaTeX with the manuscript. No commit, push, submission, paid service, or external issue is performed."
 test_plan:
+- "Validate the first build-tool change immediately; check figure states against source/assertions, inspect PDF metadata/fonts/text and rendered pages, and retain historical failures separately from current build evidence."
+- "Check the clean source bundle from its root and verify included assets; exclude logs, auxiliary files, and the compiled main PDF."
 - "Run the focused manuscript checks and regenerate LaTeX to check freshness."
 - "Run npm test and the existing browser suite where prerequisites are available; record failures and stop rather than weaken assertions."
 - "Build the PDF with the available TeX engine and inspect extracted text for author, affiliation, and unresolved references."
@@ -33,6 +37,11 @@ qa_notes: |
   Existing results are retrospective, not preregistered experiments. A local
   agent-assisted rerun is not an independent-person reproduction. Review the
   manuscript against source and actual command output, not verdict labels alone.
+  Local implementation artifacts are in paper/; the editable manuscript is
+  manuscript.md and generated derivatives use scripts/paper.mjs. Focused checks
+  run with node --test tests/paper/*.test.mjs, separately from the harness suite.
+  Reference-access limitations and actual command evidence are recorded in
+  paper/EXECUTION.md. Human review remains pending; status stays review.
 out_of_scope:
 - "New experimental scenarios, adapter changes, performance claims, or formal impossibility proofs."
 - "Claiming completed independent reproduction, exhaustive literature review, peer review, or arXiv acceptance."
