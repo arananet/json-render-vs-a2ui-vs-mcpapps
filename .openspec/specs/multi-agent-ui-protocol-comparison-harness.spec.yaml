@@ -1,0 +1,87 @@
+# Feature Spec — created by scripts/openspec scaffold
+title: "Multi-agent UI protocol comparison harness"
+slug: "multi-agent-ui-protocol-comparison-harness"
+type: feature
+status: review   # draft | review | approved
+
+author: "arananet"
+created_at: "2026-09-21"
+updated_at: "2026-09-21"
+
+roles:
+  implementer: "@arananet"
+  reviewer: "@arananet"
+  qa: "@arananet"
+  product_owner: "@arananet"
+
+description: |
+  A runnable harness that puts three agent-driven UI protocols side by side under
+  the same three multi-agent orchestration scenarios, using each protocol's real
+  published SDK rather than a mock:
+
+    - json-render  (@json-render/core, @json-render/react — Vercel Labs)
+    - A2UI         (@a2ui/web_core v0.9 schema — Google / a2ui-project)
+    - MCP Apps     (@modelcontextprotocol/ext-apps — SEP-1865, Final 2026-01-26)
+
+  The harness exists to answer one question with evidence instead of opinion:
+  when an orchestrator owns several agents and tools that each want to draw UI,
+  which protocol can express surface ownership, concurrent composition and
+  action routing — and which one silently loses information.
+
+  Every scenario runs against all three adapters through one shared orchestrator
+  and one shared scenario script, so differences in the recorded outcome are
+  differences in the protocol, not in the test. Each adapter records a capability
+  trace of what the protocol could and could not express; the traces are compiled
+  into a gap/benefit matrix that ships as generated documentation.
+
+acceptance_criteria:
+  - "Given the three real SDKs are installed, when the harness runs, then no protocol adapter uses a hand-written stand-in for the protocol's message types, renderer or transport."
+  - "Given scenario S1 (surface handoff), when the orchestrator delegates mid-render from agent A to agent B, then each adapter records whether B could continue A's existing surface, and the MCP Apps adapter records a NOT_EXPRESSIBLE outcome because a second tool call yields a separate app instance."
+  - "Given scenario S2 (concurrent composition), when two agents emit into one view with interleaved messages, then each adapter records whether a write from one agent was lost, and the json-render adapter demonstrates a real last-write-wins collision on a shared element key."
+  - "Given scenario S3 (action round-trip), when a user activates a control, then each adapter records whether the resulting event carried enough identity for the orchestrator to route it back to the originating agent without an out-of-band routing table."
+  - "Given scenario S3 on MCP Apps, when the app calls a tool that is not marked with 'app' visibility, then the host rejects the call and the adapter records an ENFORCED authorization outcome."
+  - "Given all scenarios have run, when the report is generated, then docs/COMPARISON.md contains a matrix of every scenario x protocol outcome and is regenerable from the recorded traces."
+  - "Given a browser is available, when the Playwright suite runs, then each protocol renders in a real page — json-render as a React tree, A2UI through its Lit renderer, MCP Apps inside a sandboxed iframe over the real postMessage JSON-RPC bridge — and assertions are made against the rendered DOM, not against the adapter's own bookkeeping."
+  - "Given 'npm test' is run, when the protocol suite completes, then it passes without network access."
+
+test_plan:
+  - "Unit test: each adapter's agent emits messages that validate against the protocol's own published schema (A2uiMessageSchema for A2UI; the catalog's spec validation for json-render; the ext-apps server registration for MCP Apps)."
+  - "Integration test (protocol level, vitest): all three scenarios run against all three adapters via the shared orchestrator; asserts the specific expected outcome code per cell of the matrix."
+  - "Integration test (MCP Apps, vitest): a real App and a real McpServer are connected over an in-memory transport pair; asserts the ui/initialize handshake completes and that a non-'app'-visible tools/call is rejected by the host."
+  - "Integration test (browser, Playwright): one page per protocol; asserts rendered DOM after handoff, after concurrent composition, and after a user click that triggers the action round-trip."
+  - "Report test: regenerating docs/COMPARISON.md from the recorded traces produces no diff, so the committed matrix cannot drift from the code."
+
+qa_notes: |
+  The Playwright suite needs Chromium. In this environment it is preinstalled at
+  PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; do not run `playwright install`.
+  `npm test` runs the protocol suite only, so CI without a browser stays green;
+  `npm run test:browser` runs the Playwright suite.
+
+  Outcome codes recorded by the adapters are a fixed vocabulary — SUPPORTED,
+  SUPPORTED_WITH_CAVEAT, REQUIRES_OUT_OF_BAND, NOT_EXPRESSIBLE, ENFORCED, LOST —
+  so the matrix stays comparable across protocols.
+
+out_of_scope:
+  - "Calling a real LLM. The orchestrator and its agents are deterministic scripts; the point is to compare protocol expressiveness, not model quality."
+  - "Benchmarking render performance or token cost."
+  - "Implementing a production host for any of the three protocols."
+  - "A2A or AG-UI transport integration. A2UI is exercised at its message layer, which is the layer that differs."
+
+implementation_skill: null
+
+eval_plan:
+  scenarios: []
+  metrics: []
+
+technical_notes: |
+  One npm package, TypeScript, ESM. Vitest for the protocol suite, Playwright for
+  the browser suite, Vite to build the three host pages.
+
+  The orchestrator is protocol-agnostic and talks to adapters through a narrow
+  port interface (createSurface / emit / handoff / dispatchUserAction / trace), so
+  the same scenario script drives all three. Anything a protocol cannot express is
+  recorded as an outcome rather than worked around in the adapter — the gaps are
+  the deliverable.
+
+linked_issues: []
+linked_prs: []

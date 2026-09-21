@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MCP Apps host</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>MCP Apps</h1>
+      <p class="sub">
+        One sandboxed iframe per agent, bridged by <code>AppBridge</code> over the real
+        <code>postMessage</code> JSON-RPC transport.
+      </p>
+      <div id="root" data-state="booting"></div>
+      <div id="log"></div>
+    </main>
+    <script type="module" src="./mcp-apps.ts"></script>
+  </body>
+</html>
