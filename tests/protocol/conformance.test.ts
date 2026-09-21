@@ -13,6 +13,7 @@ import { Tracer } from "../../src/orchestrator/trace.ts";
 import { runSurfaceHandoff, SURFACE } from "../../src/scenarios/s1-surface-handoff.ts";
 import { buildReport } from "../../src/report/generate.ts";
 import { readFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 
 describe("schema conformance", () => {
@@ -58,6 +59,39 @@ describe("schema conformance", () => {
     // structural fact behind both the handoff win and the collision loss.
     const writers = new Set(adapter.patchLog.map((p) => p.agent));
     expect(writers).toEqual(new Set(["planner", "booking"]));
+  });
+});
+
+describe("screenshots", () => {
+  /**
+   * The README and the generated report both embed captures by path. A broken
+   * image is invisible in a diff and obvious to a reader, so fail on it here.
+   */
+  it("every screenshot referenced by the docs exists", async () => {
+    const docsDir = resolve(import.meta.dirname, "../..", "docs");
+
+    const sources = [
+      { file: resolve(import.meta.dirname, "../../README.md"), base: resolve(import.meta.dirname, "../..") },
+      { file: resolve(docsDir, "COMPARISON.md"), base: docsDir },
+    ];
+
+    let referenced = 0;
+
+    for (const { file, base } of sources) {
+      const text = await readFile(file, "utf-8");
+      for (const match of text.matchAll(/\(((?:docs\/)?screenshots\/[\w.-]+\.png)\)/g)) {
+        const relative = match[1]!;
+        referenced += 1;
+        expect(
+          existsSync(resolve(base, relative)),
+          `${file} references a missing screenshot: ${relative}`,
+        ).toBe(true);
+      }
+    }
+
+    // Guards the regex itself: a rename that stopped matching would otherwise
+    // pass silently with zero references checked.
+    expect(referenced).toBeGreaterThanOrEqual(18);
   });
 });
 

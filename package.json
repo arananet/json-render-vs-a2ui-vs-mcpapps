@@ -10,13 +10,14 @@
   },
   "scripts": {
     "test": "vitest run",
-    "test:browser": "vite build && playwright test",
+    "test:browser": "vite build && playwright test --grep-invert @screenshot",
     "test:all": "npm test && npm run test:browser",
     "report": "tsx src/report/generate.ts",
     "report:check": "tsx src/report/generate.ts --check",
     "typecheck": "tsc --noEmit",
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "screenshots": "vite build && playwright test --grep @screenshot"
   },
   "dependencies": {
     "@a2ui/lit": "^0.11.0",

@@ -56,8 +56,18 @@ const runner = {
 }[scenario];
 
 const log: string[] = [];
+const logEl = document.getElementById("log")!;
+logEl.dataset["logLabel"] = "action dispatched by the renderer";
+
+/**
+ * Scenario 3 dispatches its actions through the adapter before the page is
+ * interactive, so without this the log would mix replayed events with the
+ * reader's own click and look like a bug.
+ */
+let live = false;
 
 await runner(adapter);
+live = true;
 
 const root = document.getElementById("root")!;
 createRoot(root).render(
@@ -66,9 +76,9 @@ createRoot(root).render(
     onAction={(name, params) => {
       // The whole event, as json-render delivers it: a catalog action name and
       // its params. No agent, no surface, no addressee.
-      log.push(`action=${name} params=${JSON.stringify(params)}`);
-      document.getElementById("log")!.textContent = log.join("\n");
-      document.getElementById("log")!.dataset["lastAction"] = JSON.stringify({ name, params });
+      log.push(`${live ? "click" : "scenario"} · action=${name} params=${JSON.stringify(params)}`);
+      logEl.textContent = log.join("\n");
+      logEl.dataset["lastAction"] = JSON.stringify({ name, params });
     }}
   />,
 );

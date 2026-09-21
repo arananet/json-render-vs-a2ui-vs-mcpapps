@@ -41,6 +41,7 @@ acceptance_criteria:
   - "Given scenario S3 (action round-trip), when a user activates a control, then each adapter records whether the resulting event carried enough identity for the orchestrator to route it back to the originating agent without an out-of-band routing table."
   - "Given scenario S3 on MCP Apps, when the app calls a tool that is not marked with 'app' visibility, then the host rejects the call and the adapter records an ENFORCED authorization outcome."
   - "Given all scenarios have run, when the report is generated, then docs/COMPARISON.md contains a matrix of every scenario x protocol outcome and is regenerable from the recorded traces."
+  - "Given a browser is available, when 'npm run screenshots' runs, then docs/screenshots/ holds one capture per scenario x protocol taken from the same pages the browser suite asserts against, and every screenshot referenced by README.md or docs/COMPARISON.md exists."
   - "Given a browser is available, when the Playwright suite runs, then each protocol renders in a real page — json-render as a React tree, A2UI through its Lit renderer, MCP Apps inside a sandboxed iframe over the real postMessage JSON-RPC bridge — and assertions are made against the rendered DOM, not against the adapter's own bookkeeping."
   - "Given 'npm test' is run, when the protocol suite completes, then it passes without network access."
 
@@ -50,12 +51,18 @@ test_plan:
   - "Integration test (MCP Apps, vitest): a real App and a real McpServer are connected over an in-memory transport pair; asserts the ui/initialize handshake completes and that a non-'app'-visible tools/call is rejected by the host."
   - "Integration test (browser, Playwright): one page per protocol; asserts rendered DOM after handoff, after concurrent composition, and after a user click that triggers the action round-trip."
   - "Report test: regenerating docs/COMPARISON.md from the recorded traces produces no diff, so the committed matrix cannot drift from the code."
+  - "Screenshot capture (Playwright, tagged @screenshot and excluded from the default browser run): drives each scenario including its clicks, asserts the state that makes the image meaningful before shooting, and writes docs/screenshots/."
+  - "Docs test: every screenshot path referenced by README.md and docs/COMPARISON.md resolves to a file on disk."
 
 qa_notes: |
   The Playwright suite needs Chromium. In this environment it is preinstalled at
   PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; do not run `playwright install`.
   `npm test` runs the protocol suite only, so CI without a browser stays green;
-  `npm run test:browser` runs the Playwright suite.
+  `npm run test:browser` runs the Playwright assertions and `npm run screenshots`
+  recaptures the images. Captures are tagged `@screenshot` and excluded from the
+  default browser run so the suite neither slows down nor writes into the repo.
+  Captures pin the light theme and wait for MCP Apps' `size-changed`
+  notification to settle, so they do not vary with the machine that took them.
 
   Outcome codes recorded by the adapters are a fixed vocabulary — SUPPORTED,
   SUPPORTED_WITH_CAVEAT, REQUIRES_OUT_OF_BAND, NOT_EXPRESSIBLE, ENFORCED, LOST —

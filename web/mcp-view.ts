@@ -21,10 +21,29 @@ const root = document.getElementById("root")!;
 const app = new App(
   { name: `${agent}-view`, version: "0.1.0" },
   { availableDisplayModes: ["inline"] },
-  { autoResize: false },
+  // The SDK watches the document with a ResizeObserver and emits
+  // ui/notifications/size-changed. The host has no other way to size this
+  // frame — it cannot read a cross-origin document — so this notification is
+  // the only channel through which an MCP App's height is knowable.
+  { autoResize: true },
 );
 
 const blocks: UiBlock[] = [];
+
+/**
+ * Show what the host did with the view's tool call.
+ *
+ * The visibility decision is the most important thing this page can show a
+ * reader, and a data attribute is invisible in a screenshot.
+ */
+function showOutcome(section: HTMLElement, allowed: boolean, text: string): void {
+  section.querySelector(".outcome")?.remove();
+  const line = document.createElement("p");
+  line.className = `outcome ${allowed ? "ok" : "refused"}`;
+  line.dataset["outcome"] = allowed ? "allowed" : "refused";
+  line.textContent = text;
+  section.appendChild(line);
+}
 
 function render(): void {
   root.textContent = "";
@@ -81,12 +100,11 @@ function render(): void {
         try {
           const result = await app.callServerTool({ name, arguments: args });
           root.dataset["lastCall"] = JSON.stringify({ name, ok: true, result: result.content });
+          showOutcome(section, true, `tools/call ${name} → allowed`);
         } catch (error) {
-          root.dataset["lastCall"] = JSON.stringify({
-            name,
-            ok: false,
-            error: error instanceof Error ? error.message : String(error),
-          });
+          const message = error instanceof Error ? error.message : String(error);
+          root.dataset["lastCall"] = JSON.stringify({ name, ok: false, error: message });
+          showOutcome(section, false, `tools/call ${name} → refused by host`);
         }
         root.dataset["callState"] = "settled";
       });

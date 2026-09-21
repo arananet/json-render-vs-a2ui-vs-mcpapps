@@ -106,6 +106,12 @@ function stabilise(detail: string): string {
   return detail.replace(/\d{4}-\d{2}-\d{2}T[\d:.]+Z/g, "<timestamp>");
 }
 
+/** Screenshot captured for a (scenario, protocol) pair by `npm run screenshots`. */
+function screenshotFor(scenario: string, protocol: ProtocolId): string {
+  const stem = scenario.split("-")[0];
+  return `screenshots/${stem}-${protocol}.png`;
+}
+
 function perScenario(runs: ScenarioRun[]): string {
   const sections: string[] = [];
 
@@ -119,6 +125,10 @@ function perScenario(runs: ScenarioRun[]): string {
       if (!run) continue;
 
       sections.push(`\n#### ${PROTOCOL_LABELS[protocol]}\n\n`);
+      sections.push(
+        `![${PROTOCOL_LABELS[protocol]} rendering ${scenario.id}]` +
+          `(${screenshotFor(scenario.id, protocol)})\n\n`,
+      );
       sections.push(
         `Rendered regions the user ends up with: **${Object.keys(run.snapshot.surfaces).length}**` +
           ` (\`${Object.keys(run.snapshot.surfaces).join("`, `")}\`)\n`,
@@ -178,6 +188,9 @@ recorded by an adapter driving the protocol's published SDK — not by reading a
 specification and forming an opinion about it.
 
 ${sdkLines}
+
+Screenshots throughout are captured by \`npm run screenshots\` from the same
+pages the browser suite asserts against.
 
 ## The matrix
 
