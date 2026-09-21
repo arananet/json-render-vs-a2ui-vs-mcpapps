@@ -1,0 +1,49 @@
+---
+title: Reproducible protocol comparison paper
+slug: reproducible-protocol-comparison-paper
+type: feature
+status: review
+author: Eduardo Arana
+created_at: '2026-09-21'
+updated_at: '2026-09-21'
+roles:
+  implementer:
+  reviewer:
+  qa:
+  product_owner:
+description: |
+  Prepare a local English research manuscript by Eduardo Arana (Arananet)
+  describing the existing three-scenario UI comparison as a bounded empirical
+  case study. Provide a reproduction guide and an honest local execution record,
+  borrowing evidence-accounting practices, not scientific results or prose, from
+  besanson/sarc-authority-derivation. Generate LaTeX and a PDF when the available
+  toolchain permits. The user requested the paper and explicitly prohibited push.
+acceptance_criteria:
+- "The English manuscript identifies Eduardo Arana as author and Arananet as affiliation, and includes research questions, methodology, bounded results, related work, limitations, and a claim-to-evidence table."
+- "The manuscript separates SDK behavior, adapter topology, host policy, and protocol requirements; S2 is described as fixed-order writes, not a scheduling benchmark."
+- "The reproduction guide records prerequisites, commands, expected semantic outcomes, environment and revision provenance, failed attempts, and unverified requirements without claiming independent reproduction."
+- "LaTeX and PDF are generated from the manuscript if available tools succeed; missing tools or build failures are reported without claiming a successful build."
+- "Documentation checks validate author metadata, required sections, local evidence links, and correspondence of generated LaTeX with the manuscript. No commit, push, submission, paid service, or external issue is performed."
+test_plan:
+- "Run the focused manuscript checks and regenerate LaTeX to check freshness."
+- "Run npm test and the existing browser suite where prerequisites are available; record failures and stop rather than weaken assertions."
+- "Build the PDF with the available TeX engine and inspect extracted text for author, affiliation, and unresolved references."
+- "Run bash scripts/openspec check, verify reproducible-protocol-comparison-paper, and status reproducible-protocol-comparison-paper."
+qa_notes: |
+  Existing results are retrospective, not preregistered experiments. A local
+  agent-assisted rerun is not an independent-person reproduction. Review the
+  manuscript against source and actual command output, not verdict labels alone.
+out_of_scope:
+- "New experimental scenarios, adapter changes, performance claims, or formal impossibility proofs."
+- "Claiming completed independent reproduction, exhaustive literature review, peer review, or arXiv acceptance."
+- "Commit, push, arXiv submission, contacting maintainers, or changing existing scientific outcomes."
+implementation_skill: null
+eval_plan:
+  scenarios: []
+  metrics: []
+technical_notes: |
+  Keep one editable Markdown manuscript with generated LaTeX/PDF. Cite primary
+  sources actually inspected and the methodological reference. Preserve all
+  existing harness behavior and generated comparison documentation.
+linked_issues: []
+linked_prs: []
