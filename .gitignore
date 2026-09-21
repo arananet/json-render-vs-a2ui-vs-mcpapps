@@ -184,3 +184,10 @@ terraform.rc
 # ─── OpenSpec local state ──────────────────────────────────────────────────
 .openspec/.cache/
 .openspec/local.yaml
+
+# --- harness build + test artifacts ---
+dist-web/
+test-results/
+playwright-report/
+blob-report/
+.scratch/
