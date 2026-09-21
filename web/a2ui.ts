@@ -33,17 +33,22 @@ const runner = {
 
 const log: string[] = [];
 const logEl = document.getElementById("log")!;
+logEl.dataset["logLabel"] = "client-to-server action, as A2UI emits it";
+
+/** See the note in json-render.tsx — the scenario dispatches before the click. */
+let live = false;
 
 // Subscribe before running so the round-trip scenario's clicks are captured.
 adapter.model.onAction.subscribe((action) => {
   // The real client-to-server envelope: surfaceId and sourceComponentId, but
   // no agent. This is what an orchestrator would have to route on.
-  log.push(JSON.stringify(action));
+  log.push(`${live ? "click" : "scenario"} · ${JSON.stringify(action)}`);
   logEl.textContent = log.join("\n");
   logEl.dataset["lastAction"] = JSON.stringify(action);
 });
 
 await runner(adapter);
+live = true;
 
 const root = document.getElementById("root")!;
 const surface = adapter.model.getSurface(surfaceId);

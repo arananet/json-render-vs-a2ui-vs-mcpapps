@@ -15,6 +15,9 @@ specification and forming an opinion about it.
 - **A2UI** — `@a2ui/web_core (v0.9 schema)`
 - **MCP Apps** — `@modelcontextprotocol/ext-apps (SEP-1865) + @modelcontextprotocol/server`
 
+Screenshots throughout are captured by `npm run screenshots` from the same
+pages the browser suite asserts against.
+
 ## The matrix
 
 | Capability | json-render | A2UI | MCP Apps |
@@ -120,6 +123,8 @@ are in the host's own document.
 
 #### json-render
 
+![json-render rendering s1-surface-handoff](screenshots/s1-json-render.png)
+
 Rendered regions the user ends up with: **1** (`trip`)
 
 **handoff.continue-surface** — 🟡 caveat
@@ -139,6 +144,8 @@ Rendered regions the user ends up with: **1** (`trip`)
 > Agents ["planner"] and "booking" write into one Spec and compose into a single rendered tree with no coordination step. For blocks with distinct keys this is the best experience of the three: one view, one layout pass, no seams. The caveat is that the keyspace is global and unowned, so composing and clobbering are the same operation and the protocol offers nothing to tell them apart.
 
 #### A2UI
+
+![A2UI rendering s1-surface-handoff](screenshots/s1-a2ui.png)
 
 Rendered regions the user ends up with: **1** (`trip`)
 
@@ -163,6 +170,8 @@ Rendered regions the user ends up with: **1** (`trip`)
 > Agents ["planner"] and "booking" compose into surface "trip" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.concurrent-write comes from.
 
 #### MCP Apps
+
+![MCP Apps rendering s1-surface-handoff](screenshots/s1-mcp-apps.png)
 
 Rendered regions the user ends up with: **2** (`trip::planner`, `trip::booking`)
 
@@ -192,6 +201,8 @@ Rendered regions the user ends up with: **2** (`trip::planner`, `trip::booking`)
 
 #### json-render
 
+![json-render rendering s2-concurrent-composition](screenshots/s2-json-render.png)
+
 Rendered regions the user ends up with: **1** (`briefing`)
 
 **compose.shared-surface** — 🟡 caveat
@@ -204,6 +215,8 @@ Rendered regions the user ends up with: **1** (`briefing`)
 
 #### A2UI
 
+![A2UI rendering s2-concurrent-composition](screenshots/s2-a2ui.png)
+
 Rendered regions the user ends up with: **1** (`briefing`)
 
 **compose.shared-surface** — ✅ supported
@@ -215,6 +228,8 @@ Rendered regions the user ends up with: **1** (`briefing`)
 > Agent "finance" reused component ids from block "summary", last written by "risk". updateComponents is keyed by component id within a surface, so re-sending an id replaces that node. The surface boundary stops agents on *different* surfaces from colliding, but inside one surface the id space is still shared and unowned.
 
 #### MCP Apps
+
+![MCP Apps rendering s2-concurrent-composition](screenshots/s2-mcp-apps.png)
 
 Rendered regions the user ends up with: **2** (`briefing::risk`, `briefing::finance`)
 
@@ -232,6 +247,8 @@ Rendered regions the user ends up with: **2** (`briefing::risk`, `briefing::fina
 
 #### json-render
 
+![json-render rendering s3-action-roundtrip](screenshots/s3-json-render.png)
+
 Rendered regions the user ends up with: **1** (`checkout`)
 
 **compose.shared-surface** — 🟡 caveat
@@ -248,6 +265,8 @@ Rendered regions the user ends up with: **1** (`checkout`)
 
 #### A2UI
 
+![A2UI rendering s3-action-roundtrip](screenshots/s3-a2ui.png)
+
 Rendered regions the user ends up with: **1** (`checkout`)
 
 **compose.shared-surface** — ✅ supported
@@ -263,6 +282,8 @@ Rendered regions the user ends up with: **1** (`checkout`)
 > A2UI v0.9 has no confirmation or consent primitive on an action. The Button's action is { event: { name, context } }; there is no field a host could read to know this action needs the user's explicit approval, and no protocol step between the click and the emitted event. Gating a privileged action means the agent drawing a Modal and hoping — which is precisely the "trust the agent" posture the declarative format is supposed to avoid.
 
 #### MCP Apps
+
+![MCP Apps rendering s3-action-roundtrip](screenshots/s3-mcp-apps.png)
 
 Rendered regions the user ends up with: **2** (`checkout::cart`, `checkout::payments`)
 

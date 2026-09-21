@@ -66,6 +66,46 @@ Two findings worth pulling out:
   the guarantee switched off. The harness runs scenario 3 both ways and the
   privileged call succeeds in one of them.
 
+## What each protocol actually renders
+
+Captured by `npm run screenshots` from the same pages the browser suite asserts
+against — same scenarios, same clicks, real renderers. Nothing below is a
+mock-up.
+
+### S1 · Surface handoff
+
+A planner agent draws an itinerary; the orchestrator hands the surface to a
+booking agent mid-render.
+
+| json-render | A2UI | MCP Apps |
+| --- | --- | --- |
+| [![json-render, surface handoff](docs/screenshots/s1-json-render.png)](docs/screenshots/s1-json-render.png) | [![A2UI, surface handoff](docs/screenshots/s1-a2ui.png)](docs/screenshots/s1-a2ui.png) | [![MCP Apps, surface handoff](docs/screenshots/s1-mcp-apps.png)](docs/screenshots/s1-mcp-apps.png) |
+| Both agents' blocks land in **one React tree**. The successor patched the same element map. | Both agents land in **one `<a2ui-surface>`**, addressed by `surfaceId`. | **Two sandboxed iframes**, each bound to its own server. The handoff became a second panel. |
+
+### S2 · Concurrent composition
+
+Two agents fan out and both independently write a block called `summary`.
+
+| json-render | A2UI | MCP Apps |
+| --- | --- | --- |
+| [![json-render, concurrent composition](docs/screenshots/s2-json-render.png)](docs/screenshots/s2-json-render.png) | [![A2UI, concurrent composition](docs/screenshots/s2-a2ui.png)](docs/screenshots/s2-a2ui.png) | [![MCP Apps, concurrent composition](docs/screenshots/s2-mcp-apps.png)](docs/screenshots/s2-mcp-apps.png) |
+| One `Summary`, written by `finance`. **`risk`'s headline is gone** and nobody was told. | Same loss — the surface is scoped, the component-id namespace is not. | **Both survive**, in separate origins. Nothing was lost; nothing composed either. |
+
+### S3 · Action round-trip
+
+The user clicks a control drawn by one agent, then a privileged "Pay now" drawn
+by another.
+
+| json-render | A2UI | MCP Apps |
+| --- | --- | --- |
+| [![json-render, action round-trip](docs/screenshots/s3-json-render.png)](docs/screenshots/s3-json-render.png) | [![A2UI, action round-trip](docs/screenshots/s3-a2ui.png)](docs/screenshots/s3-a2ui.png) | [![MCP Apps, action round-trip](docs/screenshots/s3-mcp-apps.png)](docs/screenshots/s3-mcp-apps.png) |
+| The event names a **catalog handler**, not an addressee. | The envelope carries `surfaceId`, `sourceComponentId` and `timestamp` — **and no agent**. | The host **refuses** `commit_booking`: its visibility is `["model"]`, so a view may not call it however the agent drew the button. |
+
+That last cell is the one to look at twice. Green is `revise_row`, declared
+app-visible, allowed through. Red is the host rejecting a call the agent was
+perfectly willing to make — the only enforcement in the comparison that does not
+depend on the agent cooperating.
+
 ## The scenarios
 
 | Scenario | What happens | What it measures |
@@ -85,6 +125,7 @@ npm install
 npm test           # protocol suite (vitest, no browser, no network)
 npm run test:browser   # browser suite (builds the host pages, runs Playwright)
 npm run report         # regenerate docs/COMPARISON.md from the traces
+npm run screenshots    # recapture docs/screenshots/ from the live pages
 npm run dev            # open the three host pages and poke at them
 ```
 

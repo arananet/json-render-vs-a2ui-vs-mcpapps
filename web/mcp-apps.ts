@@ -103,6 +103,8 @@ const SCRIPTS: Record<string, Array<{ agent: string; block: UiBlock }>> = {
 const scenario = scenarioFromUrl();
 const script = SCRIPTS[scenario]!;
 const root = document.getElementById("root")!;
+const logEl = document.getElementById("log")!;
+logEl.dataset["logLabel"] = "tool calls the host made to each agent's server";
 const log: string[] = [];
 
 /** Stand up one agent: server, client, bridge, sandboxed iframe. */
@@ -124,6 +126,7 @@ async function mountAgent(agent: string): Promise<{
 
   const iframe = document.createElement("iframe");
   iframe.dataset["agentFrame"] = agent;
+  iframe.height = "120";
   // No allow-same-origin: the view cannot reach this document, the other
   // agents' views, or anything but its own bridge.
   iframe.setAttribute("sandbox", "allow-scripts");
@@ -134,6 +137,16 @@ async function mountAgent(agent: string): Promise<{
   await new Promise<void>((resolve) => iframe.addEventListener("load", () => resolve()));
 
   const view = iframe.contentWindow!;
+
+  // Size the frame from the view's own notifications. Worth noticing how much
+  // machinery this takes compared with the other two protocols, where the
+  // renderer is in the host's document and simply lays out.
+  bridge.addEventListener("sizechange", ({ height }) => {
+    if (typeof height === "number" && height > 0) {
+      iframe.style.height = `${Math.ceil(height)}px`;
+    }
+  });
+
   await bridge.connect(new PostMessageTransport(view, view));
   enforce();
 
@@ -169,8 +182,8 @@ async function mountAgent(agent: string): Promise<{
         content: result.content,
         structuredContent: result.structuredContent as Record<string, unknown>,
       });
-      log.push(`${agent} rendered ${block.id}`);
-      document.getElementById("log")!.textContent = log.join("\n");
+      log.push(`tools/call ${RENDER_TOOL} → ${agent} · ${block.id}`);
+      logEl.textContent = log.join("\n");
     },
   };
 }

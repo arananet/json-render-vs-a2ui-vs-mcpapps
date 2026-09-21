@@ -70,6 +70,63 @@ button {
 
 .pane { border: 1px dashed var(--line); border-radius: 10px; padding: 10px; margin-bottom: 12px; }
 .pane > h3 { margin: 0 0 8px; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
-iframe { width: 100%; border: 0; min-height: 190px; display: block; }
+iframe { width: 100%; border: 0; display: block; }
 
 #log { margin-top: 20px; font-size: 0.82rem; color: var(--muted); white-space: pre-wrap; }
+
+.outcome {
+  margin: 10px 0 0;
+  padding: 6px 10px;
+  border-radius: 7px;
+  font-size: 0.8rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.outcome.ok {
+  color: #14532d;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+}
+
+.outcome.refused {
+  color: #7f1d1d;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .outcome.ok {
+    color: #bbf7d0;
+    background: #052e1a;
+    border-color: #166534;
+  }
+
+  :root:not([data-theme="light"]) .outcome.refused {
+    color: #fecaca;
+    background: #3b0a0a;
+    border-color: #991b1b;
+  }
+}
+
+#log:not(:empty) {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.74rem;
+  overflow-wrap: anywhere;
+}
+
+#log:not(:empty)::before {
+  content: attr(data-log-label);
+  display: block;
+  margin-bottom: 6px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
