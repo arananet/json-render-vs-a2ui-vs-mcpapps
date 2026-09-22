@@ -24,8 +24,9 @@ Guidelines:
 ### Added
 
 - Apache-2.0 licensing; versionable frozen-paper, preregistration, audit,
-  novelty, and provenance-governance records. No release, tag, publication, or
-  project DOI has been created (spec: reproducible-protocol-comparison-paper).
+  novelty, and provenance-governance records. Version `v0.1.0` is archived at
+  Zenodo under [DOI 10.5281/zenodo.22896882](https://doi.org/10.5281/zenodo.22896882)
+  (spec: reproducible-protocol-comparison-paper).
 - Illustrated local academic PDF and clean TeX source-bundle tooling, with original Mermaid topology and fixed-order S2 figures rendered through native Graphviz, offline Tectonic resource selection, and PDF/figure/bundle checks. Historical build failures are retained; arXiv compatibility and human review remain unverified (spec: reproducible-protocol-comparison-paper).
 - Local English research manuscript by Eduardo Arana (Arananet), [reproduction guide](paper/REPRODUCTION.md), [execution record](paper/EXECUTION.md), generated-document tooling, and focused manuscript checks; claims are bounded to existing configurations and human review remains pending (spec: reproducible-protocol-comparison-paper). See [paper/manuscript.md](paper/manuscript.md).
 - Multi-agent UI protocol comparison harness: three orchestration scenarios (surface handoff, fixed-order identifier collision, action round-trip) run against json-render, A2UI and MCP Apps using each protocol's real published SDK (spec: multi-agent-ui-protocol-comparison-harness).

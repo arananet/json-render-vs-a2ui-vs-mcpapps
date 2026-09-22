@@ -6,6 +6,7 @@
 ![Playwright](https://img.shields.io/badge/playwright-2EAD33?logo=playwright&logoColor=white)
 ![OpenSpec](https://img.shields.io/badge/OpenSpec-enforced-blueviolet)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22896882.svg)](https://doi.org/10.5281/zenodo.22896882)
 
 > Three real UI-testing scenarios comparing json-render, A2UI and MCP Apps for
 > multi-agent orchestration.
@@ -46,9 +47,8 @@ The paper bounds the historical labels below: S2 uses sequential fixed-order
 writes, and differences concern SDK/adapter/host configurations, not isolated
 protocol causality. Generated comparison documentation is retained unchanged.
 
-This repository is licensed under [Apache-2.0](LICENSE). It has no project DOI
-yet: a future DOI may be assigned only to a distinct author-controlled archival
-release. The DOI of another repository is not a DOI for this work.
+This repository is licensed under [Apache-2.0](LICENSE). Version `v0.1.0` is
+archived at Zenodo under [DOI 10.5281/zenodo.22896882](https://doi.org/10.5281/zenodo.22896882).
 
 ## The headline
 
