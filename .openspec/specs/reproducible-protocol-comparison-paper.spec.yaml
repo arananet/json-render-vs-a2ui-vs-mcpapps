@@ -66,7 +66,7 @@ qa_notes: |
   paper/EXECUTION.md. Human review remains pending; status stays review.
   The authorized S2 identity correction changes only naming/documentation and
   provenance maintenance. The retained browser run and private archive/manifest
-  predate the renamed fixture; the separate `browser-s2-fixed-order-Iyz55xbG`
+  predate the renamed fixture; the separate `browser-s2-fixed-order-QDL9iC9j`
   outer-terminal run records current-source verification (18 passed, 9 render
   and 9 capture tests). C3 checks finance
   visible and risk absent, not exact node count. No C9 intervention is performed.

@@ -766,3 +766,27 @@ expected passing tests, stable build hashes, and nine screenshot hashes.
 `provenance.txt` and `environment.json` both record that source commit. The
 private-review manifest generated from this execution records the same hash; the
 later evidence-retention commit is bookkeeping, not the tested source revision.
+
+## Host-enforcement outcome evidence — 22 September 2026 UTC
+
+The source commit `91a0b7a5191947a4ad284e276227564586c88f82` adds the typed
+`ENFORCED_BY_CONFORMANT_HOST` S2 outcome, distinguishing structural isolation
+provided by a conformant MCP Apps host from protocol-level enforcement. Before
+capture, S2 passed 3 tests, the complete harness passed 24 tests, typecheck and
+the generated-report freshness check passed, and `bash scripts/openspec check`
+passed.
+
+The outer-terminal browser command produced
+`paper/evidence/browser-s2-fixed-order-QDL9iC9j/` with Playwright exit status
+0. `validateBrowserEvidence` verified matching source snapshots before and after
+the run, stable build hashes, 18 expected passing browser tests, zero unexpected,
+flaky, or skipped tests, and nine screenshot hashes. Its `provenance.txt` and
+`environment.json` record the source commit above.
+
+`node scripts/paper.mjs latex`, `check`, and `pdf` completed. The PDF build
+retained only Tectonic warnings about included PDF version and underfull boxes.
+`PAPER_BROWSER_EVIDENCE=paper/evidence/browser-s2-fixed-order-QDL9iC9j node
+scripts/paper.mjs private-bundle` produced the local archive; the extracted
+`paper/evidence/private-review-manifest.json` records the same source commit.
+This is a local execution record, not an independent reproduction or human
+review.

@@ -83,7 +83,7 @@ and screenshot integrity checks remain required; a local record is not a signed
 attestation or independent reproduction.
 
 The current execution directory is
-`paper/evidence/browser-s2-fixed-order-T1RMZk03/`. Inspect its JSON report,
+`paper/evidence/browser-s2-fixed-order-QDL9iC9j/`. Inspect its JSON report,
 stdout/stderr, preview/build logs, source/build snapshots, command record, exit
 status, capture archive/hashes and restoration record. Use its
 repository-relative path as `PAPER_BROWSER_EVIDENCE` for the private-bundle test

@@ -241,18 +241,20 @@ scenario and configuration. The
 \href{../src/orchestrator/orchestrator.ts}{orchestrator} is a scripted
 stand-in with named agents and a control-to-agent routing table, not an
 autonomous model-driven system. We inspect the existing tests and rerun
-them where local prerequisites permit; no scenarios or adapters are
-added or modified.
+them where local prerequisites permit; no scenarios are added or their
+operations or write order are modified. MCP's collision classification
+distinguishes protocol-level enforcement from structural isolation
+applied by a conformant host.
 
 The \href{../src/report/generate.ts}{report generator} takes
 adapter-authored classifications and uses first-recording-wins selection
 for each capability and configuration. It does not independently measure
-the meaning of \texttt{SUPPORTED}, \texttt{LOST}, \texttt{ENFORCED}, or
-\texttt{NOT\_EXPRESSIBLE}. Repeated labels do not constitute independent
-observations. Timestamp normalization makes its Markdown stable but does
-not validate its interpretation. A freshness check establishes
-correspondence between report and generator, not the truth of every
-sentence in the report.
+the meaning of \texttt{SUPPORTED}, \texttt{LOST}, \texttt{ENFORCED},
+\texttt{ENFORCED\_BY\_CONFORMANT\_HOST}, or \texttt{NOT\_EXPRESSIBLE}.
+Repeated labels do not constitute independent observations. Timestamp
+normalization makes its Markdown stable but does not validate its
+interpretation. A freshness check establishes correspondence between
+report and generator, not the truth of every sentence in the report.
 
 We therefore distinguish classifications from assertions on snapshots,
 messages, tool responses/refusals, and rendered elements. The
@@ -267,12 +269,13 @@ Specifically, \texttt{Tracer.record} stores the outcome supplied by the
 adapter; \texttt{outcomeOf} returns the first matching entry. In
 scenario tests, json-render's S3 confirmation check and MCP's permissive
 S3 check assert these labels only. MCP's S2
-\texttt{ENFORCED}/\texttt{NOT\_EXPRESSIBLE} labels do not measure
-collision prevention or impossibility of composition; separate
-assertions check the two retained headline values. A2UI S2 checks labels
-and the writer map, not Node-rendered text. The bridge tests instead
-exercise calls and assert actual returned content or rejection plus
-refusal records. None of these labels is an empirical score.
+\texttt{ENFORCED\_BY\_CONFORMANT\_HOST}/\texttt{NOT\_EXPRESSIBLE} labels
+do not measure collision prevention or impossibility of composition; the
+former identifies structural host isolation. Separate assertions check
+the two retained headline values. A2UI S2 checks labels and the writer
+map, not Node-rendered text. The bridge tests instead exercise calls and
+assert actual returned content or rejection plus refusal records. None
+of these labels is an empirical score.
 
 Browser evidence has an additional qualification: the MCP browser host
 contains its own fixture script. In S2 it renders the two summaries
@@ -316,7 +319,7 @@ current-source browser run on 22 September 2026 UTC. A2UI's browser
 assertion checks finance's headline visible and risk's headline absent
 within the surface. It does not assert an exact summary node count,
 despite its test title. The
-\href{./evidence/browser-s2-fixed-order-T1RMZk03/playwright-ipv4.json}{raw
+\href{./evidence/browser-s2-fixed-order-QDL9iC9j/playwright-ipv4.json}{raw
 browser report} records 18 passed tests: nine render assertions and nine
 screenshot tests. The MCP browser fixture omits Node's risk-detail and
 finance-detail writes. Its two summary assertions are a separate browser
@@ -469,13 +472,13 @@ and
 provenance} identify the pre-rename tests only. Their hashes no longer
 match the current browser tests; the old raw logs cannot bind the
 post-rename fixture. The
-\href{./evidence/browser-s2-fixed-order-T1RMZk03/playwright-ipv4.json}{current
+\href{./evidence/browser-s2-fixed-order-QDL9iC9j/playwright-ipv4.json}{current
 JSON report},
-\href{./evidence/browser-s2-fixed-order-T1RMZk03/source-before.json}{source
+\href{./evidence/browser-s2-fixed-order-QDL9iC9j/source-before.json}{source
 snapshots},
-\href{./evidence/browser-s2-fixed-order-T1RMZk03/built-before.json}{build
+\href{./evidence/browser-s2-fixed-order-QDL9iC9j/built-before.json}{build
 hashes}, and
-\href{./evidence/browser-s2-fixed-order-T1RMZk03/ipv4-post-run-screenshots.sha256}{capture
+\href{./evidence/browser-s2-fixed-order-QDL9iC9j/ipv4-post-run-screenshots.sha256}{capture
 hashes} bind the current browser sources and build to the successful
 run. They do not make the distinct MCP browser fixture corroborate the
 four-write Node fixture. C6 remains partial: successful browser actions
@@ -537,10 +540,16 @@ evaluators.
 isolation. The MCP browser fixtures differ from the Node scenario.
 Historical screenshots remain retained artifacts; the nine new captures
 are separately archived and do not establish historical reproduction.
-The suite does not comprehensively test adversarial inputs, identity
-forgery, transport authentication, CSP, cross-server policy,
-authorization revocation, or arbitrary concurrent schedules. No
-completed security review is claimed.
+Two post-rename browser executions completed with identical statistics
+over a byte-identical snapshot of the code under test, and two further
+attempts aborted before any test body ran; no completed execution was
+discarded, and the canonical run is identified in
+\texttt{paper/evidence/README.md}. Neither completed run is an
+independent reproduction: both ran on the same machine, from the same
+checkout, in the same session. The suite does not comprehensively test
+adversarial inputs, identity forgery, transport authentication, CSP,
+cross-server policy, authorization revocation, or arbitrary concurrent
+schedules. No completed security review is claimed.
 
 \textbf{External and temporal validity.} Three designed scenarios, fixed
 fixture data, and the pinned installed packages cannot establish
@@ -609,7 +618,7 @@ separately and historical PNGs restored; this is now pre-rename evidence
 and cannot substantiate the post-rename fixture. The required
 post-rename outer-terminal browser run completed and recorded
 current-source/build hashes, 18 passing tests, and nine capture hashes
-in \texttt{paper/evidence/browser-s2-fixed-order-T1RMZk03/}. Pandoc
+in \texttt{paper/evidence/browser-s2-fixed-order-QDL9iC9j/}. Pandoc
 produced LaTeX and its freshness check passed. The initial Tectonic
 invocation panicked internally (exit 101) in cached-only mode. A later
 local build used an explicit directory bundle assembled from already

@@ -1,11 +1,11 @@
 {
   "schema": 2,
-  "generatedAt": "2026-09-22T15:58:11.031Z",
+  "generatedAt": "2026-09-22T16:18:08.008Z",
   "private": true,
   "browserProvenance": {
     "status": "current-source-browser-execution",
-    "directory": "paper/evidence/browser-s2-fixed-order-T1RMZk03",
-    "head": "523941cb079e8f88f47011039e6e69d01bc1d414",
+    "directory": "paper/evidence/browser-s2-fixed-order-QDL9iC9j",
+    "head": "91a0b7a5191947a4ad284e276227564586c88f82",
     "sources": {
       "package-lock.json": "ff16ef0f2c390aecce197ac381a347830c1529d915ab63c1216828c0c47eef14",
       "package.json": "33c0e5b716eda60c36f01d56fd24efebfbafe826fdea32fb1fa394802ada0827",
@@ -16,13 +16,13 @@
       "src/adapters/a2ui/catalog.ts": "599f42e0ab5d4f09ab7aa2fa3fc4f8ba26aab4a6ff670e97256626641f4726e2",
       "src/adapters/json-render/adapter.ts": "39bc449fdcf47ba06402c4e3871e2f7e544dece38b13275d6dbcf52edfefa96a",
       "src/adapters/json-render/catalog.ts": "c9d457c46c2b201b879222cebeec77f739a7a27cb77505e3eb3e622ff3630b9a",
-      "src/adapters/mcp-apps/adapter.ts": "2b3bb72542adb9becc6642a6a64f2b564962308e05e2b968c43597d2eac4102f",
+      "src/adapters/mcp-apps/adapter.ts": "453e3c6bb529b694d167c5f3266b398ec3b17d3fa471bc2f8aed14b7bbeeb841",
       "src/adapters/mcp-apps/agent-server.ts": "2bc00d175aeda50084afe7a46a971f9b4732068b18aa69e803532ba19c3fc561",
       "src/adapters/mcp-apps/host.ts": "2ed0fbae50cd7455aadf659d43e96944a504a10b0effbc96d3e761b5ff35b7b6",
       "src/orchestrator/orchestrator.ts": "d6e368375d125c52304b5144a88b703e588aef61c6c8538c86ae7cc5f06e03fb",
       "src/orchestrator/trace.ts": "bd51b6cacf785c0f408d8dbd825d30316ffb7501467df828e002884e19c0e0a2",
-      "src/orchestrator/types.ts": "071b78f60e43a74dd55a7fb994fa90b59806f239e08920eb0eaf9beb3e13bd9a",
-      "src/report/generate.ts": "2051ba85e801f43ad38af916a882c705808d9f110ee3625cf8c2d09ac39e0c57",
+      "src/orchestrator/types.ts": "b1a0f5d3cefda05445820580e18a1c9c25ca3a24e5891415a926ebd815af7bd4",
+      "src/report/generate.ts": "e7ba9c6e136c28601c5baaba77b9ec70059b25b190f9fa53a29ac8ee68be6de9",
       "src/scenarios/run.ts": "6ed2254f55ae936a94b3ad5d4893586129307b5a107fdbf4c5e75ff28af9aa9d",
       "src/scenarios/s1-surface-handoff.ts": "ed2a9a8e67006221dfe0a620117757e0a099eb419e3a7f29500ec48ba078010a",
       "src/scenarios/s2-fixed-order-collision.ts": "41a1a23d81729dd7410863657b8adae508450c03ad81f6361e78b9fa6dbf5cc2",
@@ -61,7 +61,7 @@
       "dist-web/mcp-view.html": "da3c628d45b54bf460bbf5f81b75a3842bf8083a5b42817b9f177a0e920ca140"
     }
   },
-  "head": "523941cb079e8f88f47011039e6e69d01bc1d414",
+  "head": "91a0b7a5191947a4ad284e276227564586c88f82",
   "node": "v22.23.2",
   "tools": [
     {
@@ -111,7 +111,7 @@
     "node scripts/paper.mjs check",
     "node scripts/paper.mjs pdf"
   ],
-  "browserCommands": "paper/evidence/browser-s2-fixed-order-T1RMZk03/commands.txt",
+  "browserCommands": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/commands.txt",
   "instructions": "paper/REPRODUCTION.md",
   "externalDependencies": "Node >=22, npm packages pinned in package-lock.json, matching Playwright Chromium, listener permission, Pandoc, Graphviz, Tectonic and separately supplied TeX resources, Poppler. No dependencies or TeX caches included.",
   "limits": "Local private packaging, not publication or independent reproduction. Historical logs may contain absolute execution paths: provenance, not portable paths. Current fixture hashes do not retroactively attest the historical fixture bytes. Historical links outside this selected evidence set need the original private workspace. External auditor configuration, internals, reports and integration test are excluded; that test remains unchanged in the workspace and is a known blocker. OpenSpec tooling is not bundled: run its checks in the original checkout.",
@@ -130,8 +130,8 @@
     },
     {
       "path": "docs/COMPARISON.md",
-      "sha256": "7f1aea0411fdd6723377b8ef42ce49128294630fe74dc0ec0b14197ec90d7f0e",
-      "bytes": 23573,
+      "sha256": "58726543fb084a1fcfe579f87fa76d08ae55389c97fd305ab4d3d7779e12cf21",
+      "bytes": 23741,
       "provenance": "retained harness documentation; not revised scientific claims"
     },
     {
@@ -202,109 +202,109 @@
     },
     {
       "path": "paper/EXECUTION.md",
-      "sha256": "f8b21c7b189997fd845a7d0d2832d79b32f4963f3aa698ff94e43b571ac9db11",
-      "bytes": 51114,
+      "sha256": "93663caa33cca7018bf12372bf3fc24a55be8e9a44b62bf234f95ba9da5b58c3",
+      "bytes": 53041,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
     {
       "path": "paper/REPRODUCTION.md",
-      "sha256": "2eeded107fee148425d30ee05c5e440d8b4fbf045c12032d3da0e6c95e2bd025",
+      "sha256": "69fbedcb1ea799ff2ecfac83e7736f2a38166d5fd1a94060ac4d474777d20762",
       "bytes": 20341,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/build.stderr.txt",
-      "sha256": "930303a4dd351a1d692a606563b1474047cf4a7cbaeea36cb292a47e1d773e45",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/build.stderr.txt",
+      "sha256": "ab289facf0dee3e6592522a384d403b5f7d69a3b534adc78ddf7c6efaefc0549",
       "bytes": 921,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/build.stdout.txt",
-      "sha256": "8c89cba43816341a600422057d8387e02cde6f3ec8939aac3f46625c4dec9b21",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/build.stdout.txt",
+      "sha256": "8feab65a6b23b781c13087c549dae9701d8ebe03564ae6b07e101400ae19b0ab",
       "bytes": 1485,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/built-before.json",
-      "sha256": "4de111d79e9dcb01b7af9b47ff5e0bb7ffe226488cadd50f86f5e8cf3d93b6b7",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/built-before.json",
+      "sha256": "de95c538e571227ead6e9078d0e6a5de04674155b983034c2589707cbdef4d9e",
       "bytes": 5227,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/commands.txt",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/commands.txt",
       "sha256": "4f2ea0295fa0bbb0f4efcf7f2e17201a830b6c56ea7107ac6461a6e9e75a69cc",
       "bytes": 3603,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/environment.json",
-      "sha256": "83fe969cce999e21b22d29adcb06c0428913160c64e37f41629a3873898ca11f",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/environment.json",
+      "sha256": "4e64dac8cbf3dc071107937e5733a7a516795be215a7dfd2f951f6d2a3e7b297",
       "bytes": 258,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/exit-status.txt",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/exit-status.txt",
       "sha256": "fd2b552d21cafe7ad832f773441fa66b28f5223cc70fd438fe5806d300dda262",
       "bytes": 23,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/historical-restoration.txt",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/historical-restoration.txt",
       "sha256": "6fe5268e62217684527e9de8228f85da58404c5c23aeed60ff0d4ccee34d6421",
       "bytes": 330,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/ipv4-post-run-screenshots.sha256",
-      "sha256": "c375eea842d8a8b8d1ce2de0314f96b412bbdf7154170daeab44070c007c4d73",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/ipv4-post-run-screenshots.sha256",
+      "sha256": "5d3a90b169d516f51938209645523db33bbff00dced037c85e454228a8f37864",
       "bytes": 888,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/ipv4-post-run-screenshots.tar",
-      "sha256": "91c4f780f934c26c64b29fa96f37d10238c50701d26e1cacb927a59b363ceb78",
-      "bytes": 865792,
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/ipv4-post-run-screenshots.tar",
+      "sha256": "7747997b561b293f0df00f8e3b49eee7f9a2c15810b97feac31b324a3bd3a9bb",
+      "bytes": 865280,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/playwright-ipv4.json",
-      "sha256": "2aac9acbe13bc64c755101dca9e58df3c60ba0d7acad0be98c997dd0fb1ae6b3",
-      "bytes": 25220,
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/playwright-ipv4.json",
+      "sha256": "794b481f12335759e82a224ba9f9b4cd1fcc470f4be91b816b9c4d39384ccb92",
+      "bytes": 25230,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/playwright-ipv4.stderr.txt",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/playwright-ipv4.stderr.txt",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/playwright-ipv4.stdout.txt",
-      "sha256": "c4ae9bc57bfe9e186c104cddc14f9181e0df1258637fefe193d35f43b4f1b88f",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/playwright-ipv4.stdout.txt",
+      "sha256": "de0e0afe96af7b663720fc37ca3950e062c1ffc7a49876b0aac3f54e62e4c72e",
       "bytes": 2536,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/preview-ipv4.log",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/preview-ipv4.log",
       "sha256": "8ebf01cbbd1efd04054d4464b62a46099618a8cd69b03d898ef933fe74697562",
       "bytes": 39,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/provenance.txt",
-      "sha256": "97734bf41e0bc82424e363134cceb8fec46c6fffb6397718b0afe0e8e1d73952",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/provenance.txt",
+      "sha256": "cf650ac7542c0a6ebf40eea135ec23269ad5517a27737cc1a5b951983c638cd3",
       "bytes": 3302,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/source-after.json",
-      "sha256": "54b242f670f592a06ca4272235f971c9197394a4748b8425e9ee51b66bb30d67",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/source-after.json",
+      "sha256": "c285426b4289fc1a51da9b26396b9d933299d1e44e312f8e9253cfad908ccaa3",
       "bytes": 5227,
       "provenance": "immutable historical execution evidence"
     },
     {
-      "path": "paper/evidence/browser-s2-fixed-order-T1RMZk03/source-before.json",
-      "sha256": "241aa3c3a64ac3af83ed66b930f3cf11950038802024b0816a690bd90a205c4c",
+      "path": "paper/evidence/browser-s2-fixed-order-QDL9iC9j/source-before.json",
+      "sha256": "456ab4c4d494bd3146c3dea17c3a435ba2af9d1f5ebe1fdf815a6f3c33635d0a",
       "bytes": 3591,
       "provenance": "immutable historical execution evidence"
     },
@@ -430,25 +430,25 @@
     },
     {
       "path": "paper/manuscript.md",
-      "sha256": "9cc309f2655522f7884d88be89497d790925030a3eb243b9c0fca7bb289e57c8",
-      "bytes": 33861,
+      "sha256": "352d07386b4e341561b7ed973935f2465c5ee8337dc11bc1c07573818b00fe8b",
+      "bytes": 34531,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
     {
       "path": "paper/manuscript.pdf",
-      "sha256": "9cce077e972492f499358939403b23dead69da659bd742d4739abf71b6cedf05",
-      "bytes": 148953,
+      "sha256": "7f76379ff199787f83a353e7fc6595c826224a82ba33acedf8c8f07e10ad3a57",
+      "bytes": 149911,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
     {
       "path": "paper/manuscript.tex",
-      "sha256": "8994b6b9f5024c5732bc3e137d2be6bbbfb9bff3245f9cc3abcc93284a47f278",
-      "bytes": 37060,
+      "sha256": "71256f5c1b808105de1408ccec0ef8b2fe2bd026a812695de751f13daeca02e4",
+      "bytes": 37750,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
     {
       "path": "paper/pdf-build-manifest.json",
-      "sha256": "ce4cee246cd41797a3cc9e52fa195f6db31e1f54654a32137552759c0a2f1fb8",
+      "sha256": "751cc543ed220c04e885e35612f053741a696ae7ee32564aea721edd9c6ecca1",
       "bytes": 1484,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
@@ -514,8 +514,8 @@
     },
     {
       "path": "src/adapters/mcp-apps/adapter.ts",
-      "sha256": "2b3bb72542adb9becc6642a6a64f2b564962308e05e2b968c43597d2eac4102f",
-      "bytes": 13232,
+      "sha256": "453e3c6bb529b694d167c5f3266b398ec3b17d3fa471bc2f8aed14b7bbeeb841",
+      "bytes": 13249,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
     {
@@ -544,14 +544,14 @@
     },
     {
       "path": "src/orchestrator/types.ts",
-      "sha256": "071b78f60e43a74dd55a7fb994fa90b59806f239e08920eb0eaf9beb3e13bd9a",
-      "bytes": 5625,
+      "sha256": "b1a0f5d3cefda05445820580e18a1c9c25ca3a24e5891415a926ebd815af7bd4",
+      "bytes": 5720,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
     {
       "path": "src/report/generate.ts",
-      "sha256": "2051ba85e801f43ad38af916a882c705808d9f110ee3625cf8c2d09ac39e0c57",
-      "bytes": 12142,
+      "sha256": "e7ba9c6e136c28601c5baaba77b9ec70059b25b190f9fa53a29ac8ee68be6de9",
+      "bytes": 12301,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
     {
@@ -646,8 +646,8 @@
     },
     {
       "path": "tests/protocol/scenarios.test.ts",
-      "sha256": "c05319afc8fd92447044e1a453441f3f0dbfb52560d9ed4ba04fc4b7573e1d9e",
-      "bytes": 7961,
+      "sha256": "4dafa58d41f4e504f9866a35efd1d1cd0fbbeb7718e72068dccf10df465eba2d",
+      "bytes": 7980,
       "provenance": "current local input or generated derivative; not a historical source snapshot"
     },
     {
