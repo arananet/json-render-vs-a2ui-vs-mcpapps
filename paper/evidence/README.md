@@ -1,10 +1,21 @@
 # Browser Evidence Status
 
-`browser-s2-fixed-order-QDL9iC9j/` is the canonical current-source browser
-execution for the host-enforcement outcome update. Its source snapshots, stable
-build hashes, successful 18-test Playwright report, and nine screenshot hashes
-are validated by `scripts/paper-browser-evidence.mjs`. Its `environment.json`
-commit hash matches `provenance.txt` and the private-review manifest.
+[current-browser-run](current-browser-run/) is the tracked relative symlink to the canonical
+current-source browser execution. Its source snapshots, stable build hashes,
+successful 18-test Playwright report, and nine screenshot hashes document that
+run; its `environment.json` commit hash matches `provenance.txt` and the
+private-review manifest.
+
+`scripts/paper-browser-run.sh` retains every newly created suffixed directory.
+Only after a zero-exit run passes `validateBrowserEvidence` does it atomically
+replace `current-browser-run` with a relative symlink to that directory. Live
+documentation and packaging should use this stable path; immutable ledgers may
+name their original suffixed run for historical provenance.
+
+The collector wrapper is itself a provenance input. Therefore, after changing
+that wrapper, the existing target remains an immutable record but cannot
+validate the modified checkout; the next successful outer-terminal run advances
+the pointer only after validation against its captured sources.
 
 Three further `browser-s2-fixed-order-*` directories are retained, and they are
 not equivalent to one another:

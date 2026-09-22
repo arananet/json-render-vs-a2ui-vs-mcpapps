@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { readFileSync, existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { readFileSync, existsSync, lstatSync, mkdtempSync, readlinkSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import test from "node:test";
@@ -9,6 +9,16 @@ import { root } from "../../scripts/paper.mjs";
 import { browserInputFiles, validateBrowserEvidence } from "../../scripts/paper-browser-evidence.mjs";
 
 const historical = "paper/evidence/browser-terminal-20260922T013449Z-zH4HTK";
+const current = "paper/evidence/current-browser-run";
+
+test("current browser evidence is a relative pointer to an immutable suffixed run", () => {
+  const pointer = resolve(root, current);
+  assert.ok(lstatSync(pointer).isSymbolicLink());
+  const target = readlinkSync(pointer);
+  assert.ok(!target.startsWith("/"), "current browser pointer must remain repository-relative");
+  assert.match(target, /^browser-s2-fixed-order-[A-Za-z0-9]+$/);
+  assert.ok(existsSync(resolve(pointer, "playwright-ipv4.json")));
+});
 test("historical test hashes no longer match; old logs cannot verify renamed sources", () => {
   const provenance = readFileSync(resolve(root, historical, "provenance.txt"), "utf8");
   for (const path of ["tests/browser/render.spec.ts", "tests/browser/screenshots.spec.ts"]) {

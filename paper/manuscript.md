@@ -174,8 +174,9 @@ configuration. The [orchestrator](../src/orchestrator/orchestrator.ts) is a scri
 stand-in with named agents and a control-to-agent routing table, not an autonomous
 model-driven system. We inspect the existing tests and rerun them where local
 prerequisites permit; no scenarios are added or their operations or write order
-are modified. MCP's collision classification distinguishes protocol-level
-enforcement from structural isolation applied by a conformant host.
+are modified. MCP's collision classification records structural isolation from
+this adapter/topology separately from the tested host tool-visibility handler;
+it does not establish a host collision-enforcement policy.
 
 The [report generator](../src/report/generate.ts) takes adapter-authored
 classifications and uses first-recording-wins selection for each capability and
@@ -198,8 +199,9 @@ Specifically, `Tracer.record` stores the outcome supplied by the adapter;
 `outcomeOf` returns the first matching entry. In scenario tests, json-render's
 S3 confirmation check and MCP's permissive S3 check assert these labels only.
 MCP's S2 `ENFORCED_BY_CONFORMANT_HOST`/`NOT_EXPRESSIBLE` labels do not measure
-collision prevention or impossibility of composition; the former identifies
-structural host isolation. Separate assertions check the two retained headline
+collision prevention or impossibility of composition; the former records
+structural isolation in the adapter/topology, not a tested host collision policy.
+Separate assertions check the two retained headline
 values. A2UI S2 checks labels and the writer map, not Node-rendered text.
 The bridge tests instead exercise calls and assert actual returned content or
 rejection plus refusal records. None of these labels is an empirical score.
@@ -241,8 +243,10 @@ Node checks and the current-source browser run on 22 September 2026 UTC. A2UI's
 browser assertion checks
 finance's headline visible and risk's headline absent within the surface.
 It does not assert an exact summary node count, despite its test title.
-The [raw browser report](./evidence/browser-s2-fixed-order-QDL9iC9j/playwright-ipv4.json)
-records 18 passed tests: nine render assertions and nine screenshot tests.
+The execution ledger identifies a raw browser report for the current-source run
+as recording 18 passed tests: nine render assertions and nine screenshot tests.
+That directory is not included in this review package, so this package cannot
+independently check the current-source browser result.
 The MCP browser fixture omits Node's risk-detail and finance-detail writes.
 Its two summary assertions are a separate browser result, not corroboration of
 the full four-write Node S2 or support across a common shared fixture.
@@ -306,13 +310,17 @@ paper's evidence statuses, distinct from the adapter outcome vocabulary.
 | --- | --- | --- |
 | C1: S1 yields one shared region or two MCP instances in this topology. | Supported | S1 snapshot region and block assertions; contradicted by missing blocks or different region counts. |
 | C2: Four-write Node S2 overwrites the json-render summary and retains both MCP summaries. | Supported | Node headline assertions; contradicted by different retained values. Browser MCP checks a separate two-write fixture, not full Node S2. |
-| C3: S2's A2UI shared summary displays finance's headline. | Supported | Current-source browser assertions check finance visible and risk absent within the surface; opposite visibility falsifies this outcome. The MCP browser fixture remains a distinct two-write fixture. No exact node count is asserted. |
+| C3: S2's A2UI shared summary displays finance's headline. | Partial | The execution ledger describes current-source browser assertions checking finance visible and risk absent within the surface, but the `current-browser-run` evidence directory is not included in this review package. The MCP browser fixture remains a distinct two-write fixture. No exact node count is asserted. |
 | C4: S2 is sequential, with no scheduling test. | Supported | Four awaited emissions in the S2 source; contradicted by an overlapping scheduler in the executed path. |
 | C5: The enforcing MCP handler rejects the model-only call, while the permissive variant forwards it. | Supported | Bridge rejection/refusal and successful-result assertions; contradicted by reversed or identical behavior. |
 | C6: Every MCP S3 control reaches its intended agent. | Partial | Existing test checks some table-free delivery; first-instance selection prevents this stronger inference. |
 | C7: json-render includes confirmation metadata, with consent enforcement incompletely checked. | Partial | Adapter source includes metadata; the scenario test asserts its classification only, not independent policy or privileged browser consent. |
 | C8: Matrix labels are adapter classifications, not independent measurements. | Supported | Source shows first-recording-wins selection; freshness checks correspondence only. |
 | C9: A matched-topology intervention isolates protocol causality. | Proposed | Pending controlled comparison; no new experiment is reported. |
+
+Each **Supported** row reflects the single retained execution identified for its
+check; the harness uses deterministic scripted agents rather than an LLM
+experiment. This does not characterize run-to-run browser stability.
 
 The linked scenario, bridge, conformance, and browser test files in Methodology
 and Results are the check locations for C1–C8. This mapping exposes uneven
@@ -321,18 +329,13 @@ coverage rather than assigning a numeric score across unlike checks.
 For C1–C3 and the tested browser actions, the renamed
 [render spec](../tests/browser/render.spec.ts) supplies the assertions and the
 [screenshot spec](../tests/browser/screenshots.spec.ts) supplies nine captures.
-The [JSON report](./evidence/browser-terminal-20260922T013449Z-zH4HTK/playwright-ipv4.json),
-[terminal output](./evidence/browser-terminal-20260922T013449Z-zH4HTK/playwright-ipv4.stdout.txt),
-[commands](./evidence/browser-terminal-20260922T013449Z-zH4HTK/ipv4-commands.txt), and
-[source provenance](./evidence/browser-terminal-20260922T013449Z-zH4HTK/provenance.txt)
-identify the pre-rename tests only. Their hashes no longer match the current
-browser tests; the old raw logs cannot bind the post-rename fixture. The
-[current JSON report](./evidence/browser-s2-fixed-order-QDL9iC9j/playwright-ipv4.json),
-[source snapshots](./evidence/browser-s2-fixed-order-QDL9iC9j/source-before.json),
-[build hashes](./evidence/browser-s2-fixed-order-QDL9iC9j/built-before.json), and
-[capture hashes](./evidence/browser-s2-fixed-order-QDL9iC9j/ipv4-post-run-screenshots.sha256)
-bind the current browser sources and build to the successful run. They do not
-make the distinct MCP browser fixture corroborate the four-write Node fixture.
+The pre-rename `browser-terminal-20260922T013449Z-zH4HTK/` records are historical
+only and are not claim-support evidence for this fixture. The execution ledger
+names QDL9iC9j as the current-source run, but its report, source snapshots,
+build hashes, and capture hashes are not included in this review package; they
+therefore cannot bind a current browser claim for a reader of this package.
+This does not make the distinct MCP browser fixture corroborate the four-write
+Node fixture.
 C6 remains partial: successful browser
 actions in its distinct fixture do not repair the Node first-instance routing gap.
 
@@ -401,10 +404,9 @@ archive. No latency, throughput, cost, user study, or model capability was measu
 
 # Data availability
 
-The prior Zenodo deposit has
-[DOI 10.5281/zenodo.22896882](https://doi.org/10.5281/zenodo.22896882), but it
-predates the regenerated current-source evidence described below. A final
-archival deposit remains pending review of this evidence chain.
+No archival identifier is asserted for the regenerated current-source evidence
+described below. A final archival deposit remains pending review of this
+evidence chain.
 The canonical editable manuscript, harness, frozen v0.1 Markdown snapshot, and
 versioned evidence records are available in the repository and its release
 archive. The deposit establishes an archival identifier for that release; it
@@ -439,7 +441,11 @@ This session is an agent-assisted local rerun of existing checks. It establishes
 neither independent-person reproduction nor human approval. The previous session's
 reported dependency installation is not a fresh `npm ci` execution in this record.
 Missing checks and failed attempts remain visible rather than being counted as
-passes. OpenSpec command success cannot prove every acceptance criterion.
+passes. The full paper suite is currently blocked/failed: the execution ledger's
+latest recorded run reports 29 passed and 2 failed, including the unavailable
+`paper/veritas.yaml` integration input. `evidence/paper-checks.txt` is an older
+8-test passing transcript, not final-state validation. OpenSpec command success
+cannot prove every acceptance criterion.
 
 The complete local Vitest run passed 24 tests across three files and TypeScript
 checking passed. The standalone `report:check` command failed when tsx attempted
@@ -452,8 +458,8 @@ both existing browser specs (18 tests in 8.9 s), without source or configuration
 changes. New captures were archived separately and historical PNGs restored;
 this is now pre-rename evidence and cannot substantiate the post-rename fixture.
 The required post-rename outer-terminal browser run completed and recorded
-current-source/build hashes, 18 passing tests, and nine capture hashes in
-`paper/evidence/browser-s2-fixed-order-QDL9iC9j/`. Pandoc produced LaTeX and
+current-source/build hashes, 18 passing tests, and nine capture hashes in the
+[current browser run](./evidence/current-browser-run/). Pandoc produced LaTeX and
 its freshness check passed. The initial Tectonic invocation
 panicked internally (exit 101) in cached-only mode. A later local build used an
 explicit directory bundle assembled from already cached TeX resources and a

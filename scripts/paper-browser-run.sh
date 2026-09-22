@@ -57,5 +57,17 @@ printf 'PLAYWRIGHT_EXIT_CODE=%s\n' "$browser_status" > "$browser_evidence/exit-s
 tar -cf "$browser_evidence/ipv4-post-run-screenshots.tar" docs/screenshots
 shasum -a 256 docs/screenshots/*.png > "$browser_evidence/ipv4-post-run-screenshots.sha256"
 node scripts/paper-browser-evidence.mjs built "$browser_evidence/source-after.json"
+if [ "$browser_status" -eq 0 ]; then
+  browser_evidence_name=$(basename "$browser_evidence")
+  node --input-type=module - "$browser_evidence_name" <<'EOF'
+import { validateBrowserEvidence } from "./scripts/paper-browser-evidence.mjs";
+validateBrowserEvidence(`paper/evidence/${process.argv[2]}`);
+EOF
+  # Keep completed runs immutable. The tracked relative link is the only mutable
+  # browser-evidence entry and changes only after the complete record validates.
+  ln -sfn "$browser_evidence_name" paper/evidence/current-browser-run.next
+  mv -f paper/evidence/current-browser-run.next paper/evidence/current-browser-run
+  printf 'Updated current browser evidence: paper/evidence/current-browser-run -> %s\n' "$browser_evidence_name"
+fi
 printf 'Return this directory unchanged: %s (Playwright exit %s)\n' "$browser_evidence" "$browser_status"
 exit "$browser_status"

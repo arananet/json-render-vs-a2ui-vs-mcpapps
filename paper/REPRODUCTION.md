@@ -40,7 +40,7 @@ Installed and locked versions were compared; exact dependency versions and
 hashes are in the execution materials. Preserve the lockfile.
 
 `paper/`, `scripts/paper.mjs`, `scripts/paper-figures.mjs`, and `tests/paper/` are
-now intended for version control; this working tree has not yet been committed.
+now intended for version control;
 The canonical editable manuscript is `paper/manuscript.md`; immutable Markdown
 snapshots and their hashes are listed in `paper/versions/README.md`. OpenSpec
 validation and the focused paper checks cover different contracts, so run both.
@@ -83,7 +83,8 @@ and screenshot integrity checks remain required; a local record is not a signed
 attestation or independent reproduction.
 
 The current execution directory is
-`paper/evidence/browser-s2-fixed-order-QDL9iC9j/`. Inspect its JSON report,
+[`paper/evidence/current-browser-run/`](evidence/current-browser-run/), a
+relative symlink to the latest fully validated immutable run. Inspect its JSON report,
 stdout/stderr, preview/build logs, source/build snapshots, command record, exit
 status, capture archive/hashes and restoration record. Use its
 repository-relative path as `PAPER_BROWSER_EVIDENCE` for the private-bundle test
@@ -171,7 +172,9 @@ Unsetting CI selects the existing `reuseExistingServer` behavior. It creates a
 unique `paper/evidence/browser-s2-fixed-order-*` directory, records commands,
 HEAD/tool versions, source hashes before build and after execution, built-asset
 hashes before/after the suite, actual logs/JSON and exit status, and nine captures.
-It restores existing screenshots on exit and verifies their hashes. Do not edit
+It restores existing screenshots on exit and verifies their hashes. After a
+successful complete provenance validation, it atomically advances
+`paper/evidence/current-browser-run` to that immutable directory. Do not edit
 sources or rebuild assets while it runs. Preserve the printed directory path and
 actual exit status; do not regenerate the historical private archive or text
 manifest from this record.
