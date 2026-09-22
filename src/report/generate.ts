@@ -25,6 +25,7 @@ const OUTCOME_LABELS: Record<Outcome, string> = {
   REQUIRES_OUT_OF_BAND: "🟠 out-of-band",
   NOT_EXPRESSIBLE: "❌ not expressible",
   ENFORCED: "🔒 enforced",
+  ENFORCED_BY_CONFORMANT_HOST: "🔒 enforced by conformant host",
   LOST: "🔴 write lost",
 };
 
@@ -200,8 +201,9 @@ Outcome vocabulary: **✅ supported** the protocol expresses it directly ·
 **🟡 caveat** expressed, but something the orchestrator needs was weakened ·
 **🟠 out-of-band** only works because the orchestrator keeps state the protocol
 does not carry · **❌ not expressible** no way to say it · **🔒 enforced** the
-protocol actively prevents the failure · **🔴 write lost** content was silently
-dropped.
+protocol actively prevents the failure · **🔒 enforced by conformant host** a
+conformant host structurally prevents the failure · **🔴 write lost** content
+was silently dropped.
 
 ## What the matrix means if you are building an orchestrator
 

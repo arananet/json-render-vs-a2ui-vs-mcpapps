@@ -24,6 +24,7 @@ description: |
   final archival publication and human scientific/editorial review remain pending.
 acceptance_criteria:
 - "Rename S2 source, runner, scenario ID, report labels/keys and all active references to fixed-order sequential identifier collision without changing operations or write order. H1, RQ2, results and conclusion cover only the specified order; alternative orders, scheduling and concurrency are untested."
+- "Represent MCP Apps S2 structural isolation as ENFORCED_BY_CONFORMANT_HOST, distinguish it from protocol-level enforcement in the report and manuscript, and preserve the scenario operations and write order."
 - "Treat retained browser logs, private archive and text manifest as pre-rename evidence. Record the completed built two-spec outer-terminal browser run with complete source/build hashes as current fixture-specific browser verification; preserve historical bytes and do not regenerate the Veritas-routed package or text manifest without explicit authorization."
 - "Incorporate retained browser evidence with fixture-specific H1/C2: Node S2 has four sequential writes, browser MCP only two summaries; C3 checks finance visible/risk absent, C6/C7 partial, C9 proposed. No concurrency or common-fixture validation claim."
 - "Leave external Veritas implementation, configuration, selection, checks, gates, permissions, reports and behavior untouched, except for the user-authorized addition of paper/evidence/private-review-manifest.json to the active root veritas.yaml artifact.paths; do not run it or paid judges, and retain historical artifacts."
@@ -49,6 +50,7 @@ test_plan:
 - "Validate the first build-tool change immediately; check figure states against source/assertions, inspect PDF metadata/fonts/text and rendered pages, and retain historical failures separately from current build evidence."
 - "Check the clean source bundle from its root and verify included assets; exclude logs, auxiliary files, and the compiled main PDF."
 - "Run the focused manuscript checks and regenerate LaTeX to check freshness."
+- "Run the S2 scenario test, typecheck, and generated-report freshness check after changing the outcome vocabulary."
 - "Run npm test; audit retained browser evidence as historical only. The behavior-preserving S2 rename requires fresh browser execution before current-source provenance or private packaging can pass."
 - "Build the PDF with the available TeX engine and inspect extracted text for author, affiliation, and unresolved references."
 - "Run bash scripts/openspec check, verify reproducible-protocol-comparison-paper, and status reproducible-protocol-comparison-paper."
@@ -71,7 +73,7 @@ qa_notes: |
   Verification and any blocked historical review-package checks are appended to
   paper/EXECUTION.md; no human review or independent reproduction is claimed.
 out_of_scope:
-- "New experimental scenarios, adapter changes, performance claims, or formal impossibility proofs."
+- "New experimental scenarios, changes to S2 operations or write order, performance claims, or formal impossibility proofs."
 - "Claiming completed independent reproduction, exhaustive literature review, peer review, or arXiv acceptance."
 - "Additional commits, pushes, arXiv submission, contacting maintainers, or changing existing scientific outcomes."
 - "Creating a new Git tag, GitHub release, or Zenodo deposition/DOI, or representing another project's DOI as this work's DOI."

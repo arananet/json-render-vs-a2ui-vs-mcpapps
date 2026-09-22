@@ -26,7 +26,7 @@ pages the browser suite asserts against.
 | **Attribute a write to an agent**<br><sub>Can the host tell which agent produced a given piece of UI?</sub> | ❌ not expressible | ❌ not expressible | 🔒 enforced |
 | **Isolate agents from each other**<br><sub>Can one agent read or overwrite another's rendered surface?</sub> | ❌ not expressible | 🟡 caveat | 🔒 enforced |
 | **Compose into one view**<br><sub>Can several agents present as a single answer?</sub> | 🟡 caveat | ✅ supported | ❌ not expressible |
-| **Retain both summaries after a fixed-order collision**<br><sub>What happens when two agents write the same id?</sub> | 🔴 write lost | 🔴 write lost | 🔒 enforced |
+| **Retain both summaries after a fixed-order collision**<br><sub>What happens when two agents write the same id?</sub> | 🔴 write lost | 🔴 write lost | 🔒 enforced by conformant host |
 | **Route an action to its agent**<br><sub>Does the event say which agent should handle it?</sub> | 🟠 out-of-band | 🟠 out-of-band | ✅ supported |
 | **Gate a privileged action**<br><sub>Can anything below the agent withhold a dangerous action?</sub> | 🟡 caveat | ❌ not expressible | 🔒 enforced |
 
@@ -34,8 +34,9 @@ Outcome vocabulary: **✅ supported** the protocol expresses it directly ·
 **🟡 caveat** expressed, but something the orchestrator needs was weakened ·
 **🟠 out-of-band** only works because the orchestrator keeps state the protocol
 does not carry · **❌ not expressible** no way to say it · **🔒 enforced** the
-protocol actively prevents the failure · **🔴 write lost** content was silently
-dropped.
+protocol actively prevents the failure · **🔒 enforced by conformant host** a
+conformant host structurally prevents the failure · **🔴 write lost** content
+was silently dropped.
 
 ## What the matrix means if you are building an orchestrator
 
@@ -191,7 +192,7 @@ Rendered regions the user ends up with: **2** (`trip::planner`, `trip::booking`)
 
 > Agents ["planner"] and "booking" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced
+**compose.identifier-collision** — 🔒 enforced by conformant host
 
 > The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "booking" reusing block id "reservation" cannot overwrite anything ["planner"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
 
@@ -237,7 +238,7 @@ Rendered regions the user ends up with: **2** (`briefing::risk`, `briefing::fina
 
 > Agents ["risk"] and "finance" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced
+**compose.identifier-collision** — 🔒 enforced by conformant host
 
 > The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "finance" reusing block id "finance-detail" cannot overwrite anything ["risk"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
 
@@ -291,7 +292,7 @@ Rendered regions the user ends up with: **2** (`checkout::cart`, `checkout::paym
 
 > Agents ["cart"] and "payments" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced
+**compose.identifier-collision** — 🔒 enforced by conformant host
 
 > The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "payments" reusing block id "pay" cannot overwrite anything ["cart"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
 

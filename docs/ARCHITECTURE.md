@@ -49,7 +49,7 @@ calls `tracer.record(capability, outcome, detail, evidence)` and moves on. The
 outcome vocabulary is fixed so the cells stay comparable:
 
 `SUPPORTED` · `SUPPORTED_WITH_CAVEAT` · `REQUIRES_OUT_OF_BAND` ·
-`NOT_EXPRESSIBLE` · `ENFORCED` · `LOST`
+`NOT_EXPRESSIBLE` · `ENFORCED` · `ENFORCED_BY_CONFORMANT_HOST` · `LOST`
 
 `evidence` carries the actual message, metadata or error the SDK produced, which
 is what makes a claim in the report falsifiable.

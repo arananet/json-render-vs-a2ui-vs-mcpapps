@@ -91,7 +91,7 @@ export class McpAppsAdapter implements ProtocolAdapter {
 
       this.tracer.record(
         "compose.identifier-collision",
-        "ENFORCED",
+        "ENFORCED_BY_CONFORMANT_HOST",
         `The flip side, and it is a real one: a lost write is impossible here. Component ids live ` +
           `inside one app instance, so "${agent}" reusing block id "${block.id}" cannot overwrite ` +
           `anything ${JSON.stringify(otherAgentsOnSurface)} rendered — the two are not in the same ` +
@@ -295,7 +295,7 @@ export class McpAppsAdapter implements ProtocolAdapter {
   private findInstanceForSurface(surfaceId: SurfaceId): AppInstance | undefined {
     for (const instance of this.instances.values()) {
       if (instance.surfaceId === surfaceId) return instance;
-    }
+  }
     return undefined;
   }
 }

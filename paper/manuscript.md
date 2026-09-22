@@ -173,15 +173,18 @@ The [runner](../src/scenarios/run.ts) constructs fresh adapters per scenario and
 configuration. The [orchestrator](../src/orchestrator/orchestrator.ts) is a scripted
 stand-in with named agents and a control-to-agent routing table, not an autonomous
 model-driven system. We inspect the existing tests and rerun them where local
-prerequisites permit; no scenarios or adapters are added or modified.
+prerequisites permit; no scenarios are added or their operations or write order
+are modified. MCP's collision classification distinguishes protocol-level
+enforcement from structural isolation applied by a conformant host.
 
 The [report generator](../src/report/generate.ts) takes adapter-authored
 classifications and uses first-recording-wins selection for each capability and
 configuration. It does not independently measure the meaning of `SUPPORTED`,
-`LOST`, `ENFORCED`, or `NOT_EXPRESSIBLE`. Repeated labels do not constitute
-independent observations. Timestamp normalization makes its Markdown stable but
-does not validate its interpretation. A freshness check establishes correspondence
-between report and generator, not the truth of every sentence in the report.
+`LOST`, `ENFORCED`, `ENFORCED_BY_CONFORMANT_HOST`, or `NOT_EXPRESSIBLE`.
+Repeated labels do not constitute independent observations. Timestamp
+normalization makes its Markdown stable but does not validate its interpretation.
+A freshness check establishes correspondence between report and generator, not
+the truth of every sentence in the report.
 
 We therefore distinguish classifications from assertions on snapshots, messages,
 tool responses/refusals, and rendered elements. The
@@ -194,9 +197,10 @@ json-render patch assertions do not cover its direct root mutation.
 Specifically, `Tracer.record` stores the outcome supplied by the adapter;
 `outcomeOf` returns the first matching entry. In scenario tests, json-render's
 S3 confirmation check and MCP's permissive S3 check assert these labels only.
-MCP's S2 `ENFORCED`/`NOT_EXPRESSIBLE` labels do not measure collision prevention
-or impossibility of composition; separate assertions check the two retained
-headline values. A2UI S2 checks labels and the writer map, not Node-rendered text.
+MCP's S2 `ENFORCED_BY_CONFORMANT_HOST`/`NOT_EXPRESSIBLE` labels do not measure
+collision prevention or impossibility of composition; the former identifies
+structural host isolation. Separate assertions check the two retained headline
+values. A2UI S2 checks labels and the writer map, not Node-rendered text.
 The bridge tests instead exercise calls and assert actual returned content or
 rejection plus refusal records. None of these labels is an empirical score.
 
@@ -380,10 +384,13 @@ they are still authored within this repository, not by independent evaluators.
 **Execution and coverage.** Node transports do not test browser isolation. The
 MCP browser fixtures differ from the Node scenario. Historical screenshots remain
 retained artifacts; the nine new captures are separately archived and do not
-establish historical reproduction. The suite does
-not comprehensively test adversarial inputs, identity forgery, transport
-authentication, CSP, cross-server policy, authorization revocation, or arbitrary
-concurrent schedules. No completed security review is claimed.
+establish historical reproduction. Two post-rename browser executions completed
+with identical statistics over a byte-identical snapshot of the code under test,
+and two further attempts aborted before any test body ran; no completed
+execution was discarded, and the canonical run is identified in
+`paper/evidence/README.md`. Neither completed run is an independent
+reproduction: both ran on the same machine, from the same checkout, in the same
+session. The suite does not comprehensively test adversarial inputs, identity forgery, transport authentication, CSP, cross-server policy, authorization revocation, or arbitrary concurrent schedules. No completed security review is claimed.
 
 **External and temporal validity.** Three designed scenarios, fixed fixture
 data, and the pinned installed packages cannot establish population effects or

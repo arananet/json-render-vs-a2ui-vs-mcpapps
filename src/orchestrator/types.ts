@@ -27,6 +27,8 @@ export const OUTCOMES = [
   "NOT_EXPRESSIBLE",
   /** The protocol actively enforced a rule (an authorization or isolation win). */
   "ENFORCED",
+  /** A conformant host structurally enforced the outcome. */
+  "ENFORCED_BY_CONFORMANT_HOST",
   /** A write was silently dropped or overwritten. */
   "LOST",
 ] as const;
