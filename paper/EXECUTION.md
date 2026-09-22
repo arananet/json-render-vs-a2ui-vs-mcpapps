@@ -469,7 +469,7 @@ Inspected `provenance.txt`, `commands.txt`, `ipv4-commands.txt`, both JSON repor
 IPv4 stdout/stderr, preview log, build stdout/stderr, screenshot archives/hash
 lists, and `historical-restoration.txt`. The recorded browser/config/package
 source hashes matched the current files; the initial manuscript hash also
-matched before editing. The provenance file's missing `paper/veritas.yaml`
+matched before editing. The provenance file's missing `veritas.yaml`
 hash is retained as a missing file, not a successful provenance check.
 
 - `npm run build`: exit 0, with the retained Rollup annotation warnings.
@@ -530,7 +530,7 @@ binds the updated manuscript, TeX, figure sources/assets, build tools and PDF.
 ### Paused historical review gate and provenance limits
 
 The full local paper suite is **not green**: `veritas-inputs.test.mjs` fails at
-module load because `paper/veritas.yaml` is absent. Its later source-equality
+module load because `veritas.yaml` is absent. Its later source-equality
 assertion therefore did not execute. A separate read-only comparison found five
 dated source views stale against current sources: `scripts/paper.mjs`,
 `tests/paper/editorial.test.mjs`, `tests/paper/figures.test.mjs`,
@@ -594,7 +594,7 @@ Corrections for the supplied external findings (not closure decisions):
 
 Validation: `npm test` passed 24 tests, `npm run typecheck` passed, and
 `bash scripts/openspec check` passed. The full paper suite returned exit 1:
-27 passing checks and one file-level failure because `paper/veritas.yaml` is
+27 passing checks and one file-level failure because `veritas.yaml` is
 absent (`paper-checks.txt`). Its existing test and historical source views were
 left unchanged. Veritas was not executed; this local regression test only tried
 to read the expected YAML. Stale historical views remain a separate known
@@ -649,7 +649,7 @@ readability, exact archived-manifest equality, and structured before/after
 comparison permitting only this single `artifact.paths` addition. All other
 config bytes and settings remained unchanged. No Veritas/judge run, archive or
 PDF rebuild, historical-view change, commit, push, or publication occurred.
-The known test expecting removed `paper/veritas.yaml` remains unchanged; this
+The known test expecting removed `veritas.yaml` remains unchanged; this
 routing check does not clear that historical regression blocker.
 
 ## S2 identity correction and provenance gap — 2026-09-22
@@ -691,7 +691,7 @@ no active matches (rg exit 1) and `npm run typecheck` passed. Subsequent checks:
 The two full-paper failures are deliberately unresolved: private packaging now
 rejects the pre-rename browser directory because current source/build snapshots
 are missing, and the unchanged external integration test cannot read
-`paper/veritas.yaml`. Archive integrity assertions were retained, not bypassed.
+`veritas.yaml`. Archive integrity assertions were retained, not bypassed.
 No private archive was generated, including by the failing temporary package test.
 PDF metadata/text/font and current PDF-input checks passed in that same suite.
 No new browser run or preview was attempted in this sandbox.
@@ -754,7 +754,7 @@ the historical private archive, or the Veritas-routed text manifest. A temporary
 private-package extraction test passed using this directory; no persistent
 archive, manifest, Veritas configuration, paid review, commit, tag, push,
 release, submission, DOI registration, clean-clone reproduction, or human review
-was performed. The test suite that loads absent `paper/veritas.yaml` remains an
+was performed. The test suite that loads absent `veritas.yaml` remains an
 unchanged external integration blocker.
 
 ## Commit-pinned browser execution — 22 September 2026 UTC

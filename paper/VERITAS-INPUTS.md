@@ -1,6 +1,6 @@
 # Local Veritas input selection
 
-The evaluation root is `paper/`; its configuration is `veritas.yaml`.
+The evaluation root is `/`; its configuration is `veritas.yaml`.
 Only `artifact.paths` changed. Provider/model settings, execution allowlist,
 repair permissions and loop settings were not changed or exercised. This work
 lists possible inputs; it does not authorize an evaluation or repair run.
@@ -52,7 +52,7 @@ The initial hypothesis was that recursive directory inclusion mixed manuscript
 versions; replacing directories with existing individual files should remove
 that ambiguity while preserving negative evidence. The first substantive edit
 changed only the artifact paths. Immediately afterward, the real CLI's
-`veritas files . --json`, run in `paper/`, exited zero. Every returned file was
+`veritas files . --json`, run in `/`, exited zero. Every returned file was
 checked against the complete allowlist, with no extras, omissions or repeated
 paths. Before/after JSON output is retained in `evidence/veritas-selection-20260922/`.
 
@@ -107,7 +107,7 @@ not the older `.veritas/report.md`. It remains REVISE. See
 strictly local improvements; no evaluator was rerun.
 
 The first edit added only `EXECUTION.md`, immediately verified as exactly one
-additional file by the real `veritas files . --json` command in `paper/`.
+additional file by the real `veritas files . --json` command in `/`.
 The final explicit selection contains **42 files / 214,575 characters**.
 It adds the existing template, figure provenance, a private-source manifest
 and 11 byte-identical text views of scripts, focused tests, the Lua filter and
