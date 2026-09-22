@@ -442,8 +442,7 @@ neither independent-person reproduction nor human approval. The previous session
 reported dependency installation is not a fresh `npm ci` execution in this record.
 Missing checks and failed attempts remain visible rather than being counted as
 passes. The full paper suite is currently blocked/failed: the execution ledger's
-latest recorded run reports 29 passed and 2 failed, including the unavailable
-`paper/veritas.yaml` integration input. `evidence/paper-checks.txt` is an older
+latest recorded run reports 29 passed and 2 failed integration input. `evidence/paper-checks.txt` is an older
 8-test passing transcript, not final-state validation. OpenSpec command success
 cannot prove every acceptance criterion.
 

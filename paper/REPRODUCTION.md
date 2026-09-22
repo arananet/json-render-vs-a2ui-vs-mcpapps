@@ -110,9 +110,7 @@ build assets. It is not an additional manuscript or new experimental evidence.
 `node --test tests/paper/veritas-inputs.test.mjs` checks the mapping and
 the captured file selection. Historical source views are not current sources;
 they retain their historical hashes. The dated source views and hashes must not be
-overwritten to make the gate pass. The current workspace has no
-`paper/veritas.yaml`, the location this test expects. Keep the affected review
-gate paused; no configuration,
+overwritten to make the gate pass.
 selection, historical view, or auditor setting is changed by this update.
 That external integration test remains unchanged in the workspace and is not
 included in the private archive. Its failure is reported separately; passing
