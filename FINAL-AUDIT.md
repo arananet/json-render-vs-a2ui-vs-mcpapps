@@ -2,6 +2,15 @@
 
 **Status:** Open review record, not a final approval.
 
+## Publication Update
+
+The prior Zenodo deposit has
+[DOI 10.5281/zenodo.22896882](https://doi.org/10.5281/zenodo.22896882), but it
+predates the regenerated current-source browser evidence and private manifest.
+Final archival publication remains pending evidence review. This update does
+not alter the historical audit observations or establish clean-clone
+reproduction, human review, or isolated protocol causality.
+
 ## Confirmed Repository Facts
 
 - The repository license is Apache-2.0.
@@ -13,7 +22,8 @@
   attest the renamed fixture.
 - A separate post-rename outer-terminal browser execution recorded complete
   current-source and build hashes, 18 passing tests, and nine capture hashes in
-  `paper/evidence/browser-s2-fixed-order-Iyz55xbG/`.
+  the committed current-source execution directory identified by
+  `paper/evidence/README.md`.
 
 ## Required Before a Release Claim
 
@@ -23,7 +33,7 @@
   the historical package and its Veritas-routed text manifest remain unchanged.
 - Obtain human scientific/editorial review.
 
-## Not Performed
+## Not Performed at Audit Issuance
 
 No Git commit, tag, push, GitHub release, arXiv submission, Zenodo deposition,
 DOI registration, external Veritas run, or paid judge run was performed.

@@ -26,6 +26,10 @@ test("private archive extracts with exact hashes, complete fixture inputs and re
     const manifest = JSON.parse(readFileSync(resolve(extracted, "PRIVATE-MANIFEST.json")));
     assert.equal(manifest.browserProvenance.status, "current-source-browser-execution");
     assert.equal(manifest.browserProvenance.directory, browserEvidence);
+    const environment = JSON.parse(readFileSync(resolve(extracted, browserEvidence, "environment.json")));
+    const provenanceHead = readFileSync(resolve(extracted, browserEvidence, "provenance.txt"), "utf8").split("\n")[1];
+    assert.equal(environment.head, provenanceHead);
+    assert.equal(manifest.head, provenanceHead);
     for (const entry of manifest.files) {
       const bytes = readFileSync(resolve(extracted, entry.path));
       assert.equal(bytes.length, entry.bytes, entry.path);

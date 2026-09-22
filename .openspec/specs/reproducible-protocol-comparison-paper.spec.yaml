@@ -19,8 +19,9 @@ description: |
   documents,
   borrowing evidence-accounting practices, not scientific results or prose, from
   besanson/sarc-authority-derivation. Generate LaTeX and a PDF when the available
-  toolchain permits. The user authorized public-ready repository preparation but
-  explicitly prohibited commit, tag, push, submission, or DOI registration.
+  toolchain permits. A prior Zenodo deposit exists under DOI
+  10.5281/zenodo.22896882, but it predates regenerated current-source evidence;
+  final archival publication and human scientific/editorial review remain pending.
 acceptance_criteria:
 - "Rename S2 source, runner, scenario ID, report labels/keys and all active references to fixed-order sequential identifier collision without changing operations or write order. H1, RQ2, results and conclusion cover only the specified order; alternative orders, scheduling and concurrency are untested."
 - "Treat retained browser logs, private archive and text manifest as pre-rename evidence. Record the completed built two-spec outer-terminal browser run with complete source/build hashes as current fixture-specific browser verification; preserve historical bytes and do not regenerate the Veritas-routed package or text manifest without explicit authorization."
@@ -33,11 +34,11 @@ acceptance_criteria:
 - "The manuscript separates SDK behavior, adapter topology, host policy, and protocol requirements; S2 is described as fixed-order writes, not a scheduling benchmark."
 - "The reproduction guide records prerequisites, commands, expected semantic outcomes, environment and revision provenance, failed attempts, and unverified requirements without claiming independent reproduction."
 - "LaTeX and PDF are generated from the manuscript if available tools succeed; missing tools or build failures are reported without claiming a successful build."
-- "Documentation checks validate author metadata, required sections, local evidence links, and correspondence of generated LaTeX with the manuscript. No commit, push, submission, paid service, or external issue is performed."
-- "License the repository under Apache-2.0, retain its author notice, and state that no project DOI exists until a distinct author-controlled archival release is published."
+- "Documentation checks validate author metadata, required sections, local evidence links, DOI/data-availability language, and correspondence of generated LaTeX with the manuscript. No additional push, submission, paid service, or external issue is performed."
+- "License the repository under Apache-2.0, retain its author notice, and identify the prior Zenodo DOI as pre-regeneration archival context, not final evidence, independent reproduction, or peer review."
 - "Track paper inputs and immutable research records rather than locally excluding them. Freeze the current Markdown manuscript as v0.1 and a populated counterpart without later regeneration or editing; the canonical manuscript remains editable."
 - "Add a preregistration directory that records the retrospective status of existing observations, no claimed preregistration of completed runs, planned tag names only, and an append-only amendment process."
-- "Add FINAL-AUDIT.md, NOVELTY.md, and ADRs covering immutable paper versions and commit-order precedence. They must distinguish evidence-backed claims, known provenance gaps, and planned publication actions from completed ones."
+- "Add FINAL-AUDIT.md, NOVELTY.md, and ADRs covering immutable paper versions and commit-order precedence. They must distinguish evidence-backed claims, known provenance gaps, archival publication, and pending review or reproduction."
 - "Record clean-clone hashes and timings only after an actual clean-clone run; until then the reproduction guide names them as pending rather than inventing expected values."
 test_plan:
 - "After the substantive rename, search active references for obsolete names and run typecheck or focused scenario tests. Run npm test, focused paper/provenance checks and required OpenSpec checks into a new evidence directory; report expected stale-package/external-config failures unchanged."
@@ -72,8 +73,8 @@ qa_notes: |
 out_of_scope:
 - "New experimental scenarios, adapter changes, performance claims, or formal impossibility proofs."
 - "Claiming completed independent reproduction, exhaustive literature review, peer review, or arXiv acceptance."
-- "Commit, push, arXiv submission, contacting maintainers, or changing existing scientific outcomes."
-- "Creating a Git tag, GitHub release, Zenodo deposition/DOI, or representing another project's DOI as this work's DOI."
+- "Additional commits, pushes, arXiv submission, contacting maintainers, or changing existing scientific outcomes."
+- "Creating a new Git tag, GitHub release, or Zenodo deposition/DOI, or representing another project's DOI as this work's DOI."
 implementation_skill: null
 eval_plan:
   scenarios: []

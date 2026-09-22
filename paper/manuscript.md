@@ -31,9 +31,11 @@ The evidence supports configuration-specific findings, not isolated protocol
 causality or rankings. No LLM experiment or performance measurement is reported.
 Human scientific and editorial review remains pending.
 
-Browser provenance gap: the retained browser evidence predates the S2 rename.
-It cannot substantiate the post-rename source; fresh built browser execution is
-required. All executed DOM observations below refer to the pre-rename fixture.
+Browser provenance note: retained historical screenshots predate the S2 rename.
+A separate post-rename outer-terminal browser execution records current-source
+and build hashes, 18 passing tests, and nine capture hashes. It verifies the
+renamed fixture bytes but does not make historical screenshots current evidence
+or turn the fixed-order probe into a common-fixture or concurrency evaluation.
 
 # Introduction
 
@@ -221,8 +223,9 @@ format provides authenticated cross-agent ownership.
 ## RQ2: Fixed-order identifier collision
 
 These results observe only the one specified sequential write order and cannot
-generalize to alternative orders, scheduling or concurrency. Browser results
-are historical pre-rename observations; post-rename browser verification is pending.
+generalize to alternative orders, scheduling or concurrency. The current-source
+browser run verifies the renamed fixture; the retained screenshots remain
+historical pre-rename artifacts.
 
 The focused local S2 rerun passed its three selected tests; ten non-S2 tests in
 that file were skipped by the filter. The json-render assertion checks the
@@ -230,12 +233,13 @@ finance writer and headline, plus survival of the two uncontested blocks. The
 A2UI Node assertion checks the finance writer from adapter bookkeeping; its
 browser assertion checks headline text. MCP snapshot assertions check both
 headlines in different instances. H1 has fixture-specific support from these
-Node checks and the historical pre-rename browser run on
-22 September 2026 UTC (21 September locally). A2UI's browser assertion checks
+Node checks and the current-source browser run on 22 September 2026 UTC. A2UI's
+browser assertion checks
 finance's headline visible and risk's headline absent within the surface.
 It does not assert an exact summary node count, despite its test title.
-The [raw browser report](./evidence/browser-terminal-20260922T013449Z-zH4HTK/playwright-ipv4.json)
-records 18 passed tests: nine render assertions and nine screenshot tests.
+The [browser evidence index](./evidence/README.md) identifies the committed
+raw report, which records 18 passed tests: nine render assertions and nine
+screenshot tests.
 The MCP browser fixture omits Node's risk-detail and finance-detail writes.
 Its two summary assertions are a separate browser result, not corroboration of
 the full four-write Node S2 or support across a common shared fixture.
@@ -299,7 +303,7 @@ paper's evidence statuses, distinct from the adapter outcome vocabulary.
 | --- | --- | --- |
 | C1: S1 yields one shared region or two MCP instances in this topology. | Supported | S1 snapshot region and block assertions; contradicted by missing blocks or different region counts. |
 | C2: Four-write Node S2 overwrites the json-render summary and retains both MCP summaries. | Supported | Node headline assertions; contradicted by different retained values. Browser MCP checks a separate two-write fixture, not full Node S2. |
-| C3: S2's A2UI shared summary displays finance's headline. | Supported | Pre-rename executed browser assertions check finance visible and risk absent within the surface; opposite visibility falsifies this outcome. Current-source browser verification is pending. No exact node count is asserted. |
+| C3: S2's A2UI shared summary displays finance's headline. | Supported | Current-source browser assertions check finance visible and risk absent within the surface; opposite visibility falsifies this outcome. The MCP browser fixture remains a distinct two-write fixture. No exact node count is asserted. |
 | C4: S2 is sequential, with no scheduling test. | Supported | Four awaited emissions in the S2 source; contradicted by an overlapping scheduler in the executed path. |
 | C5: The enforcing MCP handler rejects the model-only call, while the permissive variant forwards it. | Supported | Bridge rejection/refusal and successful-result assertions; contradicted by reversed or identical behavior. |
 | C6: Every MCP S3 control reaches its intended agent. | Partial | Existing test checks some table-free delivery; first-instance selection prevents this stronger inference. |
@@ -319,8 +323,11 @@ The [JSON report](./evidence/browser-terminal-20260922T013449Z-zH4HTK/playwright
 [commands](./evidence/browser-terminal-20260922T013449Z-zH4HTK/ipv4-commands.txt), and
 [source provenance](./evidence/browser-terminal-20260922T013449Z-zH4HTK/provenance.txt)
 identify the pre-rename tests only. Their hashes no longer match the current
-browser tests; the old raw logs cannot bind the post-rename fixture. A new built
-browser run is required before packaging current-source verification.
+browser tests; the old raw logs cannot bind the post-rename fixture. The
+[browser evidence index](./evidence/README.md) identifies the committed JSON
+report, source snapshots, build hashes, and capture hashes that bind the current
+browser sources and build to the successful run. They do not make the distinct
+MCP browser fixture corroborate the four-write Node fixture.
 C6 remains partial: successful browser
 actions in its distinct fixture do not repair the Node first-instance routing gap.
 
@@ -384,23 +391,33 @@ topologies, and stricter application policies can behave differently. Mutable
 upstream documentation is contextual evidence, not a version-pinned release
 archive. No latency, throughput, cost, user study, or model capability was measured.
 
+# Data availability
+
+The prior Zenodo deposit has
+[DOI 10.5281/zenodo.22896882](https://doi.org/10.5281/zenodo.22896882), but it
+predates the regenerated current-source evidence described below. A final
+archival deposit remains pending review of this evidence chain.
+The canonical editable manuscript, harness, frozen v0.1 Markdown snapshot, and
+versioned evidence records are available in the repository and its release
+archive. The deposit establishes an archival identifier for that release; it
+does not establish independent reproduction, peer review, or protocol
+causality.
+
 # Reproducibility
 
 The [reproduction guide](./REPRODUCTION.md) gives commands and expected semantic
-outcomes. The publicly clonable harness does not include the ignored paper inputs.
-The retained private review archive and its text manifest are stale after the
-S2 rename. They remain unchanged; regeneration is blocked until new browser
-execution matches current source and build hashes. Neither a public nor an
+outcomes. The historical private review archive and text manifest are retained
+as pre-rename evidence only. The current private bundle and readable manifest
+use the validated current-source browser execution; neither a public nor an
 independent paper build has been demonstrated. The [local execution record](./EXECUTION.md) separates successful
 commands, failures, unavailable prerequisites, and retained artifacts. This
 earlier editorial revision started from HEAD
 `b5d06eafcd4cf9cb0ed49131add55cbdecbd4b7c`. Current packaging records its own HEAD
 and file hashes without resetting external changes. The earlier
 execution record identifies its own historical base. The paper package, build
-scripts, and paper tests remain locally ignored and uncommitted. Consequently,
-Git status and OpenSpec's tracked/nonignored input fingerprint do not identify
-the complete paper workspace. Separate paper checks and SHA-256 manifests
-record the local manuscript, tooling, assets, and generated outputs.
+scripts, and paper tests are versioned with the research record. Separate paper
+checks and SHA-256 manifests record the manuscript, tooling, assets, and
+generated outputs.
 
 Semantic reproducibility means obtaining the specified regions, values, events,
 and refusal behavior under the same configuration. Byte identity is a separate
@@ -426,8 +443,10 @@ outer-terminal run then reused an explicitly started IPv4 preview and passed
 both existing browser specs (18 tests in 8.9 s), without source or configuration
 changes. New captures were archived separately and historical PNGs restored;
 this is now pre-rename evidence and cannot substantiate the post-rename fixture.
-The required new outer-terminal browser run has not occurred. Pandoc
-produced LaTeX and its freshness check passed. The initial Tectonic invocation
+The required post-rename outer-terminal browser run completed and recorded
+current-source/build hashes, 18 passing tests, and nine capture hashes in the
+committed current-source execution directory. Pandoc produced LaTeX and
+its freshness check passed. The initial Tectonic invocation
 panicked internally (exit 101) in cached-only mode. A later local build used an
 explicit directory bundle assembled from already cached TeX resources and a
 smaller template, and produced the illustrated PDF without network access or
@@ -492,8 +511,9 @@ Inspected 21 September 2026; live main, upstream commit not retained. Local
 context: extension, client, core, and server packages 2.0.0; extension README
 and manifests inspected. SDK package version is distinct from wire version.
 
-R4. Model Context Protocol contributors. [MCP Apps extension specification, draft/apps.mdx](https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/draft/apps.mdx).
-Visibility and sandbox/CSP sections inspected 21 September 2026; mutable main
-path, no pinned specification commit. Used to distinguish host requirements from
-the assertions implemented here. The filename's "draft" is retained as the
-source location, without claiming a release status from the SDK version.
+R4. Model Context Protocol contributors. [MCP Apps extension specification, draft/apps.mdx](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx).
+Visibility and sandbox/CSP sections inspected 21 September 2026; source path
+pinned to commit `6d9bdc7babf275b759225aa722cbf5510c4c6021`. Used to distinguish
+host requirements from the assertions implemented here. The filename's "draft"
+is retained as the source location, without claiming a release status from the
+SDK version.

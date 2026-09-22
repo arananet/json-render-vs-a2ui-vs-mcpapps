@@ -47,8 +47,10 @@ The paper bounds the historical labels below: S2 uses sequential fixed-order
 writes, and differences concern SDK/adapter/host configurations, not isolated
 protocol causality. Generated comparison documentation is retained unchanged.
 
-This repository is licensed under [Apache-2.0](LICENSE). Version `v0.1.0` is
-archived at Zenodo under [DOI 10.5281/zenodo.22896882](https://doi.org/10.5281/zenodo.22896882).
+This repository is licensed under [Apache-2.0](LICENSE). A prior Zenodo deposit
+has [DOI 10.5281/zenodo.22896882](https://doi.org/10.5281/zenodo.22896882), but
+it predates the regenerated current-source evidence; archive the final record
+only after this evidence chain is reviewed.
 
 ## The headline
 
@@ -101,7 +103,9 @@ booking agent mid-render.
 Two agents write sequentially: risk detail, finance detail, risk summary, then finance summary. Both use the identifier `summary`; only this order is tested.
 
 These observations cannot generalize to alternative write orders, scheduling or concurrency.
-The retained screenshots predate the behavior-preserving S2 rename; a fresh built browser run is required to verify the renamed fixture.
+The retained screenshots predate the behavior-preserving S2 rename. A separate
+post-rename browser run records current-source and build hashes; it does not
+turn this fixed-order probe into a concurrency evaluation.
 
 | json-render | A2UI | MCP Apps |
 | --- | --- | --- |
@@ -131,8 +135,10 @@ depend on the agent cooperating.
 | `s2-fixed-order-collision` | Risk then finance write the same `summary` identifier in a fixed order | Does a write get silently dropped? |
 | `s3-action-roundtrip` | A user clicks a control drawn by one agent, then a privileged "Pay now" drawn by another | Does the event say who to wake, and can anything withhold a dangerous action? |
 
-Each runs against all three protocols through the same orchestrator and the same
-scenario script, so a difference in the outcome is a difference in the protocol.
+Each runs through the same orchestrator and scenario script, but the SDK,
+adapter, namespace/topology, renderer, and host vary by configuration. A
+difference is therefore an observation about the tested configuration, not an
+isolated protocol effect.
 
 ## Quick start
 

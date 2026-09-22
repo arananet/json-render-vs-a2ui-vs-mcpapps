@@ -97,7 +97,7 @@ export function createSourceBundle(destination) {
   if (result.status !== 0) throw new Error(`Source packaging failed: ${result.stderr}`);
 }
 
-export const browserEvidence = process.env.PAPER_BROWSER_EVIDENCE ?? "paper/evidence/browser-terminal-20260922T013449Z-zH4HTK";
+export const browserEvidence = process.env.PAPER_BROWSER_EVIDENCE;
 
 export function privateBundleFiles() {
   const walk = (directory, extensions) => readdirSync(resolve(root, directory), { withFileTypes: true })
@@ -121,7 +121,7 @@ export function privateBundleFiles() {
       "source-before.json", "built-before.json", "source-after.json", "exit-status.txt",
       "playwright-ipv4.json", "playwright-ipv4.stdout.txt",
       "playwright-ipv4.stderr.txt", "preview-ipv4.log", "ipv4-post-run-screenshots.tar",
-      "ipv4-post-run-screenshots.sha256", "historical-restoration.txt"].map(name => `${browserEvidence}/${name}`),
+      "ipv4-post-run-screenshots.sha256", "historical-restoration.txt", "environment.json"].map(name => `${browserEvidence}/${name}`),
     ...["npm-test.txt", "browser.txt", "pdf-build.txt", "environment.json"].map(name => `paper/evidence/${name}`),
     // Retrospective paper checks still cite these immutable pre-rename records.
     ...["playwright-ipv4.json", "playwright-ipv4.stdout.txt", "playwright-ipv4.stderr.txt", "ipv4-commands.txt", "provenance.txt"].map(name => `paper/evidence/browser-terminal-20260922T013449Z-zH4HTK/${name}`),
@@ -129,6 +129,7 @@ export function privateBundleFiles() {
 }
 
 export function createPrivateBundle(destination) {
+  if (!browserEvidence) throw new Error("Set PAPER_BROWSER_EVIDENCE to the committed source execution directory");
   // Fail before writing any archive: historical execution cannot verify renamed sources.
   const browserProvenance = validateBrowserEvidence(browserEvidence);
   assertFresh(readFileSync(latexPath, "utf8"), renderLatex());
@@ -157,7 +158,7 @@ export function createPrivateBundle(destination) {
     };
     const manifest = {
       schema: 2, generatedAt: new Date().toISOString(), private: true, browserProvenance,
-      head: version("git", ["rev-parse", "HEAD"]), node: process.version,
+      head: browserProvenance.head, node: process.version,
       tools: ["npm", "pandoc", "tectonic"].map(tool => version(tool, ["--version"])),
       graphviz: version("dot", ["-V"]),
       commandsToRunNotExecutionEvidence: ["node scripts/paper.mjs private-bundle", "npm ci --no-audit --no-fund", "npm test", "npm run typecheck", "node scripts/paper-figures.mjs", "node scripts/paper.mjs latex", "node scripts/paper.mjs check", "node scripts/paper.mjs pdf"],

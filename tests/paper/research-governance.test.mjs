@@ -19,7 +19,7 @@ test("frozen paper snapshots match their registry hashes", () => {
   }
 });
 
-test("research governance is explicit about pending provenance and no DOI", () => {
+test("research governance distinguishes a prior deposit from pending final review", () => {
   for (const path of ["FINAL-AUDIT.md", "NOVELTY.md", "prereg/README.md", "prereg/prereg-p5-v1.md", "docs/adr/0002-freeze-research-manuscript-versions.md", "docs/adr/0003-commit-order-precedence.md"]) {
     assert.ok(existsSync(resolve(root, path)), path);
   }
@@ -27,7 +27,9 @@ test("research governance is explicit about pending provenance and no DOI", () =
   assert.match(audit, /not a final approval/);
   assert.match(audit, /cannot\s+attest the renamed fixture/);
   assert.match(audit, /current-source and build hashes, 18 passing tests/);
-  assert.match(audit, /No Git commit, tag, push/);
-  assert.match(read("README.md"), /no project DOI\s+yet/);
+  assert.match(audit, /prior Zenodo deposit/);
+  assert.match(audit, /DOI 10\.5281\/zenodo\.22896882/);
+  assert.match(read("README.md"), /DOI 10\.5281\/zenodo\.22896882/);
+  assert.match(read("paper\/versions\/README.md"), /pre-publication wording/);
   assert.match(read("prereg/prereg-p5-v1.md"), /not a preregistration of completed runs/);
 });

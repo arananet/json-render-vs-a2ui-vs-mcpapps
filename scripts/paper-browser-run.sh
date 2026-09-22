@@ -6,11 +6,25 @@ cd "$(dirname "$0")/.."
 browser_evidence=$(mktemp -d "$PWD/paper/evidence/browser-s2-fixed-order-XXXXXXXX")
 printf 'Evidence: %s\n' "$browser_evidence"
 cp scripts/paper-browser-run.sh "$browser_evidence/commands.txt"
-date -u '+%Y-%m-%dT%H:%M:%SZ' > "$browser_evidence/provenance.txt"
-git rev-parse HEAD >> "$browser_evidence/provenance.txt"
+captured_at=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+head=$(git rev-parse HEAD)
+printf '%s\n%s\n' "$captured_at" "$head" > "$browser_evidence/provenance.txt"
 git status --short >> "$browser_evidence/provenance.txt"
 node --version >> "$browser_evidence/provenance.txt"
 npm --version >> "$browser_evidence/provenance.txt"
+node --input-type=module - "$browser_evidence/environment.json" "$captured_at" "$head" <<'EOF'
+import { writeFileSync } from "node:fs";
+const [destination, capturedAt, head] = process.argv.slice(2);
+writeFileSync(destination, JSON.stringify({
+  capturedAt,
+  head,
+  node: process.version,
+  executable: process.execPath,
+  npm: process.env.npm_config_user_agent ?? null,
+  platform: process.platform,
+  architecture: process.arch,
+}, null, 2) + "\n", { flag: "wx" });
+EOF
 node scripts/paper-browser-evidence.mjs source "$browser_evidence/source-before.json"
 node --input-type=module -e 'import {readFileSync} from "node:fs"; for (const [path, hash] of Object.entries(JSON.parse(readFileSync(process.argv[1])).sources)) console.log(`${hash}  ${path}`)' "$browser_evidence/source-before.json" >> "$browser_evidence/provenance.txt"
 tar -cf "$browser_evidence/historical-screenshots.tar" docs/screenshots

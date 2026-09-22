@@ -67,10 +67,10 @@ commit, tag, archival release, DOI registration, or independent reproduction has
 occurred. Hashes identify retained bytes; they do not establish a clean-clone
 reproduction or human review.
 
-The retained `paper/private-review.tar.gz` and
-`paper/evidence/private-review-manifest.json` predate the S2 rename and are stale.
-Both remain byte-for-byte unchanged. They must not be presented as a package
-verifying the current browser fixture. No provisional archive is generated.
+The historical private archive and manifest are retained in the execution
+ledger as pre-rename evidence only. The current private bundle and readable
+manifest are regenerated from the post-rename browser execution below; neither
+package establishes independent reproduction or review.
 
 Private packaging fails closed unless `PAPER_BROWSER_EVIDENCE` selects an
 actual outer-terminal execution directory. The validator requires complete
@@ -82,16 +82,15 @@ Archive path safety, exact member hashes/sizes, fixture coverage, relative impor
 and screenshot integrity checks remain required; a local record is not a signed
 attestation or independent reproduction.
 
-The current execution directory is
-`paper/evidence/browser-s2-fixed-order-Iyz55xbG/`. Inspect its
-JSON report, stdout/stderr, preview/build logs, source/build snapshots, command
-record, exit status, capture archive/hashes and restoration record. Use its
-repository-relative path as `PAPER_BROWSER_EVIDENCE` for the private-bundle test
-and any future generation. Rebuild current paper derivatives first. A temporary
-package test passed with this evidence; the historical archive and its
-Veritas-routed text manifest were not regenerated. Do not rewrite historical
-logs, change external review configuration, or use old browser bytes as current
-proof.
+The [browser evidence index](./evidence/README.md) identifies the current
+execution directory. Inspect its JSON report, stdout/stderr, preview/build logs,
+source/build snapshots, command record, exit status, capture archive/hashes and
+restoration record. Use its repository-relative path as
+`PAPER_BROWSER_EVIDENCE` for the private-bundle test and any future generation.
+Rebuild current paper derivatives first. The current archive's readable manifest
+is `paper/evidence/private-review-manifest.json`; it is an exact extraction of
+the archive's `PRIVATE-MANIFEST.json`. Do not rewrite historical logs, change
+external review configuration, or use old browser bytes as current proof.
 The archive includes locked dependencies as manifests, not installed packages;
 Node >=22, matching Chromium, npm dependencies, Pandoc, Graphviz, Tectonic with
 local TeX resources, and Poppler remain external prerequisites. Paper inputs are

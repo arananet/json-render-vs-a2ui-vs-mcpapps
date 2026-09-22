@@ -36,12 +36,16 @@ export function validateBrowserEvidence(directory) {
   assert.ok(directory?.startsWith("paper/evidence/") && !directory.split("/").includes(".."),
     "Set PAPER_BROWSER_EVIDENCE to a fresh paper/evidence/ directory from the outer-terminal run; pre-rename evidence cannot substantiate current sources");
   const json = name => JSON.parse(read(`${directory}/${name}`));
-  let before, built, after;
+  let before, built, after, environment;
   try {
     before = json("source-before.json"); built = json("built-before.json"); after = json("source-after.json");
+    environment = json("environment.json");
   } catch (error) {
     throw new Error(`Browser provenance gap: fresh source/build snapshots required; pre-rename evidence cannot substantiate current sources (${error.message})`);
   }
+  const provenance = read(`${directory}/provenance.txt`).toString().split("\n");
+  assert.match(provenance[1] ?? "", /^[a-f0-9]{40}$/);
+  assert.equal(environment.head, provenance[1], "Environment and provenance HEAD differ");
   const current = captureInputs().sources;
   for (const snapshot of [before, built, after]) assert.deepEqual(snapshot.sources, current, "Browser source hashes are stale or incomplete");
   assert.ok(Object.keys(built.build ?? {}).length > 0, "Missing built Vite asset hashes");
@@ -80,7 +84,7 @@ export function validateBrowserEvidence(directory) {
     assert.equal(hash(execFileSync("tar", ["-xOf", archive, match[2]])), match[1], match[2]);
   }
   assert.deepEqual(paths.sort(), expectedNames);
-  return { status: "current-source-browser-execution", directory, sources: current, build: built.build };
+  return { status: "current-source-browser-execution", directory, head: environment.head, sources: current, build: built.build };
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
