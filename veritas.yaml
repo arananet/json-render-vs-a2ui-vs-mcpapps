@@ -1,0 +1,103 @@
+version: 1
+
+profile: scientific-paper
+
+artifact:
+  max_file_chars: 120000    # por fichero; el manuscrito entra entero, los lockfiles no
+  paths:
+    - paper/manuscript.md
+    - paper/REPRODUCTION.md
+    - paper/EXECUTION.md
+    - paper/evidence
+    - paper/figures
+    - src/adapters
+    - src/report
+    - src/orchestrator
+    - src/scenarios
+    - web/mcp-apps.ts
+    - tests/protocol
+    - tests/browser
+    - package.json
+    - docs/COMPARISON.md
+
+# Secrets never live here. Only environment variable names and model ids do.
+# Copy .env.example from the Veritas repository and set the values there.
+models:
+  default:
+    provider: ${VERITAS_DEFAULT_PROVIDER:-anthropic}
+    model: ${VERITAS_DEFAULT_MODEL}
+    tls_verify: ${VERITAS_TLS_VERIFY:-true}
+
+  # A different vendor on purpose, so one model's blind spots do not decide the
+  # outcome. Point it at the default provider if you only have one key.
+  adversarial:
+    provider: ${VERITAS_ADVERSARIAL_PROVIDER:-openai}
+    model: ${VERITAS_ADVERSARIAL_MODEL}
+    tls_verify: ${VERITAS_TLS_VERIFY:-true}
+
+  # Consolidates the other judges' results. Optional: without it the meta
+  # review still runs, deterministically, and only the narrative summary is lost.
+  meta:
+    provider: ${VERITAS_META_PROVIDER:-google}
+    model: ${VERITAS_META_MODEL}
+    tls_verify: ${VERITAS_TLS_VERIFY:-true}
+
+checks:
+  citability:
+    type: content-patterns
+    enabled: true
+    target: paper/manuscript.md
+    severity_on_failure: minor
+    required_patterns:
+      - pattern: '10\.\d{4,}/'
+        description: un DOI del trabajo archivado
+      - pattern: '(?i)data availability|availability statement'
+        description: una declaración de disponibilidad de datos
+    forbidden_patterns:
+      - pattern: '(?i)(github|gitlab)\.com/\S+/(blob|tree)/(main|master)/'
+        description: un enlace a rama mutable en vez de a un commit fijado
+
+pricing:
+  currency: USD
+  rates:
+    claude-sonnet-5: {input_per_million: 3.0, output_per_million: 15.0}
+    gpt-5.6-luna: {input_per_million: 1.25, output_per_million: 10.0}
+
+gate:
+  fail_on:
+    - critical
+  max_major: 0
+  accepted_risks:
+    - category: check/reference-integrity/unsupplied
+      reason: "Lockfiles, PDF y versiones previas excluidos para acotar el coste de evaluación."
+      expires: 2026-12-31
+
+# Nothing executes unless it is listed here.
+execution:
+  allow: []
+
+workspace:
+  mode: snapshot          # Codex trabaja sobre una copia, no sobre tu árbol
+
+loop:
+  enabled: true
+  max_iterations: 3
+
+repair:
+  mode: autopilot
+  agent:
+    provider: generic-cli
+    command:
+      - sh
+      - -c
+      - 'codex exec --approve-for-me -C {workspace} "$(cat {prompt_file})"'
+    env_passthrough: [OPENAI_API_KEY]
+    timeout: 1800
+  permissions:
+    documentation: true
+    source_code: true
+    tests: true
+    experiments: false
+    datasets: false
+    scientific_claims: false
+    methodology: false
