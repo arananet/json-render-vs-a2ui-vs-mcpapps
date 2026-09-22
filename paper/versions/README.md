@@ -13,9 +13,8 @@ it does not imply peer review, clean-clone reproduction, a release, or a DOI.
 The v0.1 snapshot preserves the pre-publication wording and the browser
 provenance gap known when it was frozen. A later outer-terminal browser
 execution records current-source verification in
-the committed current-source execution directory identified by
-`paper/evidence/README.md`; it does not alter the frozen snapshot or establish
-clean-clone reproduction or review. The prior Zenodo
+`paper/evidence/browser-s2-fixed-order-T1RMZk03/`; it does not alter the frozen
+snapshot or establish clean-clone reproduction or review. The prior Zenodo
 deposit at [DOI 10.5281/zenodo.22896882](https://doi.org/10.5281/zenodo.22896882)
 predates the current-source evidence and is not the final archival record.
 

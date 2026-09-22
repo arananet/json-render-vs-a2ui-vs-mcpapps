@@ -82,15 +82,16 @@ Archive path safety, exact member hashes/sizes, fixture coverage, relative impor
 and screenshot integrity checks remain required; a local record is not a signed
 attestation or independent reproduction.
 
-The [browser evidence index](./evidence/README.md) identifies the current
-execution directory. Inspect its JSON report, stdout/stderr, preview/build logs,
-source/build snapshots, command record, exit status, capture archive/hashes and
-restoration record. Use its repository-relative path as
-`PAPER_BROWSER_EVIDENCE` for the private-bundle test and any future generation.
-Rebuild current paper derivatives first. The current archive's readable manifest
-is `paper/evidence/private-review-manifest.json`; it is an exact extraction of
-the archive's `PRIVATE-MANIFEST.json`. Do not rewrite historical logs, change
-external review configuration, or use old browser bytes as current proof.
+The current execution directory is
+`paper/evidence/browser-s2-fixed-order-T1RMZk03/`. Inspect its JSON report,
+stdout/stderr, preview/build logs, source/build snapshots, command record, exit
+status, capture archive/hashes and restoration record. Use its
+repository-relative path as `PAPER_BROWSER_EVIDENCE` for the private-bundle test
+and any future generation. Rebuild current paper derivatives first. The current
+archive's readable manifest is `paper/evidence/private-review-manifest.json`; it
+is an exact extraction of the archive's `PRIVATE-MANIFEST.json`. Do not rewrite
+historical logs, change external review configuration, or use old browser bytes
+as current proof.
 The archive includes locked dependencies as manifests, not installed packages;
 Node >=22, matching Chromium, npm dependencies, Pandoc, Graphviz, Tectonic with
 local TeX resources, and Poppler remain external prerequisites. Paper inputs are

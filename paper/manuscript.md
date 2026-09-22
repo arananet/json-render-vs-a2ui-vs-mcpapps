@@ -237,9 +237,8 @@ Node checks and the current-source browser run on 22 September 2026 UTC. A2UI's
 browser assertion checks
 finance's headline visible and risk's headline absent within the surface.
 It does not assert an exact summary node count, despite its test title.
-The [browser evidence index](./evidence/README.md) identifies the committed
-raw report, which records 18 passed tests: nine render assertions and nine
-screenshot tests.
+The [raw browser report](./evidence/browser-s2-fixed-order-T1RMZk03/playwright-ipv4.json)
+records 18 passed tests: nine render assertions and nine screenshot tests.
 The MCP browser fixture omits Node's risk-detail and finance-detail writes.
 Its two summary assertions are a separate browser result, not corroboration of
 the full four-write Node S2 or support across a common shared fixture.
@@ -324,10 +323,12 @@ The [JSON report](./evidence/browser-terminal-20260922T013449Z-zH4HTK/playwright
 [source provenance](./evidence/browser-terminal-20260922T013449Z-zH4HTK/provenance.txt)
 identify the pre-rename tests only. Their hashes no longer match the current
 browser tests; the old raw logs cannot bind the post-rename fixture. The
-[browser evidence index](./evidence/README.md) identifies the committed JSON
-report, source snapshots, build hashes, and capture hashes that bind the current
-browser sources and build to the successful run. They do not make the distinct
-MCP browser fixture corroborate the four-write Node fixture.
+[current JSON report](./evidence/browser-s2-fixed-order-T1RMZk03/playwright-ipv4.json),
+[source snapshots](./evidence/browser-s2-fixed-order-T1RMZk03/source-before.json),
+[build hashes](./evidence/browser-s2-fixed-order-T1RMZk03/built-before.json), and
+[capture hashes](./evidence/browser-s2-fixed-order-T1RMZk03/ipv4-post-run-screenshots.sha256)
+bind the current browser sources and build to the successful run. They do not
+make the distinct MCP browser fixture corroborate the four-write Node fixture.
 C6 remains partial: successful browser
 actions in its distinct fixture do not repair the Node first-instance routing gap.
 
@@ -444,8 +445,8 @@ both existing browser specs (18 tests in 8.9 s), without source or configuration
 changes. New captures were archived separately and historical PNGs restored;
 this is now pre-rename evidence and cannot substantiate the post-rename fixture.
 The required post-rename outer-terminal browser run completed and recorded
-current-source/build hashes, 18 passing tests, and nine capture hashes in the
-committed current-source execution directory. Pandoc produced LaTeX and
+current-source/build hashes, 18 passing tests, and nine capture hashes in
+`paper/evidence/browser-s2-fixed-order-T1RMZk03/`. Pandoc produced LaTeX and
 its freshness check passed. The initial Tectonic invocation
 panicked internally (exit 101) in cached-only mode. A later local build used an
 explicit directory bundle assembled from already cached TeX resources and a

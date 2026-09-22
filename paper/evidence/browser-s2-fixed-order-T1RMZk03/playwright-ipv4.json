@@ -1,0 +1,778 @@
+{
+  "config": {
+    "argv": [
+      "/Users/ESAranaEd/.nvm/versions/node/v22.23.2/bin/node",
+      "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/browser/render.spec.ts",
+      "tests/browser/screenshots.spec.ts",
+      "--reporter=line,json",
+      "--output=/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper/evidence/browser-s2-fixed-order-T1RMZk03/ipv4-test-results"
+    ],
+    "configFile": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/playwright.config.ts",
+    "rootDir": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper/evidence/browser-s2-fixed-order-T1RMZk03/ipv4-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npx vite preview --port 5178 --strictPort",
+      "url": "http://127.0.0.1:5178/index.html",
+      "reuseExistingServer": true,
+      "timeout": 60000
+    }
+  },
+  "suites": [
+    {
+      "title": "render.spec.ts",
+      "file": "render.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "S1 — surface handoff",
+          "file": "render.spec.ts",
+          "line": 17,
+          "column": 6,
+          "specs": [
+            {
+              "title": "json-render: both agents' blocks land in one React tree",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 387,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:40.967Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "968c30b84bd90b74305f-fbbdce09d32c90fe7c50",
+              "file": "render.spec.ts",
+              "line": 18,
+              "column": 3
+            },
+            {
+              "title": "A2UI: the Lit renderer paints both agents into one surface element",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 162,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:42.091Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "968c30b84bd90b74305f-f19dea7bb0f388b2cacf",
+              "file": "render.spec.ts",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "MCP Apps: the handoff becomes two sandboxed iframes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 379,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:42.260Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "968c30b84bd90b74305f-a0671603ec25c6e05f37",
+              "file": "render.spec.ts",
+              "line": 55,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "S2 — fixed-order identifier collision",
+          "file": "render.spec.ts",
+          "line": 77,
+          "column": 6,
+          "specs": [
+            {
+              "title": "json-render: the second agent's summary replaces the first in the DOM",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 150,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:42.644Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "968c30b84bd90b74305f-ea5d40f2eae6b24aa859",
+              "file": "render.spec.ts",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "A2UI: same outcome — one summary node, last writer wins",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 147,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:42.800Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "968c30b84bd90b74305f-376b0f3a562328081202",
+              "file": "render.spec.ts",
+              "line": 91,
+              "column": 3
+            },
+            {
+              "title": "MCP Apps: both summaries survive, in separate origins",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 306,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:42.953Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "968c30b84bd90b74305f-76277bcb5ce4db93bed5",
+              "file": "render.spec.ts",
+              "line": 100,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "S3 — action round-trip",
+          "file": "render.spec.ts",
+          "line": 112,
+          "column": 6,
+          "specs": [
+            {
+              "title": "json-render: the click delivers an action name with no agent in it",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 307,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:43.264Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "968c30b84bd90b74305f-cd0a5fd895414a2054af",
+              "file": "render.spec.ts",
+              "line": 113,
+              "column": 3
+            },
+            {
+              "title": "A2UI: the click delivers surfaceId and sourceComponentId, but no agent",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 171,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:43.575Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "968c30b84bd90b74305f-67ca5c7d0a11cb8daecd",
+              "file": "render.spec.ts",
+              "line": 129,
+              "column": 3
+            },
+            {
+              "title": "MCP Apps: the host refuses the view's privileged tool call",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 418,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:43.752Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "968c30b84bd90b74305f-d0272826be9eebebdfbb",
+              "file": "render.spec.ts",
+              "line": 145,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "screenshots.spec.ts",
+      "file": "screenshots.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "@screenshot S1 — surface handoff",
+          "file": "screenshots.spec.ts",
+          "line": 71,
+          "column": 6,
+          "specs": [
+            {
+              "title": "json-render",
+              "ok": true,
+              "tags": [
+                "screenshot"
+              ],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 309,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:44.182Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677a4938ef65bfc6a6e5-f218503392eb85293ddd",
+              "file": "screenshots.spec.ts",
+              "line": 72,
+              "column": 3
+            },
+            {
+              "title": "a2ui",
+              "ok": true,
+              "tags": [
+                "screenshot"
+              ],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 288,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:44.503Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677a4938ef65bfc6a6e5-f28f60625a51b7bd1d2c",
+              "file": "screenshots.spec.ts",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "mcp-apps",
+              "ok": true,
+              "tags": [
+                "screenshot"
+              ],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 477,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:44.797Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677a4938ef65bfc6a6e5-6d75f3fc167c42c7bfd4",
+              "file": "screenshots.spec.ts",
+              "line": 84,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "@screenshot S2 — fixed-order identifier collision",
+          "file": "screenshots.spec.ts",
+          "line": 93,
+          "column": 6,
+          "specs": [
+            {
+              "title": "json-render",
+              "ok": true,
+              "tags": [
+                "screenshot"
+              ],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 219,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:45.278Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677a4938ef65bfc6a6e5-f1310ca60d0d69d65739",
+              "file": "screenshots.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "a2ui",
+              "ok": true,
+              "tags": [
+                "screenshot"
+              ],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 206,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:45.502Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677a4938ef65bfc6a6e5-d6200a4d606293cd7feb",
+              "file": "screenshots.spec.ts",
+              "line": 101,
+              "column": 3
+            },
+            {
+              "title": "mcp-apps",
+              "ok": true,
+              "tags": [
+                "screenshot"
+              ],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 490,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:45.713Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677a4938ef65bfc6a6e5-49986f7acac7f2011c39",
+              "file": "screenshots.spec.ts",
+              "line": 107,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "@screenshot S3 — action round-trip",
+          "file": "screenshots.spec.ts",
+          "line": 116,
+          "column": 6,
+          "specs": [
+            {
+              "title": "json-render",
+              "ok": true,
+              "tags": [
+                "screenshot"
+              ],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 320,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:46.208Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677a4938ef65bfc6a6e5-827e4094f3824357f449",
+              "file": "screenshots.spec.ts",
+              "line": 117,
+              "column": 3
+            },
+            {
+              "title": "a2ui",
+              "ok": true,
+              "tags": [
+                "screenshot"
+              ],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 312,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:46.536Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677a4938ef65bfc6a6e5-97acb3259c12e8b39160",
+              "file": "screenshots.spec.ts",
+              "line": 124,
+              "column": 3
+            },
+            {
+              "title": "mcp-apps",
+              "ok": true,
+              "tags": [
+                "screenshot"
+              ],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 771,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-22T15:56:46.860Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677a4938ef65bfc6a6e5-66204e1132004de3c8ee",
+              "file": "screenshots.spec.ts",
+              "line": 131,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-22T15:56:40.672Z",
+    "duration": 7068.123,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

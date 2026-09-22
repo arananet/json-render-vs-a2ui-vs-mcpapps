@@ -1,22 +1,20 @@
 {
-  "generatedAt": "2026-09-22T11:30:51.375Z",
+  "generatedAt": "2026-09-22T15:58:10.521Z",
   "command": [
     "tectonic",
     "--only-cached",
     "--untrusted",
     "--keep-logs",
-    "--bundle",
-    "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/bundle",
     "manuscript.tex"
   ],
   "cwd": "paper",
   "node": "v22.23.2",
   "hashes": {
-    "paper/manuscript.md": "8bbf8c014749b41212261e0a603a57a5022680cf2a2c2c700a7e6f89b940e0b5",
-    "paper/manuscript.tex": "2fc21bea5ef11355588d35f9089b96468cd361c16f195763f9e7a7f81cf0b91f",
+    "paper/manuscript.md": "9cc309f2655522f7884d88be89497d790925030a3eb243b9c0fca7bb289e57c8",
+    "paper/manuscript.tex": "8994b6b9f5024c5732bc3e137d2be6bbbfb9bff3245f9cc3abcc93284a47f278",
     "paper/template.tex": "31ceedad3db7c83ae9580952143f03f0039bd3a57402595293cc9913efc4bbdf",
     "paper/figures.lua": "64bca2454d0ec44292b0bfb4980a8db13c2f07f10386e97d228562448f5508e3",
-    "scripts/paper.mjs": "eaf56ca27bd8645459f84df4d0112f02ac00fd8fd9c0f6147cfd4bb664c8110d",
+    "scripts/paper.mjs": "015c473771962e3fb3caf960e95606c45edcdcc0c02877104e269ac0fa8be922",
     "scripts/paper-figures.mjs": "ffc7f750b834a6951365d85698ae4ba444ba775e8a5f4da9b625ab4b79d531c9",
     "paper/figures/topology.mmd": "99dd61043ab4813db6dd8ce38243750e988d8810fc07312fd8fbe0d070c6b22a",
     "paper/figures/topology.dot": "a98f1c1dc01030db25d1beb8a9ff89bc7af32426ebebc1fbcfd1e9c633688f94",
@@ -24,6 +22,6 @@
     "paper/figures/s2.mmd": "06eff975dad51877abb729a02f0e04a57ce281e7d7d2d6084b40c596978b3b0c",
     "paper/figures/s2.dot": "e5df22296c15e8baec5791847a36490a0835fb61bcd75f572e9ee063b44619cd",
     "paper/figures/s2.pdf": "3ff786f305f362de94fe4ed2fabab865e11add2ef8f6e835c03bf5c80d0a4598",
-    "paper/manuscript.pdf": "294b688d0e1b2378ab8e07b635b5f0eb5b1c39033bc96daf508d033f8ace301d"
+    "paper/manuscript.pdf": "9cce077e972492f499358939403b23dead69da659bd742d4739abf71b6cedf05"
   }
 }

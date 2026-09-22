@@ -1,9 +1,10 @@
 # Browser Evidence Status
 
-The current-source browser execution is the directory named in the committed
-private-review manifest. It contains matching source and build snapshots, a
-successful 18-test Playwright report, nine screenshot hashes, and an
-`environment.json` whose commit hash matches `provenance.txt` and the manifest.
+`browser-s2-fixed-order-T1RMZk03/` is the current-source browser execution for
+the renamed S2 fixture. Its source snapshots, stable build hashes, successful
+18-test Playwright report, and nine screenshot hashes are validated by
+`scripts/paper-browser-evidence.mjs`. Its `environment.json` commit hash matches
+`provenance.txt` and the private-review manifest.
 
 All other `browser-s2-fixed-order-*` directories are retained historical
 execution records. Their source snapshots do not match the current repository

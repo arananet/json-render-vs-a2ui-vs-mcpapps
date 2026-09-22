@@ -22,8 +22,7 @@ reproduction, human review, or isolated protocol causality.
   attest the renamed fixture.
 - A separate post-rename outer-terminal browser execution recorded complete
   current-source and build hashes, 18 passing tests, and nine capture hashes in
-  the committed current-source execution directory identified by
-  `paper/evidence/README.md`.
+  `paper/evidence/browser-s2-fixed-order-T1RMZk03/`.
 
 ## Required Before a Release Claim
 

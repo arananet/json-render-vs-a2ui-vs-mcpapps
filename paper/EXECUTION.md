@@ -756,3 +756,13 @@ archive, manifest, Veritas configuration, paid review, commit, tag, push,
 release, submission, DOI registration, clean-clone reproduction, or human review
 was performed. The test suite that loads absent `paper/veritas.yaml` remains an
 unchanged external integration blocker.
+
+## Commit-pinned browser execution — 22 September 2026 UTC
+
+Source inputs were committed as `523941cb079e8f88f47011039e6e69d01bc1d414`
+before the outer-terminal browser run. The run produced
+`paper/evidence/browser-s2-fixed-order-T1RMZk03/` with exit status 0, 18
+expected passing tests, stable build hashes, and nine screenshot hashes.
+`provenance.txt` and `environment.json` both record that source commit. The
+private-review manifest generated from this execution records the same hash; the
+later evidence-retention commit is bookkeeping, not the tested source revision.
