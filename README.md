@@ -5,7 +5,7 @@
 ![Vitest](https://img.shields.io/badge/vitest-6E9F18?logo=vitest&logoColor=white)
 ![Playwright](https://img.shields.io/badge/playwright-2EAD33?logo=playwright&logoColor=white)
 ![OpenSpec](https://img.shields.io/badge/OpenSpec-enforced-blueviolet)
-![License](https://img.shields.io/badge/license-MIT-blue)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
 > Three real UI-testing scenarios comparing json-render, A2UI and MCP Apps for
 > multi-agent orchestration.
@@ -39,10 +39,16 @@ it drifts from the code.
 **Research manuscript:** [English paper by Eduardo Arana (Arananet)](paper/manuscript.md),
 [illustrated PDF](paper/manuscript.pdf), [generated LaTeX](paper/manuscript.tex),
 [figure sources and provenance](paper/figures/README.md), [reproduction guide](paper/REPRODUCTION.md),
-and [local execution evidence](paper/EXECUTION.md). Human review is pending.
+and [local execution evidence](paper/EXECUTION.md). Frozen Markdown versions,
+[preregistration records](prereg/README.md), [audit status](FINAL-AUDIT.md), and
+[novelty bounds](NOVELTY.md) are versioned research records. Human review is pending.
 The paper bounds the historical labels below: S2 uses sequential fixed-order
 writes, and differences concern SDK/adapter/host configurations, not isolated
 protocol causality. Generated comparison documentation is retained unchanged.
+
+This repository is licensed under [Apache-2.0](LICENSE). It has no project DOI
+yet: a future DOI may be assigned only to a distinct author-controlled archival
+release. The DOI of another repository is not a DOI for this work.
 
 ## The headline
 
@@ -52,7 +58,7 @@ protocol causality. Generated comparison documentation is retained unchanged.
 | Attribute a write to an agent | ❌ | ❌ | 🔒 |
 | Isolate agents from each other | ❌ | 🟡 caveat | 🔒 |
 | Compose into one view | 🟡 caveat | ✅ | ❌ |
-| Survive a concurrent write | 🔴 lost | 🔴 lost | 🔒 |
+| Retain both summaries after a fixed-order collision | 🔴 lost | 🔴 lost | 🔒 |
 | Route an action to its agent | 🟠 out-of-band | 🟠 out-of-band | ✅ |
 | Gate a privileged action | 🟡 caveat | ❌ | 🔒 |
 
@@ -90,13 +96,16 @@ booking agent mid-render.
 | [![json-render, surface handoff](docs/screenshots/s1-json-render.png)](docs/screenshots/s1-json-render.png) | [![A2UI, surface handoff](docs/screenshots/s1-a2ui.png)](docs/screenshots/s1-a2ui.png) | [![MCP Apps, surface handoff](docs/screenshots/s1-mcp-apps.png)](docs/screenshots/s1-mcp-apps.png) |
 | Both agents' blocks land in **one React tree**. The successor patched the same element map. | Both agents land in **one `<a2ui-surface>`**, addressed by `surfaceId`. | **Two sandboxed iframes**, each bound to its own server. The handoff became a second panel. |
 
-### S2 · Concurrent composition
+### S2 · Fixed-order identifier collision
 
-Two agents fan out and both independently write a block called `summary`.
+Two agents write sequentially: risk detail, finance detail, risk summary, then finance summary. Both use the identifier `summary`; only this order is tested.
+
+These observations cannot generalize to alternative write orders, scheduling or concurrency.
+The retained screenshots predate the behavior-preserving S2 rename; a fresh built browser run is required to verify the renamed fixture.
 
 | json-render | A2UI | MCP Apps |
 | --- | --- | --- |
-| [![json-render, concurrent composition](docs/screenshots/s2-json-render.png)](docs/screenshots/s2-json-render.png) | [![A2UI, concurrent composition](docs/screenshots/s2-a2ui.png)](docs/screenshots/s2-a2ui.png) | [![MCP Apps, concurrent composition](docs/screenshots/s2-mcp-apps.png)](docs/screenshots/s2-mcp-apps.png) |
+| [![json-render, fixed-order identifier collision](docs/screenshots/s2-json-render.png)](docs/screenshots/s2-json-render.png) | [![A2UI, fixed-order identifier collision](docs/screenshots/s2-a2ui.png)](docs/screenshots/s2-a2ui.png) | [![MCP Apps, fixed-order identifier collision](docs/screenshots/s2-mcp-apps.png)](docs/screenshots/s2-mcp-apps.png) |
 | One `Summary`, written by `finance`. **`risk`'s headline is gone** and nobody was told. | Same loss — the surface is scoped, the component-id namespace is not. | **Both survive**, in separate origins. Nothing was lost; nothing composed either. |
 
 ### S3 · Action round-trip
@@ -119,7 +128,7 @@ depend on the agent cooperating.
 | Scenario | What happens | What it measures |
 | --- | --- | --- |
 | `s1-surface-handoff` | A planner agent starts an itinerary; the orchestrator hands the surface to a booking agent mid-render | Can B continue A's view, and can anyone tell who wrote what? |
-| `s2-concurrent-composition` | Two agents fan out and both write a block called `summary` | Does a write get silently dropped? |
+| `s2-fixed-order-collision` | Risk then finance write the same `summary` identifier in a fixed order | Does a write get silently dropped? |
 | `s3-action-roundtrip` | A user clicks a control drawn by one agent, then a privileged "Pay now" drawn by another | Does the event say who to wake, and can anything withhold a dangerous action? |
 
 Each runs against all three protocols through the same orchestrator and the same
@@ -144,7 +153,7 @@ npm run dev            # open the three host pages and poke at them
 - `/mcp-apps.html?scenario=s1-surface-handoff` — real sandboxed iframes over the
   real `postMessage` JSON-RPC bridge
 
-Swap `scenario=` for `s2-concurrent-composition` or `s3-action-roundtrip`.
+Swap `scenario=` for `s2-fixed-order-collision` or `s3-action-roundtrip`.
 
 ## How it is put together
 

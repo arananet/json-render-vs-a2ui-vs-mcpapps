@@ -1,0 +1,291 @@
+{
+  "artifact": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper",
+  "profile": "scientific-paper",
+  "paths": [
+    "manuscript.tex",
+    "evidence",
+    "figures",
+    "REPRODUCTION.md",
+    "EXECUTION.md"
+  ],
+  "files": [
+    {
+      "path": "EXECUTION.md",
+      "characters": 29067
+    },
+    {
+      "path": "REPRODUCTION.md",
+      "characters": 12017
+    },
+    {
+      "path": "evidence/browser.txt",
+      "characters": 3296
+    },
+    {
+      "path": "evidence/editorial-20260921/browser.txt",
+      "characters": 3344
+    },
+    {
+      "path": "evidence/editorial-20260921/bundle-check.txt",
+      "characters": 1667
+    },
+    {
+      "path": "evidence/editorial-20260921/editorial-checks.txt",
+      "characters": 2168
+    },
+    {
+      "path": "evidence/editorial-20260921/engine-log.txt",
+      "characters": 17893
+    },
+    {
+      "path": "evidence/editorial-20260921/environment-worktree.txt",
+      "characters": 1928
+    },
+    {
+      "path": "evidence/editorial-20260921/extracted-text.txt",
+      "characters": 30751
+    },
+    {
+      "path": "evidence/editorial-20260921/figure-checks.txt",
+      "characters": 1179
+    },
+    {
+      "path": "evidence/editorial-20260921/figures.txt",
+      "characters": 108
+    },
+    {
+      "path": "evidence/editorial-20260921/final-paper-checks.txt",
+      "characters": 5135
+    },
+    {
+      "path": "evidence/editorial-20260921/first-edit.txt",
+      "characters": 535
+    },
+    {
+      "path": "evidence/editorial-20260921/npm-test.txt",
+      "characters": 329
+    },
+    {
+      "path": "evidence/editorial-20260921/openspec-check.txt",
+      "characters": 177
+    },
+    {
+      "path": "evidence/editorial-20260921/paper-checks.txt",
+      "characters": 4987
+    },
+    {
+      "path": "evidence/editorial-20260921/pdf-build-manifest.json",
+      "characters": 1595
+    },
+    {
+      "path": "evidence/editorial-20260921/pdf-build.txt",
+      "characters": 1549
+    },
+    {
+      "path": "evidence/editorial-20260921/pdffonts.txt",
+      "characters": 1692
+    },
+    {
+      "path": "evidence/editorial-20260921/pdfinfo.txt",
+      "characters": 575
+    },
+    {
+      "path": "evidence/editorial-20260921/previous/manuscript.md",
+      "characters": 27254
+    },
+    {
+      "path": "evidence/editorial-20260921/previous/manuscript.tex",
+      "characters": 30331
+    },
+    {
+      "path": "evidence/editorial-20260921/previous/pdf-build-manifest.json",
+      "characters": 1595
+    },
+    {
+      "path": "evidence/editorial-20260921/reference-access.md",
+      "characters": 1416
+    },
+    {
+      "path": "evidence/editorial-20260921/render.txt",
+      "characters": 0
+    },
+    {
+      "path": "evidence/editorial-20260921/report-check.txt",
+      "characters": 1092
+    },
+    {
+      "path": "evidence/editorial-20260921/typecheck.txt",
+      "characters": 140
+    },
+    {
+      "path": "evidence/environment.json",
+      "characters": 3019
+    },
+    {
+      "path": "evidence/latex-freshness.txt",
+      "characters": 15
+    },
+    {
+      "path": "evidence/npm-test.txt",
+      "characters": 293
+    },
+    {
+      "path": "evidence/openspec-check.txt",
+      "characters": 114
+    },
+    {
+      "path": "evidence/openspec-preliminary.json",
+      "characters": 571
+    },
+    {
+      "path": "evidence/openspec-status.txt",
+      "characters": 456
+    },
+    {
+      "path": "evidence/openspec-tests.txt",
+      "characters": 276
+    },
+    {
+      "path": "evidence/openspec-verify.txt",
+      "characters": 76
+    },
+    {
+      "path": "evidence/paper-checks.txt",
+      "characters": 1644
+    },
+    {
+      "path": "evidence/pdf-build.txt",
+      "characters": 619
+    },
+    {
+      "path": "evidence/pdf-visuals/bundle-build.txt",
+      "characters": 1270
+    },
+    {
+      "path": "evidence/pdf-visuals/engine-log.txt",
+      "characters": 17893
+    },
+    {
+      "path": "evidence/pdf-visuals/extracted-text.txt",
+      "characters": 30028
+    },
+    {
+      "path": "evidence/pdf-visuals/figured-build.txt",
+      "characters": 258
+    },
+    {
+      "path": "evidence/pdf-visuals/final-build.txt",
+      "characters": 1260
+    },
+    {
+      "path": "evidence/pdf-visuals/final-paper-checks.txt",
+      "characters": 3935
+    },
+    {
+      "path": "evidence/pdf-visuals/latex-freshness.txt",
+      "characters": 15
+    },
+    {
+      "path": "evidence/pdf-visuals/layout-build.txt",
+      "characters": 1260
+    },
+    {
+      "path": "evidence/pdf-visuals/local-bundle-attempt.txt",
+      "characters": 112
+    },
+    {
+      "path": "evidence/pdf-visuals/local-bundle-build.txt",
+      "characters": 381
+    },
+    {
+      "path": "evidence/pdf-visuals/mermaid-attempt.txt",
+      "characters": 995
+    },
+    {
+      "path": "evidence/pdf-visuals/minimal-template-build.txt",
+      "characters": 268
+    },
+    {
+      "path": "evidence/pdf-visuals/npm-test.txt",
+      "characters": 294
+    },
+    {
+      "path": "evidence/pdf-visuals/openspec-check.txt",
+      "characters": 114
+    },
+    {
+      "path": "evidence/pdf-visuals/paper-checks.txt",
+      "characters": 3930
+    },
+    {
+      "path": "evidence/pdf-visuals/pdf-build-manifest.json",
+      "characters": 1595
+    },
+    {
+      "path": "evidence/pdf-visuals/pdffonts.txt",
+      "characters": 1692
+    },
+    {
+      "path": "evidence/pdf-visuals/pdfinfo.txt",
+      "characters": 568
+    },
+    {
+      "path": "evidence/pdf-visuals/portable-template-build.txt",
+      "characters": 1666
+    },
+    {
+      "path": "evidence/pdf-visuals/toolchain.json",
+      "characters": 582
+    },
+    {
+      "path": "evidence/pdf-visuals/typecheck.txt",
+      "characters": 95
+    },
+    {
+      "path": "evidence/pdf-visuals/verified-build.txt",
+      "characters": 1258
+    },
+    {
+      "path": "evidence/pdf-visuals/worktree.txt",
+      "characters": 2481
+    },
+    {
+      "path": "evidence/report-check.txt",
+      "characters": 1044
+    },
+    {
+      "path": "evidence/s2.txt",
+      "characters": 315
+    },
+    {
+      "path": "evidence/typecheck.txt",
+      "characters": 95
+    },
+    {
+      "path": "evidence/worktree.txt",
+      "characters": 830
+    },
+    {
+      "path": "figures/README.md",
+      "characters": 2435
+    },
+    {
+      "path": "figures/mermaid-config.json",
+      "characters": 448
+    },
+    {
+      "path": "manuscript.tex",
+      "characters": 30844
+    }
+  ],
+  "judges": [
+    "methodology",
+    "evidence",
+    "statistics",
+    "reproducibility",
+    "repo-consistency",
+    "citations",
+    "adversarial"
+  ],
+  "approximate_tokens_per_judge": 74216
+}

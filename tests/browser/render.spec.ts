@@ -74,9 +74,9 @@ test.describe("S1 — surface handoff", () => {
   });
 });
 
-test.describe("S2 — concurrent composition", () => {
+test.describe("S2 — fixed-order identifier collision", () => {
   test("json-render: the second agent's summary replaces the first in the DOM", async ({ page }) => {
-    await page.goto("/json-render.html?scenario=s2-concurrent-composition");
+    await page.goto("/json-render.html?scenario=s2-fixed-order-collision");
     await ready(page);
 
     const summary = page.locator('[data-block="summary"]');
@@ -89,7 +89,7 @@ test.describe("S2 — concurrent composition", () => {
   });
 
   test("A2UI: same outcome — one summary node, last writer wins", async ({ page }) => {
-    await page.goto("/a2ui.html?scenario=s2-concurrent-composition");
+    await page.goto("/a2ui.html?scenario=s2-fixed-order-collision");
     await ready(page);
 
     const surface = page.locator("a2ui-surface");
@@ -98,7 +98,7 @@ test.describe("S2 — concurrent composition", () => {
   });
 
   test("MCP Apps: both summaries survive, in separate origins", async ({ page }) => {
-    await page.goto("/mcp-apps.html?scenario=s2-concurrent-composition");
+    await page.goto("/mcp-apps.html?scenario=s2-fixed-order-collision");
     await ready(page);
 
     const risk = page.frameLocator('[data-agent-frame="risk"]');

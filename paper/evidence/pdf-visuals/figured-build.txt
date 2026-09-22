@@ -1,0 +1,6 @@
+note: using only cached resource files
+note: Running TeX ...
+error: manuscript.tex:7: ! LaTeX Error: File `calc.sty' not found.
+note: Writing `manuscript.log` (7.4716796875 KiB)
+error: halted on potentially-recoverable error as specified
+Tectonic failed (1)

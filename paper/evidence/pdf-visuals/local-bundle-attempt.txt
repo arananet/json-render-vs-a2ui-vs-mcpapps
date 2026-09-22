@@ -1,0 +1,3 @@
+note: using only cached resource files
+error: bundle does not provide needed SHA256SUM file
+Tectonic failed (1)

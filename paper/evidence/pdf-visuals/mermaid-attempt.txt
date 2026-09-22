@@ -1,0 +1,18 @@
+Generating single mermaid chart
+
+Error: Failed to launch the browser process!
+[0921/171337.164725:ERROR:thermal_state_observer_mac.mm(88)] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[0921/171337.168832:ERROR:dns_config_service_posix.cc(142)] DNS config watch failed to start.
+[0921/171337.171300:FATAL:sandbox_parameters_mac.mm(68)] Check failed: . : Input/output error (5)
+
+
+TROUBLESHOOTING: https://pptr.dev/troubleshooting
+
+    at Interface.onClose (file:///Users/ESAranaEd/.nvm/versions/node/v18.20.5/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/@puppeteer/browsers/lib/esm/launch.js:303:24)
+    at Interface.emit (node:events:531:35)
+    at Interface.close (node:internal/readline/interface:530:10)
+    at Socket.onend (node:internal/readline/interface:260:10)
+    at Socket.emit (node:events:531:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+

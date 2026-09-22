@@ -1,0 +1,103 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import test from "node:test";
+import { root } from "../../scripts/paper.mjs";
+
+const manuscript = readFileSync(resolve(root, "paper/manuscript.md"), "utf8");
+const abstract = manuscript.split("# Abstract\n")[1].split("\n# Introduction")[0].replace(/\s+/g, " ");
+
+test("abstract leads with configuration-specific findings and their interpretation", () => {
+  assert.match(abstract, /^ Reused identifiers/);
+  assert.match(abstract, /three concrete tested configurations/);
+  assert.match(abstract, /adapter mapping, namespace\/topology, and enforcement site/);
+  assert.match(abstract, /enforcing handler is installed; the permissive variant forwards/);
+  assert.match(abstract, /empirical technical note with private local evidence/);
+  assert.match(abstract, /does not validate the same full S2 scenario/);
+});
+
+test("abstract and claim table support concrete C3 while retaining partial C6/C7 and proposed C9", () => {
+  const claims = [...manuscript.matchAll(/^\| (C\d+):[^|]+\| (Supported|Partial|Proposed) \|/gm)];
+  assert.equal(claims.length, 9);
+  const statuses = Object.fromEntries(claims.map(match => [match[1], match[2]]));
+  assert.equal(statuses.C3, "Supported");
+  assert.equal(statuses.C6, "Partial");
+  assert.equal(statuses.C7, "Partial");
+  assert.equal(statuses.C9, "Proposed");
+  assert.match(abstract, /finance's headline visible and risk's absent/);
+  assert.match(abstract, /every intended control owner remains partial/);
+  assert.match(abstract, /intervention remains proposed, not performed/);
+});
+
+test("results, S2 caption and conclusion distinguish writer maps from rendered evidence", () => {
+  assert.match(manuscript, /H1 has fixture-specific support/);
+  const caption = manuscript.match(/!\[(S2[^\]]+)\]/)[1];
+  assert.match(caption, /finance's headline visible and risk's absent/);
+  assert.match(caption, /C3, supported/);
+  assert.match(caption, /not an exact node count/);
+  const conclusion = manuscript.split("# Conclusion\n")[1].split("\n# AI-assistance disclosure")[0].replace(/\s+/g, " ");
+  assert.match(conclusion, /H1 has only fixture-specific support/);
+  assert.match(conclusion, /cannot validate the full Node fixture/);
+  assert.match(conclusion, /every control remains only partially checked/);
+  assert.match(conclusion, /Future experiments are explicitly pending/);
+});
+
+test("browser MCP executes only summaries while Node S2 has four sequential writes", () => {
+  const read = path => readFileSync(resolve(root, path), "utf8");
+  const node = read("src/scenarios/s2-fixed-order-collision.ts");
+  const browser = read("web/mcp-apps.ts").split('"s2-fixed-order-collision": [')[1].split('"s3-action-roundtrip"')[0];
+  assert.deepEqual([...node.matchAll(/await orchestrator\.emit\(SURFACE, "(\w+)", \{\s+id: "([^"]+)"/g)].map(m => [m[1], m[2]]), [
+    ["risk", "risk-detail"], ["finance", "finance-detail"], ["risk", "summary"], ["finance", "summary"],
+  ]);
+  assert.deepEqual([...browser.matchAll(/agent: "(\w+)",\s+block: \{\s+id: "([^"]+)"/g)].map(m => [m[1], m[2]]), [
+    ["risk", "summary"], ["finance", "summary"],
+  ]);
+  assert.match(manuscript, /Browser MCP checks a separate two-write fixture, not full Node S2/);
+  for (const host of ["web/a2ui.ts", "web/json-render.tsx"]) {
+    assert.match(read(host), /"s2-fixed-order-collision": runFixedOrderCollision/);
+  }
+});
+
+test("pre-rename browser evidence records historical success, not current-source verification", () => {
+  const directory = resolve(root, "paper/evidence/browser-terminal-20260922T013449Z-zH4HTK");
+  const report = JSON.parse(readFileSync(resolve(directory, "playwright-ipv4.json"), "utf8"));
+  assert.equal(report.stats.expected, 18);
+  for (const key of ["unexpected", "flaky", "skipped"]) assert.equal(report.stats[key], 0);
+  assert.deepEqual(report.errors, []);
+  assert.match(manuscript, /Browser provenance gap/);
+  assert.match(manuscript, /old raw logs cannot bind the post-rename fixture/);
+  const specs = [];
+  const visit = suites => suites.forEach(suite => { specs.push(...(suite.specs ?? [])); visit(suite.suites ?? []); });
+  visit(report.suites);
+  for (const file of ["render.spec.ts", "screenshots.spec.ts"]) {
+    const selected = specs.filter(spec => spec.file === file);
+    assert.equal(selected.length, 9);
+    for (const spec of selected) for (const test of spec.tests) {
+      assert.equal(test.status, "expected");
+      assert.ok(test.results.every(result => result.status === "passed"));
+    }
+  }
+  const source = readFileSync(resolve(root, "tests/browser/render.spec.ts"), "utf8");
+  const a2ui = source.split('test("A2UI: same outcome')[1].split('\n  test(')[0];
+  assert.match(a2ui, /getByText\("Spend is within budget"\)\)\.toBeVisible\(\)/);
+  assert.match(a2ui, /getByText\("Exposure exceeds appetite"\)\)\.toHaveCount\(0\)/);
+  assert.doesNotMatch(a2ui, /toHaveCount\(1\)/);
+  assert.match(manuscript, /playwright-ipv4\.json/);
+  assert.match(manuscript, /does not assert an exact summary node count/);
+  assert.match(manuscript, /do not\nestablish historical reproduction/);
+});
+
+test("manuscript removes agent-to-user narration without claiming human review", () => {
+  assert.doesNotMatch(manuscript, /at the user.s request|user.s description|credited there to Eduardo|invocation request|catalog description/i);
+  const disclosure = manuscript.split("# AI-assistance disclosure\n")[1].split("\n# References")[0].replace(/\s+/g, " ");
+  assert.match(disclosure, /OpenAI Codex coding assistant/);
+  assert.match(disclosure, /Human scientific and editorial review remains pending/);
+  assert.match(disclosure, /no LLM participates/);
+});
+
+test("unverified reference and ignored paper provenance are explicit", () => {
+  const normalized = manuscript.replace(/\s+/g, " ");
+  assert.match(normalized, /unverified methodological pointer, not as inspected scientific evidence/);
+  assert.match(normalized, /Git status and OpenSpec's tracked\/nonignored input fingerprint do not identify the complete paper workspace/);
+  assert.match(normalized, /Separate paper checks and SHA-256 manifests/);
+});

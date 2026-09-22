@@ -1,0 +1,193 @@
+2026-09-22T01:04:45Z
+TAP version 13
+# Subtest: source bundle contains only root TeX and preconverted used figures
+ok 1 - source bundle contains only root TeX and preconverted used figures
+  ---
+  duration_ms: 72.76425
+  type: 'test'
+  ...
+# Subtest: table widths use e-TeX dimensions without a calc package dependency
+ok 2 - table widths use e-TeX dimensions without a calc package dependency
+  ---
+  duration_ms: 0.203375
+  type: 'test'
+  ...
+# Subtest: local bundle selection preserves cached-only and untrusted compilation
+ok 3 - local bundle selection preserves cached-only and untrusted compilation
+  ---
+  duration_ms: 0.358417
+  type: 'test'
+  ...
+# Subtest: generated LaTeX corresponds to the editable manuscript
+ok 4 - generated LaTeX corresponds to the editable manuscript
+  ---
+  duration_ms: 544.322833
+  type: 'test'
+  ...
+# Subtest: freshness rejects any stale derivative
+ok 5 - freshness rejects any stale derivative
+  ---
+  duration_ms: 0.271333
+  type: 'test'
+  ...
+# Subtest: the build tool fails closed on an unknown operation or missing input
+ok 6 - the build tool fails closed on an unknown operation or missing input
+  ---
+  duration_ms: 36.9575
+  type: 'test'
+  ...
+# Subtest: abstract leads with configuration-specific findings and their interpretation
+ok 7 - abstract leads with configuration-specific findings and their interpretation
+  ---
+  duration_ms: 0.542334
+  type: 'test'
+  ...
+# Subtest: abstract and claim table retain partial C3/C6 and proposed C9
+ok 8 - abstract and claim table retain partial C3/C6 and proposed C9
+  ---
+  duration_ms: 0.675459
+  type: 'test'
+  ...
+# Subtest: results, S2 caption and conclusion distinguish writer maps from rendered evidence
+ok 9 - results, S2 caption and conclusion distinguish writer maps from rendered evidence
+  ---
+  duration_ms: 0.207625
+  type: 'test'
+  ...
+# Subtest: manuscript removes agent-to-user narration without claiming human review
+ok 10 - manuscript removes agent-to-user narration without claiming human review
+  ---
+  duration_ms: 1.179583
+  type: 'test'
+  ...
+# Subtest: unverified reference and ignored paper provenance are explicit
+ok 11 - unverified reference and ignored paper provenance are explicit
+  ---
+  duration_ms: 1.156417
+  type: 'test'
+  ...
+# Subtest: Mermaid conversion preserves labels, groups, decisions, and dashed edges
+ok 12 - Mermaid conversion preserves labels, groups, decisions, and dashed edges
+  ---
+  duration_ms: 1.819833
+  type: 'test'
+  ...
+# Subtest: unsupported or invalid Mermaid fails rather than silently changing a figure
+ok 13 - unsupported or invalid Mermaid fails rather than silently changing a figure
+  ---
+  duration_ms: 0.4935
+  type: 'test'
+  ...
+# Subtest: editable Mermaid and generated DOT correspond
+ok 14 - editable Mermaid and generated DOT correspond
+  ---
+  duration_ms: 2.186542
+  type: 'test'
+  ...
+# Subtest: S2 figure order and retained values match the scenario and existing assertions
+ok 15 - S2 figure order and retained values match the scenario and existing assertions
+  ---
+  duration_ms: 1.271292
+  type: 'test'
+  ...
+# Subtest: topology states the local identity bound and correct enforcement installation order
+ok 16 - topology states the local identity bound and correct enforcement installation order
+  ---
+  duration_ms: 1.143125
+  type: 'test'
+  ...
+# Subtest: manuscript identifies the author, affiliation, and review state
+ok 17 - manuscript identifies the author, affiliation, and review state
+  ---
+  duration_ms: 1.738916
+  type: 'test'
+  ...
+# Subtest: H1 is bounded to the actual fixed-order S2 script and existing assertions
+ok 18 - H1 is bounded to the actual fixed-order S2 script and existing assertions
+  ---
+  duration_ms: 2.122792
+  type: 'test'
+  ...
+# Subtest: relative manuscript evidence links resolve to retained local files
+ok 19 - relative manuscript evidence links resolve to retained local files
+  ---
+  duration_ms: 0.429625
+  type: 'test'
+  ...
+# Subtest: manuscript contains the scientific and reproducibility sections
+ok 20 - manuscript contains the scientific and reproducibility sections
+  ---
+  duration_ms: 0.208334
+  type: 'test'
+  ...
+# Subtest: paper version claims match locked and installed SDKs
+ok 21 - paper version claims match locked and installed SDKs
+  ---
+  duration_ms: 69.194709
+  type: 'test'
+  ...
+# Subtest: PDF build manifest matches the current manuscript, tooling, figures and PDF
+ok 22 - PDF build manifest matches the current manuscript, tooling, figures and PDF
+  ---
+  duration_ms: 11.738416
+  type: 'test'
+  ...
+# Subtest: PDF contains author, affiliation, numbered figures and resolved references
+ok 23 - PDF contains author, affiliation, numbered figures and resolved references
+  ---
+  duration_ms: 448.210375
+  type: 'test'
+  ...
+# Subtest: all fonts reported by Poppler are embedded
+ok 24 - all fonts reported by Poppler are embedded
+  ---
+  duration_ms: 41.163959
+  type: 'test'
+  ...
+# Subtest: Veritas inputs are explicit local files with one canonical manuscript
+ok 25 - Veritas inputs are explicit local files with one canonical manuscript
+  ---
+  duration_ms: 4.114416
+  type: 'test'
+  ...
+# Subtest: Veritas retains current check evidence, failures and partial-claim assertions
+ok 26 - Veritas retains current check evidence, failures and partial-claim assertions
+  ---
+  duration_ms: 1.425792
+  type: 'test'
+  ...
+# Subtest: actual Veritas files listing exactly matches the configured selection
+ok 27 - actual Veritas files listing exactly matches the configured selection
+  ---
+  duration_ms: 0.96525
+  type: 'test'
+  ...
+# Subtest: private build/test review views are exact copies of the existing local sources
+ok 28 - private build/test review views are exact copies of the existing local sources
+  ---
+  duration_ms: 5.97225
+  type: 'test'
+  ...
+# Subtest: execution record and private-package provenance are selected without publishing inputs
+ok 29 - execution record and private-package provenance are selected without publishing inputs
+  ---
+  duration_ms: 55.972541
+  type: 'test'
+  ...
+# Subtest: only artifact paths changed; gates, permissions, model and limit settings are preserved
+ok 30 - only artifact paths changed; gates, permissions, model and limit settings are preserved
+  ---
+  duration_ms: 121.131917
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 753.569
+LaTeX is fresh
+EXIT_CODE=0

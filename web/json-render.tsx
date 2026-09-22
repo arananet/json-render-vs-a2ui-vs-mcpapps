@@ -12,7 +12,7 @@ import { catalog } from "../src/adapters/json-render/catalog.ts";
 import { JsonRenderAdapter } from "../src/adapters/json-render/adapter.ts";
 import { Tracer } from "../src/orchestrator/trace.ts";
 import { runSurfaceHandoff } from "../src/scenarios/s1-surface-handoff.ts";
-import { runConcurrentComposition } from "../src/scenarios/s2-concurrent-composition.ts";
+import { runFixedOrderCollision } from "../src/scenarios/s2-fixed-order-collision.ts";
 import { runActionRoundTrip } from "../src/scenarios/s3-action-roundtrip.ts";
 import { SCENARIO_SURFACES, markReady, scenarioFromUrl } from "./scenario.ts";
 
@@ -51,7 +51,7 @@ const adapter = new JsonRenderAdapter(new Tracer(scenario, "json-render"));
 
 const runner = {
   "s1-surface-handoff": runSurfaceHandoff,
-  "s2-concurrent-composition": runConcurrentComposition,
+  "s2-fixed-order-collision": runFixedOrderCollision,
   "s3-action-roundtrip": async (a: JsonRenderAdapter) => (await runActionRoundTrip(a)).orchestrator,
 }[scenario];
 

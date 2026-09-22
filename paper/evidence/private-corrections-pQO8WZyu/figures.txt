@@ -1,0 +1,5 @@
+{"command": ["node", "scripts/paper-figures.mjs"], "utc": "2026-09-22T02:04:43.291189+00:00", "cwd": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps", "environment": {"PAPER_TEX_BUNDLE": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/bundle", "TECTONIC_CACHE_DIR": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/cache"}}
+Rendered topology: Mermaid subset -> Graphviz -> PDF/SVG
+Rendered s2: Mermaid subset -> Graphviz -> PDF/SVG
+
+EXIT_CODE=0

@@ -1,0 +1,7 @@
+Actualización realizada; informe en [output-last-message](/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper/output-last-message).
+
+- C3/H1 respaldados para las configuraciones probadas; C6 y consentimiento parciales; C9 propuesto.
+- PDF y fuentes regenerados y verificados.
+- `npm test`: 24/24; typecheck y OpenSpec pasan, sin obsolescencia.
+- Pruebas del papel: 25 pasan; falla la comprobación histórica de Veritas por ausencia de `paper/veritas.yaml`. No se modificó para forzar aprobación.
+- Evidencia histórica y auditor intactos; sin commits ejecutados por esta tarea.

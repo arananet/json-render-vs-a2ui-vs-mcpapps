@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: abstract leads with configuration-specific findings and their interpretation
+ok 1 - abstract leads with configuration-specific findings and their interpretation
+  ---
+  duration_ms: 1.021541
+  type: 'test'
+  ...
+# Subtest: abstract and claim table retain partial C3/C6 and proposed C9
+ok 2 - abstract and claim table retain partial C3/C6 and proposed C9
+  ---
+  duration_ms: 0.891208
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 107.806334

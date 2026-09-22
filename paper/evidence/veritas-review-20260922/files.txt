@@ -1,0 +1,92 @@
+Artifact: /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper
+Profile:  scientific-paper
+Paths:    manuscript.md, REPRODUCTION.md, EXECUTION.md, template.tex, 
+figures/README.md, evidence/veritas-review-20260922/private-package.json, 
+evidence/veritas-review-20260922/source-views/scripts/paper.mjs.txt, 
+evidence/veritas-review-20260922/source-views/scripts/paper-figures.mjs.txt, 
+evidence/veritas-review-20260922/source-views/tests/paper/build.test.mjs.txt, 
+evidence/veritas-review-20260922/source-views/tests/paper/editorial.test.mjs.txt
+, 
+evidence/veritas-review-20260922/source-views/tests/paper/figures.test.mjs.txt, 
+evidence/veritas-review-20260922/source-views/tests/paper/manuscript.test.mjs.tx
+t, evidence/veritas-review-20260922/source-views/tests/paper/pdf.test.mjs.txt, 
+evidence/veritas-review-20260922/source-views/tests/paper/veritas-inputs.test.mj
+s.txt, evidence/veritas-review-20260922/source-views/paper/figures.lua.txt, 
+evidence/veritas-review-20260922/source-views/paper/figures/topology.mmd.txt, 
+evidence/veritas-review-20260922/source-views/paper/figures/s2.mmd.txt, 
+evidence/s2.txt, evidence/environment.json, 
+evidence/editorial-20260921/environment-worktree.txt, 
+evidence/editorial-20260921/npm-test.txt, 
+evidence/editorial-20260921/final-paper-checks.txt, 
+evidence/editorial-20260921/typecheck.txt, 
+evidence/editorial-20260921/openspec-check.txt, 
+evidence/editorial-20260921/browser.txt, 
+evidence/editorial-20260921/report-check.txt, 
+evidence/editorial-20260921/reference-access.md, 
+evidence/editorial-20260921/pdf-build.txt, 
+evidence/editorial-20260921/pdf-build-manifest.json, 
+evidence/editorial-20260921/bundle-check.txt, 
+evidence/editorial-20260921/pdfinfo.txt, 
+evidence/editorial-20260921/pdffonts.txt, 
+../.openspec/runs/reproducible-protocol-comparison-paper/verify-113265801779000.
+json, ../src/scenarios/s2-concurrent-composition.ts, 
+../src/adapters/json-render/adapter.ts, ../src/adapters/a2ui/adapter.ts, 
+../src/adapters/mcp-apps/adapter.ts, ../src/adapters/mcp-apps/host.ts, 
+../src/report/generate.ts, ../tests/protocol/scenarios.test.ts, 
+../tests/protocol/mcp-apps-bridge.test.ts, ../tests/browser/render.spec.ts
+
+File                                                                Characters  
+EXECUTION.md                                                            29,067  
+manuscript.md                                                           27,760  
+../src/adapters/a2ui/adapter.ts                                         16,313  
+../src/adapters/json-render/adapter.ts                                  13,918  
+REPRODUCTION.md                                                         13,671  
+../src/adapters/mcp-apps/adapter.ts                                     13,208  
+../src/report/generate.ts                                               12,050  
+../tests/protocol/scenarios.test.ts                                      7,932  
+../tests/browser/render.spec.ts                                          7,430  
+../src/adapters/mcp-apps/host.ts                                         5,791  
+evidence/editorial-20260921/final-paper-checks.txt                       5,135  
+evidence/veritas-review-20260922/private-package.json                    5,084  
+evidence/veritas-review-20260922/source-views/scripts/paper.mjs.t…       4,488  
+../tests/protocol/mcp-apps-bridge.test.ts                                4,336  
+evidence/veritas-review-20260922/source-views/tests/paper/veritas…       4,243  
+evidence/editorial-20260921/browser.txt                                  3,344  
+evidence/veritas-review-20260922/source-views/scripts/paper-figur…       3,191  
+evidence/veritas-review-20260922/source-views/tests/paper/editori…       3,172  
+evidence/veritas-review-20260922/source-views/tests/paper/manuscr…       3,074  
+evidence/environment.json                                                3,019  
+evidence/veritas-review-20260922/source-views/tests/paper/figures…       2,821  
+figures/README.md                                                        2,435  
+evidence/veritas-review-20260922/source-views/tests/paper/build.t…       2,419  
+../src/scenarios/s2-concurrent-composition.ts                            2,110  
+evidence/veritas-review-20260922/source-views/tests/paper/pdf.tes…       1,955  
+evidence/editorial-20260921/environment-worktree.txt                     1,928  
+evidence/editorial-20260921/pdffonts.txt                                 1,692  
+evidence/editorial-20260921/bundle-check.txt                             1,667  
+evidence/editorial-20260921/pdf-build-manifest.json                      1,595  
+evidence/editorial-20260921/pdf-build.txt                                1,549  
+evidence/editorial-20260921/reference-access.md                          1,416  
+evidence/editorial-20260921/report-check.txt                             1,092  
+template.tex                                                             1,016  
+evidence/veritas-review-20260922/source-views/paper/figures.lua.t…         951  
+evidence/veritas-review-20260922/source-views/paper/figures/topol…         915  
+evidence/veritas-review-20260922/source-views/paper/figures/s2.mm…         681  
+evidence/editorial-20260921/pdfinfo.txt                                    575  
+../.openspec/runs/reproducible-protocol-comparison-paper/verify-1…         571  
+evidence/editorial-20260921/npm-test.txt                                   329  
+evidence/s2.txt                                                            315  
+evidence/editorial-20260921/openspec-check.txt                             177  
+evidence/editorial-20260921/typecheck.txt                                  140  
+
+10 path(s) resolve outside the artifact directory: 
+../.openspec/runs/reproducible-protocol-comparison-paper/verify-113265801779000.
+json, ../src/scenarios/s2-concurrent-composition.ts, 
+../src/adapters/json-render/adapter.ts, ../src/adapters/a2ui/adapter.ts, 
+../src/adapters/mcp-apps/adapter.ts, ../src/adapters/mcp-apps/host.ts, 
+../src/report/generate.ts, ../tests/protocol/scenarios.test.ts, 
+../tests/protocol/mcp-apps-bridge.test.ts, ../tests/browser/render.spec.ts
+
+42 file(s), 214,575 characters
+Roughly 53,643 input tokens per judge, and this profile runs 7 of them.
+Skipped: binaries, PDFs and any format Veritas cannot read as text.

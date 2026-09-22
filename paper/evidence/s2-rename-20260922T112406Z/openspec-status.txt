@@ -1,0 +1,14 @@
+{
+  "slug": "reproducible-protocol-comparison-paper",
+  "result": "passed",
+  "next_step": "human_review",
+  "attempts": 0,
+  "reserved_cost": 0,
+  "elapsed_seconds": 0,
+  "fingerprint": "2363344e106dfaf495cbea22016d875c59469a5b1466a6460d317f68e503e418",
+  "blocker": null,
+  "last_evidence": ".openspec/runs/reproducible-protocol-comparison-paper/verify-161900129790000.json",
+  "phase": "idle",
+  "updated_at": "2026-09-22T11:33:00Z",
+  "stale": false
+}

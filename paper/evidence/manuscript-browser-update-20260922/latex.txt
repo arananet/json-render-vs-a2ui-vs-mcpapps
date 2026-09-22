@@ -1,0 +1,5 @@
+2026-09-22T01:43:42.927092+00:00
+COMMAND: node scripts/paper.mjs latex
+Generated paper/manuscript.tex
+
+EXIT_CODE=0

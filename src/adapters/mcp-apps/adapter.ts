@@ -90,7 +90,7 @@ export class McpAppsAdapter implements ProtocolAdapter {
       );
 
       this.tracer.record(
-        "compose.concurrent-write",
+        "compose.identifier-collision",
         "ENFORCED",
         `The flip side, and it is a real one: a lost write is impossible here. Component ids live ` +
           `inside one app instance, so "${agent}" reusing block id "${block.id}" cannot overwrite ` +

@@ -1,0 +1,46 @@
+[
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "bash",
+      "-n",
+      "scripts/paper-browser-run.sh"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rg",
+      "-n",
+      "--hidden",
+      "--no-ignore",
+      "s2-concurrent-composition|runConcurrentComposition|compose\\.concurrent-write|[Cc]oncurrent composition",
+      "src",
+      "web",
+      "tests",
+      "scripts",
+      "README.md",
+      "CHANGELOG.md",
+      "docs",
+      "paper/manuscript.md",
+      "paper/manuscript.tex",
+      "paper/REPRODUCTION.md",
+      "paper/figures",
+      ".openspec/specs"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": ""
+  }
+]

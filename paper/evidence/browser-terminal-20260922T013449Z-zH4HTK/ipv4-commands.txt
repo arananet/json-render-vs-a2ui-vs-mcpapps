@@ -1,0 +1,5 @@
+2026-09-22T01:37:59Z
+PREVIEW: node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 5178 --strictPort
+COMMAND: env -u CI PLAYWRIGHT_JSON_OUTPUT_FILE=<evidence>/playwright-ipv4.json node node_modules/@playwright/test/cli.js test tests/browser/render.spec.ts tests/browser/screenshots.spec.ts --reporter=line,json --output=<evidence>/ipv4-test-results
+PLAYWRIGHT_EXIT_CODE=0
+2026-09-22T01:38:09Z

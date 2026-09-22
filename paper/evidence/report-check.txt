@@ -1,0 +1,25 @@
+Mon Sep 21 21:03:09 UTC 2026
+
+> json-render-vs-a2ui-vs-mcpapps@0.1.0 report:check
+> tsx src/report/generate.ts --check
+
+node:net:1919
+      const error = new UVExceptionWithHostPort(rval, 'listen', address, port);
+                    ^
+
+Error: listen EPERM: operation not permitted /var/folders/8_/n4px3xnn3x9fh3zb7wx_68500000gn/T/tsx-501/93658.pipe
+    at Server.setupListenHandle [as _listen2] (node:net:1919:21)
+    at listenInCluster (node:net:1998:12)
+    at Server.listen (node:net:2120:5)
+    at file:///Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/node_modules/tsx/dist/cli.mjs:53:32174
+    at new Promise (<anonymous>)
+    at createIpcServer (file:///Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/node_modules/tsx/dist/cli.mjs:53:32152)
+    at async file:///Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/node_modules/tsx/dist/cli.mjs:55:542 {
+  code: 'EPERM',
+  errno: -1,
+  syscall: 'listen',
+  address: '/var/folders/8_/n4px3xnn3x9fh3zb7wx_68500000gn/T/tsx-501/93658.pipe',
+  port: -1
+}
+
+Node.js v22.23.2

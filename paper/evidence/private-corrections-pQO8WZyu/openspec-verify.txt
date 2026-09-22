@@ -1,0 +1,4 @@
+{"command": ["bash", "scripts/openspec", "verify", "reproducible-protocol-comparison-paper"], "utc": "2026-09-22T02:10:17.028041+00:00", "cwd": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps", "environment": {"PAPER_TEX_BUNDLE": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/bundle", "TECTONIC_CACHE_DIR": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/cache"}}
+reproducible-protocol-comparison-paper: passed
+
+EXIT_CODE=0

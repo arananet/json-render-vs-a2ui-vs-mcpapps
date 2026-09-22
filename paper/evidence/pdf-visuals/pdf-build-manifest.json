@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-09-21T21:58:33.821Z",
+  "command": [
+    "tectonic",
+    "--only-cached",
+    "--untrusted",
+    "--keep-logs",
+    "--bundle",
+    "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/bundle",
+    "manuscript.tex"
+  ],
+  "cwd": "paper",
+  "node": "v22.23.2",
+  "hashes": {
+    "paper/manuscript.md": "c310dced40ff9656b79b391f2b4cc5a698ab35f30ae48aeec3896399fb85c8f8",
+    "paper/manuscript.tex": "d637ae9d4697b84aef9a7c8b25034b4616738e40c8c23d5efb66b7680ec1573f",
+    "paper/template.tex": "31ceedad3db7c83ae9580952143f03f0039bd3a57402595293cc9913efc4bbdf",
+    "paper/figures.lua": "64bca2454d0ec44292b0bfb4980a8db13c2f07f10386e97d228562448f5508e3",
+    "scripts/paper.mjs": "7622755458be91328acbcb535dd760883cdfca295082f25d7e0454f09cb6e38e",
+    "scripts/paper-figures.mjs": "ffc7f750b834a6951365d85698ae4ba444ba775e8a5f4da9b625ab4b79d531c9",
+    "paper/figures/topology.mmd": "99dd61043ab4813db6dd8ce38243750e988d8810fc07312fd8fbe0d070c6b22a",
+    "paper/figures/topology.dot": "a98f1c1dc01030db25d1beb8a9ff89bc7af32426ebebc1fbcfd1e9c633688f94",
+    "paper/figures/topology.pdf": "10d293b31ccc79dc572fe4e2b74284e5f0d9b96cf7a15ab5c51cfd0c63f3f5a1",
+    "paper/figures/s2.mmd": "61a256740a075187c5f20a8aba73d361e0623ce305a95d5e7c727c6af02c2d09",
+    "paper/figures/s2.dot": "17ed640b4fe216f481273ef47b6224706d2abf1d41f183e11f79469e4fe47ba5",
+    "paper/figures/s2.pdf": "b97e070b715d3febae3a993d6f9a1e2bfe39b35f1a19ceadaeb5c2511db683e3",
+    "paper/manuscript.pdf": "88f76b41ae148a6ee2aa91935850684b2f496285838456f8f7a2b9c2450a44f9"
+  }
+}

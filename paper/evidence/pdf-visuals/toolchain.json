@@ -1,0 +1,16 @@
+{
+  "capturedAt": "2026-09-21T21:28:20.652Z",
+  "head": "b895e57671e118fcd3a7f86892fc1b2526b78c9c",
+  "node": "v22.23.2",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "versions": {
+    "pandoc": "pandoc 3.11",
+    "tectonic": "Tectonic 0.16.9",
+    "graphviz": "dot - graphviz version 13.1.0 (20250701.0955)",
+    "poppler": "pdfinfo version 26.09.0",
+    "mermaid-cli": "11.4.2"
+  },
+  "localBundleFingerprint": "59a28378d49c98e0010322ea068a4f2148faed81ec89a76dabca3093c1909958",
+  "initialState": "Prior manuscript work already dirty/untracked; preserved and extended."
+}

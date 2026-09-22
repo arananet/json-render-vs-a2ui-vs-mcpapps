@@ -1,0 +1,33 @@
+2026-09-22T01:28:50Z
+b5d06eafcd4cf9cb0ed49131add55cbdecbd4b7c
+ M .openspec/specs/reproducible-protocol-comparison-paper.spec.yaml
+?? .veritas/report.md
+?? .veritas/runs/2026-09-22T011938Z/checks/repository-structure.json
+?? .veritas/runs/2026-09-22T011938Z/checks/required-sections.json
+?? .veritas/runs/2026-09-22T011938Z/claims.json
+?? .veritas/runs/2026-09-22T011938Z/gate.json
+?? .veritas/runs/2026-09-22T011938Z/judges/adversarial.json
+?? .veritas/runs/2026-09-22T011938Z/judges/citations.json
+?? .veritas/runs/2026-09-22T011938Z/judges/evidence.json
+?? .veritas/runs/2026-09-22T011938Z/judges/methodology.json
+?? .veritas/runs/2026-09-22T011938Z/judges/repo-consistency.json
+?? .veritas/runs/2026-09-22T011938Z/judges/reproducibility.json
+?? .veritas/runs/2026-09-22T011938Z/judges/statistics.json
+?? .veritas/runs/2026-09-22T011938Z/manifest.json
+?? .veritas/runs/2026-09-22T011938Z/meta.json
+?? .veritas/runs/2026-09-22T011938Z/repair-plan.json
+?? .veritas/runs/2026-09-22T011938Z/report.md
+?? .veritas/runs/2026-09-22T011938Z/results.json
+?? .veritas/runs/latest
+?? veritas.yaml
+v22.23.2
+10.9.8
+Version 1.63.0
+9b4d4670715575e29b3304874ed2077d158ab1801ff10b3e6adef4f0800b22bd  tests/browser/render.spec.ts
+5b2a5004af409b7cfaffdeeeddf5a4c652e4a0dc1d2b8f241371019a3a988ecd  tests/browser/screenshots.spec.ts
+7469bb11440a9a6e17ddea7ea2d22c47881e20a3201b011a2a4f0c76c9472fd6  playwright.config.ts
+33c0e5b716eda60c36f01d56fd24efebfbafe826fdea32fb1fa394802ada0827  package.json
+ff16ef0f2c390aecce197ac381a347830c1529d915ab63c1216828c0c47eef14  package-lock.json
+c310dced40ff9656b79b391f2b4cc5a698ab35f30ae48aeec3896399fb85c8f8  paper/manuscript.md
+shasum: paper/veritas.yaml: No such file or directory
+176288dcb0a5cfd4ac18a156314cac92591075d4b0190df9a219ef4679ef5032  veritas.yaml

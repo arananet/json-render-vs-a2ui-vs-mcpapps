@@ -144,7 +144,7 @@ export class JsonRenderAdapter implements ProtocolAdapter {
       const previous = this.lastWriter.get(`${surfaceId}/${bKey}`);
       if (previous !== undefined && previous !== agent) {
         this.tracer.record(
-          "compose.concurrent-write",
+          "compose.identifier-collision",
           "LOST",
           `Agent "${agent}" replaced block "${block.id}" previously written by "${previous}". ` +
             `json-render patches address a flat, shared element map: /elements/${bKey} is a single ` +

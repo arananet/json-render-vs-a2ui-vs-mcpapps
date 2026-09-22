@@ -1,0 +1,16 @@
+{"command": ["npm", "test"], "utc": "2026-09-22T02:08:13.628864+00:00", "cwd": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps", "environment": {"PAPER_TEX_BUNDLE": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/bundle", "TECTONIC_CACHE_DIR": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/cache"}}
+
+> json-render-vs-a2ui-vs-mcpapps@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.1 /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps
+
+
+ Test Files  3 passed (3)
+      Tests  24 passed (24)
+   Start at  22:08:15
+   Duration  5.15s (import 95%, transform 3%, tests 2%)
+
+
+EXIT_CODE=0

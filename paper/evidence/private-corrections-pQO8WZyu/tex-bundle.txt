@@ -1,0 +1,4 @@
+{"command": ["node", "scripts/paper.mjs", "bundle"], "utc": "2026-09-22T02:08:42.366826+00:00", "cwd": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps", "environment": {"PAPER_TEX_BUNDLE": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/bundle", "TECTONIC_CACHE_DIR": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/cache"}}
+Generated paper/arxiv-source.tar.gz (local source bundle only)
+
+EXIT_CODE=0

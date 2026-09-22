@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "canonicalEditableSource": "paper/manuscript.md",
+  "versions": [
+    {
+      "version": "v0.1",
+      "path": "paper/versions/json-render-vs-a2ui-vs-mcpapps-v0.1-populated.md",
+      "sha256": "8bbf8c014749b41212261e0a603a57a5022680cf2a2c2c700a7e6f89b940e0b5",
+      "frozenAt": "2026-09-22",
+      "kind": "populated",
+      "status": "review draft; post-rename browser provenance recorded; clean-clone reproduction pending"
+    }
+  ]
+}

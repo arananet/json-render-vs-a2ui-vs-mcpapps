@@ -1,0 +1,53 @@
+2026-09-21T21:55:36Z
+$ npm run test:browser
+
+> json-render-vs-a2ui-vs-mcpapps@0.1.0 test:browser
+> vite build && playwright test --grep-invert @screenshot
+
+vite v7.3.6 building client environment for production...
+transforming...
+node_modules/zod/v4/core/util.js (400:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/zod/v4/core/regexes.js (74:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 691 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist-web/index.html                                   0.70 kB │ gzip:  0.36 kB
+../dist-web/mcp-view.html                                0.71 kB │ gzip:  0.38 kB
+../dist-web/a2ui.html                                    0.93 kB │ gzip:  0.47 kB
+../dist-web/json-render.html                             0.95 kB │ gzip:  0.45 kB
+../dist-web/mcp-apps.html                                0.99 kB │ gzip:  0.48 kB
+../dist-web/assets/style-BMGCmNKB.css                    2.42 kB │ gzip:  0.98 kB
+../dist-web/assets/scenario-BuL62nu0.js                  0.35 kB │ gzip:  0.26 kB
+../dist-web/assets/modulepreload-polyfill-B5Qt9EMX.js    0.71 kB │ gzip:  0.40 kB
+../dist-web/assets/mcpView-CnNIEmH2.js                   2.57 kB │ gzip:  1.19 kB
+../dist-web/assets/s3-action-roundtrip-DLFc46-c.js       4.01 kB │ gzip:  1.53 kB
+../dist-web/assets/schemas-DqqIKuID.js                  99.19 kB │ gzip: 27.97 kB
+../dist-web/assets/mcpApps-Byt3H9w4.js                 180.21 kB │ gzip: 47.47 kB
+../dist-web/assets/app-CJuP4zJb.js                     199.74 kB │ gzip: 51.92 kB
+../dist-web/assets/a2ui-DLRWe5e5.js                    235.76 kB │ gzip: 63.40 kB
+../dist-web/assets/jsonRender-D_da4NFs.js              292.76 kB │ gzip: 92.52 kB
+✓ built in 2.07s
+[WebServer] (node:51754) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:51792) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] error when starting preview server:
+[WebServer] Error: listen EPERM: operation not permitted ::1:5178
+[WebServer]     at Server.setupListenHandle [as _listen2] (node:net:1919:21)
+[WebServer]     at listenInCluster (node:net:1998:12)
+[WebServer]     at GetAddrInfoReqWrap.callback (node:net:2207:7)
+[WebServer]     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+Error: Process from config.webServer was not able to start. Exit code: 1
+
+EXIT_CODE=1
+2026-09-21T21:55:40Z

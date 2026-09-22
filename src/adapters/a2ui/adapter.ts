@@ -69,7 +69,7 @@ export class A2uiAdapter implements ProtocolAdapter {
    * A2UI surfaces render from a component literally named `root`, so every
    * agent that adds a block has to append to a node it does not own. Worth
    * noticing: this is the shared-namespace problem in miniature — two agents
-   * appending concurrently are both rewriting the same component.
+   * appending to that list are both rewriting the same component.
    */
   private readonly rootChildren = new Map<SurfaceId, string[]>();
 
@@ -209,7 +209,7 @@ export class A2uiAdapter implements ProtocolAdapter {
 
     if (existing !== undefined && existing !== agent) {
       this.tracer.record(
-        "compose.concurrent-write",
+        "compose.identifier-collision",
         "LOST",
         `Agent "${agent}" reused component ids from block "${block.id}", last written by "${existing}". ` +
           `updateComponents is keyed by component id within a surface, so re-sending an id replaces ` +
@@ -371,7 +371,7 @@ export class A2uiAdapter implements ProtocolAdapter {
         `surfaces cannot reach each other at all; and within a surface the data model is addressed ` +
         `by JSON Pointer, so agents updating different subtrees are genuinely independent even when ` +
         `their components sit side by side. Component ids remain a shared, unowned namespace, which ` +
-        `is where the collision in compose.concurrent-write comes from.`,
+        `is where the collision in compose.identifier-collision comes from.`,
       { surfaceId, writers: [...others, agent] },
     );
   }

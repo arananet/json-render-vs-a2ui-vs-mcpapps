@@ -90,22 +90,22 @@ test.describe("@screenshot S1 — surface handoff", () => {
   });
 });
 
-test.describe("@screenshot S2 — concurrent composition", () => {
+test.describe("@screenshot S2 — fixed-order identifier collision", () => {
   test("json-render", async ({ page }) => {
-    await open(page, "/json-render.html?scenario=s2-concurrent-composition");
+    await open(page, "/json-render.html?scenario=s2-fixed-order-collision");
     // The image is only meaningful if the collision really happened.
     await expect(page.locator('[data-block="summary"]')).toHaveCount(1);
     await capture(page, "s2-json-render");
   });
 
   test("a2ui", async ({ page }) => {
-    await open(page, "/a2ui.html?scenario=s2-concurrent-composition");
+    await open(page, "/a2ui.html?scenario=s2-fixed-order-collision");
     await expect(page.locator("a2ui-surface").getByText("Spend is within budget")).toBeVisible();
     await capture(page, "s2-a2ui");
   });
 
   test("mcp-apps", async ({ page }) => {
-    await open(page, "/mcp-apps.html?scenario=s2-concurrent-composition");
+    await open(page, "/mcp-apps.html?scenario=s2-fixed-order-collision");
     await expect(
       page.frameLocator('[data-agent-frame="risk"]').locator('[data-value="headline"]'),
     ).toHaveText("Exposure exceeds appetite");

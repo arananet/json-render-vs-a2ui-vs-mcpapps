@@ -1,0 +1,13 @@
+
+> json-render-vs-a2ui-vs-mcpapps@0.1.0 test
+> vitest run tests/protocol/scenarios.test.ts -t S2
+
+
+ RUN  v5.0.1 /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed | 10 skipped (13)
+   Start at  16:57:39
+   Duration  5.02s (import 96%, transform 3%, tests 1%)
+

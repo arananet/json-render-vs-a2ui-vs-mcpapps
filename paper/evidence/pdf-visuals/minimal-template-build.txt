@@ -1,0 +1,6 @@
+note: using only cached resource files
+note: Running TeX ...
+error: manuscript.tex:4: ! LaTeX Error: File `textcomp.sty' not found.
+note: Writing `paper/manuscript.log` (3.3017578125 KiB)
+error: halted on potentially-recoverable error as specified
+Tectonic failed (1)

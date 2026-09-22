@@ -1,0 +1,32 @@
+\documentclass[$fontsize$]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb}
+\usepackage[margin=25mm]{geometry}
+\usepackage{graphicx,float}
+\usepackage{longtable,booktabs,array}
+\usepackage{xcolor}
+\usepackage[unicode]{hyperref}
+\usepackage{xurl}
+\hypersetup{pdfauthor={$for(author)$$author$$sep$, $endfor$},pdftitle={$title$},colorlinks=true,allcolors=black}
+\urlstyle{same}
+\setcounter{secnumdepth}{3}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{3em}
+\setlength{\LTpre}{6pt}
+\setlength{\LTpost}{6pt}
+\newcounter{none}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcommand{\pandocbounded}[1]{#1}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+\title{$title$}
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\date{$subtitle$\\[4pt]$date$}
+\begin{document}
+\special{pdf:minorversion 7}
+\maketitle
+$body$
+\end{document}

@@ -15,7 +15,7 @@ import type { Orchestrator } from "../orchestrator/orchestrator.ts";
 import type { ProtocolAdapter, ProtocolId, RenderedSnapshot, TraceEntry } from "../orchestrator/types.ts";
 
 import { SCENARIO_ID as S1, SCENARIO_TITLE as S1_TITLE, runSurfaceHandoff } from "./s1-surface-handoff.ts";
-import { SCENARIO_ID as S2, SCENARIO_TITLE as S2_TITLE, runConcurrentComposition } from "./s2-concurrent-composition.ts";
+import { SCENARIO_ID as S2, SCENARIO_TITLE as S2_TITLE, runFixedOrderCollision } from "./s2-fixed-order-collision.ts";
 import { SCENARIO_ID as S3, SCENARIO_TITLE as S3_TITLE, runActionRoundTrip } from "./s3-action-roundtrip.ts";
 
 export const PROTOCOLS: ProtocolId[] = ["json-render", "a2ui", "mcp-apps"];
@@ -71,7 +71,7 @@ export async function runScenario(
       orchestrator = await runSurfaceHandoff(adapter);
       break;
     case S2:
-      orchestrator = await runConcurrentComposition(adapter);
+      orchestrator = await runFixedOrderCollision(adapter);
       break;
     case S3:
       orchestrator = (await runActionRoundTrip(adapter)).orchestrator;

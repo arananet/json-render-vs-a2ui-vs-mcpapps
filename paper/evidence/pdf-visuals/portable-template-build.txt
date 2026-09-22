@@ -1,0 +1,21 @@
+note: using only cached resource files
+note: Running TeX ...
+warning: Trying to include PDF file with version (1.7), which is newer than current output PDF setting (1.5).
+warning: manuscript.tex:232: Underfull \hbox (badness 1178) in paragraph at lines 224--232
+warning: manuscript.tex:253: Underfull \hbox (badness 2181) in paragraph at lines 244--253
+warning: Trying to include PDF file with version (1.7), which is newer than current output PDF setting (1.5).
+warning: manuscript.tex:332: Overfull \hbox (29.7401pt too wide) in paragraph at lines 324--332
+note: Rerunning TeX because "manuscript.out" changed ...
+warning: Trying to include PDF file with version (1.7), which is newer than current output PDF setting (1.5).
+warning: manuscript.tex:232: Underfull \hbox (badness 1178) in paragraph at lines 224--232
+warning: manuscript.tex:253: Underfull \hbox (badness 2181) in paragraph at lines 244--253
+warning: Trying to include PDF file with version (1.7), which is newer than current output PDF setting (1.5).
+warning: manuscript.tex:332: Overfull \hbox (29.7401pt too wide) in paragraph at lines 324--332
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+warning: Trying to include PDF file with version (1.7), which is newer than current output PDF setting (1.5).
+warning: Trying to include PDF file with version (1.7), which is newer than current output PDF setting (1.5).
+note: Writing `manuscript.log` (17.71875 KiB)
+note: Writing `manuscript.pdf` (118.466796875 KiB)
+note: Skipped writing 2 intermediate files (use --keep-intermediates to keep them)
+Generated paper/manuscript.pdf

@@ -1,0 +1,17 @@
+{"command": ["bash", "scripts/openspec", "status", "reproducible-protocol-comparison-paper"], "utc": "2026-09-22T02:10:20.528468+00:00", "cwd": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps", "environment": {"PAPER_TEX_BUNDLE": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/bundle", "TECTONIC_CACHE_DIR": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/cache"}}
+{
+  "slug": "reproducible-protocol-comparison-paper",
+  "result": "passed",
+  "next_step": "human_review",
+  "attempts": 0,
+  "reserved_cost": 0,
+  "elapsed_seconds": 0,
+  "fingerprint": "0dc892dac0e98c80feb7c77f9b1569117132cf2cc0c6c0e2269555eb43dc99f5",
+  "blocker": null,
+  "last_evidence": ".openspec/runs/reproducible-protocol-comparison-paper/verify-128139831676000.json",
+  "phase": "idle",
+  "updated_at": "2026-09-22T02:10:20Z",
+  "stale": false
+}
+
+EXIT_CODE=0

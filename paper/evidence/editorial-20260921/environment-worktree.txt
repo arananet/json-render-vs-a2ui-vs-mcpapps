@@ -1,0 +1,30 @@
+2026-09-21T22:01:32Z
+$ git rev-parse HEAD
+b5d06eafcd4cf9cb0ed49131add55cbdecbd4b7c
+$ git status --short --untracked-files=all
+$ git check-ignore -v paper/manuscript.md scripts/paper.mjs scripts/paper-figures.mjs tests/paper/editorial.test.mjs
+.git/info/exclude:7:/paper/	paper/manuscript.md
+.git/info/exclude:8:/scripts/paper.mjs	scripts/paper.mjs
+.git/info/exclude:9:/scripts/paper-figures.mjs	scripts/paper-figures.mjs
+.git/info/exclude:10:/tests/paper/	tests/paper/editorial.test.mjs
+$ git diff --exit-code
+$ git diff --cached --exit-code
+$ node --version; npm --version; pandoc --version; tectonic --version; dot -V; pdfinfo -v
+v22.23.2
+10.9.8
+pandoc 3.11
+Tectonic 0.16.9
+dot - graphviz version 13.1.0 (20250701.0955)
+pdfinfo version 26.09.0
+$ uname -smr
+Darwin 25.6.0 arm64
+$ shasum -a 256 docs/COMPARISON.md package-lock.json .git/info/exclude
+fff9627c485a96e57226a569ab062e024fd422ae4431d86f83a4f7e572fc6a7f  docs/COMPARISON.md
+ff16ef0f2c390aecce197ac381a347830c1529d915ab63c1216828c0c47eef14  package-lock.json
+6637cc2944f004f0e70c8537e954e19f515ed325cea43a37e25f470a6853433f  .git/info/exclude
+$ rg paper/ README.md CHANGELOG.md
+CHANGELOG.md:- Local English research manuscript by Eduardo Arana (Arananet), [reproduction guide](paper/REPRODUCTION.md), [execution record](paper/EXECUTION.md), generated-document tooling, and focused manuscript checks; claims are bounded to existing configurations and human review remains pending (spec: reproducible-protocol-comparison-paper). See [paper/manuscript.md](paper/manuscript.md).
+README.md:**Research manuscript:** [English paper by Eduardo Arana (Arananet)](paper/manuscript.md),
+README.md:[illustrated PDF](paper/manuscript.pdf), [generated LaTeX](paper/manuscript.tex),
+README.md:[figure sources and provenance](paper/figures/README.md), [reproduction guide](paper/REPRODUCTION.md),
+README.md:and [local execution evidence](paper/EXECUTION.md). Human review is pending.

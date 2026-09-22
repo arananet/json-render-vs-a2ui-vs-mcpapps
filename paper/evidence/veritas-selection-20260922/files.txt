@@ -1,0 +1,55 @@
+Artifact: /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper
+Profile:  scientific-paper
+Paths:    manuscript.md, REPRODUCTION.md, evidence/s2.txt, 
+evidence/environment.json, evidence/editorial-20260921/environment-worktree.txt,
+evidence/editorial-20260921/npm-test.txt, 
+evidence/editorial-20260921/final-paper-checks.txt, 
+evidence/editorial-20260921/typecheck.txt, 
+evidence/editorial-20260921/openspec-check.txt, 
+evidence/editorial-20260921/browser.txt, 
+evidence/editorial-20260921/report-check.txt, 
+evidence/editorial-20260921/reference-access.md, 
+evidence/editorial-20260921/pdf-build.txt, 
+evidence/editorial-20260921/pdf-build-manifest.json, 
+evidence/editorial-20260921/bundle-check.txt, 
+evidence/editorial-20260921/pdfinfo.txt, 
+evidence/editorial-20260921/pdffonts.txt, 
+../.openspec/runs/reproducible-protocol-comparison-paper/verify-113265801779000.
+json, ../src/scenarios/s2-concurrent-composition.ts, 
+../src/adapters/json-render/adapter.ts, ../src/adapters/a2ui/adapter.ts, 
+../src/adapters/mcp-apps/adapter.ts, ../src/adapters/mcp-apps/host.ts, 
+../src/report/generate.ts, ../tests/protocol/scenarios.test.ts, 
+../tests/protocol/mcp-apps-bridge.test.ts, ../tests/browser/render.spec.ts
+
+File                                             Characters                     
+manuscript.md                                        27,760  truncated at 24,000
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…      16,313                     
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…      13,918                     
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…      13,208                     
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…      12,050                     
+REPRODUCTION.md                                      12,017                     
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…       7,932                     
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…       7,430                     
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…       5,791                     
+evidence/editorial-20260921/final-paper-checks…       5,135                     
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…       4,336                     
+evidence/editorial-20260921/browser.txt               3,344                     
+evidence/environment.json                             3,019                     
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…       2,110                     
+evidence/editorial-20260921/environment-worktr…       1,928                     
+evidence/editorial-20260921/pdffonts.txt              1,692                     
+evidence/editorial-20260921/bundle-check.txt          1,667                     
+evidence/editorial-20260921/pdf-build-manifest…       1,595                     
+evidence/editorial-20260921/pdf-build.txt             1,549                     
+evidence/editorial-20260921/reference-access.md       1,416                     
+evidence/editorial-20260921/report-check.txt          1,092                     
+evidence/editorial-20260921/pdfinfo.txt                 575                     
+/Users/ESAranaEd/Scripts/json-render-vs-a2ui-v…         571                     
+evidence/editorial-20260921/npm-test.txt                329                     
+evidence/s2.txt                                         315                     
+evidence/editorial-20260921/openspec-check.txt          177                     
+evidence/editorial-20260921/typecheck.txt               140                     
+
+27 file(s), 147,409 characters
+Roughly 36,852 input tokens per judge, and this profile runs 7 of them.
+Skipped: binaries, PDFs and any format Veritas cannot read as text.

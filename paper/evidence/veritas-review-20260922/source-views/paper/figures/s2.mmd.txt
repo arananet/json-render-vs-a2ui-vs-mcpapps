@@ -1,0 +1,16 @@
+flowchart TB
+  subgraph sequence["S2: fixed order; every emission is awaited"]
+    first["1. risk writes risk-detail"]
+    second["2. finance writes finance-detail"]
+    third["3. risk writes summary\nExposure exceeds appetite"]
+    fourth["4. finance writes summary\nSpend is within budget"]
+    first --> second
+    second --> third
+    third --> fourth
+  end
+  shared["Shared namespace\njson-render: finance headline\nA2UI: finance writer map only\nDOM check pending"]
+  risk["MCP: briefing::risk\nsummary: risk\nExposure exceeds appetite"]
+  finance["MCP: briefing::finance\nsummary: finance\nSpend is within budget"]
+  fourth --> shared
+  fourth --> risk
+  fourth --> finance

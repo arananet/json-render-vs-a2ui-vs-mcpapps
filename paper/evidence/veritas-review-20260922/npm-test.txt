@@ -1,0 +1,15 @@
+2026-09-22T01:04:46Z
+
+> json-render-vs-a2ui-vs-mcpapps@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.1 /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps
+
+
+ Test Files  3 passed (3)
+      Tests  24 passed (24)
+   Start at  21:04:49
+   Duration  4.33s (import 94%, transform 3%, tests 2%, worker 1%)
+
+EXIT_CODE=0

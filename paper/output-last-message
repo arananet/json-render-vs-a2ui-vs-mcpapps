@@ -1,0 +1,19 @@
+Correcciones privadas aplicadas; los cinco hallazgos siguen pendientes de reevaluación independiente.
+
+| Hallazgo | Hecho verificado y corrección | Brecha restante |
+| --- | --- | --- |
+| ADVERSARIAL-001 | Paquete privado con JSON/stdout/comandos del navegador: 18 pases, 9 render + 9 capturas, salida 0; hashes verificados. | Una ejecución local asistida, sin reproducción independiente. |
+| ADVERSARIAL-002 | Manuscrito y guía distinguen harness público, inputs privados ignorados y build local. `paper/private-review.tar.gz`: 94 archivos y `PRIVATE-MANIFEST.json` con rutas/SHA256/procedencia/dependencias. Extracción y frescura LaTeX verificadas. | No publicación ni build público/independiente; dependencias externas. |
+| ADVERSARIAL-003 | Node: risk-detail → finance-detail → risk/summary → finance/summary. MCP navegador: solo risk/summary → finance/summary. Abstract, H1/C2, resultados, figura, caption y conclusión ya separan los fixtures. | El navegador MCP no valida S2 completo de Node. C3 solo observa finance visible/risk ausente, sin conteo exacto. |
+| ADVERSARIAL-004 | Prosa científica corregida a colisión secuencial de orden fijo; nombres históricos conservados. | No experimento de concurrencia, scheduling, interleaving o aleatorización; tampoco aislamiento causal de protocolo/adaptador/topología. |
+| ADVERSARIAL-005 | Se distinguen clasificaciones emitidas por adapters, aserciones de contenido y respuestas/rechazos reales del bridge. | C6/routing y C7/consentimiento parciales; C9 propuesto, no realizado. |
+
+Pasaron `npm test` (24), `npm run typecheck`, 27 comprobaciones finales del paper dentro del alcance, extracción/hashes/imports/capturas del paquete, figuras, LaTeX/check/PDF/bundle y OpenSpec check/verify/status (`passed`, `stale: false`, `human_review`). PDF actualizado: `paper/manuscript.pdf`, 10 páginas; figura inspeccionada. Persisten avisos underfull y de versión PDF.
+
+La suite completa del paper falló: 27 pases y un fallo al cargar `veritas-inputs.test.mjs` por ausencia de `paper/veritas.yaml`. No se restauró configuración, alteró el test ni actualizaron snapshots históricos desfasados. No se ejecutó Veritas ni se repitió el navegador.
+
+El paquete excluye caches/dependencias y materiales del auditor. Requiere externamente Node/npm con lockfile, Chromium compatible y permisos de listener, Pandoc, Graphviz, Tectonic/recursos TeX y Poppler. No hubo instalación limpia. Rutas absolutas históricas son procedencia, no rutas portables; hashes actuales no certifican retroactivamente fixtures históricos.
+
+Registro: `paper/EXECUTION.md` y `paper/evidence/private-corrections-pQO8WZyu/`. Integridad final: `final-private-integrity.txt`; SHA256 del paquete: `9d145e82a9a3bd1bb645bcd02c9a485bf04e3be7df961adea939c2d2500630db`.
+
+Sin cambios al auditor, harness/adapters/ejecución de escenarios, logs históricos o exclusiones de privacidad; sin staging, commits, push, publicación ni jueces pagados. Spec sigue en review; revisión humana y reevaluación externa pendientes.

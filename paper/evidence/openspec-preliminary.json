@@ -1,0 +1,15 @@
+{
+  "slug": "reproducible-protocol-comparison-paper",
+  "started_at": "2026-09-21T21:05:27Z",
+  "command": "npm test",
+  "result": "passed",
+  "acceptance_criteria_proven": false,
+  "fingerprint": "2644e83ba1f2e4cc5bcd6f049ac18b555640480f668590926fbda769a6b6635f",
+  "commit": "b895e57671e118fcd3a7f86892fc1b2526b78c9c",
+  "exit_code": 0,
+  "signal": null,
+  "termination": null,
+  "duration_seconds": 2.181723999994574,
+  "log": ".openspec/runs/reproducible-protocol-comparison-paper/20260921T210528-99984-109847775961000.log",
+  "finished_at": "2026-09-21T21:05:30Z"
+}

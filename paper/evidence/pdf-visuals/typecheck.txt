@@ -1,0 +1,5 @@
+Mon Sep 21 21:22:15 UTC 2026
+
+> json-render-vs-a2ui-vs-mcpapps@0.1.0 typecheck
+> tsc --noEmit
+

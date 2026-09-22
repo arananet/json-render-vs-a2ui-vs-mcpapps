@@ -1,0 +1,13 @@
+
+> json-render-vs-a2ui-vs-mcpapps@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.1 /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps
+
+
+ Test Files  3 passed (3)
+      Tests  24 passed (24)
+   Start at  21:43:56
+   Duration  1.77s (import 84%, transform 9%, tests 6%)
+

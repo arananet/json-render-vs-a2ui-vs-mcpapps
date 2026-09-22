@@ -25,7 +25,7 @@ description: |
 
   The harness exists to answer one question with evidence instead of opinion:
   when an orchestrator owns several agents and tools that each want to draw UI,
-  which protocol can express surface ownership, concurrent composition and
+  which protocol can express surface ownership, fixed-order identifier collision and
   action routing — and which one silently loses information.
 
   Every scenario runs against all three adapters through one shared orchestrator
@@ -37,7 +37,7 @@ description: |
 acceptance_criteria:
   - "Given the three real SDKs are installed, when the harness runs, then no protocol adapter uses a hand-written stand-in for the protocol's message types, renderer or transport."
   - "Given scenario S1 (surface handoff), when the orchestrator delegates mid-render from agent A to agent B, then each adapter records whether B could continue A's existing surface, and the MCP Apps adapter records a NOT_EXPRESSIBLE outcome because a second tool call yields a separate app instance."
-  - "Given scenario S2 (concurrent composition), when two agents emit into one view with interleaved messages, then each adapter records whether a write from one agent was lost, and the json-render adapter demonstrates a real last-write-wins collision on a shared element key."
+  - "Given scenario S2 (fixed-order identifier collision), when two agents emit into one view with sequential awaited writes, then each adapter records whether a write from one agent was lost, and the json-render adapter demonstrates a real last-write-wins collision on a shared element key."
   - "Given scenario S3 (action round-trip), when a user activates a control, then each adapter records whether the resulting event carried enough identity for the orchestrator to route it back to the originating agent without an out-of-band routing table."
   - "Given scenario S3 on MCP Apps, when the app calls a tool that is not marked with 'app' visibility, then the host rejects the call and the adapter records an ENFORCED authorization outcome."
   - "Given all scenarios have run, when the report is generated, then docs/COMPARISON.md contains a matrix of every scenario x protocol outcome and is regenerable from the recorded traces."
@@ -49,7 +49,7 @@ test_plan:
   - "Unit test: each adapter's agent emits messages that validate against the protocol's own published schema (A2uiMessageSchema for A2UI; the catalog's spec validation for json-render; the ext-apps server registration for MCP Apps)."
   - "Integration test (protocol level, vitest): all three scenarios run against all three adapters via the shared orchestrator; asserts the specific expected outcome code per cell of the matrix."
   - "Integration test (MCP Apps, vitest): a real App and a real McpServer are connected over an in-memory transport pair; asserts the ui/initialize handshake completes and that a non-'app'-visible tools/call is rejected by the host."
-  - "Integration test (browser, Playwright): one page per protocol; asserts rendered DOM after handoff, after concurrent composition, and after a user click that triggers the action round-trip."
+  - "Integration test (browser, Playwright): one page per protocol; asserts rendered DOM after handoff, after fixed-order identifier collision, and after a user click that triggers the action round-trip."
   - "Report test: regenerating docs/COMPARISON.md from the recorded traces produces no diff, so the committed matrix cannot drift from the code."
   - "Screenshot capture (Playwright, tagged @screenshot and excluded from the default browser run): drives each scenario including its clicks, asserts the state that makes the image meaningful before shooting, and writes docs/screenshots/."
   - "Docs test: every screenshot path referenced by README.md and docs/COMPARISON.md resolves to a file on disk."

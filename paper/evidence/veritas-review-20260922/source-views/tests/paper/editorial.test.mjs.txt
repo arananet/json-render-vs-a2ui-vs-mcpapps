@@ -1,0 +1,54 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import test from "node:test";
+import { root } from "../../scripts/paper.mjs";
+
+const manuscript = readFileSync(resolve(root, "paper/manuscript.md"), "utf8");
+const abstract = manuscript.split("# Abstract\n")[1].split("\n# Introduction")[0].replace(/\s+/g, " ");
+
+test("abstract leads with configuration-specific findings and their interpretation", () => {
+  assert.match(abstract, /^ Reused identifiers/);
+  assert.match(abstract, /three concrete tested configurations/);
+  assert.match(abstract, /adapter mapping, namespace\/topology, and enforcement site/);
+  assert.match(abstract, /enforcing handler is installed; the permissive variant forwards/);
+  assert.match(abstract, /reproducible empirical technical note/);
+});
+
+test("abstract and claim table retain partial C3/C6 and proposed C9", () => {
+  const claims = [...manuscript.matchAll(/^\| (C\d+):[^|]+\| (Supported|Partial|Proposed) \|/gm)];
+  assert.equal(claims.length, 9);
+  const statuses = Object.fromEntries(claims.map(match => [match[1], match[2]]));
+  assert.equal(statuses.C3, "Partial");
+  assert.equal(statuses.C6, "Partial");
+  assert.equal(statuses.C9, "Proposed");
+  assert.match(abstract, /rendered headline remains only partially evidenced/);
+  assert.match(abstract, /every intended control owner remains partial/);
+  assert.match(abstract, /intervention remains proposed, not performed/);
+});
+
+test("results, S2 caption and conclusion distinguish writer maps from rendered evidence", () => {
+  assert.match(manuscript, /H1 remains partially supported overall/);
+  const caption = manuscript.match(/!\[(S2[^\]]+)\]/)[1];
+  assert.match(caption, /only the last-writer map/);
+  assert.match(caption, /C3, partial/);
+  const conclusion = manuscript.split("# Conclusion\n")[1].split("\n# AI-assistance disclosure")[0].replace(/\s+/g, " ");
+  assert.match(conclusion, /rendered headline remains partial evidence/);
+  assert.match(conclusion, /every control remains only partially checked/);
+  assert.match(conclusion, /Future experiments are explicitly pending/);
+});
+
+test("manuscript removes agent-to-user narration without claiming human review", () => {
+  assert.doesNotMatch(manuscript, /at the user.s request|user.s description|credited there to Eduardo|invocation request|catalog description/i);
+  const disclosure = manuscript.split("# AI-assistance disclosure\n")[1].split("\n# References")[0].replace(/\s+/g, " ");
+  assert.match(disclosure, /OpenAI Codex coding assistant/);
+  assert.match(disclosure, /Human scientific and editorial review remains pending/);
+  assert.match(disclosure, /no LLM participates/);
+});
+
+test("unverified reference and ignored paper provenance are explicit", () => {
+  const normalized = manuscript.replace(/\s+/g, " ");
+  assert.match(normalized, /unverified methodological pointer, not as inspected scientific evidence/);
+  assert.match(normalized, /Git status and OpenSpec's tracked\/nonignored input fingerprint do not identify the complete paper workspace/);
+  assert.match(normalized, /Separate paper checks and SHA-256 manifests/);
+});

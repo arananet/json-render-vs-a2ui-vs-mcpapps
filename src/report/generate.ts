@@ -51,8 +51,8 @@ const CAPABILITIES: Array<{ id: string; label: string; question: string }> = [
     question: "Can several agents present as a single answer?",
   },
   {
-    id: "compose.concurrent-write",
-    label: "Survive a concurrent write",
+    id: "compose.identifier-collision",
+    label: "Retain both summaries after a fixed-order collision",
     question: "What happens when two agents write the same id?",
   },
   {

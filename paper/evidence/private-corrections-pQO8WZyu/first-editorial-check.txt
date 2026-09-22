@@ -1,0 +1,55 @@
+TAP version 13
+# Subtest: abstract leads with configuration-specific findings and their interpretation
+ok 1 - abstract leads with configuration-specific findings and their interpretation
+  ---
+  duration_ms: 0.555375
+  type: 'test'
+  ...
+# Subtest: abstract and claim table support concrete C3 while retaining partial C6/C7 and proposed C9
+ok 2 - abstract and claim table support concrete C3 while retaining partial C6/C7 and proposed C9
+  ---
+  duration_ms: 2.223333
+  type: 'test'
+  ...
+# Subtest: results, S2 caption and conclusion distinguish writer maps from rendered evidence
+ok 3 - results, S2 caption and conclusion distinguish writer maps from rendered evidence
+  ---
+  duration_ms: 0.218666
+  type: 'test'
+  ...
+# Subtest: browser MCP executes only summaries while Node S2 has four sequential writes
+ok 4 - browser MCP executes only summaries while Node S2 has four sequential writes
+  ---
+  duration_ms: 3.270208
+  type: 'test'
+  ...
+# Subtest: browser evidence is a successful execution of both unchanged specs, bounded by actual assertions
+ok 5 - browser evidence is a successful execution of both unchanged specs, bounded by actual assertions
+  ---
+  duration_ms: 15.842209
+  type: 'test'
+  ...
+# Subtest: manuscript removes agent-to-user narration without claiming human review
+ok 6 - manuscript removes agent-to-user narration without claiming human review
+  ---
+  duration_ms: 0.552583
+  type: 'test'
+  ...
+# Subtest: unverified reference and ignored paper provenance are explicit
+ok 7 - unverified reference and ignored paper provenance are explicit
+  ---
+  duration_ms: 0.441917
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 142.696208
+
+COMMAND: node --test tests/paper/editorial.test.mjs
+EXIT_CODE=0

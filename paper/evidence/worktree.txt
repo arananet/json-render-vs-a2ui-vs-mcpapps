@@ -1,0 +1,26 @@
+ M .openspec/specs/reproducible-protocol-comparison-paper.spec.yaml
+ M CHANGELOG.md
+ M README.md
+?? paper/EXECUTION.md
+?? paper/REPRODUCTION.md
+?? paper/evidence/artifacts.sha256
+?? paper/evidence/browser.txt
+?? paper/evidence/environment.json
+?? paper/evidence/latex-freshness.txt
+?? paper/evidence/npm-test.txt
+?? paper/evidence/openspec-check.txt
+?? paper/evidence/openspec-preliminary.json
+?? paper/evidence/openspec-status.txt
+?? paper/evidence/openspec-tests.txt
+?? paper/evidence/openspec-verify.txt
+?? paper/evidence/paper-checks.txt
+?? paper/evidence/pdf-build.txt
+?? paper/evidence/report-check.txt
+?? paper/evidence/s2.txt
+?? paper/evidence/typecheck.txt
+?? paper/evidence/worktree.txt
+?? paper/manuscript.md
+?? paper/manuscript.tex
+?? scripts/paper.mjs
+?? tests/paper/build.test.mjs
+?? tests/paper/manuscript.test.mjs

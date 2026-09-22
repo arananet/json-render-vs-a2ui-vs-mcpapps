@@ -1,0 +1,5 @@
+2026-09-22T01:43:45.175029+00:00
+COMMAND: node scripts/paper.mjs bundle
+Generated paper/arxiv-source.tar.gz (local source bundle only)
+
+EXIT_CODE=0

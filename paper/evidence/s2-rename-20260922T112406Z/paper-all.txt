@@ -1,0 +1,244 @@
+TAP version 13
+# Subtest: historical test hashes no longer match; old logs cannot verify renamed sources
+ok 1 - historical test hashes no longer match; old logs cannot verify renamed sources
+  ---
+  duration_ms: 11.851958
+  type: 'test'
+  ...
+# Subtest: capture selection covers sources, browser assertions, dependencies, config and wrapper
+ok 2 - capture selection covers sources, browser assertions, dependencies, config and wrapper
+  ---
+  duration_ms: 22.015166
+  type: 'test'
+  ...
+# Subtest: missing fresh evidence cannot create or overwrite a private archive
+ok 3 - missing fresh evidence cannot create or overwrite a private archive
+  ---
+  duration_ms: 124.208708
+  type: 'test'
+  ...
+# Subtest: source bundle contains only root TeX and preconverted used figures
+ok 4 - source bundle contains only root TeX and preconverted used figures
+  ---
+  duration_ms: 110.084417
+  type: 'test'
+  ...
+# Subtest: table widths use e-TeX dimensions without a calc package dependency
+ok 5 - table widths use e-TeX dimensions without a calc package dependency
+  ---
+  duration_ms: 0.163542
+  type: 'test'
+  ...
+# Subtest: local bundle selection preserves cached-only and untrusted compilation
+ok 6 - local bundle selection preserves cached-only and untrusted compilation
+  ---
+  duration_ms: 0.328583
+  type: 'test'
+  ...
+# Subtest: generated LaTeX corresponds to the editable manuscript
+ok 7 - generated LaTeX corresponds to the editable manuscript
+  ---
+  duration_ms: 568.605458
+  type: 'test'
+  ...
+# Subtest: freshness rejects any stale derivative
+ok 8 - freshness rejects any stale derivative
+  ---
+  duration_ms: 0.298667
+  type: 'test'
+  ...
+# Subtest: the build tool fails closed on an unknown operation or missing input
+ok 9 - the build tool fails closed on an unknown operation or missing input
+  ---
+  duration_ms: 43.979125
+  type: 'test'
+  ...
+# Subtest: abstract leads with configuration-specific findings and their interpretation
+ok 10 - abstract leads with configuration-specific findings and their interpretation
+  ---
+  duration_ms: 0.507541
+  type: 'test'
+  ...
+# Subtest: abstract and claim table support concrete C3 while retaining partial C6/C7 and proposed C9
+ok 11 - abstract and claim table support concrete C3 while retaining partial C6/C7 and proposed C9
+  ---
+  duration_ms: 0.264667
+  type: 'test'
+  ...
+# Subtest: results, S2 caption and conclusion distinguish writer maps from rendered evidence
+ok 12 - results, S2 caption and conclusion distinguish writer maps from rendered evidence
+  ---
+  duration_ms: 0.140917
+  type: 'test'
+  ...
+# Subtest: browser MCP executes only summaries while Node S2 has four sequential writes
+ok 13 - browser MCP executes only summaries while Node S2 has four sequential writes
+  ---
+  duration_ms: 7.623958
+  type: 'test'
+  ...
+# Subtest: pre-rename browser evidence records historical success, not current-source verification
+ok 14 - pre-rename browser evidence records historical success, not current-source verification
+  ---
+  duration_ms: 1.843458
+  type: 'test'
+  ...
+# Subtest: manuscript removes agent-to-user narration without claiming human review
+ok 15 - manuscript removes agent-to-user narration without claiming human review
+  ---
+  duration_ms: 0.281917
+  type: 'test'
+  ...
+# Subtest: unverified reference and ignored paper provenance are explicit
+ok 16 - unverified reference and ignored paper provenance are explicit
+  ---
+  duration_ms: 0.422
+  type: 'test'
+  ...
+# Subtest: Mermaid conversion preserves labels, groups, decisions, and dashed edges
+ok 17 - Mermaid conversion preserves labels, groups, decisions, and dashed edges
+  ---
+  duration_ms: 1.793708
+  type: 'test'
+  ...
+# Subtest: unsupported or invalid Mermaid fails rather than silently changing a figure
+ok 18 - unsupported or invalid Mermaid fails rather than silently changing a figure
+  ---
+  duration_ms: 0.365666
+  type: 'test'
+  ...
+# Subtest: editable Mermaid and generated DOT correspond
+ok 19 - editable Mermaid and generated DOT correspond
+  ---
+  duration_ms: 3.574166
+  type: 'test'
+  ...
+# Subtest: S2 figure order and retained values match the scenario and existing assertions
+ok 20 - S2 figure order and retained values match the scenario and existing assertions
+  ---
+  duration_ms: 10.770208
+  type: 'test'
+  ...
+# Subtest: topology states the local identity bound and correct enforcement installation order
+ok 21 - topology states the local identity bound and correct enforcement installation order
+  ---
+  duration_ms: 1.18475
+  type: 'test'
+  ...
+# Subtest: manuscript identifies the author, affiliation, and review state
+ok 22 - manuscript identifies the author, affiliation, and review state
+  ---
+  duration_ms: 1.189666
+  type: 'test'
+  ...
+# Subtest: H1 is bounded to the actual fixed-order S2 script and existing assertions
+ok 23 - H1 is bounded to the actual fixed-order S2 script and existing assertions
+  ---
+  duration_ms: 1.834458
+  type: 'test'
+  ...
+# Subtest: relative manuscript evidence links resolve to retained local files
+ok 24 - relative manuscript evidence links resolve to retained local files
+  ---
+  duration_ms: 0.798375
+  type: 'test'
+  ...
+# Subtest: manuscript contains the scientific and reproducibility sections
+ok 25 - manuscript contains the scientific and reproducibility sections
+  ---
+  duration_ms: 0.232792
+  type: 'test'
+  ...
+# Subtest: paper version claims match locked and installed SDKs
+ok 26 - paper version claims match locked and installed SDKs
+  ---
+  duration_ms: 21.04625
+  type: 'test'
+  ...
+# Subtest: PDF build manifest matches the current manuscript, tooling, figures and PDF
+ok 27 - PDF build manifest matches the current manuscript, tooling, figures and PDF
+  ---
+  duration_ms: 3.556666
+  type: 'test'
+  ...
+# Subtest: PDF contains author, affiliation, numbered figures and resolved references
+ok 28 - PDF contains author, affiliation, numbered figures and resolved references
+  ---
+  duration_ms: 536.74375
+  type: 'test'
+  ...
+# Subtest: all fonts reported by Poppler are embedded
+ok 29 - all fonts reported by Poppler are embedded
+  ---
+  duration_ms: 56.909708
+  type: 'test'
+  ...
+# Subtest: private archive extracts with exact hashes, complete fixture inputs and real selected evidence
+not ok 30 - private archive extracts with exact hashes, complete fixture inputs and real selected evidence
+  ---
+  duration_ms: 3.903792
+  type: 'test'
+  location: '/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/tests/paper/private-bundle.test.mjs:10:1'
+  failureType: 'testCodeFailure'
+  error: "Browser provenance gap: fresh source/build snapshots required; pre-rename evidence cannot substantiate current sources (ENOENT: no such file or directory, open '/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper/evidence/browser-terminal-20260922T013449Z-zH4HTK/source-before.json')"
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    validateBrowserEvidence (file:///Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/scripts/paper-browser-evidence.mjs:43:11)
+    createPrivateBundle (file:///Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/scripts/paper.mjs:133:29)
+    TestContext.<anonymous> (file:///Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/tests/paper/private-bundle.test.mjs:15:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# -e:1:in `read': No such file or directory @ rb_sysopen - /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper/veritas.yaml (Errno::ENOENT)
+# \\tfrom -e:1:in `<main>'
+# node:internal/errors:983
+#   const err = new Error(message);
+#               ^
+# Error: Command failed: ruby -ryaml -rjson -e puts JSON.generate(YAML.safe_load(File.read(ARGV.fetch(0)))) /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper/veritas.yaml
+# -e:1:in `read': No such file or directory @ rb_sysopen - /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper/veritas.yaml (Errno::ENOENT)
+# \\tfrom -e:1:in `<main>'
+#     at genericNodeError (node:internal/errors:983:15)
+#     at wrappedFn (node:internal/errors:537:14)
+#     at checkExecSyncError (node:child_process:916:11)
+#     at execFileSync (node:child_process:952:15)
+#     at file:///Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/tests/paper/veritas-inputs.test.mjs:10:27
+#     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+#     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+#   status: 1,
+#   signal: null,
+#   output: [
+#     null,
+#     '',
+#     "-e:1:in `read': No such file or directory @ rb_sysopen - /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper/veritas.yaml (Errno::ENOENT)\\n" +
+#       "\\tfrom -e:1:in `<main>'\\n"
+#   ],
+#   pid: 30601,
+#   stdout: '',
+#   stderr: "-e:1:in `read': No such file or directory @ rb_sysopen - /Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper/veritas.yaml (Errno::ENOENT)\\n" +
+#     "\\tfrom -e:1:in `<main>'\\n"
+# }
+# Node.js v22.23.2
+# Subtest: tests/paper/veritas-inputs.test.mjs
+not ok 8 - tests/paper/veritas-inputs.test.mjs
+  ---
+  duration_ms: 1133.019625
+  type: 'test'
+  location: '/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/tests/paper/veritas-inputs.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 29
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1173.984459

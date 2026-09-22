@@ -13,7 +13,7 @@ import { injectBasicCatalogStyles } from "@a2ui/web_core/v0_9/basic_catalog";
 import { A2uiAdapter } from "../src/adapters/a2ui/adapter.ts";
 import { Tracer } from "../src/orchestrator/trace.ts";
 import { runSurfaceHandoff } from "../src/scenarios/s1-surface-handoff.ts";
-import { runConcurrentComposition } from "../src/scenarios/s2-concurrent-composition.ts";
+import { runFixedOrderCollision } from "../src/scenarios/s2-fixed-order-collision.ts";
 import { runActionRoundTrip } from "../src/scenarios/s3-action-roundtrip.ts";
 import { SCENARIO_SURFACES, markReady, scenarioFromUrl } from "./scenario.ts";
 
@@ -27,7 +27,7 @@ const adapter = new A2uiAdapter(new Tracer(scenario, "a2ui"), basicCatalog);
 
 const runner = {
   "s1-surface-handoff": runSurfaceHandoff,
-  "s2-concurrent-composition": runConcurrentComposition,
+  "s2-fixed-order-collision": runFixedOrderCollision,
   "s3-action-roundtrip": async (a: A2uiAdapter) => (await runActionRoundTrip(a)).orchestrator,
 }[scenario];
 

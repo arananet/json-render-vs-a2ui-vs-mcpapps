@@ -1,0 +1,8 @@
+2026-09-21T21:58:34Z
+$ npm run typecheck
+
+> json-render-vs-a2ui-vs-mcpapps@0.1.0 typecheck
+> tsc --noEmit
+
+EXIT_CODE=0
+2026-09-21T21:58:37Z

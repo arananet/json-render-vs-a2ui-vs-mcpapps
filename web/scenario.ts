@@ -10,7 +10,7 @@ import type { ScenarioId } from "../src/scenarios/run.ts";
 
 export const SCENARIO_SURFACES: Record<ScenarioId, string> = {
   "s1-surface-handoff": "trip",
-  "s2-concurrent-composition": "briefing",
+  "s2-fixed-order-collision": "briefing",
   "s3-action-roundtrip": "checkout",
 };
 

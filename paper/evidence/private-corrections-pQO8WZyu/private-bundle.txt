@@ -1,0 +1,4 @@
+{"command": ["node", "scripts/paper.mjs", "private-bundle"], "utc": "2026-09-22T02:10:08.571597+00:00", "cwd": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps", "environment": {"PAPER_TEX_BUNDLE": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/bundle", "TECTONIC_CACHE_DIR": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/cache"}}
+Generated paper/private-review.tar.gz (private local inputs; dependencies external)
+
+EXIT_CODE=0

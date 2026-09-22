@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: source bundle contains only root TeX and preconverted used figures
+ok 1 - source bundle contains only root TeX and preconverted used figures
+  ---
+  duration_ms: 96.9725
+  type: 'test'
+  ...
+# Subtest: table widths use e-TeX dimensions without a calc package dependency
+ok 2 - table widths use e-TeX dimensions without a calc package dependency
+  ---
+  duration_ms: 0.158708
+  type: 'test'
+  ...
+# Subtest: local bundle selection preserves cached-only and untrusted compilation
+ok 3 - local bundle selection preserves cached-only and untrusted compilation
+  ---
+  duration_ms: 0.581375
+  type: 'test'
+  ...
+# Subtest: generated LaTeX corresponds to the editable manuscript
+ok 4 - generated LaTeX corresponds to the editable manuscript
+  ---
+  duration_ms: 97.893209
+  type: 'test'
+  ...
+# Subtest: freshness rejects any stale derivative
+ok 5 - freshness rejects any stale derivative
+  ---
+  duration_ms: 0.276333
+  type: 'test'
+  ...
+# Subtest: the build tool fails closed on an unknown operation or missing input
+ok 6 - the build tool fails closed on an unknown operation or missing input
+  ---
+  duration_ms: 37.044375
+  type: 'test'
+  ...
+# Subtest: Mermaid conversion preserves labels, groups, decisions, and dashed edges
+ok 7 - Mermaid conversion preserves labels, groups, decisions, and dashed edges
+  ---
+  duration_ms: 1.327875
+  type: 'test'
+  ...
+# Subtest: unsupported or invalid Mermaid fails rather than silently changing a figure
+ok 8 - unsupported or invalid Mermaid fails rather than silently changing a figure
+  ---
+  duration_ms: 0.579708
+  type: 'test'
+  ...
+# Subtest: editable Mermaid and generated DOT correspond
+ok 9 - editable Mermaid and generated DOT correspond
+  ---
+  duration_ms: 1.333833
+  type: 'test'
+  ...
+# Subtest: S2 figure order and retained values match the scenario and existing assertions
+ok 10 - S2 figure order and retained values match the scenario and existing assertions
+  ---
+  duration_ms: 1.38175
+  type: 'test'
+  ...
+# Subtest: topology states the local identity bound and correct enforcement installation order
+ok 11 - topology states the local identity bound and correct enforcement installation order
+  ---
+  duration_ms: 2.053417
+  type: 'test'
+  ...
+# Subtest: manuscript identifies the author, affiliation, and review state
+ok 12 - manuscript identifies the author, affiliation, and review state
+  ---
+  duration_ms: 1.027667
+  type: 'test'
+  ...
+# Subtest: H1 is bounded to the actual fixed-order S2 script and existing assertions
+ok 13 - H1 is bounded to the actual fixed-order S2 script and existing assertions
+  ---
+  duration_ms: 1.573
+  type: 'test'
+  ...
+# Subtest: relative manuscript evidence links resolve to retained local files
+ok 14 - relative manuscript evidence links resolve to retained local files
+  ---
+  duration_ms: 0.438042
+  type: 'test'
+  ...
+# Subtest: manuscript contains the scientific and reproducibility sections
+ok 15 - manuscript contains the scientific and reproducibility sections
+  ---
+  duration_ms: 0.197375
+  type: 'test'
+  ...
+# Subtest: paper version claims match locked and installed SDKs
+ok 16 - paper version claims match locked and installed SDKs
+  ---
+  duration_ms: 12.837041
+  type: 'test'
+  ...
+# Subtest: PDF build manifest matches the current manuscript, tooling, figures and PDF
+ok 17 - PDF build manifest matches the current manuscript, tooling, figures and PDF
+  ---
+  duration_ms: 3.006208
+  type: 'test'
+  ...
+# Subtest: PDF contains author, affiliation, numbered figures and resolved references
+ok 18 - PDF contains author, affiliation, numbered figures and resolved references
+  ---
+  duration_ms: 138.007167
+  type: 'test'
+  ...
+# Subtest: all fonts reported by Poppler are embedded
+ok 19 - all fonts reported by Poppler are embedded
+  ---
+  duration_ms: 30.023667
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 309.273042

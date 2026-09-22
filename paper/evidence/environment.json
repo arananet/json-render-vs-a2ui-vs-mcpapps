@@ -1,0 +1,138 @@
+{
+  "capturedAt": "2026-09-21T21:07:28.254Z",
+  "head": "b895e57671e118fcd3a7f86892fc1b2526b78c9c",
+  "node": "v22.23.2",
+  "executable": "/Users/ESAranaEd/.nvm/versions/node/v22.23.2/bin/node",
+  "npm": "10.9.8",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "os": "Darwin 25.6.0 Darwin Kernel Version 25.6.0: Tue Aug 18 17:49:13 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6000",
+  "dependencies": [
+    {
+      "name": "@a2ui/lit",
+      "range": "^0.11.0",
+      "locked": "0.11.0",
+      "installed": "0.11.0"
+    },
+    {
+      "name": "@a2ui/web_core",
+      "range": "^0.11.0",
+      "locked": "0.11.0",
+      "installed": "0.11.0"
+    },
+    {
+      "name": "@json-render/core",
+      "range": "^0.21.0",
+      "locked": "0.21.0",
+      "installed": "0.21.0"
+    },
+    {
+      "name": "@json-render/react",
+      "range": "^0.21.0",
+      "locked": "0.21.0",
+      "installed": "0.21.0"
+    },
+    {
+      "name": "@modelcontextprotocol/client",
+      "range": "^2.0.0",
+      "locked": "2.0.0",
+      "installed": "2.0.0"
+    },
+    {
+      "name": "@modelcontextprotocol/core",
+      "range": "^2.0.0",
+      "locked": "2.0.0",
+      "installed": "2.0.0"
+    },
+    {
+      "name": "@modelcontextprotocol/ext-apps",
+      "range": "^2.0.0",
+      "locked": "2.0.0",
+      "installed": "2.0.0"
+    },
+    {
+      "name": "@modelcontextprotocol/server",
+      "range": "^2.0.0",
+      "locked": "2.0.0",
+      "installed": "2.0.0"
+    },
+    {
+      "name": "lit",
+      "range": "^3.3.3",
+      "locked": "3.3.3",
+      "installed": "3.3.3"
+    },
+    {
+      "name": "react",
+      "range": "^19.2.3",
+      "locked": "19.3.0",
+      "installed": "19.3.0"
+    },
+    {
+      "name": "react-dom",
+      "range": "^19.2.3",
+      "locked": "19.3.0",
+      "installed": "19.3.0"
+    },
+    {
+      "name": "zod",
+      "range": "^4.2.0",
+      "locked": "4.6.5",
+      "installed": "4.6.5"
+    },
+    {
+      "name": "@playwright/test",
+      "range": "^1.50.0",
+      "locked": "1.63.0",
+      "installed": "1.63.0"
+    },
+    {
+      "name": "@types/node",
+      "range": "^22.0.0",
+      "locked": "22.20.4",
+      "installed": "22.20.4"
+    },
+    {
+      "name": "@types/react",
+      "range": "^19.0.0",
+      "locked": "19.3.0",
+      "installed": "19.3.0"
+    },
+    {
+      "name": "@types/react-dom",
+      "range": "^19.0.0",
+      "locked": "19.3.0",
+      "installed": "19.3.0"
+    },
+    {
+      "name": "@vitejs/plugin-react",
+      "range": "^5.0.0",
+      "locked": "5.2.0",
+      "installed": "5.2.0"
+    },
+    {
+      "name": "tsx",
+      "range": "^4.19.0",
+      "locked": "4.23.15",
+      "installed": "4.23.15"
+    },
+    {
+      "name": "typescript",
+      "range": "^5.7.0",
+      "locked": "5.9.3",
+      "installed": "5.9.3"
+    },
+    {
+      "name": "vite",
+      "range": "^7.0.0",
+      "locked": "7.3.6",
+      "installed": "7.3.6"
+    },
+    {
+      "name": "vitest",
+      "range": "^5.0.1",
+      "locked": "5.0.1",
+      "installed": "5.0.1"
+    }
+  ]
+}

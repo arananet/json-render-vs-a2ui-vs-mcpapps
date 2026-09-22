@@ -52,7 +52,7 @@ const SCRIPTS: Record<string, Array<{ agent: string; block: UiBlock }>> = {
       },
     },
   ],
-  "s2-concurrent-composition": [
+  "s2-fixed-order-collision": [
     {
       agent: "risk",
       block: {

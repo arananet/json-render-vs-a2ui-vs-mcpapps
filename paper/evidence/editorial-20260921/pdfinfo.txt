@@ -1,0 +1,19 @@
+Title:           Shared UI State and Host Enforcement: An Empirical Technical Note on Three Agent-UI Configurations
+Author:          Eduardo Arana
+Creator:         LaTeX with hyperref
+Producer:        xdvipdfmx (0.1)
+CreationDate:    Mon Sep 21 17:58:32 2026 EDT
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           10
+Encrypted:       no
+Page size:       612 x 792 pts (letter)
+Page rot:        0
+File size:       141203 bytes
+Optimized:       no
+PDF version:     1.7

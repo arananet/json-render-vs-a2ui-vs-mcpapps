@@ -1,25 +1,21 @@
 /**
- * Scenario 2 — Concurrent composition.
+ * Scenario 2 — Fixed-order identifier collision.
  *
- * Two specialists run in parallel under one orchestrator and both want to show
- * the user a summary. They are not coordinating: each picks the block id
- * "summary" because that is what the block is. Their writes interleave.
- *
- * A fan-out orchestrator produces this constantly, and the interesting question
- * is not whether the UI looks odd but whether anyone is *told* that a write was
- * lost. A protocol that silently drops one agent's work produces an orchestrator
- * that believes it showed the user something it did not.
+ * Two scripted specialists use the same "summary" identifier. Each emission
+ * is awaited: risk detail, finance detail, risk summary, then finance summary.
+ * This fixture observes only that sequential order and records whether a write
+ * is lost under the adapter's namespace mapping. No alternative order is tested.
  */
 
 import { Orchestrator } from "../orchestrator/orchestrator.ts";
 import type { ProtocolAdapter } from "../orchestrator/types.ts";
 
-export const SCENARIO_ID = "s2-concurrent-composition";
-export const SCENARIO_TITLE = "Two agents composing one view";
+export const SCENARIO_ID = "s2-fixed-order-collision";
+export const SCENARIO_TITLE = "Fixed-order sequential identifier collision";
 
 export const SURFACE = "briefing";
 
-export async function runConcurrentComposition(adapter: ProtocolAdapter): Promise<Orchestrator> {
+export async function runFixedOrderCollision(adapter: ProtocolAdapter): Promise<Orchestrator> {
   const orchestrator = new Orchestrator(adapter, SCENARIO_ID, [
     { id: "risk", role: "Summarises exposure" },
     { id: "finance", role: "Summarises cost" },

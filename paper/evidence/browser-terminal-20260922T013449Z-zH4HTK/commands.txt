@@ -1,0 +1,5 @@
+COMMAND: npm run build
+BUILD_EXIT_CODE=0
+COMMAND: CI=1 PLAYWRIGHT_JSON_OUTPUT_FILE=<evidence>/playwright.json node node_modules/@playwright/test/cli.js test tests/browser/render.spec.ts tests/browser/screenshots.spec.ts --reporter=line,json --output=<evidence>/test-results
+PLAYWRIGHT_EXIT_CODE=1
+2026-09-22T01:35:53Z

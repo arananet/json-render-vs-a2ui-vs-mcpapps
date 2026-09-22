@@ -1,0 +1,11 @@
+{
+  "historicalViewsStillMatchRecordedHashes": true,
+  "currentSourcesDiffer": [
+    "scripts/paper.mjs",
+    "tests/paper/editorial.test.mjs",
+    "tests/paper/figures.test.mjs",
+    "tests/paper/pdf.test.mjs",
+    "paper/figures/s2.mmd"
+  ],
+  "refreshed": false
+}

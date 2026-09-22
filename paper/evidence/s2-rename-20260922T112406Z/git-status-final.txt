@@ -1,0 +1,21 @@
+ M .openspec/specs/multi-agent-ui-protocol-comparison-harness.spec.yaml
+ M .openspec/specs/reproducible-protocol-comparison-paper.spec.yaml
+ M CHANGELOG.md
+ M README.md
+ M docs/COMPARISON.md
+ M src/adapters/a2ui/adapter.ts
+ M src/adapters/json-render/adapter.ts
+ M src/adapters/mcp-apps/adapter.ts
+ M src/report/generate.ts
+ M src/scenarios/run.ts
+ D src/scenarios/s2-concurrent-composition.ts
+ M tests/browser/render.spec.ts
+ M tests/browser/screenshots.spec.ts
+ M tests/protocol/scenarios.test.ts
+ M web/a2ui.ts
+ M web/json-render.tsx
+ M web/mcp-apps.ts
+ M web/scenario.ts
+?? scripts/paper-browser-evidence.mjs
+?? scripts/paper-browser-run.sh
+?? src/scenarios/s2-fixed-order-collision.ts

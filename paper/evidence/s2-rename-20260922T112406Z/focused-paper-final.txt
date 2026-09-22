@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: historical test hashes no longer match; old logs cannot verify renamed sources
+ok 1 - historical test hashes no longer match; old logs cannot verify renamed sources
+  ---
+  duration_ms: 10.94
+  type: 'test'
+  ...
+# Subtest: capture selection covers sources, browser assertions, dependencies, config and wrapper
+ok 2 - capture selection covers sources, browser assertions, dependencies, config and wrapper
+  ---
+  duration_ms: 10.886
+  type: 'test'
+  ...
+# Subtest: missing fresh evidence cannot create or overwrite a private archive
+ok 3 - missing fresh evidence cannot create or overwrite a private archive
+  ---
+  duration_ms: 111.89325
+  type: 'test'
+  ...
+# Subtest: abstract leads with configuration-specific findings and their interpretation
+ok 4 - abstract leads with configuration-specific findings and their interpretation
+  ---
+  duration_ms: 0.82375
+  type: 'test'
+  ...
+# Subtest: abstract and claim table support concrete C3 while retaining partial C6/C7 and proposed C9
+ok 5 - abstract and claim table support concrete C3 while retaining partial C6/C7 and proposed C9
+  ---
+  duration_ms: 0.3045
+  type: 'test'
+  ...
+# Subtest: results, S2 caption and conclusion distinguish writer maps from rendered evidence
+ok 6 - results, S2 caption and conclusion distinguish writer maps from rendered evidence
+  ---
+  duration_ms: 0.154
+  type: 'test'
+  ...
+# Subtest: browser MCP executes only summaries while Node S2 has four sequential writes
+ok 7 - browser MCP executes only summaries while Node S2 has four sequential writes
+  ---
+  duration_ms: 5.102334
+  type: 'test'
+  ...
+# Subtest: pre-rename browser evidence records historical success, not current-source verification
+ok 8 - pre-rename browser evidence records historical success, not current-source verification
+  ---
+  duration_ms: 6.614291
+  type: 'test'
+  ...
+# Subtest: manuscript removes agent-to-user narration without claiming human review
+ok 9 - manuscript removes agent-to-user narration without claiming human review
+  ---
+  duration_ms: 0.431042
+  type: 'test'
+  ...
+# Subtest: unverified reference and ignored paper provenance are explicit
+ok 10 - unverified reference and ignored paper provenance are explicit
+  ---
+  duration_ms: 0.434125
+  type: 'test'
+  ...
+# Subtest: Mermaid conversion preserves labels, groups, decisions, and dashed edges
+ok 11 - Mermaid conversion preserves labels, groups, decisions, and dashed edges
+  ---
+  duration_ms: 1.169917
+  type: 'test'
+  ...
+# Subtest: unsupported or invalid Mermaid fails rather than silently changing a figure
+ok 12 - unsupported or invalid Mermaid fails rather than silently changing a figure
+  ---
+  duration_ms: 0.4125
+  type: 'test'
+  ...
+# Subtest: editable Mermaid and generated DOT correspond
+ok 13 - editable Mermaid and generated DOT correspond
+  ---
+  duration_ms: 11.094917
+  type: 'test'
+  ...
+# Subtest: S2 figure order and retained values match the scenario and existing assertions
+ok 14 - S2 figure order and retained values match the scenario and existing assertions
+  ---
+  duration_ms: 5.639041
+  type: 'test'
+  ...
+# Subtest: topology states the local identity bound and correct enforcement installation order
+ok 15 - topology states the local identity bound and correct enforcement installation order
+  ---
+  duration_ms: 1.531583
+  type: 'test'
+  ...
+# Subtest: manuscript identifies the author, affiliation, and review state
+ok 16 - manuscript identifies the author, affiliation, and review state
+  ---
+  duration_ms: 1.479708
+  type: 'test'
+  ...
+# Subtest: H1 is bounded to the actual fixed-order S2 script and existing assertions
+ok 17 - H1 is bounded to the actual fixed-order S2 script and existing assertions
+  ---
+  duration_ms: 4.237958
+  type: 'test'
+  ...
+# Subtest: relative manuscript evidence links resolve to retained local files
+ok 18 - relative manuscript evidence links resolve to retained local files
+  ---
+  duration_ms: 2.254459
+  type: 'test'
+  ...
+# Subtest: manuscript contains the scientific and reproducibility sections
+ok 19 - manuscript contains the scientific and reproducibility sections
+  ---
+  duration_ms: 0.338125
+  type: 'test'
+  ...
+# Subtest: paper version claims match locked and installed SDKs
+ok 20 - paper version claims match locked and installed SDKs
+  ---
+  duration_ms: 14.381708
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 231.263958

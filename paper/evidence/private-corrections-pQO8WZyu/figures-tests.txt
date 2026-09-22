@@ -1,0 +1,43 @@
+{"command": ["node", "--test", "tests/paper/figures.test.mjs"], "utc": "2026-09-22T02:04:44.299669+00:00", "cwd": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps", "environment": {"PAPER_TEX_BUNDLE": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/bundle", "TECTONIC_CACHE_DIR": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/.scratch/paper-local-tex/cache"}}
+TAP version 13
+# Subtest: Mermaid conversion preserves labels, groups, decisions, and dashed edges
+ok 1 - Mermaid conversion preserves labels, groups, decisions, and dashed edges
+  ---
+  duration_ms: 0.738416
+  type: 'test'
+  ...
+# Subtest: unsupported or invalid Mermaid fails rather than silently changing a figure
+ok 2 - unsupported or invalid Mermaid fails rather than silently changing a figure
+  ---
+  duration_ms: 0.26575
+  type: 'test'
+  ...
+# Subtest: editable Mermaid and generated DOT correspond
+ok 3 - editable Mermaid and generated DOT correspond
+  ---
+  duration_ms: 4.264666
+  type: 'test'
+  ...
+# Subtest: S2 figure order and retained values match the scenario and existing assertions
+ok 4 - S2 figure order and retained values match the scenario and existing assertions
+  ---
+  duration_ms: 2.159209
+  type: 'test'
+  ...
+# Subtest: topology states the local identity bound and correct enforcement installation order
+ok 5 - topology states the local identity bound and correct enforcement installation order
+  ---
+  duration_ms: 7.296708
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 78.290917
+
+EXIT_CODE=0

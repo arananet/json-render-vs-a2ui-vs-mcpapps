@@ -1,0 +1,25 @@
+digraph figure {
+graph [rankdir=TB, bgcolor="white", pad=0.15, nodesep=0.25, ranksep=0.32, fontname="Arial", fontsize=15];
+node [shape=box, style=filled, fillcolor="white", color="#333333", fontname="Arial", fontsize=14, margin="0.14,0.10"];
+edge [color="#333333", fontname="Arial", fontsize=12, arrowsize=0.7];
+subgraph cluster_shared { label="A. Shared-state configurations\nSeparate json-render and A2UI runs"; color="#777777"; style=rounded; margin=14;
+writers [label="Named writers via orchestrator", shape=box];
+state [label="One Spec or A2UI surface\nShared IDs\nCoordinated root", shape=box];
+renderer [label="Trusted catalog\nReact or Lit renderer", shape=box];
+bookkeeping [label="Writer and routing maps\nNot authenticated\nprovenance", shape=box];
+writers -> state [style=solid, label=""];
+state -> renderer [style=solid, label=""];
+state -> bookkeeping [style=solid, label=""];
+}
+subgraph cluster_mcp { label="B. MCP Apps configuration\nOne server per agent"; color="#777777"; style=rounded; margin=14;
+view [label="App per surface / agent\nBrowser: separate\nsandboxed iframe", shape=box];
+gate [label="Host handler\nInstalled AFTER\nbridge.connect", shape=diamond];
+server [label="Bound MCP server\nConnection-to-agent\nmapping is local", shape=box];
+refused [label="Model-only tool: reject", shape=box];
+view -> gate [style=solid, label=""];
+gate -> server [style=solid, label="app-visible tool"];
+gate -> refused [style=solid, label="model-only tool"];
+view -> server [style=dashed, label="permissive default:\nforwards model-only call"];
+}
+renderer -> view [style=invis, label=""];
+}

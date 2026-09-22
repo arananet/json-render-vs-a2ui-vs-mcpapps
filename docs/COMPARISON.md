@@ -26,7 +26,7 @@ pages the browser suite asserts against.
 | **Attribute a write to an agent**<br><sub>Can the host tell which agent produced a given piece of UI?</sub> | ❌ not expressible | ❌ not expressible | 🔒 enforced |
 | **Isolate agents from each other**<br><sub>Can one agent read or overwrite another's rendered surface?</sub> | ❌ not expressible | 🟡 caveat | 🔒 enforced |
 | **Compose into one view**<br><sub>Can several agents present as a single answer?</sub> | 🟡 caveat | ✅ supported | ❌ not expressible |
-| **Survive a concurrent write**<br><sub>What happens when two agents write the same id?</sub> | 🔴 write lost | 🔴 write lost | 🔒 enforced |
+| **Retain both summaries after a fixed-order collision**<br><sub>What happens when two agents write the same id?</sub> | 🔴 write lost | 🔴 write lost | 🔒 enforced |
 | **Route an action to its agent**<br><sub>Does the event say which agent should handle it?</sub> | 🟠 out-of-band | 🟠 out-of-band | ✅ supported |
 | **Gate a privileged action**<br><sub>Can anything below the agent withhold a dangerous action?</sub> | 🟡 caveat | ❌ not expressible | 🔒 enforced |
 
@@ -167,7 +167,7 @@ Rendered regions the user ends up with: **1** (`trip`)
 
 **compose.shared-surface** — ✅ supported
 
-> Agents ["planner"] and "booking" compose into surface "trip" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.concurrent-write comes from.
+> Agents ["planner"] and "booking" compose into surface "trip" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.identifier-collision comes from.
 
 #### MCP Apps
 
@@ -191,17 +191,17 @@ Rendered regions the user ends up with: **2** (`trip::planner`, `trip::booking`)
 
 > Agents ["planner"] and "booking" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.concurrent-write** — 🔒 enforced
+**compose.identifier-collision** — 🔒 enforced
 
 > The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "booking" reusing block id "reservation" cannot overwrite anything ["planner"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
 
-### Two agents composing one view
+### Fixed-order sequential identifier collision
 
-`s2-concurrent-composition`
+`s2-fixed-order-collision`
 
 #### json-render
 
-![json-render rendering s2-concurrent-composition](screenshots/s2-json-render.png)
+![json-render rendering s2-fixed-order-collision](screenshots/s2-json-render.png)
 
 Rendered regions the user ends up with: **1** (`briefing`)
 
@@ -209,27 +209,27 @@ Rendered regions the user ends up with: **1** (`briefing`)
 
 > Agents ["risk"] and "finance" write into one Spec and compose into a single rendered tree with no coordination step. For blocks with distinct keys this is the best experience of the three: one view, one layout pass, no seams. The caveat is that the keyspace is global and unowned, so composing and clobbering are the same operation and the protocol offers nothing to tell them apart.
 
-**compose.concurrent-write** — 🔴 write lost
+**compose.identifier-collision** — 🔴 write lost
 
 > Agent "finance" replaced block "summary" previously written by "risk". json-render patches address a flat, shared element map: /elements/block:summary is a single slot with no owner, so the earlier agent's content is gone and neither agent is told.
 
 #### A2UI
 
-![A2UI rendering s2-concurrent-composition](screenshots/s2-a2ui.png)
+![A2UI rendering s2-fixed-order-collision](screenshots/s2-a2ui.png)
 
 Rendered regions the user ends up with: **1** (`briefing`)
 
 **compose.shared-surface** — ✅ supported
 
-> Agents ["risk"] and "finance" compose into surface "briefing" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.concurrent-write comes from.
+> Agents ["risk"] and "finance" compose into surface "briefing" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.identifier-collision comes from.
 
-**compose.concurrent-write** — 🔴 write lost
+**compose.identifier-collision** — 🔴 write lost
 
 > Agent "finance" reused component ids from block "summary", last written by "risk". updateComponents is keyed by component id within a surface, so re-sending an id replaces that node. The surface boundary stops agents on *different* surfaces from colliding, but inside one surface the id space is still shared and unowned.
 
 #### MCP Apps
 
-![MCP Apps rendering s2-concurrent-composition](screenshots/s2-mcp-apps.png)
+![MCP Apps rendering s2-fixed-order-collision](screenshots/s2-mcp-apps.png)
 
 Rendered regions the user ends up with: **2** (`briefing::risk`, `briefing::finance`)
 
@@ -237,7 +237,7 @@ Rendered regions the user ends up with: **2** (`briefing::risk`, `briefing::fina
 
 > Agents ["risk"] and "finance" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.concurrent-write** — 🔒 enforced
+**compose.identifier-collision** — 🔒 enforced
 
 > The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "finance" reusing block id "finance-detail" cannot overwrite anything ["risk"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
 
@@ -271,7 +271,7 @@ Rendered regions the user ends up with: **1** (`checkout`)
 
 **compose.shared-surface** — ✅ supported
 
-> Agents ["cart"] and "payments" compose into surface "checkout" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.concurrent-write comes from.
+> Agents ["cart"] and "payments" compose into surface "checkout" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.identifier-collision comes from.
 
 **action.routing-identity** — 🟠 out-of-band
 
@@ -291,7 +291,7 @@ Rendered regions the user ends up with: **2** (`checkout::cart`, `checkout::paym
 
 > Agents ["cart"] and "payments" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.concurrent-write** — 🔒 enforced
+**compose.identifier-collision** — 🔒 enforced
 
 > The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "payments" reusing block id "pay" cannot overwrite anything ["cart"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
 

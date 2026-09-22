@@ -1,0 +1,488 @@
+    Shared UI State and Host Enforcement: An Empirical Technical
+               Note on Three Agent-UI Conﬁgurations
+                                         Eduardo Arana
+
+                                      Arananet
+              22 September 2026 (UTC) — local draft; human review pending
+
+
+
+Abstract
+Reused identiﬁers produce diﬀerent retained states under the shared and separated mappings of
+three concrete tested conﬁgurations: json-render, A2UI, and MCP Apps with their local adapters
+and hosts. In a ﬁxed-order write probe, Node assertions establish replacement of the json-render
+summary and retention of both summaries in separate MCP instances. Executed browser assertions
+show ﬁnance’s headline visible and risk’s absent in the A2UI surface. The tested MCP host rejects
+a model-only tool call when its enforcing handler is installed; the permissive variant forwards that
+call. Interpretation must therefore name the adapter mapping, namespace/topology, and enforce-
+ment site together with the SDK or protocol. This reproducible empirical technical note audits
+an existing deterministic TypeScript harness across surface handoﬀ, ﬁxed-order identiﬁer collision,
+and action round-trip. A claim-to-check mapping distinguishes supported, partial, and proposed
+claims; routing to every intended control owner remains partial, and a matched-topology inter-
+vention remains proposed, not performed. The evidence supports conﬁguration-speciﬁc ﬁndings,
+not isolated protocol causality or rankings. No LLM experiment or performance measurement is
+reported. Human scientiﬁc and editorial review remains pending.
+
+
+1    Introduction
+The existing harness exposes two conﬁguration-dependent ﬁndings. Reusing a summary identiﬁer
+replaces a value in json-render’s shared namespace, whereas the MCP adapter’s separate instances
+retain both values. A2UI’s shared mapping records the later writer; executed browser assertions
+conﬁrm ﬁnance’s headline is visible and risk’s is absent in that surface. Separately, the tested
+MCP host rejects a model-only call with an enforcing handler but forwards it in the permissive
+variant. A comparison must identify the adapter mapping, namespace/topology, and enforcement
+site alongside the SDK or protocol: those choices are part of the observed system, not incidental
+implementation details.
+   This reproducible empirical technical note examines three concrete tested conﬁgurations, not
+three protocols in isolation. Its contribution is an auditable account of a small deterministic har-
+ness: research questions, a falsiﬁable hypothesis, bounded ﬁndings, an evidence map, and a local
+reproduction procedure. UI descriptions, execution environments, and authorization decisions oper-
+ate at diﬀerent layers; collapsing those layers would misattribute namespace choices or host policies
+to a format. The retained comparison report is an artifact to audit, not independent scientiﬁc
+
+
+                                                 1
+evidence. Its broader wording and historical scenario names remain unchanged. Scope and validity
+limits below delimit the ﬁndings; no exhaustive novelty claim is made.
+
+
+2     Research questions
+RQ1: Where do the existing adapters place the output of a scripted surface handoﬀ?
+   RQ2: What survives a ﬁxed-order identiﬁer-collision probe in the conﬁgured namespaces?
+   RQ3: Which local bookkeeping and host decisions determine action routing and model-only tool
+rejection?
+
+
+3     Methodology
+This retrospective case study examines deterministic scripted agents, with no LLM experiment. The
+unit of comparison is an SDK/adapter/host conﬁguration. Identical scenario input does not isolate
+protocol causality. Three scenarios exercise three conﬁgurations, with an existing permissive-host
+variant for MCP Apps in S3.
+
+3.1   A falsiﬁable local hypothesis
+H1: In S2, the ﬁxed-order writes to the shared summary ID leave the ﬁnance headline in the
+json-render and A2UI conﬁgurations, while the MCP Apps conﬁguration retains both headlines in
+separate instances. A snapshot or DOM assertion showing the risk headline instead of ﬁnance in a
+shared summary, or loss of either isolated headline, would contradict this hypothesis for the tested
+conﬁguration.
+   The S2 script awaits each emission: risk detail, ﬁnance detail, risk summary, then ﬁnance sum-
+mary. This is a ﬁxed-order identiﬁer-collision probe, not actual concurrency or a scheduling bench-
+mark. The historical ﬁlename and test descriptions retain the word “concurrent”. The focused check
+uses the existing snapshot assertions and browser assertions, rather than treating the adapter’s LOST
+or ENFORCED labels as measurements. Fresh execution status is recorded separately from this source-
+based hypothesis.
+
+3.2   Conﬁgurations and versions
+The manifest speciﬁes ranges. The lockﬁle and locally installed package metadata agree on the
+exact versions below. Package versions are not protocol schema versions. These are observations of
+this checkout, not recommendations or statements about the newest available releases.
+       Conﬁguration                           Manifest range    Lockﬁle and installed version
+       json-render core and React renderer    ˆ0.21.0 each      0.21.0 each
+       A2UI web core and Lit renderer         ˆ0.11.0 each      0.11.0 each
+       MCP Apps extension SDK                 ˆ2.0.0            2.0.0
+       MCP client, core, and server           ˆ2.0.0 each       2.0.0 each
+       React and React DOM                    ˆ19.2.3 each      19.3.0 each
+       Lit                                    ˆ3.3.3            3.3.3
+       Zod                                    ˆ4.2.0            4.6.5
+
+
+
+                                                 2
+   The A2UI adapter imports @a2ui/web_core/v0_9 and emits version: "v0.9". Its package
+version 0.11.0 does not mean that the experiment uses a v0.11 protocol. MCP Apps SDK 2.0.0
+likewise does not establish a wire protocol version. The extension speciﬁcation and SDK are separate
+references; no exact upstream speciﬁcation commit or negotiated wire-version value was retained
+for this paper. Live repository documentation was inspected on 21 September 2026 and may diﬀer
+from release-time documentation. The local lockﬁle ﬁxes the tested package resolution, not the
+mutable web references.
+   The json-render adapter maintains one Spec per conceptual surface and maps logical block, row,
+and control IDs to element keys. It calls applySpecPatch for element additions/replacements and
+also directly updates root children. Therefore, its patch log does not capture every mutation. Its
+catalog validates emitted specs; writtenBy is an ordinary catalog prop and lastWriter is adapter
+bookkeeping. Neither is authenticated provenance.
+   The A2UI adapter validates messages using A2uiMessageSchema and drives MessageProcessor.
+Its component IDs and data paths derive from block IDs. A shared rootChildren collection coor-
+dinates the surface root. Node uses a schema-only harness catalog; the browser uses the Lit basic
+catalog. Snapshot titles and writer names partly come from adapter maps, while row values come
+from the data model. Surface addressing is not authorization: an address identiﬁes a target but
+does not establish a caller’s permission.
+   The MCP Apps adapter creates one server per agent and one app instance per surface/agent pair.
+Its Node path uses real SDK clients, servers, apps, and bridges connected by in-memory transports.
+Its snapshot is reconstructed from adapter-held blocks, not from a browser DOM. The browser host
+mounts an iframe with sandbox="allow-scripts" for each agent and uses PostMessageTransport.
+This topology is an implementation choice. Connection identity is not universally agent identity:
+the mapping works here because the host establishes one server per named agent. A server could
+aggregate multiple agents in a diﬀerent application.
+   Figure 1 locates the shared state, local ownership mapping, and enforcing handler in these con-
+ﬁgurations. The dashed path denotes the existing permissive variant, not a second enforcement
+mechanism.
+
+3.3   Scenario design and evidence collection
+S1 opens a trip surface, emits a planner itinerary, hands oﬀ to booking, and emits a reservation. S2
+performs the ﬁxed-order writes speciﬁed in H1. S3 emits basket and payment controls and activates
+ordinary and privileged actions. The amounts and booking operations are ﬁxtures: the MCP server
+records calls and returns text; it does not charge money. The three scenarios are ﬁxed examples,
+not a sample drawn from a population of agent workﬂows.
+   The runner constructs fresh adapters per scenario and conﬁguration. The orchestrator is a
+scripted stand-in with named agents and a control-to-agent routing table, not an autonomous model-
+driven system. We inspect the existing tests and rerun them where local prerequisites permit; no
+scenarios or adapters are added or modiﬁed.
+   The report generator takes adapter-authored classiﬁcations and uses ﬁrst-recording-wins selection
+for each capability and conﬁguration. It does not independently measure the meaning of SUPPORTED,
+LOST, ENFORCED, or NOT_EXPRESSIBLE. Repeated labels do not constitute independent observations.
+Timestamp normalization makes its Markdown stable but does not validate its interpretation. A
+freshness check establishes correspondence between report and generator, not the truth of every
+sentence in the report.
+   We therefore distinguish classiﬁcations from assertions on snapshots, messages, tool re-
+
+                                                 3
+                                              A. Shared-state configurations
+                                            Separate json-render and A2UI runs
+
+
+                                                 Named writers via orchestrator
+
+
+
+                                                      One Spec or A2UI surface
+                                                            Shared IDs
+                                                          Coordinated root
+
+
+                                                                     Writer and routing maps
+                                         Trusted catalog
+                                                                        Not authenticated
+                                       React or Lit renderer
+                                                                           provenance
+
+
+
+                                            B. MCP Apps configuration
+                                               One server per agent
+
+                                     App per surface / agent
+                                       Browser: separate
+                                       sandboxed iframe
+
+
+
+
+                                       Host handler
+                                                                                 permissive default:
+                                     Installed AFTER                          forwards model-only call
+                                      bridge.connect
+
+
+
+                                       model-only tool     app-visible tool
+
+                                                             Bound MCP server
+                            Model-only tool: reject          Connection-to-agent
+                                                              mapping is local
+
+
+
+
+Figure 1: Conﬁgured state and enforcement boundaries. Panel A summarizes two separate
+declarative-renderer runs; panel B shows the app-to-server call path for each MCP instance. Writer
+maps are bookkeeping. In the tested enforcing variant, the installed host handler rejects the model-
+only call; the permissive variant forwards it. Original source-derived illustration, not a fresh browser
+observation.
+
+sponses/refusals, and rendered elements. The conformance tests validate the S1 A2UI messages
+and json-render catalog output, examine recorded patches, and check report and image-link
+freshness. They do not establish full speciﬁcation conformance. The A2UI deletion message is not
+exercised in that S1 check. The json-render patch assertions do not cover its direct root mutation.
+   Browser evidence has an additional qualiﬁcation: the MCP browser host contains its own ﬁxture
+script. In S2 it renders the two summaries without the two uncontested detail blocks used by the
+Node scenario. Its DOM assertions are useful corroboration for those summaries, not byte-identical
+
+
+                                                             4
+replay of the Node runner. Retained screenshots alone cannot establish that a fresh browser run
+passed.
+
+
+4     Bounded observed results
+4.1   RQ1: Handoﬀ and placement
+Existing S1 assertions check a single trip snapshot region containing both itinerary and
+reservation in json-render and A2UI. MCP Apps checks separate trip::planner and
+trip::booking regions. The browser assertions check both blocks within one React tree or A2UI
+surface, and separate MCP iframes. These checks support a placement observation under the
+chosen mappings. They do not prove that MCP Apps cannot represent an aggregated UI or that
+either declarative format provides authenticated cross-agent ownership.
+
+4.2   RQ2: Fixed-order identiﬁer collision
+The focused local S2 rerun passed its three selected tests; ten non-S2 tests in that ﬁle were skipped by
+the ﬁlter. The json-render assertion checks the ﬁnance writer and headline, plus survival of the two
+uncontested blocks. The A2UI Node assertion checks the ﬁnance writer from adapter bookkeeping;
+its browser assertion checks headline text. MCP snapshot assertions check both headlines in diﬀerent
+instances. H1 is supported for the three directly tested conﬁgurations by these Node checks and
+the successful browser run on 22 September 2026 UTC (21 September locally). A2UI’s browser
+assertion checks ﬁnance’s headline visible and risk’s headline absent within the surface. It does
+not assert an exact summary node count, despite its test title. The raw browser report records 18
+passed tests: nine render assertions and nine screenshot tests. The MCP browser ﬁxture diﬀers
+from Node; its summary checks corroborate H1 without establishing identical execution paths or
+isolated protocol causality.
+   The replacement is consistent with reusing a slot in these shared namespaces. It is not an observed
+scheduling race. The inspected adapter records a changed writer; this trace is not an audit of all
+conﬂict signals available in a protocol or SDK. Namespacing, ownership checks, arbitration, or
+shared aggregation could change the outcome; none is evaluated as an intervention here.
+   Figure 2 separates the four awaited writes from the retained summary states. The arrows express
+script order, not elapsed time or competing schedules.
+
+4.3   RQ3: Routing and host decisions
+In the shared-state conﬁgurations, ordinary action routing uses the orchestrator’s control table.
+Tests inspect routing entries and deliveries, and the A2UI action envelope carries surface/component
+ﬁelds and a timestamp without an agent ﬁeld. These payload observations do not rule out an
+application-supplied identity envelope. Encoding a name in context or props would still require
+trusted binding before it could authorize anything.
+  json-render’s privileged control includes confirm metadata. The Node adapter constructs an
+event and classiﬁes that metadata; it does not run an independent authorization service. The
+browser suite clicks the ordinary json-render action, not the privileged conﬁrmation ﬂow. Conﬁr-
+mation UI is not independent authorization, and the existing assertions do not establish complete
+consent behavior or protection against an omitted conﬁrmation binding. A2UI has no privileged
+
+
+
+                                                   5
+                                 S2: fixed order; every emission is awaited
+
+
+                                           1. risk writes risk-detail
+
+
+
+                                        2. finance writes finance-detail
+
+
+
+                                           3. risk writes summary
+                                         Exposure exceeds appetite
+
+
+                                          4. finance writes summary
+                                            Spend is within budget
+
+
+              Shared namespace
+                                            MCP: briefing::risk            MCP: briefing::finance
+        json-render: finance headline
+                                              summary: risk                  summary: finance
+          A2UI DOM: finance visible
+                                         Exposure exceeds appetite         Spend is within budget
+          risk absent; no node count
+
+
+
+
+Figure 2: S2 write order and retained values in the conﬁgured namespaces. Node assertions check
+the json-render headline and both MCP headlines. Executed A2UI DOM assertions check ﬁnance’s
+headline visible and risk’s absent (C3, supported), not an exact node count. MCP browser ﬁxtures
+omit the uncontested detail writes shown in the Node sequence. The two MCP summaries belong to
+separate instances, not a merged surface. Arrows indicate ﬁxed script order, not time or scheduling.
+
+
+gate implemented in this adapter; that is not a proof that its hosts or trusted catalog components
+cannot impose one.
+   For MCP Apps, the host installs its enforcing oncalltool handler after bridge.connect. The
+handler looks up the tool and rejects model-only visibility. The bridge tests check successful app-
+visible calls, rejection messages and refusal records, and successful model-only calls when enforce-
+ment is disabled. The permissive host variant forwards that call. This is evidence about the tested
+SDK and handler installation order, not every MCP host or SDK release. The inspected extension
+speciﬁcation assigns visibility enforcement to the host [R4].
+   Routing evidence is narrower than some trace labels suggest. For actions, the Node MCP adapter
+selects the ﬁrst instance for a conceptual surface. Its helper is findInstanceForSurface. It does
+not ﬁnd the agent owning the clicked control. The routing test only requires some delivery without
+the fallback table. Thus it cannot prove correct owner routing for every S3 control. Browser S3
+instead clicks inside the cart and payments frames separately. We retain this distinction and leave
+the existing behavior unchanged.
+
+
+
+                                                   6
+5    Claim-evidence mapping
+Here supported means a bounded statement has a matching inspected assertion or direct source
+observation, with run status separately recorded. Partial means a relevant assertion exists but
+leaves a material inference untested. Proposed means a future check has not been performed.
+These terms are this paper’s evidence statuses, distinct from the adapter outcome vocabulary.
+Claim                                 Status          Evidence and falsiﬁer
+C1: S1 yields one shared region or    Supported       S1 snapshot region and block assertions;
+two MCP instances in this                             contradicted by missing blocks or diﬀerent
+topology.                                             region counts.
+C2: S2 overwrites the json-render     Supported       S2 headline assertions; contradicted by
+summary and retains both MCP                          diﬀerent retained values.
+summaries.
+C3: S2’s A2UI shared summary          Supported       Executed browser assertions check ﬁnance
+displays ﬁnance’s headline.                           visible and risk absent within the surface;
+                                                      opposite visibility falsiﬁes this outcome. No
+                                                      exact node count is asserted.
+C4: S2 is sequential, with no         Supported       Four awaited emissions in the S2 source;
+scheduling test.                                      contradicted by an overlapping scheduler in
+                                                      the executed path.
+C5: The enforcing MCP handler         Supported       Bridge rejection/refusal and successful-result
+rejects the model-only call, while                    assertions; contradicted by reversed or
+the permissive variant forwards it.                   identical behavior.
+C6: Every MCP S3 control reaches      Partial         Existing test checks some table-free delivery;
+its intended agent.                                   ﬁrst-instance selection prevents this stronger
+                                                      inference.
+C7: json-render includes              Partial         Existing check records metadata, not
+conﬁrmation metadata, with                            independent policy or privileged browser
+consent enforcement incompletely                      consent.
+checked.
+C8: Matrix labels are adapter         Supported       Source shows ﬁrst-recording-wins selection;
+classiﬁcations, not independent                       freshness checks correspondence only.
+measurements.
+C9: A matched-topology                Proposed        Pending controlled comparison; no new
+intervention isolates protocol                        experiment is reported.
+causality.
+
+  The linked scenario, bridge, conformance, and browser test ﬁles in Methodology and Results are
+the check locations for C1–C8. This mapping exposes uneven coverage rather than assigning a
+numeric score across unlike checks.
+  For C1–C3 and the tested browser actions, the unchanged render spec supplies the assertions and
+the screenshot spec supplies nine captures. The JSON report, terminal output, commands, and
+source provenance bind this execution to the existing tests. C6 remains partial: successful browser
+actions in its distinct ﬁxture do not repair the Node ﬁrst-instance routing gap.
+
+
+
+
+                                                  7
+6    Related work
+The json-render repository describes catalog-deﬁned components and actions rendered from struc-
+tured speciﬁcations [R1]. A2UI similarly separates declarative UI data from client implementation
+and describes a trusted component catalog [R2]. These are meaningful security properties: con-
+straining requested components and handlers can limit what untrusted UI data asks the client
+to run. They do not by themselves establish per-writer authorization in our shared namespace.
+Conversely, our collision example is not evidence of blanket insecurity in declarative rendering.
+   The MCP Apps repository describes tool-associated UI resources and a host bridge [R3]. Its
+speciﬁcation describes visibility checks and sandbox/CSP obligations [R4]. Those obligations are
+not proof that this harness checks all of them. In particular, iframe sandbox attributes and success-
+ful bridge tests do not establish exhaustive CSP enforcement, transport security, or resistance to
+malicious content. Declarative catalogs and sandboxed app delivery are compatible layers: a hosted
+application could use a declarative renderer internally. No integration experiment is reported here.
+   The repository besanson/sarc-authority-derivation is acknowledged only as an unveriﬁed method-
+ological pointer, not as inspected scientiﬁc evidence. Direct retrieval of its revision, README,
+REPRODUCTION.md, NOVELTY.md, and named v0.6.6 manuscript was unavailable in this en-
+vironment. No revision, prose, results, or reproduction credit from that project is asserted here.
+Reference review remains pending; this discussion is selective, not an exhaustive literature or novelty
+review.
+
+
+7    Threats to validity
+Internal validity. Identical logical inputs leave adapter bookkeeping, shared-root coordination,
+naming conventions, host enforcement, catalogs, rendering frameworks, transports, and one-server-
+per-agent MCP topology as confounders. The default/permissive MCP comparison narrows one
+host-policy question, but it is not a factorial comparison across all conﬁgurations.
+   Construct validity. A region count is a property of the adapter snapshot; it is not a usability
+measure. A writer prop is not authenticated provenance. Addressability is not authority. A
+conﬁrmation binding is not an authorization decision. Adapter labels and some scenario assertions
+share their interpretation, creating a risk of circular validation. The independent aspects of the
+checks are the inspected contents, response/refusal assertions, and DOM expectations; they are still
+authored within this repository, not by independent evaluators.
+   Execution and coverage. Node transports do not test browser isolation. The MCP browser
+ﬁxtures diﬀer from the Node scenario. Historical screenshots remain retained artifacts; the nine
+new captures are separately archived and do not establish historical reproduction. The suite does
+not comprehensively test adversarial inputs, identity forgery, transport authentication, CSP, cross-
+server policy, authorization revocation, or arbitrary concurrent schedules. No completed security
+review is claimed.
+   External and temporal validity. Three designed scenarios, ﬁxed ﬁxture data, and the pinned
+installed packages cannot establish population eﬀects or general protocol superiority. Later SDKs,
+other renderers, diﬀerent server topologies, and stricter application policies can behave diﬀerently.
+Mutable upstream documentation is contextual evidence, not a version-pinned release archive. No
+latency, throughput, cost, user study, or model capability was measured.
+
+
+
+
+                                                  8
+8    Reproducibility
+The reproduction guide gives commands and expected semantic outcomes. The local execution
+record separates successful commands, failures, unavailable prerequisites, and retained artifacts.
+This editorial revision starts from HEAD b5d06eafcd4cf9cb0ed49131add55cbdecbd4b7c, with an
+existing modiﬁed paper spec. The earlier execution record identiﬁes its own historical base. The pa-
+per package, build scripts, and paper tests remain locally ignored and uncommitted. Consequently,
+Git status and OpenSpec’s tracked/nonignored input ﬁngerprint do not identify the complete paper
+workspace. Separate paper checks and SHA-256 manifests record the local manuscript, tooling,
+assets, and generated outputs.
+   Semantic reproducibility means obtaining the speciﬁed regions, values, events, and refusal behav-
+ior under the same conﬁguration. Byte identity is a separate question. A2UI action timestamps
+vary; report generation normalizes those timestamps. PDF metadata and toolchain resources can
+also vary. We check generated LaTeX against fresh Pandoc output under the recorded toolchain, not
+PDF byte identity across machines. The Markdown manuscript is the only editable paper source;
+LaTeX and PDF are generated derivatives.
+   This session is an agent-assisted local rerun of existing checks. It establishes neither independent-
+person reproduction nor human approval. The previous session’s reported dependency installation
+is not a fresh npm ci execution in this record. Missing checks and failed attempts remain visible
+rather than being counted as passes. OpenSpec command success cannot prove every acceptance
+criterion.
+   The complete local Vitest run passed 24 tests across three ﬁles and TypeScript checking passed.
+The standalone report:check command failed when tsx attempted to create an IPC listener
+(EPERM); the report freshness assertion inside the passing Vitest suite is separate evidence, not
+a successful standalone command. Earlier browser attempts failed before tests: a sandbox listener
+returned EPERM, and the later managed preview timed out after 60000 ms. The retained outer-
+terminal run then reused an explicitly started IPv4 preview and passed both existing browser specs
+(18 tests in 8.9 s), without source or conﬁguration changes. New captures were archived separately
+and historical PNGs restored; this is fresh local evidence, not historical or independent reproduction.
+Pandoc produced LaTeX and its freshness check passed. The initial Tectonic invocation panicked
+internally (exit 101) in cached-only mode. A later local build used an explicit directory bundle
+assembled from already cached TeX resources and a smaller template, and produced the illustrated
+PDF without network access or shell escape. Original Mermaid diagrams were converted locally to
+vector ﬁgures through a restricted Mermaid-to-Graphviz renderer after Chromium-based rendering
+failed. These illustrations explain source and assertions; they add no experiments. The execution
+record retains the historical failures and current inspection evidence. Local compilation does not
+establish arXiv TeX Live compatibility or publication acceptance. Human review remains pending.
+
+
+9    Conclusion
+Across three concrete tested conﬁgurations, handoﬀ placement and retained values reﬂect the chosen
+shared or separated mappings. The S2 assertions check json-render’s replaced summary and MCP’s
+two retained summaries; executed A2UI DOM assertions show ﬁnance’s headline visible and risk’s
+absent. H1 is supported only for these concrete conﬁgurations and ﬁxed-order ﬁxtures. MCP
+model-only tool rejection depends on the tested enforcing host handler, while correct routing for
+every control remains only partially checked. Interpretation must name the adapter mapping,
+namespace/topology, and enforcement site together with the SDK or protocol. These results do
+
+                                                   9
+not isolate protocol causality or establish unavoidable incompatibility between composition and
+security. Integrations remain possible, and trusted catalogs retain meaningful security properties.
+  Future experiments are explicitly pending: matched namespaces and topology, controlled schedul-
+ing with overlapping writes, trusted identity envelopes, privileged conﬁrmation interaction tests,
+and complete host-policy tests. They are suggestions for separate approved work, not results of this
+paper.
+
+
+10     AI-assistance disclosure
+An OpenAI Codex coding assistant inspected local source and accessible references, assisted with
+drafting and editorial revision, prepared source-derived ﬁgures and supporting documentation,
+added focused manuscript checks, and executed the recorded local validation commands. Human
+scientiﬁc and editorial review remains pending, including veriﬁcation of claims, citations, limitations,
+and ﬁnal presentation. The execution ledger is an agent-assisted record, not an author attestation
+or publication approval. AI-assisted preparation is separate from the deterministic harness: no
+LLM participates in its scenario runs.
+
+
+11     References
+R1. Vercel Labs. json-render repository and README. Inspected 21 September 2026; live main,
+upstream commit not retained. Local SDK context: @json-render/core and @json-render/react
+0.21.0, including the installed core README and manifest. Used for catalog/renderer design, not
+a security proof.
+  R2. A2UI project. A2UI repository and README (the inspected google/A2UI URL redirects
+here). Inspected 21 September 2026; live main, upstream commit not retained. Local context: web
+core and Lit 0.11.0, installed web-core README, and adapter-selected v0.9 schema.
+  R3. Model Context Protocol contributors. MCP Apps SDK repository and README. Inspected
+21 September 2026; live main, upstream commit not retained. Local context: extension, client, core,
+and server packages 2.0.0; extension README and manifests inspected. SDK package version is
+distinct from wire version.
+  R4. Model Context Protocol contributors. MCP Apps extension speciﬁcation, draft/apps.mdx.
+Visibility and sandbox/CSP sections inspected 21 September 2026; mutable main path, no pinned
+speciﬁcation commit. Used to distinguish host requirements from the assertions implemented here.
+The ﬁlename’s “draft” is retained as the source location, without claiming a release status from the
+SDK version.
+
+
+
+
+                                                  10
+

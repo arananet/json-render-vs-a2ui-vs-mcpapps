@@ -74,11 +74,11 @@ describe("S1 — surface handoff mid-render", () => {
   });
 });
 
-describe("S2 — concurrent composition", () => {
+describe("S2 — fixed-order identifier collision", () => {
   it("json-render loses a write to the shared flat element map", async () => {
-    const run = await runScenario("s2-concurrent-composition", "json-render");
+    const run = await runScenario("s2-fixed-order-collision", "json-render");
 
-    expect(outcomeOf(run.traces, "compose.concurrent-write")).toBe("LOST");
+    expect(outcomeOf(run.traces, "compose.identifier-collision")).toBe("LOST");
 
     const summary = run.snapshot.surfaces["briefing"]!.blocks["summary"]!;
     // finance wrote last, so risk's headline is simply gone.
@@ -96,9 +96,9 @@ describe("S2 — concurrent composition", () => {
   });
 
   it("A2UI loses the same write: surfaces are scoped, component ids are not", async () => {
-    const run = await runScenario("s2-concurrent-composition", "a2ui");
+    const run = await runScenario("s2-fixed-order-collision", "a2ui");
 
-    expect(outcomeOf(run.traces, "compose.concurrent-write")).toBe("LOST");
+    expect(outcomeOf(run.traces, "compose.identifier-collision")).toBe("LOST");
     expect(outcomeOf(run.traces, "compose.shared-surface")).toBe("SUPPORTED");
 
     const summary = run.snapshot.surfaces["briefing"]!.blocks["summary"]!;
@@ -108,9 +108,9 @@ describe("S2 — concurrent composition", () => {
   });
 
   it("MCP Apps cannot lose a write, and cannot compose either", async () => {
-    const run = await runScenario("s2-concurrent-composition", "mcp-apps");
+    const run = await runScenario("s2-fixed-order-collision", "mcp-apps");
 
-    expect(outcomeOf(run.traces, "compose.concurrent-write")).toBe("ENFORCED");
+    expect(outcomeOf(run.traces, "compose.identifier-collision")).toBe("ENFORCED");
     expect(outcomeOf(run.traces, "compose.shared-surface")).toBe("NOT_EXPRESSIBLE");
 
     // Both agents' "summary" blocks survive — in different iframes.

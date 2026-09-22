@@ -1,0 +1,21 @@
+digraph figure {
+graph [rankdir=TB, bgcolor="white", pad=0.15, nodesep=0.25, ranksep=0.32, fontname="Arial", fontsize=15];
+node [shape=box, style=filled, fillcolor="white", color="#333333", fontname="Arial", fontsize=14, margin="0.14,0.10"];
+edge [color="#333333", fontname="Arial", fontsize=12, arrowsize=0.7];
+subgraph cluster_sequence { label="Node S2: fixed order; every emission is awaited"; color="#777777"; style=rounded; margin=14;
+first [label="1. risk writes risk-detail", shape=box];
+second [label="2. finance writes finance-detail", shape=box];
+third [label="3. risk writes summary\nExposure exceeds appetite", shape=box];
+fourth [label="4. finance writes summary\nSpend is within budget", shape=box];
+first -> second [style=solid, label=""];
+second -> third [style=solid, label=""];
+third -> fourth [style=solid, label=""];
+}
+shared [label="Shared namespace\njson-render: finance headline\nA2UI DOM: finance visible\nrisk absent; no node count", shape=box];
+risk [label="Node MCP: briefing::risk\nsummary: risk\nExposure exceeds appetite", shape=box];
+finance [label="Node MCP: briefing::finance\nsummary: finance\nSpend is within budget", shape=box];
+fourth -> shared [style=solid, label=""];
+fourth -> risk [style=solid, label=""];
+fourth -> finance [style=solid, label=""];
+browser [label="Separate browser MCP fixture\nrisk/summary then finance/summary only\nBoth headlines checked in separate frames\nNo detail writes; not full Node S2 validation", shape=box];
+}

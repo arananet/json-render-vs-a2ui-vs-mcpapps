@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: generated LaTeX corresponds to the editable manuscript
+ok 1 - generated LaTeX corresponds to the editable manuscript
+  ---
+  duration_ms: 659.712792
+  type: 'test'
+  ...
+# Subtest: freshness rejects any stale derivative
+ok 2 - freshness rejects any stale derivative
+  ---
+  duration_ms: 0.276375
+  type: 'test'
+  ...
+# Subtest: the build tool fails closed on an unknown operation or missing input
+ok 3 - the build tool fails closed on an unknown operation or missing input
+  ---
+  duration_ms: 61.577958
+  type: 'test'
+  ...
+# Subtest: manuscript identifies the author, affiliation, and review state
+ok 4 - manuscript identifies the author, affiliation, and review state
+  ---
+  duration_ms: 1.13975
+  type: 'test'
+  ...
+# Subtest: H1 is bounded to the actual fixed-order S2 script and existing assertions
+ok 5 - H1 is bounded to the actual fixed-order S2 script and existing assertions
+  ---
+  duration_ms: 2.030875
+  type: 'test'
+  ...
+# Subtest: relative manuscript evidence links resolve to retained local files
+ok 6 - relative manuscript evidence links resolve to retained local files
+  ---
+  duration_ms: 0.497333
+  type: 'test'
+  ...
+# Subtest: manuscript contains the scientific and reproducibility sections
+ok 7 - manuscript contains the scientific and reproducibility sections
+  ---
+  duration_ms: 0.210917
+  type: 'test'
+  ...
+# Subtest: paper version claims match locked and installed SDKs
+ok 8 - paper version claims match locked and installed SDKs
+  ---
+  duration_ms: 17.788875
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 798.929833

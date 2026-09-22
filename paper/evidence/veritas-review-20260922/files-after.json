@@ -1,0 +1,228 @@
+{
+  "artifact": "/Users/ESAranaEd/Scripts/json-render-vs-a2ui-vs-mcpapps/paper",
+  "profile": "scientific-paper",
+  "paths": [
+    "manuscript.md",
+    "REPRODUCTION.md",
+    "EXECUTION.md",
+    "template.tex",
+    "figures/README.md",
+    "evidence/veritas-review-20260922/private-package.json",
+    "evidence/veritas-review-20260922/source-views/scripts/paper.mjs.txt",
+    "evidence/veritas-review-20260922/source-views/scripts/paper-figures.mjs.txt",
+    "evidence/veritas-review-20260922/source-views/tests/paper/build.test.mjs.txt",
+    "evidence/veritas-review-20260922/source-views/tests/paper/editorial.test.mjs.txt",
+    "evidence/veritas-review-20260922/source-views/tests/paper/figures.test.mjs.txt",
+    "evidence/veritas-review-20260922/source-views/tests/paper/manuscript.test.mjs.txt",
+    "evidence/veritas-review-20260922/source-views/tests/paper/pdf.test.mjs.txt",
+    "evidence/veritas-review-20260922/source-views/tests/paper/veritas-inputs.test.mjs.txt",
+    "evidence/veritas-review-20260922/source-views/paper/figures.lua.txt",
+    "evidence/veritas-review-20260922/source-views/paper/figures/topology.mmd.txt",
+    "evidence/veritas-review-20260922/source-views/paper/figures/s2.mmd.txt",
+    "evidence/s2.txt",
+    "evidence/environment.json",
+    "evidence/editorial-20260921/environment-worktree.txt",
+    "evidence/editorial-20260921/npm-test.txt",
+    "evidence/editorial-20260921/final-paper-checks.txt",
+    "evidence/editorial-20260921/typecheck.txt",
+    "evidence/editorial-20260921/openspec-check.txt",
+    "evidence/editorial-20260921/browser.txt",
+    "evidence/editorial-20260921/report-check.txt",
+    "evidence/editorial-20260921/reference-access.md",
+    "evidence/editorial-20260921/pdf-build.txt",
+    "evidence/editorial-20260921/pdf-build-manifest.json",
+    "evidence/editorial-20260921/bundle-check.txt",
+    "evidence/editorial-20260921/pdfinfo.txt",
+    "evidence/editorial-20260921/pdffonts.txt",
+    "../.openspec/runs/reproducible-protocol-comparison-paper/verify-113265801779000.json",
+    "../src/scenarios/s2-concurrent-composition.ts",
+    "../src/adapters/json-render/adapter.ts",
+    "../src/adapters/a2ui/adapter.ts",
+    "../src/adapters/mcp-apps/adapter.ts",
+    "../src/adapters/mcp-apps/host.ts",
+    "../src/report/generate.ts",
+    "../tests/protocol/scenarios.test.ts",
+    "../tests/protocol/mcp-apps-bridge.test.ts",
+    "../tests/browser/render.spec.ts"
+  ],
+  "files": [
+    {
+      "path": "../.openspec/runs/reproducible-protocol-comparison-paper/verify-113265801779000.json",
+      "characters": 571
+    },
+    {
+      "path": "../src/adapters/a2ui/adapter.ts",
+      "characters": 16313
+    },
+    {
+      "path": "../src/adapters/json-render/adapter.ts",
+      "characters": 13918
+    },
+    {
+      "path": "../src/adapters/mcp-apps/adapter.ts",
+      "characters": 13208
+    },
+    {
+      "path": "../src/adapters/mcp-apps/host.ts",
+      "characters": 5791
+    },
+    {
+      "path": "../src/report/generate.ts",
+      "characters": 12050
+    },
+    {
+      "path": "../src/scenarios/s2-concurrent-composition.ts",
+      "characters": 2110
+    },
+    {
+      "path": "../tests/browser/render.spec.ts",
+      "characters": 7430
+    },
+    {
+      "path": "../tests/protocol/mcp-apps-bridge.test.ts",
+      "characters": 4336
+    },
+    {
+      "path": "../tests/protocol/scenarios.test.ts",
+      "characters": 7932
+    },
+    {
+      "path": "EXECUTION.md",
+      "characters": 29067
+    },
+    {
+      "path": "REPRODUCTION.md",
+      "characters": 13671
+    },
+    {
+      "path": "evidence/editorial-20260921/browser.txt",
+      "characters": 3344
+    },
+    {
+      "path": "evidence/editorial-20260921/bundle-check.txt",
+      "characters": 1667
+    },
+    {
+      "path": "evidence/editorial-20260921/environment-worktree.txt",
+      "characters": 1928
+    },
+    {
+      "path": "evidence/editorial-20260921/final-paper-checks.txt",
+      "characters": 5135
+    },
+    {
+      "path": "evidence/editorial-20260921/npm-test.txt",
+      "characters": 329
+    },
+    {
+      "path": "evidence/editorial-20260921/openspec-check.txt",
+      "characters": 177
+    },
+    {
+      "path": "evidence/editorial-20260921/pdf-build-manifest.json",
+      "characters": 1595
+    },
+    {
+      "path": "evidence/editorial-20260921/pdf-build.txt",
+      "characters": 1549
+    },
+    {
+      "path": "evidence/editorial-20260921/pdffonts.txt",
+      "characters": 1692
+    },
+    {
+      "path": "evidence/editorial-20260921/pdfinfo.txt",
+      "characters": 575
+    },
+    {
+      "path": "evidence/editorial-20260921/reference-access.md",
+      "characters": 1416
+    },
+    {
+      "path": "evidence/editorial-20260921/report-check.txt",
+      "characters": 1092
+    },
+    {
+      "path": "evidence/editorial-20260921/typecheck.txt",
+      "characters": 140
+    },
+    {
+      "path": "evidence/environment.json",
+      "characters": 3019
+    },
+    {
+      "path": "evidence/s2.txt",
+      "characters": 315
+    },
+    {
+      "path": "evidence/veritas-review-20260922/private-package.json",
+      "characters": 5084
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/paper/figures.lua.txt",
+      "characters": 951
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/paper/figures/s2.mmd.txt",
+      "characters": 681
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/paper/figures/topology.mmd.txt",
+      "characters": 915
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/scripts/paper-figures.mjs.txt",
+      "characters": 3191
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/scripts/paper.mjs.txt",
+      "characters": 4488
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/tests/paper/build.test.mjs.txt",
+      "characters": 2419
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/tests/paper/editorial.test.mjs.txt",
+      "characters": 3172
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/tests/paper/figures.test.mjs.txt",
+      "characters": 2821
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/tests/paper/manuscript.test.mjs.txt",
+      "characters": 3074
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/tests/paper/pdf.test.mjs.txt",
+      "characters": 1955
+    },
+    {
+      "path": "evidence/veritas-review-20260922/source-views/tests/paper/veritas-inputs.test.mjs.txt",
+      "characters": 4243
+    },
+    {
+      "path": "figures/README.md",
+      "characters": 2435
+    },
+    {
+      "path": "manuscript.md",
+      "characters": 27760
+    },
+    {
+      "path": "template.tex",
+      "characters": 1016
+    }
+  ],
+  "judges": [
+    "methodology",
+    "evidence",
+    "statistics",
+    "reproducibility",
+    "repo-consistency",
+    "citations",
+    "adversarial"
+  ],
+  "approximate_tokens_per_judge": 53643
+}

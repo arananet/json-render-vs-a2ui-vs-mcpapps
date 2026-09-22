@@ -1,0 +1,21 @@
+flowchart TB
+  subgraph shared["A. Shared-state configurations\nSeparate json-render and A2UI runs"]
+    writers["Named writers via orchestrator"]
+    state["One Spec or A2UI surface\nShared IDs\nCoordinated root"]
+    renderer["Trusted catalog\nReact or Lit renderer"]
+    bookkeeping["Writer and routing maps\nNot authenticated\nprovenance"]
+    writers --> state
+    state --> renderer
+    state --> bookkeeping
+  end
+  subgraph mcp["B. MCP Apps configuration\nOne server per agent"]
+    view["App per surface / agent\nBrowser: separate\nsandboxed iframe"]
+    gate{"Host handler\nInstalled AFTER\nbridge.connect"}
+    server["Bound MCP server\nConnection-to-agent\nmapping is local"]
+    refused["Model-only tool: reject"]
+    view --> gate
+    gate -->|app-visible tool| server
+    gate -->|model-only tool| refused
+    view -.->|permissive default:\nforwards model-only call| server
+  end
+  renderer ~~~ view

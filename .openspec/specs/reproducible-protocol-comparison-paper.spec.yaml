@@ -12,15 +12,21 @@ roles:
   qa:
   product_owner:
 description: |
-  Prepare a local English research manuscript by Eduardo Arana (Arananet)
+  Prepare a versionable English research manuscript by Eduardo Arana (Arananet)
   describing the existing three-scenario UI comparison as a bounded empirical
-  case study. Provide a reproduction guide and an honest local execution record,
+  case study. Provide a reproduction guide, an honest local execution record,
+  immutable Markdown snapshots, a preregistration record and research governance
+  documents,
   borrowing evidence-accounting practices, not scientific results or prose, from
   besanson/sarc-authority-derivation. Generate LaTeX and a PDF when the available
-  toolchain permits. The user requested the paper and explicitly prohibited push.
+  toolchain permits. The user authorized public-ready repository preparation but
+  explicitly prohibited commit, tag, push, submission, or DOI registration.
 acceptance_criteria:
-- "Incorporate retained successful browser evidence for the three concrete configurations: C3 and fixed-order H1 supported within executed assertions, C6 and consent partial, C9 proposed; preserve historical evidence and leave Veritas untouched."
-- "Keep local Veritas judge inputs on an explicit file allowlist: one current manuscript, distinct claim evidence and meaningful failures; retain historical artifacts locally and do not execute judging or paid calls."
+- "Rename S2 source, runner, scenario ID, report labels/keys and all active references to fixed-order sequential identifier collision without changing operations or write order. H1, RQ2, results and conclusion cover only the specified order; alternative orders, scheduling and concurrency are untested."
+- "Treat retained browser logs, private archive and text manifest as pre-rename evidence. Record the completed built two-spec outer-terminal browser run with complete source/build hashes as current fixture-specific browser verification; preserve historical bytes and do not regenerate the Veritas-routed package or text manifest without explicit authorization."
+- "Incorporate retained browser evidence with fixture-specific H1/C2: Node S2 has four sequential writes, browser MCP only two summaries; C3 checks finance visible/risk absent, C6/C7 partial, C9 proposed. No concurrency or common-fixture validation claim."
+- "Leave external Veritas implementation, configuration, selection, checks, gates, permissions, reports and behavior untouched, except for the user-authorized addition of paper/evidence/private-review-manifest.json to the active root veritas.yaml artifact.paths; do not run it or paid judges, and retain historical artifacts."
+- "Prepare a local private review archive of current paper/build/fixture sources, locked dependencies and selected immutable evidence with exact-path SHA256/provenance/commands; exclude secrets, caches and auditor materials. Availability and independent reproduction remain unproven."
 - "Add original evidence-backed Mermaid topology/enforcement and fixed-order S2 figures with editable sources, grayscale-safe pre-rendered assets, captions and cross references; no new experiments or performance scores."
 - "Build a readable local academic PDF where safe installed tooling permits, and prepare self-contained TeX sources with preconverted figures, an explicit date, and no runtime conversion or shell escape; no arXiv validation or acceptance is implied."
 - "The English manuscript identifies Eduardo Arana as author and Arananet as affiliation, and includes research questions, methodology, bounded results, related work, limitations, and a claim-to-evidence table."
@@ -28,15 +34,24 @@ acceptance_criteria:
 - "The reproduction guide records prerequisites, commands, expected semantic outcomes, environment and revision provenance, failed attempts, and unverified requirements without claiming independent reproduction."
 - "LaTeX and PDF are generated from the manuscript if available tools succeed; missing tools or build failures are reported without claiming a successful build."
 - "Documentation checks validate author metadata, required sections, local evidence links, and correspondence of generated LaTeX with the manuscript. No commit, push, submission, paid service, or external issue is performed."
+- "License the repository under Apache-2.0, retain its author notice, and state that no project DOI exists until a distinct author-controlled archival release is published."
+- "Track paper inputs and immutable research records rather than locally excluding them. Freeze the current Markdown manuscript as v0.1 and a populated counterpart without later regeneration or editing; the canonical manuscript remains editable."
+- "Add a preregistration directory that records the retrospective status of existing observations, no claimed preregistration of completed runs, planned tag names only, and an append-only amendment process."
+- "Add FINAL-AUDIT.md, NOVELTY.md, and ADRs covering immutable paper versions and commit-order precedence. They must distinguish evidence-backed claims, known provenance gaps, and planned publication actions from completed ones."
+- "Record clean-clone hashes and timings only after an actual clean-clone run; until then the reproduction guide names them as pending rather than inventing expected values."
 test_plan:
-- "Check the 18-test IPv4 report and source/capture hashes; run evidence-alignment tests, regenerate figures/TeX/PDF/bundle, and report any historical private-review gate failure without refreshing old views or changing auditor configuration."
-- "Validate Veritas input selection with its supported files command in paper/; compare the complete listing with the allowlist, guard against recursive/historical manuscript inclusion, and record selection counts and limitations without starting evaluation."
+- "After the substantive rename, search active references for obsolete names and run typecheck or focused scenario tests. Run npm test, focused paper/provenance checks and required OpenSpec checks into a new evidence directory; report expected stale-package/external-config failures unchanged."
+- "Record the exact IPv4 Vite preview plus env -u CI Playwright outer-terminal command and its completed evidence directory, preserving captures, source/build hashes, logs and exit status. Reject private packaging unless actual fresh execution matches current sources and captures."
+- "For the manifest-routing exception only: copy PRIVATE-MANIFEST.json byte-for-byte from the current archive with tar -xOf, check safe member paths and every member SHA256/size, validate YAML and config-relative text resolution, and compare structured config allowing only that one artifact.paths addition. Preserve the archive and manuscript/build; no auditor execution or historical-test repair."
+- "Check the historical 18-test IPv4 report and capture hashes as pre-rename evidence; run evidence-alignment tests, regenerate TeX/PDF, and regenerate figures only if labels change. Block private archive/text-manifest regeneration until fresh outer browser evidence validates current sources. Report existing review-gate failures without refreshing old views or changing auditor configuration."
+- "Test private archive extraction, hashes and required source/evidence coverage in a temporary directory independently of external auditor configuration; report the existing external-config regression blocker without repairing or weakening it."
 - "Validate the first build-tool change immediately; check figure states against source/assertions, inspect PDF metadata/fonts/text and rendered pages, and retain historical failures separately from current build evidence."
 - "Check the clean source bundle from its root and verify included assets; exclude logs, auxiliary files, and the compiled main PDF."
 - "Run the focused manuscript checks and regenerate LaTeX to check freshness."
-- "Run npm test and the existing browser suite where prerequisites are available; record failures and stop rather than weaken assertions."
+- "Run npm test; audit retained browser evidence as historical only. The behavior-preserving S2 rename requires fresh browser execution before current-source provenance or private packaging can pass."
 - "Build the PDF with the available TeX engine and inspect extracted text for author, affiliation, and unresolved references."
 - "Run bash scripts/openspec check, verify reproducible-protocol-comparison-paper, and status reproducible-protocol-comparison-paper."
+- "Validate frozen Markdown snapshots byte-for-byte against their recorded hashes and verify that research governance documents link to the canonical manuscript, execution record, and preregistration record."
 qa_notes: |
   Existing results are retrospective, not preregistered experiments. A local
   agent-assisted rerun is not an independent-person reproduction. Review the
@@ -46,8 +61,11 @@ qa_notes: |
   run with node --test tests/paper/*.test.mjs, separately from the harness suite.
   Reference-access limitations and actual command evidence are recorded in
   paper/EXECUTION.md. Human review remains pending; status stays review.
-  The 2026-09-22 UTC browser evidence update uses the existing successful
-  outer-terminal run (18 passed, 9 render and 9 capture tests). C3 checks finance
+  The authorized S2 identity correction changes only naming/documentation and
+  provenance maintenance. The retained browser run and private archive/manifest
+  predate the renamed fixture; the separate `browser-s2-fixed-order-Iyz55xbG`
+  outer-terminal run records current-source verification (18 passed, 9 render
+  and 9 capture tests). C3 checks finance
   visible and risk absent, not exact node count. No C9 intervention is performed.
   Verification and any blocked historical review-package checks are appended to
   paper/EXECUTION.md; no human review or independent reproduction is claimed.
@@ -55,13 +73,16 @@ out_of_scope:
 - "New experimental scenarios, adapter changes, performance claims, or formal impossibility proofs."
 - "Claiming completed independent reproduction, exhaustive literature review, peer review, or arXiv acceptance."
 - "Commit, push, arXiv submission, contacting maintainers, or changing existing scientific outcomes."
+- "Creating a Git tag, GitHub release, Zenodo deposition/DOI, or representing another project's DOI as this work's DOI."
 implementation_skill: null
 eval_plan:
   scenarios: []
   metrics: []
 technical_notes: |
-  Keep one editable Markdown manuscript with generated LaTeX/PDF. Cite primary
-  sources actually inspected and the methodological reference. Preserve all
-  existing harness behavior and generated comparison documentation.
+  Keep one editable Markdown manuscript with generated LaTeX/PDF and immutable
+  Markdown snapshots. Cite primary sources actually inspected and the
+  methodological reference. Preserve all existing harness behavior; update
+  generated comparison identity/labels only. A frozen snapshot records its input
+  hash and never changes; a subsequent revision receives a new versioned path.
 linked_issues: []
 linked_prs: []
