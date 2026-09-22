@@ -5,7 +5,7 @@ type: feature
 status: review
 author: Eduardo Arana
 created_at: '2026-09-21'
-updated_at: '2026-09-21'
+updated_at: '2026-09-22'
 roles:
   implementer:
   reviewer:
@@ -19,6 +19,8 @@ description: |
   besanson/sarc-authority-derivation. Generate LaTeX and a PDF when the available
   toolchain permits. The user requested the paper and explicitly prohibited push.
 acceptance_criteria:
+- "Incorporate retained successful browser evidence for the three concrete configurations: C3 and fixed-order H1 supported within executed assertions, C6 and consent partial, C9 proposed; preserve historical evidence and leave Veritas untouched."
+- "Keep local Veritas judge inputs on an explicit file allowlist: one current manuscript, distinct claim evidence and meaningful failures; retain historical artifacts locally and do not execute judging or paid calls."
 - "Add original evidence-backed Mermaid topology/enforcement and fixed-order S2 figures with editable sources, grayscale-safe pre-rendered assets, captions and cross references; no new experiments or performance scores."
 - "Build a readable local academic PDF where safe installed tooling permits, and prepare self-contained TeX sources with preconverted figures, an explicit date, and no runtime conversion or shell escape; no arXiv validation or acceptance is implied."
 - "The English manuscript identifies Eduardo Arana as author and Arananet as affiliation, and includes research questions, methodology, bounded results, related work, limitations, and a claim-to-evidence table."
@@ -27,6 +29,8 @@ acceptance_criteria:
 - "LaTeX and PDF are generated from the manuscript if available tools succeed; missing tools or build failures are reported without claiming a successful build."
 - "Documentation checks validate author metadata, required sections, local evidence links, and correspondence of generated LaTeX with the manuscript. No commit, push, submission, paid service, or external issue is performed."
 test_plan:
+- "Check the 18-test IPv4 report and source/capture hashes; run evidence-alignment tests, regenerate figures/TeX/PDF/bundle, and report any historical private-review gate failure without refreshing old views or changing auditor configuration."
+- "Validate Veritas input selection with its supported files command in paper/; compare the complete listing with the allowlist, guard against recursive/historical manuscript inclusion, and record selection counts and limitations without starting evaluation."
 - "Validate the first build-tool change immediately; check figure states against source/assertions, inspect PDF metadata/fonts/text and rendered pages, and retain historical failures separately from current build evidence."
 - "Check the clean source bundle from its root and verify included assets; exclude logs, auxiliary files, and the compiled main PDF."
 - "Run the focused manuscript checks and regenerate LaTeX to check freshness."
@@ -42,6 +46,11 @@ qa_notes: |
   run with node --test tests/paper/*.test.mjs, separately from the harness suite.
   Reference-access limitations and actual command evidence are recorded in
   paper/EXECUTION.md. Human review remains pending; status stays review.
+  The 2026-09-22 UTC browser evidence update uses the existing successful
+  outer-terminal run (18 passed, 9 render and 9 capture tests). C3 checks finance
+  visible and risk absent, not exact node count. No C9 intervention is performed.
+  Verification and any blocked historical review-package checks are appended to
+  paper/EXECUTION.md; no human review or independent reproduction is claimed.
 out_of_scope:
 - "New experimental scenarios, adapter changes, performance claims, or formal impossibility proofs."
 - "Claiming completed independent reproduction, exhaustive literature review, peer review, or arXiv acceptance."

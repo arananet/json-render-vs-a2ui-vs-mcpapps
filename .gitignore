@@ -191,3 +191,7 @@ test-results/
 playwright-report/
 blob-report/
 .scratch/
+
+# veritas
+.veritas/
+veritas.yaml
