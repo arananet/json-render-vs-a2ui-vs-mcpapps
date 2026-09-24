@@ -135,7 +135,8 @@ PATH="$HOME/.nvm/versions/node/v22.23.2/bin:$PATH" npm run report:check
 ```
 
 This pending command is documented, not newly executed. The historical browser prerequisite was satisfied for the pre-rename fixture
-only; a new execution is required for the current fixture.
+only; the complete current-fixture execution is available through
+[`paper/evidence/current-browser-run/`](evidence/current-browser-run/).
 
 ### Historical pre-rename browser specs with an IPv4 preview
 

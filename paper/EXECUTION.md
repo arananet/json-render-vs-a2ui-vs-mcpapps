@@ -791,3 +791,9 @@ scripts/paper.mjs private-bundle` produced the local archive; the extracted
 `paper/evidence/private-review-manifest.json` records the same source commit.
 This is a local execution record, not an independent reproduction or human
 review.
+
+## Editorial and provenance drift corrections — 22 September 2026 UTC
+
+- C3/manuscript was stale: the stable linked evidence is present and complete.
+- The pre-rename literal assertion was stale: its report is historical and the current run exists.
+- Provenance wording/test was stale: inputs, tooling, and evaluation configuration are versioned now; only pre-22-Sep commit provenance is incomplete.

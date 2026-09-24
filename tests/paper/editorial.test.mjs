@@ -58,14 +58,14 @@ test("browser MCP executes only summaries while Node S2 has four sequential writ
   }
 });
 
-test("pre-rename browser evidence records historical success, not current-source verification", () => {
+test("pre-rename browser evidence is historical while the current run verifies the renamed fixture", () => {
   const directory = resolve(root, "paper/evidence/browser-terminal-20260922T013449Z-zH4HTK");
   const report = JSON.parse(readFileSync(resolve(directory, "playwright-ipv4.json"), "utf8"));
   assert.equal(report.stats.expected, 18);
   for (const key of ["unexpected", "flaky", "skipped"]) assert.equal(report.stats[key], 0);
   assert.deepEqual(report.errors, []);
-  assert.match(manuscript, /Browser provenance gap/);
-  assert.match(manuscript, /old raw logs cannot bind the post-rename fixture/);
+  assert.match(manuscript, /pre-rename `browser-terminal-20260922T013449Z-zH4HTK\/` records are historical\s+only and are not claim-support evidence for this fixture/);
+  assert.match(manuscript, /\[current browser run\]\(\.\/evidence\/current-browser-run\/\).*?bind the\s+current browser claim for this fixture/s);
   const specs = [];
   const visit = suites => suites.forEach(suite => { specs.push(...(suite.specs ?? [])); visit(suite.suites ?? []); });
   visit(report.suites);
@@ -82,7 +82,7 @@ test("pre-rename browser evidence records historical success, not current-source
   assert.match(a2ui, /getByText\("Spend is within budget"\)\)\.toBeVisible\(\)/);
   assert.match(a2ui, /getByText\("Exposure exceeds appetite"\)\)\.toHaveCount\(0\)/);
   assert.doesNotMatch(a2ui, /toHaveCount\(1\)/);
-  assert.match(manuscript, /playwright-ipv4\.json/);
+  assert.match(manuscript, /18 passed tests: nine render assertions and nine screenshot tests/);
   assert.match(manuscript, /does not assert an exact summary node count/);
   assert.match(manuscript, /do not\nestablish historical reproduction/);
 });
@@ -95,9 +95,9 @@ test("manuscript removes agent-to-user narration without claiming human review",
   assert.match(disclosure, /no LLM participates/);
 });
 
-test("unverified reference and ignored paper provenance are explicit", () => {
+test("unverified reference and historical commit provenance are explicit", () => {
   const normalized = manuscript.replace(/\s+/g, " ");
   assert.match(normalized, /unverified methodological pointer, not as inspected scientific evidence/);
-  assert.match(normalized, /Git status and OpenSpec's tracked\/nonignored input fingerprint do not identify the complete paper workspace/);
+  assert.match(normalized, /Inputs, tooling, and evaluation configuration are versioned now; commit-level provenance before 22 September 2026 does not identify the complete paper workspace/);
   assert.match(normalized, /Separate paper checks and SHA-256 manifests/);
 });

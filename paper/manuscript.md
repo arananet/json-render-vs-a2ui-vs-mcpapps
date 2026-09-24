@@ -245,8 +245,8 @@ finance's headline visible and risk's headline absent within the surface.
 It does not assert an exact summary node count, despite its test title.
 The execution ledger identifies a raw browser report for the current-source run
 as recording 18 passed tests: nine render assertions and nine screenshot tests.
-That directory is not included in this review package, so this package cannot
-independently check the current-source browser result.
+The complete [current browser run](./evidence/current-browser-run/) includes
+that report, source snapshots, build hashes, and capture hashes.
 The MCP browser fixture omits Node's risk-detail and finance-detail writes.
 Its two summary assertions are a separate browser result, not corroboration of
 the full four-write Node S2 or support across a common shared fixture.
@@ -310,7 +310,7 @@ paper's evidence statuses, distinct from the adapter outcome vocabulary.
 | --- | --- | --- |
 | C1: S1 yields one shared region or two MCP instances in this topology. | Supported | S1 snapshot region and block assertions; contradicted by missing blocks or different region counts. |
 | C2: Four-write Node S2 overwrites the json-render summary and retains both MCP summaries. | Supported | Node headline assertions; contradicted by different retained values. Browser MCP checks a separate two-write fixture, not full Node S2. |
-| C3: S2's A2UI shared summary displays finance's headline. | Partial | The execution ledger describes current-source browser assertions checking finance visible and risk absent within the surface, but the `current-browser-run` evidence directory is not included in this review package. The MCP browser fixture remains a distinct two-write fixture. No exact node count is asserted. |
+| C3: S2's A2UI shared summary displays finance's headline. | Supported | The complete [current browser run](./evidence/current-browser-run/) records assertions checking finance visible and risk absent within the surface. The MCP browser fixture remains a distinct two-write fixture. No exact node count is asserted. |
 | C4: S2 is sequential, with no scheduling test. | Supported | Four awaited emissions in the S2 source; contradicted by an overlapping scheduler in the executed path. |
 | C5: The enforcing MCP handler rejects the model-only call, while the permissive variant forwards it. | Supported | Bridge rejection/refusal and successful-result assertions; contradicted by reversed or identical behavior. |
 | C6: Every MCP S3 control reaches its intended agent. | Partial | Existing test checks some table-free delivery; first-instance selection prevents this stronger inference. |
@@ -331,9 +331,9 @@ For C1–C3 and the tested browser actions, the renamed
 [screenshot spec](../tests/browser/screenshots.spec.ts) supplies nine captures.
 The pre-rename `browser-terminal-20260922T013449Z-zH4HTK/` records are historical
 only and are not claim-support evidence for this fixture. The execution ledger
-names QDL9iC9j as the current-source run, but its report, source snapshots,
-build hashes, and capture hashes are not included in this review package; they
-therefore cannot bind a current browser claim for a reader of this package.
+records the complete [current browser run](./evidence/current-browser-run/),
+whose report, source snapshots, build hashes, and capture hashes bind the
+current browser claim for this fixture.
 This does not make the distinct MCP browser fixture corroborate the four-write
 Node fixture.
 C6 remains partial: successful browser
@@ -427,7 +427,9 @@ and file hashes without resetting external changes. The earlier
 execution record identifies its own historical base. The paper package, build
 scripts, and paper tests are versioned with the research record. Separate paper
 checks and SHA-256 manifests record the manuscript, tooling, assets, and
-generated outputs.
+generated outputs. Inputs, tooling, and evaluation configuration are versioned
+now; commit-level provenance before 22 September 2026 does not identify the
+complete paper workspace.
 
 Semantic reproducibility means obtaining the specified regions, values, events,
 and refusal behavior under the same configuration. Byte identity is a separate
@@ -473,8 +475,10 @@ publication acceptance. Human review remains pending.
 # Conclusion
 
 S2 observes only the one specified sequential write order and cannot generalize
-to alternative orders, scheduling or concurrency. The retained browser findings
-predate the rename; current browser-source provenance requires re-execution.
+to alternative orders, scheduling or concurrency. The retained pre-rename
+browser findings are historical; the complete
+[current browser run](./evidence/current-browser-run/) supplies current
+browser-source provenance for the renamed fixture.
 
 Across three concrete tested configurations, handoff placement and retained
 values reflect the chosen shared or separated mappings. The S2 assertions check
