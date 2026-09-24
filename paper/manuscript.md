@@ -310,13 +310,13 @@ paper's evidence statuses, distinct from the adapter outcome vocabulary.
 | --- | --- | --- |
 | C1: S1 yields one shared region or two MCP instances in this topology. | Supported | S1 snapshot region and block assertions; contradicted by missing blocks or different region counts. |
 | C2: Four-write Node S2 overwrites the json-render summary and retains both MCP summaries. | Supported | Node headline assertions; contradicted by different retained values. Browser MCP checks a separate two-write fixture, not full Node S2. |
-| C3: S2's A2UI shared summary displays finance's headline. | Supported | The complete [current browser run](./evidence/current-browser-run/) records assertions checking finance visible and risk absent within the surface. The MCP browser fixture remains a distinct two-write fixture. No exact node count is asserted. |
+| C3: S2's A2UI shared summary displays finance's headline. | Supported | The complete [immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/) records assertions checking finance visible and risk absent within the surface. The MCP browser fixture remains a distinct two-write fixture. No exact node count is asserted. |
 | C4: S2 is sequential, with no scheduling test. | Supported | Four awaited emissions in the S2 source; contradicted by an overlapping scheduler in the executed path. |
 | C5: The enforcing MCP handler rejects the model-only call, while the permissive variant forwards it. | Supported | Bridge rejection/refusal and successful-result assertions; contradicted by reversed or identical behavior. |
 | C6: Every MCP S3 control reaches its intended agent. | Partial | Existing test checks some table-free delivery; first-instance selection prevents this stronger inference. |
 | C7: json-render includes confirmation metadata, with consent enforcement incompletely checked. | Partial | Adapter source includes metadata; the scenario test asserts its classification only, not independent policy or privileged browser consent. |
 | C8: Matrix labels are adapter classifications, not independent measurements. | Supported | Source shows first-recording-wins selection; freshness checks correspondence only. |
-| C9: A matched-topology intervention isolates protocol causality. | Proposed | Pending controlled comparison; no new experiment is reported. |
+| C9: A matched-topology intervention isolates protocol causality. | Proposed | Pending controlled comparison; no new experiment is reported. All collision findings are conditioned on the one fully deterministic write order and cannot be extrapolated to concurrent or out-of-order writes. |
 
 Each **Supported** row reflects the single retained execution identified for its
 check; the harness uses deterministic scripted agents rather than an LLM
@@ -331,7 +331,7 @@ For C1–C3 and the tested browser actions, the renamed
 [screenshot spec](../tests/browser/screenshots.spec.ts) supplies nine captures.
 The pre-rename `browser-terminal-20260922T013449Z-zH4HTK/` records are historical
 only and are not claim-support evidence for this fixture. The execution ledger
-records the complete [current browser run](./evidence/current-browser-run/),
+records the complete [immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/),
 whose report, source snapshots, build hashes, and capture hashes bind the
 current browser claim for this fixture.
 This does not make the distinct MCP browser fixture corroborate the four-write
@@ -375,6 +375,9 @@ shared-root coordination, naming conventions, host enforcement, catalogs,
 rendering frameworks, transports, and one-server-per-agent MCP topology as
 confounders. The default/permissive MCP comparison narrows one host-policy
 question, but it is not a factorial comparison across all configurations.
+Accordingly, the isolation and collision findings describe the tested adapter and
+topology configurations, not protocol-level enforcement results; a
+matched-topology intervention remains unperformed.
 
 **Construct validity.** A region count is a property of the adapter snapshot;
 it is not a usability measure. A writer prop is not authenticated provenance.
@@ -387,13 +390,23 @@ they are still authored within this repository, not by independent evaluators.
 **Execution and coverage.** Node transports do not test browser isolation. The
 MCP browser fixtures differ from the Node scenario. Historical screenshots remain
 retained artifacts; the nine new captures are separately archived and do not
-establish historical reproduction. Two post-rename browser executions completed
-with identical statistics over a byte-identical snapshot of the code under test,
-and two further attempts aborted before any test body ran; no completed
-execution was discarded, and the canonical run is identified in
-`paper/evidence/README.md`. Neither completed run is an independent
+establish historical reproduction. Four post-rename attempts are retained: two
+completed with 18 passing tests, and two aborted before any test body ran. The
+two completed executions used different source revisions: their snapshots differ
+for `src/adapters/mcp-apps/adapter.ts`, `src/orchestrator/types.ts`, and
+`src/report/generate.ts`. Only aggregate pass counts are compared; no per-test
+timing or other run-level equivalence is claimed. No completed execution was
+discarded, and the immutable current-source run is
+`paper/evidence/browser-s2-fixed-order-QDL9iC9j/`. Neither completed run is an independent
 reproduction: both ran on the same machine, from the same checkout, in the same
 session. The suite does not comprehensively test adversarial inputs, identity forgery, transport authentication, CSP, cross-server policy, authorization revocation, or arbitrary concurrent schedules. No completed security review is claimed.
+
+**Classification scope.** The matrix contains many individually classified
+configuration/scenario cells. Because these are deterministic code-behavior
+observations rather than independent statistical tests, no multiple-comparison
+estimate is reported. The number of cells nevertheless increases the surface
+for a stale or incorrect classification; the freshness check tests report/code
+correspondence, not the truth of every classification.
 
 **External and temporal validity.** Three designed scenarios, fixed fixture
 data, and the pinned installed packages cannot establish population effects or
@@ -406,12 +419,11 @@ archive. No latency, throughput, cost, user study, or model capability was measu
 
 No archival identifier is asserted for the regenerated current-source evidence
 described below. A final archival deposit remains pending review of this
-evidence chain.
-The canonical editable manuscript, harness, frozen v0.1 Markdown snapshot, and
-versioned evidence records are available in the repository and its release
-archive. The deposit establishes an archival identifier for that release; it
-does not establish independent reproduction, peer review, or protocol
-causality.
+evidence chain. The canonical editable manuscript, harness, frozen v0.1
+Markdown snapshot, and versioned evidence records are available only as local
+repository evidence in this artifact. No deposited release, public repository
+URL, or archival identifier is asserted. This does not establish independent
+reproduction, peer review, or protocol causality.
 
 # Reproducibility
 
@@ -477,8 +489,8 @@ publication acceptance. Human review remains pending.
 S2 observes only the one specified sequential write order and cannot generalize
 to alternative orders, scheduling or concurrency. The retained pre-rename
 browser findings are historical; the complete
-[current browser run](./evidence/current-browser-run/) supplies current
-browser-source provenance for the renamed fixture.
+[immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/) supplies
+current browser-source provenance for the renamed fixture.
 
 Across three concrete tested configurations, handoff placement and retained
 values reflect the chosen shared or separated mappings. The S2 assertions check
@@ -490,8 +502,9 @@ Neither fixture tests concurrency, scheduling, interleaving, or randomization. M
 tool rejection depends on the tested enforcing host handler, while correct
 routing for every control remains only partially checked. Interpretation must
 name the adapter mapping, namespace/topology, and enforcement site together
-with the SDK or protocol. These results do not isolate protocol causality or
-establish unavoidable incompatibility between composition and security.
+with the SDK or protocol. These results do not isolate protocol causality,
+establish protocol-level collision enforcement, or establish unavoidable
+incompatibility between composition and security.
 Integrations remain possible, and trusted catalogs retain meaningful security
 properties.
 

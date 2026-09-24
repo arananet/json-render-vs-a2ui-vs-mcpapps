@@ -7,11 +7,12 @@ for commands actually run and the limits of the evidence.
 
 ## Inputs and prerequisites
 
-- Current maintenance base at the recorded browser execution:
-  `f552114ef3ae7a3a94b601d8b246265daed3779e`. Its provenance records the
-  intentionally uncommitted research-preparation changes. Earlier execution
-  sections retain their own historical revision. Record `git rev-parse HEAD` and
-  `git status --short --untracked-files=all` for your own run.
+- Actual tested HEAD for the immutable recorded browser execution:
+  `91a0b7a5191947a4ad284e276227564586c88f82`, as recorded in that execution's
+  `environment.json` and `provenance.txt`. The earlier maintenance base
+  `f552114ef3ae7a3a94b601d8b246265daed3779e` and later bookkeeping commits are
+  historical records, not the tested browser revision. Record `git rev-parse HEAD`
+  and `git status --short --untracked-files=all` for your own run.
 - Node >=22, npm, the existing `package-lock.json`, Bash, Git, Ruby >=2.6 for
   OpenSpec, and local dependencies. A fresh installation normally uses
   `npm ci --no-audit --no-fund`; it may require network access. Do not interpret
@@ -136,7 +137,8 @@ root, the standalone report check remains pending:
 PATH="$HOME/.nvm/versions/node/v22.23.2/bin:$PATH" npm run report:check
 ```
 
-This pending command is documented, not newly executed. The historical browser prerequisite was satisfied for the pre-rename fixture
+This command is environment-blocked in the recorded sandbox, not a primary
+success criterion for this artifact. The historical browser prerequisite was satisfied for the pre-rename fixture
 only; the complete current-fixture execution is available through
 [`paper/evidence/current-browser-run/`](evidence/current-browser-run/).
 
@@ -200,15 +202,18 @@ node scripts/paper-figures.mjs
 node scripts/paper.mjs latex
 node scripts/paper.mjs check
 node scripts/paper.mjs pdf
-# Expected to fail in this supplied artifact: `veritas-inputs.test.mjs` cannot
-# load the absent `paper/veritas.yaml`; see EXECUTION.md. Retain that failure.
-node --test tests/paper/*.test.mjs
+# Optional/blocked: do not treat this as a primary reproduction command. The
+# supplied artifact lacks `paper/veritas.yaml`, so `veritas-inputs.test.mjs`
+# cannot load its input; see EXECUTION.md.
+# node --test tests/paper/*.test.mjs
 node scripts/paper.mjs bundle
 node scripts/paper.mjs private-bundle
 npm test -- tests/protocol/scenarios.test.ts -t S2
 npm test
 npm run typecheck
-npm run report:check
+# Environment-blocked in the recorded sandbox (tsx IPC-listener EPERM); see
+# the host-permissions section above.
+# npm run report:check
 npm run test:browser
 pdfinfo paper/manuscript.pdf
 pdffonts paper/manuscript.pdf

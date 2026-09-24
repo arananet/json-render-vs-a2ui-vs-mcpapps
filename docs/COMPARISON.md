@@ -34,8 +34,9 @@ Outcome vocabulary: **✅ supported** the protocol expresses it directly ·
 **🟡 caveat** expressed, but something the orchestrator needs was weakened ·
 **🟠 out-of-band** only works because the orchestrator keeps state the protocol
 does not carry · **❌ not expressible** no way to say it · **🔒 enforced** the
-protocol actively prevents the failure · **🔒 enforced by conformant host** a
-conformant host structurally prevents the failure · **🔴 write lost** content
+protocol actively prevents the failure · **🔒 enforced by conformant host** the
+tested conformant host configuration structurally prevents the failure (not a
+protocol-wide result) · **🔴 write lost** content
 was silently dropped.
 
 ## What the matrix means if you are building an orchestrator
@@ -43,7 +44,9 @@ was silently dropped.
 **There is no protocol here that does all three jobs.** The capabilities split
 cleanly along one axis: json-render and A2UI treat UI as *shared mutable state*
 that any agent can address, and MCP Apps treats it as *per-agent isolated
-instances* that no other agent can reach. Everything else follows.
+instances* that no other agent can reach. This is a comparison of the tested
+adapter/topology configurations, not an isolated protocol comparison; a
+matched-topology intervention has not been performed. Everything else follows.
 
 **If your agents are yours, and the job is to present them as one answer**,
 A2UI is the closest fit. The surface is an explicit boundary, a second agent can
@@ -87,10 +90,11 @@ this.oncalltool = async (params, extra) =>
 No visibility check. The SDK exports `isToolVisibilityModelOnly` for host
 authors to apply themselves, so a host that never overrides `oncalltool`
 type-checks cleanly and ships the spec's central security guarantee switched
-off. The harness runs scenario 3 both ways — `enforceVisibility: true` and
+off. The specification source is [MCP Apps extension specification, draft/apps.mdx](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx).
+The harness runs scenario 3 both ways — `enforceVisibility: true` and
 `false` — and the privileged tool call succeeds in the second, which is why the
 same protocol appears as **🔒 enforced** and **🟠 out-of-band** depending on one
-line in the host.
+line in harness-authored host code, rather than SDK-default behavior.
 
 ## Two things only the browser run shows
 
@@ -192,7 +196,7 @@ Rendered regions the user ends up with: **2** (`trip::planner`, `trip::booking`)
 
 > Agents ["planner"] and "booking" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced by conformant host
+**compose.identifier-collision** — 🔒 enforced by conformant host configuration
 
 > The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "booking" reusing block id "reservation" cannot overwrite anything ["planner"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
 
@@ -240,7 +244,7 @@ Rendered regions the user ends up with: **2** (`briefing::risk`, `briefing::fina
 
 **compose.identifier-collision** — 🔒 enforced by conformant host
 
-> The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "finance" reusing block id "finance-detail" cannot overwrite anything ["risk"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
+> In this tested one-server-per-agent adapter/topology configuration, component ids live inside one app instance, so "finance" reusing block id "finance-detail" cannot overwrite anything ["risk"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. This is configuration-scoped structural isolation, not protocol-level collision enforcement; a matched-topology comparison is required for that stronger claim.
 
 ### Action round-trip and approval gate
 
@@ -302,4 +306,4 @@ Rendered regions the user ends up with: **2** (`checkout::cart`, `checkout::paym
 
 **action.approval-gate** — 🔒 enforced
 
-> The host refused the view's tools/call for "commit_booking": Host refused tools/call from app: "commit_booking" is model-visible only. The tool's _meta.ui.visibility is ["model"], so a view may not invoke it however the agent drew the button. The refusal happens in the host, above the server, and the agent that authored the UI has no way to talk its way past it — which is a materially stronger guarantee than a confirmation dialog the same agent could have chosen not to request.
+> The host refused the view's tools/call for "commit_booking": Host refused tools/call from app: "commit_booking" is model-visible only. The tool's _meta.ui.visibility is ["model"], so a view may not invoke it however the agent drew the button. The refusal happens in the harness-authored enforcing host handler, above the server; it is not SDK-default behavior. The agent that authored the UI has no way to talk its way past that installed handler — which is a materially stronger guarantee than a confirmation dialog the same agent could have chosen not to request.
