@@ -84,11 +84,14 @@ function collect(runs: ScenarioRun[]): Map<string, Map<ProtocolId, Cell>> {
     for (const trace of run.traces) {
       const row = grid.get(trace.capability);
       if (!row) continue;
-      // First recording wins; scenarios probing the same capability agree, and
-      // a disagreement should surface as a test failure rather than be hidden
-      // by whichever scenario ran last.
-      if (!row.has(trace.protocol)) {
+      const recorded = row.get(trace.protocol);
+      if (!recorded) {
         row.set(trace.protocol, { outcome: trace.outcome, detail: trace.detail });
+      } else if (recorded.outcome !== trace.outcome || recorded.detail !== trace.detail) {
+        throw new Error(
+          `Conflicting trace observations for ${trace.capability}/${trace.protocol}; ` +
+            `report generation cannot select one by scenario order.`,
+        );
       }
     }
   }

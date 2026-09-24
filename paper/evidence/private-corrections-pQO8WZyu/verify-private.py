@@ -10,7 +10,7 @@ with tempfile.TemporaryDirectory(prefix='private-paper-extraction-') as temporar
         for member in members:
             path = pathlib.PurePosixPath(member.name)
             assert member.isfile() and not path.is_absolute() and '..' not in path.parts, member.name
-        package.extractall(extracted)
+        package.extractall(extracted, filter="data")
     manifest = json.loads((extracted / 'PRIVATE-MANIFEST.json').read_text())
     assert sorted(m.name for m in members) == sorted(['PRIVATE-MANIFEST.json'] + [entry['path'] for entry in manifest['files']])
     for entry in manifest['files']:

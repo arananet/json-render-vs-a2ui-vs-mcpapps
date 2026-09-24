@@ -685,7 +685,7 @@ no active matches (rg exit 1) and `npm run typecheck` passed. Subsequent checks:
 | Focused manuscript/editorial/figure/provenance tests | Initial 19/20: new wording check mishandled sentence-initial “Only”; case handling corrected, then 20/20 passed |
 | `npm run typecheck` (final) | Passed; exit 0 |
 | `node scripts/paper.mjs latex` and `pdf` with recorded local TeX bundle/cache | Passed; PDF-only warnings about embedded PDF version and underfull boxes retained |
-| `node --test tests/paper/*.test.mjs` | 29 passed, 2 failed; exit 1 |
+| `node --test tests/paper/*.test.mjs` | n=1 execution: 29 passed, 2 failed; exit 1; no repeated-trial statistic |
 | `git diff --check`; shell syntax | Passed |
 
 The two full-paper failures are deliberately unresolved: private packaging now

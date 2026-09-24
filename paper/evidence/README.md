@@ -17,20 +17,21 @@ that wrapper, the existing target remains an immutable record but cannot
 validate the modified checkout; the next successful outer-terminal run advances
 the pointer only after validation against its captured sources.
 
-Three further `browser-s2-fixed-order-*` directories are retained, and they are
-not equivalent to one another:
+Three further `browser-s2-fixed-order-*` directories are retained as
+deprecated/superseded execution records; they are not equivalent to the single
+canonical directory referenced by `current-browser-run`:
 
 - `Iyz55xbG/` (07:42 UTC) completed with 18 expected tests, 0 unexpected and 0
   skipped, against an earlier source state. Its snapshot differs from the
   canonical run in the evidence-collection scripts and in the code under test:
   `src/adapters/mcp-apps/adapter.ts`, `src/orchestrator/types.ts` and
   `src/report/generate.ts` changed with the host-enforcement outcome label.
-  It is retained as an execution record, not as a replication of the canonical
-  result.
+  It is retained as a deprecated execution record, not as a replication or
+  confirmation of the canonical result.
   `T1RMZk03/` was canonical for its source revision because it is bound to the recorded build and
   screenshot hashes.
 - `Na35q91S/` and `NnyjMAPl/` (07:41 UTC) aborted before any test body ran and
-  contain no Playwright report. The causes — an `EPERM` sandbox listener and a
+  contain no Playwright report and are deprecated. The causes — an `EPERM` sandbox listener and a
   managed-preview timeout — are recorded in `EXECUTION.md`.
 
 No completed execution was discarded. The snapshot format records the

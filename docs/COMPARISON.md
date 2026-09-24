@@ -1,8 +1,10 @@
 <!--
   GENERATED FILE — do not edit by hand.
   Produced by `npm run report` from the traces the adapters record while the
-  scenarios run against the real SDKs. `npm run report:check` fails if this
-  file and the code disagree.
+  scenarios run against the real SDKs. Freshness is currently verified by the
+  in-process Vitest report-freshness assertion; the standalone
+  `npm run report:check` command is recorded as environment-blocked before its
+  check logic runs.
 -->
 
 # json-render vs A2UI vs MCP Apps, for multi-agent orchestration
@@ -26,18 +28,26 @@ pages the browser suite asserts against.
 | **Attribute a write to an agent**<br><sub>Can the host tell which agent produced a given piece of UI?</sub> | ❌ not expressible | ❌ not expressible | 🔒 enforced |
 | **Isolate agents from each other**<br><sub>Can one agent read or overwrite another's rendered surface?</sub> | ❌ not expressible | 🟡 caveat | 🔒 enforced |
 | **Compose into one view**<br><sub>Can several agents present as a single answer?</sub> | 🟡 caveat | ✅ supported | ❌ not expressible |
-| **Retain both summaries after a fixed-order collision**<br><sub>What happens when two agents write the same id?</sub> | 🔴 write lost | 🔴 write lost | 🔒 enforced by conformant host |
+| **Retain both summaries after a fixed-order collision**<br><sub>What happens when two agents write the same id?</sub> | 🔴 write lost | 🔴 write lost | 🧩 retained in separate instances (tested topology) |
 | **Route an action to its agent**<br><sub>Does the event say which agent should handle it?</sub> | 🟠 out-of-band | 🟠 out-of-band | ✅ supported |
-| **Gate a privileged action**<br><sub>Can anything below the agent withhold a dangerous action?</sub> | 🟡 caveat | ❌ not expressible | 🔒 enforced |
+| **Gate a privileged action**<br><sub>Can anything below the agent withhold a dangerous action?</sub> | 🟡 caveat | ❌ not expressible | 🔒 refused by tested host handler |
 
 Outcome vocabulary: **✅ supported** the protocol expresses it directly ·
 **🟡 caveat** expressed, but something the orchestrator needs was weakened ·
 **🟠 out-of-band** only works because the orchestrator keeps state the protocol
-does not carry · **❌ not expressible** no way to say it · **🔒 enforced** the
-protocol actively prevents the failure · **🔒 enforced by conformant host** the
-tested conformant host configuration structurally prevents the failure (not a
-protocol-wide result) · **🔴 write lost** content
+does not carry · **❌ not expressible** no way to say it · **🔒 enforced** a
+tested mechanism refused the operation · **🧩 retained in separate instances
+(tested topology)** separate app instances retained both values in this adapter
+mapping; it is not collision enforcement or a protocol-wide result · **🔴 write lost** content
 was silently dropped.
+
+> **Configuration scope and confounders.** This matrix compares tested
+> SDK/adapter/host configurations, not protocols in isolation. Adapter
+> bookkeeping, shared-root coordination, naming conventions, host enforcement,
+> catalogs, rendering frameworks, transports, and the one-server-per-agent MCP
+> topology differ simultaneously. A matched-topology intervention has not been
+> performed, so no protocol ranking or security/composition tradeoff is
+> established.
 
 ## What the matrix means if you are building an orchestrator
 
@@ -55,12 +65,13 @@ JSON-Pointer data model means agents touching different subtrees genuinely do
 not interfere. You will still build a control-id-to-agent routing table, and you
 will still have no approval gate.
 
-**If your agents are third-party, or any of them can move money**, MCP Apps is
-the only one of the three that gives you enforcement rather than convention. A
-view is bound to one server, so a click is attributable by construction, and
-tool visibility is a real authorization boundary. The price is steep and
-structural: agents cannot share a surface at all, so composing several agents'
-output into one coherent answer becomes your layout problem, not the protocol's.
+**If your agents are third-party, or any of them can move money**, the tested
+MCP Apps host configuration shows a host-installed visibility refusal and
+connection-bound attribution. Those are configuration observations: the
+visibility refusal is not SDK-default behavior, and the one-server-per-agent
+mapping was not compared with a matched topology. The price in this harness is
+structural: agents do not share a surface, so composing several agents' output
+into one coherent answer becomes the host's layout problem.
 
 **json-render is the strongest single-agent streaming format of the three** and
 the weakest multi-agent one, for the same reason: the flat element map makes
@@ -79,7 +90,7 @@ envelope today.
 ## A finding about MCP Apps worth stating separately
 
 SEP-1865 says a host MUST reject a `tools/call` from an app for a tool that is
-not app-visible. That rule is delegated to the host, and the reference
+not app-visible ([specification source](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx)). That rule is delegated to the host, and the reference
 `AppBridge` does not implement it. `AppBridge.connect()` installs:
 
 ```js
@@ -93,8 +104,10 @@ type-checks cleanly and ships the spec's central security guarantee switched
 off. The specification source is [MCP Apps extension specification, draft/apps.mdx](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx).
 The harness runs scenario 3 both ways — `enforceVisibility: true` and
 `false` — and the privileged tool call succeeds in the second, which is why the
-same protocol appears as **🔒 enforced** and **🟠 out-of-band** depending on one
-line in harness-authored host code, rather than SDK-default behavior.
+same protocol appears as a tested host-handler refusal and **🟠 out-of-band**
+depending on one line in harness-authored host code, rather than SDK-default
+behavior. The pinned live-web reference was inspected as documentation; no
+archived copy is provided here, so it may later be inaccessible.
 
 ## Two things only the browser run shows
 
@@ -188,21 +201,26 @@ Rendered regions the user ends up with: **2** (`trip::planner`, `trip::booking`)
 
 > The flip side is that attribution is not something an agent can claim — it is a property of the connection. Each view is reachable only through the AppBridge the host created for one server, so the host knows a view is planner's without reading anything the view sent. Neither json-render nor A2UI can offer that, because in both of them any writer can address any part of the tree.
 
-**handoff.isolation** — 🔒 enforced
+**handoff.isolation** — 🧩 sandbox configuration observed
 
-> Views are cross-origin sandboxed iframes with a host-constructed CSP; the default policy is default-src 'none' with connect-src 'none', and the host MUST NOT widen it beyond the domains the resource declared. A compromised or confused agent cannot reach into another agent's rendered surface, read its DOM, or call its server. In the other two protocols the blast radius of one bad agent is the whole surface.
+> The tested host creates separate sandboxed iframes with `sandbox="allow-scripts"` and renders each agent's block only in its own frame. This is an architectural/configuration observation, not a validated defense against compromised content: the supplied browser test does not attempt cross-frame reads, forged bridge messages, unauthorized server calls, CSP violations, or origin confusion.
 
 **compose.shared-surface** — ❌ not expressible
 
 > Agents ["planner"] and "booking" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced by conformant host configuration
+**compose.identifier-collision** — 🧩 retained in separate instances (tested topology)
 
-> The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "booking" reusing block id "reservation" cannot overwrite anything ["planner"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
+> In this tested one-server-per-agent adapter/topology configuration, component ids live inside separate app instances, so "booking" reusing block id "reservation" does not overwrite the instance rendered for "planner". This is configuration-scoped instance separation, not collision enforcement or a protocol-level result.
 
 ### Fixed-order sequential identifier collision
 
 `s2-fixed-order-collision`
+
+> **Fixture distinction.** The four-write Node fixture is the classification
+> evidence. Browser screenshots and assertions are a separate two-summary-write
+> fixture (risk/summary then finance/summary); they do not corroborate the full
+> four-write Node result.
 
 #### json-render
 
@@ -242,7 +260,7 @@ Rendered regions the user ends up with: **2** (`briefing::risk`, `briefing::fina
 
 > Agents ["risk"] and "finance" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced by conformant host
+**compose.identifier-collision** — 🧩 retained in separate instances (tested topology)
 
 > In this tested one-server-per-agent adapter/topology configuration, component ids live inside one app instance, so "finance" reusing block id "finance-detail" cannot overwrite anything ["risk"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. This is configuration-scoped structural isolation, not protocol-level collision enforcement; a matched-topology comparison is required for that stronger claim.
 
@@ -296,14 +314,14 @@ Rendered regions the user ends up with: **2** (`checkout::cart`, `checkout::paym
 
 > Agents ["cart"] and "payments" cannot compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem, and the protocol gives the host nothing to work with beyond ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced by conformant host
+**compose.identifier-collision** — 🧩 retained in separate instances (tested topology)
 
-> The flip side, and it is a real one: a lost write is impossible here. Component ids live inside one app instance, so "payments" reusing block id "pay" cannot overwrite anything ["cart"] rendered — the two are not in the same document, the same origin, or the same protocol conversation. Where json-render and A2UI both silently drop one agent's content, MCP Apps structurally cannot.
+> In this tested one-server-per-agent adapter/topology configuration, component ids live in separate app instances, so the two rendered values are retained separately. This is configuration-scoped instance separation, not collision enforcement or a protocol-level result.
 
 **action.routing-identity** — ✅ supported
 
 > The view's tools/call arrived over the AppBridge the host created for agent "cart"'s server. The orchestrator therefore knows the originating agent from the channel the message came in on, with no control-id table to maintain and nothing in the payload to trust. This is the one protocol of the three where a click is attributable by construction.
 
-**action.approval-gate** — 🔒 enforced
+**action.approval-gate** — 🔒 refused by tested host handler
 
 > The host refused the view's tools/call for "commit_booking": Host refused tools/call from app: "commit_booking" is model-visible only. The tool's _meta.ui.visibility is ["model"], so a view may not invoke it however the agent drew the button. The refusal happens in the harness-authored enforcing host handler, above the server; it is not SDK-default behavior. The agent that authored the UI has no way to talk its way past that installed handler — which is a materially stronger guarantee than a confirmation dialog the same agent could have chosen not to request.

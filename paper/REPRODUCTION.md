@@ -69,8 +69,9 @@ occurred. Hashes identify retained bytes; they do not establish a clean-clone
 reproduction or human review.
 
 The historical private archive and manifest are retained in the execution
-ledger as pre-rename evidence only. The current private bundle and readable
-manifest are regenerated from the post-rename browser execution below; neither
+ledger as pre-rename evidence only. Conclusions in this guide exclude reliance
+on those unavailable private materials. A current private bundle and readable
+manifest may be regenerated from the post-rename browser execution, but neither
 package establishes independent reproduction or review.
 
 Private packaging fails closed unless `PAPER_BROWSER_EVIDENCE` selects an
@@ -203,8 +204,8 @@ node scripts/paper.mjs latex
 node scripts/paper.mjs check
 node scripts/paper.mjs pdf
 # Optional/blocked: do not treat this as a primary reproduction command. The
-# supplied artifact lacks `paper/veritas.yaml`, so `veritas-inputs.test.mjs`
-# cannot load its input; see EXECUTION.md.
+# supplied artifact lacks the historical `paper/veritas.yaml`; use the stable
+# repository-root `veritas.yaml` for the current artifact configuration.
 # node --test tests/paper/*.test.mjs
 node scripts/paper.mjs bundle
 node scripts/paper.mjs private-bundle

@@ -75,18 +75,20 @@ RQ3: Which local bookkeeping and host decisions determine action routing and mod
 
 This retrospective case study examines deterministic scripted agents, with no LLM experiment.
 The unit of comparison is an SDK/adapter/host configuration. Even uniform scenario
-inputs could not isolate topology, adapter, or protocol causality. Browser MCP
+inputs could not isolate topology, adapter, or protocol causality. This is a
+bounded configuration study, not a protocol ranking or a test of security or
+composition tradeoffs. Browser MCP
 inputs are not identical to Node inputs. Three scenarios exercise three configurations, with an existing
 permissive-host variant for MCP Apps in S3.
 
 ## A falsifiable local hypothesis
 
-H1: In the four-write Node S2 fixture, json-render retains finance's headline
-and MCP Apps retains both headlines in separate instances. A2UI's browser
-fixture displays finance's headline and no risk headline within its surface;
-its Node check establishes only finance writer bookkeeping. These are separate
-fixture-specific predictions, not a common full-scenario browser validation.
-H1 observes only the one specified sequential write order and cannot generalize
+H1a (Node, four writes): json-render retains finance's headline and MCP Apps
+retains both headlines in separate instances. H1b (browser, two writes):
+A2UI's browser fixture displays finance's headline and no risk headline within
+its surface; its Node check establishes only finance writer bookkeeping. These
+are independent fixture-specific predictions, not a common full-scenario browser
+validation. H1a and H1b observe only the one specified sequential write order and cannot generalize
 to alternative orders, scheduling or concurrency.
 A snapshot or DOM assertion showing the risk
 headline instead of finance in a shared summary, or loss of either isolated headline,
@@ -309,18 +311,19 @@ paper's evidence statuses, distinct from the adapter outcome vocabulary.
 | Claim | Status | Evidence and falsifier |
 | --- | --- | --- |
 | C1: S1 yields one shared region or two MCP instances in this topology. | Supported | S1 snapshot region and block assertions; contradicted by missing blocks or different region counts. |
-| C2: Four-write Node S2 overwrites the json-render summary and retains both MCP summaries. | Supported | Node headline assertions; contradicted by different retained values. Browser MCP checks a separate two-write fixture, not full Node S2. |
-| C3: S2's A2UI shared summary displays finance's headline. | Supported | The complete [immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/) records assertions checking finance visible and risk absent within the surface. The MCP browser fixture remains a distinct two-write fixture. No exact node count is asserted. |
+| C2 / H1a (Node, four writes): Node S2 overwrites the json-render summary and retains both MCP summaries. | Supported | Node headline assertions; contradicted by different retained values. The browser fixture is not evidence for H1a. |
+| C3 / H1b (browser, two writes): A2UI's fixture displays finance's headline. | Supported | The single cited [immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/) records assertions checking finance visible and risk absent within the surface. It is distinct from H1a and does not assert an exact node count. |
 | C4: S2 is sequential, with no scheduling test. | Supported | Four awaited emissions in the S2 source; contradicted by an overlapping scheduler in the executed path. |
 | C5: The enforcing MCP handler rejects the model-only call, while the permissive variant forwards it. | Supported | Bridge rejection/refusal and successful-result assertions; contradicted by reversed or identical behavior. |
 | C6: Every MCP S3 control reaches its intended agent. | Partial | Existing test checks some table-free delivery; first-instance selection prevents this stronger inference. |
 | C7: json-render includes confirmation metadata, with consent enforcement incompletely checked. | Partial | Adapter source includes metadata; the scenario test asserts its classification only, not independent policy or privileged browser consent. |
-| C8: Matrix labels are adapter classifications, not independent measurements. | Supported | Source shows first-recording-wins selection; freshness checks correspondence only. |
-| C9: A matched-topology intervention isolates protocol causality. | Proposed | Pending controlled comparison; no new experiment is reported. All collision findings are conditioned on the one fully deterministic write order and cannot be extrapolated to concurrent or out-of-order writes. |
+| C8: Matrix labels are adapter classifications, not independent measurements. | Supported | Source shows adapter-authored classifications; freshness checks correspondence only. |
+| C9: A matched-topology intervention isolates protocol causality. | Proposed | Pending controlled comparison; no new experiment is reported. The one-server-per-agent topology has not been ablated, so no collision, isolation, or host-policy result is protocol-level. All collision findings are conditioned on the one fully deterministic write order and cannot be extrapolated to concurrent or out-of-order writes. |
 
-Each **Supported** row reflects the single retained execution identified for its
-check; the harness uses deterministic scripted agents rather than an LLM
-experiment. This does not characterize run-to-run browser stability.
+Each **Supported** row reflects exactly one retained execution (n=1) identified
+for its check; the harness uses deterministic scripted agents rather than an
+LLM experiment. No mean, variance, pass rate, or run-to-run browser stability
+is claimed.
 
 The linked scenario, bridge, conformance, and browser test files in Methodology
 and Results are the check locations for C1–C8. This mapping exposes uneven
@@ -331,9 +334,11 @@ For C1–C3 and the tested browser actions, the renamed
 [screenshot spec](../tests/browser/screenshots.spec.ts) supplies nine captures.
 The pre-rename `browser-terminal-20260922T013449Z-zH4HTK/` records are historical
 only and are not claim-support evidence for this fixture. The execution ledger
-records the complete [immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/),
+records the single cited [immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/),
 whose report, source snapshots, build hashes, and capture hashes bind the
-current browser claim for this fixture.
+current browser claim for this fixture. Other retained browser directories have
+different source snapshots and are execution records, not redundant confirmation
+of this claim.
 This does not make the distinct MCP browser fixture corroborate the four-write
 Node fixture.
 C6 remains partial: successful browser
@@ -359,14 +364,11 @@ malicious content. Declarative catalogs and sandboxed app delivery are compatibl
 layers: a hosted application could use a declarative renderer internally. No
 integration experiment is reported here.
 
-The repository
-[besanson/sarc-authority-derivation](https://github.com/besanson/sarc-authority-derivation)
-is acknowledged only as an unverified methodological pointer, not as inspected
-scientific evidence. Direct retrieval of its revision, README, REPRODUCTION.md,
-NOVELTY.md, and named v0.6.6 manuscript was unavailable in this environment.
-No revision, prose, results, or reproduction credit from that project is
-asserted here. Reference review remains pending; this discussion is selective,
-not an exhaustive literature or novelty review.
+The claim-status vocabulary is defined in this paper's Claim-evidence mapping:
+it separates an inspected assertion or direct source observation from a material
+untested inference and from a proposed future check. It does not depend on an
+unavailable external methodological source. Reference review remains pending;
+this discussion is selective, not an exhaustive literature or novelty review.
 
 # Threats to validity
 
@@ -383,7 +385,9 @@ matched-topology intervention remains unperformed.
 it is not a usability measure. A writer prop is not authenticated provenance.
 Addressability is not authority. A confirmation binding is not an authorization
 decision. Adapter labels and some scenario assertions share their interpretation,
-creating a risk of circular validation. The independent aspects of the checks
+creating a risk of circular validation. The editorial and manuscript regression
+tests are likewise authored and iteratively adjusted by the same AI-assisted
+process that produced the prose they check. The independent aspects of the checks
 are the inspected contents, response/refusal assertions, and DOM expectations;
 they are still authored within this repository, not by independent evaluators.
 
@@ -394,8 +398,9 @@ establish historical reproduction. Four post-rename attempts are retained: two
 completed with 18 passing tests, and two aborted before any test body ran. The
 two completed executions used different source revisions: their snapshots differ
 for `src/adapters/mcp-apps/adapter.ts`, `src/orchestrator/types.ts`, and
-`src/report/generate.ts`. Only aggregate pass counts are compared; no per-test
-timing or other run-level equivalence is claimed. No completed execution was
+`src/report/generate.ts`. Each reported pass count is from one execution (n=1),
+not repeated trials; no mean, variance, or stability statistic is claimed. No
+per-test timing or other run-level equivalence is claimed. No completed execution was
 discarded, and the immutable current-source run is
 `paper/evidence/browser-s2-fixed-order-QDL9iC9j/`. Neither completed run is an independent
 reproduction: both ran on the same machine, from the same checkout, in the same
@@ -428,10 +433,10 @@ reproduction, peer review, or protocol causality.
 # Reproducibility
 
 The [reproduction guide](./REPRODUCTION.md) gives commands and expected semantic
-outcomes. The historical private review archive and text manifest are retained
-as pre-rename evidence only. The current private bundle and readable manifest
-use the validated current-source browser execution; neither a public nor an
-independent paper build has been demonstrated. The [local execution record](./EXECUTION.md) separates successful
+outcomes. Conclusions in this note do not rely on the unavailable private review
+archive or private manifest; those are retained as local pre-rename records
+only. Neither a public nor an independent paper build has been demonstrated.
+The [local execution record](./EXECUTION.md) separates successful
 commands, failures, unavailable prerequisites, and retained artifacts. This
 earlier editorial revision started from HEAD
 `b5d06eafcd4cf9cb0ed49131add55cbdecbd4b7c`. Current packaging records its own HEAD
@@ -527,23 +532,29 @@ the deterministic harness: no LLM participates in its scenario runs.
 # References
 
 R1. Vercel Labs. [json-render repository and README](https://github.com/vercel-labs/json-render).
-Inspected 21 September 2026; live main, upstream commit not retained. Local SDK
+Inspected 21 September 2026; live main, upstream commit not retained. Related-work
+description based on this unpinned source is provisional. Local SDK
 context: `@json-render/core` and `@json-render/react` 0.21.0, including the installed
 core README and manifest. Used for catalog/renderer design, not a security proof.
 
 R2. A2UI project. [A2UI repository and README](https://github.com/a2ui-project/a2ui)
 (the inspected `google/A2UI` URL redirects here). Inspected 21 September 2026;
-live main, upstream commit not retained. Local context: web core and Lit 0.11.0,
+live main, upstream commit not retained. Related-work description based on this
+unpinned source is provisional. Local context: web core and Lit 0.11.0,
 installed web-core README, and adapter-selected v0.9 schema.
 
 R3. Model Context Protocol contributors. [MCP Apps SDK repository and README](https://github.com/modelcontextprotocol/ext-apps).
-Inspected 21 September 2026; live main, upstream commit not retained. Local
+Inspected 21 September 2026; live main, upstream commit not retained. Related-work
+description based on this unpinned source is provisional. Local
 context: extension, client, core, and server packages 2.0.0; extension README
 and manifests inspected. SDK package version is distinct from wire version.
 
 R4. Model Context Protocol contributors. [MCP Apps extension specification, draft/apps.mdx](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx).
 Visibility and sandbox/CSP sections inspected 21 September 2026; source path
-pinned to commit `6d9bdc7babf275b759225aa722cbf5510c4c6021`. Used to distinguish
+pinned to commit `6d9bdc7babf275b759225aa722cbf5510c4c6021`. The pin was added
+after earlier retained evidence used a mutable main path; this document records
+the pin but does not include an archived copy or independent verification of it.
+Used to distinguish
 host requirements from the assertions implemented here. The filename's "draft"
 is retained as the source location, without claiming a release status from the
 SDK version.

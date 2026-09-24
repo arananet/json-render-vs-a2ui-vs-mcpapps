@@ -88,7 +88,7 @@ test.describe("S2 — fixed-order identifier collision", () => {
     await expect(page.getByText("Exposure exceeds appetite")).toHaveCount(0);
   });
 
-  test("A2UI: same outcome — one summary node, last writer wins", async ({ page }) => {
+  test("A2UI: finance's headline visible, risk's headline absent", async ({ page }) => {
     await page.goto("/a2ui.html?scenario=s2-fixed-order-collision");
     await ready(page);
 
