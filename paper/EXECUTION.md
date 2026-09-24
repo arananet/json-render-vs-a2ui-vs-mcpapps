@@ -748,6 +748,13 @@ and a tar archive plus hashes for nine post-run screenshots. The JSON report has
 18 expected passing tests (nine render and nine screenshot tests), with zero
 unexpected, skipped, or flaky tests.
 
+These are deterministic-suite counts from individual executions, not estimates
+with run-to-run variance. The evidence index retains two completed 18-test
+executions (`Iyz55xbG` and `QDL9iC9j`) and two attempts (`Na35q91S` and
+`NnyjMAPl`) that aborted before a test body ran because of an `EPERM` listener
+and a managed-preview timeout, respectively. The completed executions are not
+independent reproductions and do not establish a browser pass-rate statistic.
+
 This validates the renamed browser fixture against the recorded current source
 and build inputs. It does not alter or rehabilitate the pre-rename browser logs,
 the historical private archive, or the Veritas-routed text manifest. A temporary
