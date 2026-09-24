@@ -204,8 +204,8 @@ node scripts/paper.mjs latex
 node scripts/paper.mjs check
 node scripts/paper.mjs pdf
 # Optional/blocked: do not treat this as a primary reproduction command. The
-# supplied artifact lacks the historical `paper/veritas.yaml`; use the stable
-# repository-root `veritas.yaml` for the current artifact configuration.
+# use the stable repository-root `veritas.yaml` for the current artifact
+# configuration.
 # node --test tests/paper/*.test.mjs
 node scripts/paper.mjs bundle
 node scripts/paper.mjs private-bundle

@@ -61,6 +61,8 @@ README, and the MCP Apps draft/apps.mdx visibility and sandbox/CSP sections.
 Installed package manifests and selected READMEs were also inspected. The
 manuscript cites these sources and separates mutable web documentation from
 exact local package versions. Upstream commit hashes were not captured.
+The pinned live-web specification is not archived or independently verified
+within this artifact; its reported host-requirement premise remains external.
 
 The methodological reference was unavailable. Web opens of the repository,
 raw REPRODUCTION.md and NOVELTY.md, main-branch README.md, REPRODUCTION.md,

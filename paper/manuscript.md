@@ -289,8 +289,9 @@ rejects model-only visibility. The [bridge tests](../tests/protocol/mcp-apps-bri
 check successful app-visible calls, rejection messages and refusal records, and
 successful model-only calls when enforcement is disabled. The permissive host
 variant forwards that call. This is evidence about the tested SDK and handler
-installation order, not every MCP host or SDK release. The inspected extension
-specification assigns visibility enforcement to the host [R4].
+installation order, not every MCP host or SDK release. R4 reports the external
+premise that the inspected extension specification assigns visibility
+enforcement to the host, but that premise is unverified within this artifact.
 
 Routing evidence is narrower than some trace labels suggest. For actions, the
 Node MCP adapter selects the first instance for a conceptual surface. Its helper
@@ -554,7 +555,7 @@ Visibility and sandbox/CSP sections inspected 21 September 2026; source path
 pinned to commit `6d9bdc7babf275b759225aa722cbf5510c4c6021`. The pin was added
 after earlier retained evidence used a mutable main path; this document records
 the pin but does not include an archived copy or independent verification of it.
-Used to distinguish
-host requirements from the assertions implemented here. The filename's "draft"
+Its reported host-requirement premise is therefore unverified within this
+artifact and is not evidence for the host-enforcement conclusion. The filename's "draft"
 is retained as the source location, without claiming a release status from the
 SDK version.

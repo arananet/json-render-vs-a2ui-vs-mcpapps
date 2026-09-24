@@ -1,10 +1,7 @@
 <!--
-  GENERATED FILE — do not edit by hand.
-  Produced by `npm run report` from the traces the adapters record while the
-  scenarios run against the real SDKs. Freshness is currently verified by the
-  in-process Vitest report-freshness assertion; the standalone
-  `npm run report:check` command is recorded as environment-blocked before its
-  check logic runs.
+  HISTORICAL GENERATED FILE — do not treat as current generated evidence.
+  This retained report predates the current outcome vocabulary. It has not been
+  regenerated or freshness-checked against the supplied current source.
 -->
 
 # json-render vs A2UI vs MCP Apps, for multi-agent orchestration
@@ -32,14 +29,15 @@ pages the browser suite asserts against.
 | **Route an action to its agent**<br><sub>Does the event say which agent should handle it?</sub> | 🟠 out-of-band | 🟠 out-of-band | ✅ supported |
 | **Gate a privileged action**<br><sub>Can anything below the agent withhold a dangerous action?</sub> | 🟡 caveat | ❌ not expressible | 🔒 refused by tested host handler |
 
-Outcome vocabulary: **✅ supported** the protocol expresses it directly ·
+Historical outcome vocabulary: **✅ supported** the protocol expresses it directly ·
 **🟡 caveat** expressed, but something the orchestrator needs was weakened ·
 **🟠 out-of-band** only works because the orchestrator keeps state the protocol
 does not carry · **❌ not expressible** no way to say it · **🔒 enforced** a
 tested mechanism refused the operation · **🧩 retained in separate instances
 (tested topology)** separate app instances retained both values in this adapter
 mapping; it is not collision enforcement or a protocol-wide result · **🔴 write lost** content
-was silently dropped.
+was silently dropped. The supplied current source additionally defines
+`ENFORCED_BY_CONFORMANT_HOST`, labelled **🔒 enforced by conformant host**.
 
 > **Configuration scope and confounders.** This matrix compares tested
 > SDK/adapter/host configurations, not protocols in isolation. Adapter
@@ -51,27 +49,25 @@ was silently dropped.
 
 ## What the matrix means if you are building an orchestrator
 
-**There is no protocol here that does all three jobs.** The capabilities split
-cleanly along one axis: json-render and A2UI treat UI as *shared mutable state*
-that any agent can address, and MCP Apps treats it as *per-agent isolated
-instances* that no other agent can reach. This is a comparison of the tested
-adapter/topology configurations, not an isolated protocol comparison; a
-matched-topology intervention has not been performed. Everything else follows.
+**No tested configuration here does all three jobs.** In these adapter/host/
+topology configurations, json-render and A2UI expose shared mutable state that
+agents can address, while the one-server-per-agent MCP Apps configuration
+retains separate instances. This is not an isolated protocol comparison: a
+matched-topology intervention has not been performed, so these observations do
+not establish protocol-level state, isolation, composition, or security behavior.
 
-**If your agents are yours, and the job is to present them as one answer**,
-A2UI is the closest fit. The surface is an explicit boundary, a second agent can
-continue a first agent's view without the user seeing a seam, and the
-JSON-Pointer data model means agents touching different subtrees genuinely do
-not interfere. You will still build a control-id-to-agent routing table, and you
-will still have no approval gate.
+**For the tested A2UI configuration, agents can present as one answer.** Its
+surface boundary lets a second agent continue a first agent's view in this
+adapter, while the adapter still uses a control-id-to-agent routing table and
+does not implement an approval gate. A matched-topology intervention would be
+needed before generalizing these configuration observations to A2UI itself.
 
-**If your agents are third-party, or any of them can move money**, the tested
-MCP Apps host configuration shows a host-installed visibility refusal and
-connection-bound attribution. Those are configuration observations: the
+**For the tested MCP Apps host configuration**, the host-installed visibility
+refusal and connection-bound attribution are configuration observations. The
 visibility refusal is not SDK-default behavior, and the one-server-per-agent
-mapping was not compared with a matched topology. The price in this harness is
-structural: agents do not share a surface, so composing several agents' output
-into one coherent answer becomes the host's layout problem.
+mapping was not compared with a matched topology. In this harness, the separate
+instances leave layout of multiple agents' output to the host; that result is
+not established as a protocol effect.
 
 **json-render is the strongest single-agent streaming format of the three** and
 the weakest multi-agent one, for the same reason: the flat element map makes
