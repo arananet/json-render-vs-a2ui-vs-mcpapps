@@ -366,12 +366,11 @@ export class A2uiAdapter implements ProtocolAdapter {
       "compose.shared-surface",
       "SUPPORTED",
       `Agents ${JSON.stringify(others)} and "${agent}" compose into surface "${surfaceId}" by ` +
-        `addressing it by id. Two properties make this the most orchestration-friendly of the three ` +
-        `arrangements: the surface is an explicit boundary, so agents working on *different* ` +
-        `surfaces cannot reach each other at all; and within a surface the data model is addressed ` +
-        `by JSON Pointer, so agents updating different subtrees are genuinely independent even when ` +
-        `their components sit side by side. Component ids remain a shared, unowned namespace, which ` +
-        `is where the collision in compose.identifier-collision comes from.`,
+        `addressing it by id. In this adapter configuration, the surface is an explicit boundary and ` +
+        `the data model is addressed by JSON Pointer, so the configured mappings keep agents on ` +
+        `different surfaces and different subtrees separate. Component ids remain a shared, unowned ` +
+        `namespace, which is where the collision in compose.identifier-collision comes from. This ` +
+        `does not establish a protocol-level isolation or composition property.`,
       { surfaceId, writers: [...others, agent] },
     );
   }

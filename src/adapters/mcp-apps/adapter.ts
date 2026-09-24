@@ -128,12 +128,12 @@ export class McpAppsAdapter implements ProtocolAdapter {
       "handoff.continue-surface",
       "NOT_EXPRESSIBLE",
       `There is no message in SEP-1865 that means "agent ${to}, continue the view agent ${from} is ` +
-        `rendering". A view is instantiated by a tools/call and bound to the server that declared ` +
-        `the tool and its ui:// resource; ${to} lives behind a different server, so calling ${to}'s ` +
-        `render tool produces a second App instance with its own iframe, its own origin and its own ` +
-        `bridge. The host can place the two boxes next to each other, but the protocol has no notion ` +
-        `of one continuing the other, and the user sees a new panel rather than the first one ` +
-        `updating.`,
+        `rendering" in the inspected mapping. A view is instantiated by a tools/call and bound to ` +
+        `the server that declared the tool and its ui:// resource; ${to} lives behind a different ` +
+        `server, so calling ${to}'s render tool produces a second App instance with its own iframe, ` +
+        `origin and bridge. The host can place the two boxes next to each other, but this tested ` +
+        `topology does not continue the first instance. A matched-topology comparison would be ` +
+        `required before treating that as a protocol-level result.`,
       {
         originatingResourceUri: originating?.hosted.resourceUri ?? viewUri(from),
         successorResourceUri: viewUri(to),
@@ -187,10 +187,11 @@ export class McpAppsAdapter implements ProtocolAdapter {
           "action.approval-gate",
           "REQUIRES_OUT_OF_BAND",
           `The view called "${PRIVILEGED_TOOL}", declared visibility ["model"], and the call reached ` +
-            `the server anyway. SEP-1865 says the host MUST reject this, but AppBridge.connect() ` +
-            `installs an oncalltool that forwards every request straight to the MCP client, and the ` +
-            `check is left to the host author. The gate exists in the specification and in the ` +
-            `metadata; whether it exists at runtime depends on the host remembering to build it.`,
+            `the server anyway. The inspected SEP-1865 URL reports a host visibility requirement, ` +
+            `but that external premise is unverified within this artifact. AppBridge.connect() installs ` +
+            `an oncalltool that forwards every request straight to the MCP client, and the local ` +
+            `check is left to the host author. Whether it exists at runtime depends on the host ` +
+            `installing it.`,
           { tool: toolName, visibility: ["model"], result },
         );
       }

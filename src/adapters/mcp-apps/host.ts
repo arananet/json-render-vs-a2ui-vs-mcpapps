@@ -4,8 +4,9 @@
  * In the other two protocols the host is a renderer. Here it is a piece of
  * security infrastructure: it owns the iframe, the CSP, and — critically — the
  * decision about which tool calls coming out of a view are allowed to reach a
- * server. SEP-1865 says hosts MUST reject a `tools/call` from an app for a tool
- * that is not app-visible.
+ * server. The inspected SEP-1865 URL reports a host visibility requirement,
+ * but this artifact has no archived copy or independent verification of that
+ * external normative premise.
  *
  * That rule is not self-enforcing. `AppBridge.connect()` installs a default
  * `oncalltool` that forwards straight to the MCP client:
@@ -14,11 +15,9 @@
  *       this._client.request({ method: "tools/call", params }, ...)
  *
  * No visibility check. The SDK ships `isToolVisibilityModelOnly` for host
- * authors to apply themselves, so a host that forgets to override `oncalltool`
- * satisfies the type system and violates the spec. `enforceVisibility` below is
- * that override, and scenario 3 exercises both paths so the difference between
- * "the protocol has a gate" and "the protocol has a gate the host must build"
- * shows up as two different recorded outcomes.
+ * authors to apply themselves, so the local default forwards unless the host
+ * installs `enforceVisibility` below. Scenario 3 exercises both local paths;
+ * it does not independently establish an external specification requirement.
  */
 
 import { Client, InMemoryTransport as ClientTransport } from "@modelcontextprotocol/client";

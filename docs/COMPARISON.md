@@ -69,25 +69,26 @@ mapping was not compared with a matched topology. In this harness, the separate
 instances leave layout of multiple agents' output to the host; that result is
 not established as a protocol effect.
 
-**json-render is the strongest single-agent streaming format of the three** and
-the weakest multi-agent one, for the same reason: the flat element map makes
-every patch cheap and every element reachable by every writer. Its `confirm`
-block is the only declarative consent primitive in the comparison — but the
-agent drawing the button decides whether to include it, which makes it a good
-default rather than a control.
+**In the tested json-render configuration,** the flat element map makes every
+patch cheap and every element reachable by every writer. Its `confirm` block is
+the only declarative consent primitive observed in this comparison — but the
+agent drawing the button decides whether to include it, which makes it a local
+UI convention rather than an authorization control. These observations do not
+rank formats or establish a protocol-level property.
 
-**The gap none of the three closes: agent identity in the payload.** Neither
-json-render's `Spec`/`UIElement` nor A2UI's four message types has a field
-for the agent that produced a piece of UI. MCP Apps gets identity only as a side
-effect of binding views to connections, which is also what stops it composing.
-An orchestrator that wants both composition and attribution has to invent an
-envelope today.
+**A gap in the inspected payloads is agent identity.** Neither json-render's
+`Spec`/`UIElement` nor A2UI's four message types in these adapters has a field
+for the agent that produced a piece of UI. The tested MCP Apps mapping obtains
+identity from its connection binding. This inspection does not rule out an
+application envelope or establish protocol-wide limits on composition or
+attribution.
 
 ## A finding about MCP Apps worth stating separately
 
-SEP-1865 says a host MUST reject a `tools/call` from an app for a tool that is
-not app-visible ([specification source](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx)). That rule is delegated to the host, and the reference
-`AppBridge` does not implement it. `AppBridge.connect()` installs:
+The inspected, pinned SEP-1865 URL reports a host requirement concerning an
+app `tools/call` for a model-only tool ([specification source](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx)), but no archived copy or independent verification is supplied here. Locally, the
+reference `AppBridge` does not implement visibility enforcement.
+`AppBridge.connect()` installs:
 
 ```js
 this.oncalltool = async (params, extra) =>
@@ -95,9 +96,8 @@ this.oncalltool = async (params, extra) =>
 ```
 
 No visibility check. The SDK exports `isToolVisibilityModelOnly` for host
-authors to apply themselves, so a host that never overrides `oncalltool`
-type-checks cleanly and ships the spec's central security guarantee switched
-off. The specification source is [MCP Apps extension specification, draft/apps.mdx](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx).
+authors to apply themselves, so the local default forwards the call unless the
+host installs an override. The specification source is [MCP Apps extension specification, draft/apps.mdx](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx), whose normative content remains unverified within this artifact.
 The harness runs scenario 3 both ways — `enforceVisibility: true` and
 `false` — and the privileged tool call succeeds in the second, which is why the
 same protocol appears as a tested host-handler refusal and **🟠 out-of-band**
@@ -181,7 +181,7 @@ Rendered regions the user ends up with: **1** (`trip`)
 
 **compose.shared-surface** — ✅ supported
 
-> Agents ["planner"] and "booking" compose into surface "trip" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.identifier-collision comes from.
+> In this adapter configuration, agents ["planner"] and "booking" address surface "trip" by id. The configured surface and JSON Pointer mappings keep different surfaces and subtrees separate, while component ids remain a shared, unowned namespace. This is a configuration observation, not a protocol-level isolation or composition result.
 
 #### MCP Apps
 
@@ -191,7 +191,7 @@ Rendered regions the user ends up with: **2** (`trip::planner`, `trip::booking`)
 
 **handoff.continue-surface** — ❌ not expressible
 
-> There is no message in SEP-1865 that means "agent booking, continue the view agent planner is rendering". A view is instantiated by a tools/call and bound to the server that declared the tool and its ui:// resource; booking lives behind a different server, so calling booking's render tool produces a second App instance with its own iframe, its own origin and its own bridge. The host can place the two boxes next to each other, but the protocol has no notion of one continuing the other, and the user sees a new panel rather than the first one updating.
+> In the inspected mapping, there is no message used to make agent booking continue the view agent planner is rendering. A view is bound to the server that declared the tool and its ui:// resource; booking is behind a different server, so its render tool produces a second App instance. This tested topology does not continue the first instance; a matched-topology comparison is required before a protocol-level inference.
 
 **handoff.provenance** — 🔒 enforced
 
@@ -240,7 +240,7 @@ Rendered regions the user ends up with: **1** (`briefing`)
 
 **compose.shared-surface** — ✅ supported
 
-> Agents ["risk"] and "finance" compose into surface "briefing" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.identifier-collision comes from.
+> In this adapter configuration, agents ["risk"] and "finance" address surface "briefing" by id. The configured surface and JSON Pointer mappings keep different surfaces and subtrees separate, while component ids remain a shared, unowned namespace. This is a configuration observation, not a protocol-level isolation or composition result.
 
 **compose.identifier-collision** — 🔴 write lost
 
@@ -290,7 +290,7 @@ Rendered regions the user ends up with: **1** (`checkout`)
 
 **compose.shared-surface** — ✅ supported
 
-> Agents ["cart"] and "payments" compose into surface "checkout" by addressing it by id. Two properties make this the most orchestration-friendly of the three arrangements: the surface is an explicit boundary, so agents working on *different* surfaces cannot reach each other at all; and within a surface the data model is addressed by JSON Pointer, so agents updating different subtrees are genuinely independent even when their components sit side by side. Component ids remain a shared, unowned namespace, which is where the collision in compose.identifier-collision comes from.
+> In this adapter configuration, agents ["cart"] and "payments" address surface "checkout" by id. The configured surface and JSON Pointer mappings keep different surfaces and subtrees separate, while component ids remain a shared, unowned namespace. This is a configuration observation, not a protocol-level isolation or composition result.
 
 **action.routing-identity** — 🟠 out-of-band
 
