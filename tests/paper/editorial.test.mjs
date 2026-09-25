@@ -11,13 +11,15 @@ test("abstract leads with configuration-specific findings and their interpretati
   assert.match(abstract, /^ Reused identifiers/);
   assert.match(abstract, /three concrete tested configurations/);
   assert.match(abstract, /adapter mapping, namespace\/topology, and enforcement site/);
-  assert.match(abstract, /enforcing handler is installed; the permissive variant forwards/);
+  assert.match(abstract, /installed enforcing host handler rejects one model-only tool call; SDK-default `oncalltool` forwards/);
   assert.match(abstract, /empirical technical note with private local evidence/);
-  assert.match(abstract, /does not validate the same full S2 scenario/);
+  assert.match(abstract, /does not validate the Node four-write scenario/);
+  assert.match(abstract, /Node assertions establish the four-write outcome/);
+  assert.match(abstract, /corroborates the rendered outcome only for that fixture/);
 });
 
 test("abstract and claim table support concrete C3 while retaining partial C6/C7 and proposed C9", () => {
-  const claims = [...manuscript.matchAll(/^\| (C\d+):[^|]+\| (Supported|Partial|Proposed) \|/gm)];
+  const claims = [...manuscript.matchAll(/^\| (C\d+)[^|]*\| (Supported|Partial|Proposed) \|/gm)];
   assert.equal(claims.length, 9);
   const statuses = Object.fromEntries(claims.map(match => [match[1], match[2]]));
   assert.equal(statuses.C3, "Supported");
@@ -36,10 +38,11 @@ test("results, S2 caption and conclusion distinguish writer maps from rendered e
   assert.match(caption, /C3, supported/);
   assert.match(caption, /not an exact node count/);
   const conclusion = manuscript.split("# Conclusion\n")[1].split("\n# AI-assistance disclosure")[0].replace(/\s+/g, " ");
-  assert.match(conclusion, /H1 has only fixture-specific support/);
-  assert.match(conclusion, /cannot validate the full Node fixture/);
+  assert.match(conclusion, /Node assertions establish the four-write S2 outcome/);
+  assert.match(conclusion, /cannot validate the Node four-write fixture/);
   assert.match(conclusion, /every control remains only partially checked/);
   assert.match(conclusion, /Future experiments are explicitly pending/);
+  assert.match(conclusion, /Protocol effects cannot be separated from adapter and topology here/);
 });
 
 test("browser MCP executes only summaries while Node S2 has four sequential writes", () => {
@@ -52,7 +55,7 @@ test("browser MCP executes only summaries while Node S2 has four sequential writ
   assert.deepEqual([...browser.matchAll(/agent: "(\w+)",\s+block: \{\s+id: "([^"]+)"/g)].map(m => [m[1], m[2]]), [
     ["risk", "summary"], ["finance", "summary"],
   ]);
-  assert.match(manuscript, /Browser MCP checks a separate two-write fixture, not full Node S2/);
+  assert.match(manuscript, /Every browser run instead exercises a separate two-write summary fixture/);
   for (const host of ["web/a2ui.ts", "web/json-render.tsx"]) {
     assert.match(read(host), /"s2-fixed-order-collision": runFixedOrderCollision/);
   }
@@ -78,7 +81,7 @@ test("pre-rename browser evidence is historical while the current run verifies t
     }
   }
   const source = readFileSync(resolve(root, "tests/browser/render.spec.ts"), "utf8");
-  const a2ui = source.split('test("A2UI: same outcome')[1].split('\n  test(')[0];
+  const a2ui = source.split('test("A2UI: finance\'s headline visible')[1].split('\n  test(')[0];
   assert.match(a2ui, /getByText\("Spend is within budget"\)\)\.toBeVisible\(\)/);
   assert.match(a2ui, /getByText\("Exposure exceeds appetite"\)\)\.toHaveCount\(0\)/);
   assert.doesNotMatch(a2ui, /toHaveCount\(1\)/);
@@ -97,7 +100,7 @@ test("manuscript removes agent-to-user narration without claiming human review",
 
 test("unverified reference and historical commit provenance are explicit", () => {
   const normalized = manuscript.replace(/\s+/g, " ");
-  assert.match(normalized, /unverified methodological pointer, not as inspected scientific evidence/);
+  assert.match(normalized, /Reference review remains pending/);
   assert.match(normalized, /Inputs, tooling, and evaluation configuration are versioned now; commit-level provenance before 22 September 2026 does not identify the complete paper workspace/);
   assert.match(normalized, /Separate paper checks and SHA-256 manifests/);
 });

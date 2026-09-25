@@ -87,9 +87,9 @@ function collect(runs: ScenarioRun[]): Map<string, Map<ProtocolId, Cell>> {
       const recorded = row.get(trace.protocol);
       if (!recorded) {
         row.set(trace.protocol, { outcome: trace.outcome, detail: trace.detail });
-      } else if (recorded.outcome !== trace.outcome || recorded.detail !== trace.detail) {
+      } else if (recorded.outcome !== trace.outcome) {
         throw new Error(
-          `Conflicting trace observations for ${trace.capability}/${trace.protocol}; ` +
+          `Conflicting trace classifications for ${trace.capability}/${trace.protocol}; ` +
             `report generation cannot select one by scenario order.`,
         );
       }
@@ -187,9 +187,11 @@ export async function buildReport(): Promise<string> {
 
 # json-render vs A2UI vs MCP Apps, for multi-agent orchestration
 
-Three scenarios, three protocols, one orchestrator. Every outcome below was
-recorded by an adapter driving the protocol's published SDK — not by reading a
-specification and forming an opinion about it.
+Three scenarios, three tested SDK/adapter/host configurations, one orchestrator.
+Every outcome below was recorded by an adapter driving the installed SDKs — not
+by reading a specification and forming an opinion about it. Protocol effects
+cannot be separated from adapter or topology here; a matched-topology comparison
+has not been performed.
 
 ${sdkLines}
 
@@ -200,67 +202,56 @@ pages the browser suite asserts against.
 
 ${matrix(grid)}
 
-Outcome vocabulary: **✅ supported** the protocol expresses it directly ·
-**🟡 caveat** expressed, but something the orchestrator needs was weakened ·
-**🟠 out-of-band** only works because the orchestrator keeps state the protocol
-does not carry · **❌ not expressible** no way to say it · **🔒 enforced** the
-protocol actively prevents the failure · **🔒 enforced by conformant host** a
-conformant host structurally prevents the failure · **🔴 write lost** content
-was silently dropped.
+Outcome vocabulary records adapter classifications, not protocol rankings:
+**✅ supported** observed in the tested adapter · **🟡 caveat** observed with a
+limitation · **🟠 out-of-band** used harness/orchestrator bookkeeping ·
+**❌ not expressible** was not represented by this tested mapping · **🔒 enforced**
+was checked on the tested path · **🔒 enforced by conformant host** records
+separate instances in the tested topology · **🔴 write lost** content was
+overwritten in the tested shared mapping.
 
 ## What the matrix means if you are building an orchestrator
 
-**There is no protocol here that does all three jobs.** The capabilities split
-cleanly along one axis: json-render and A2UI treat UI as *shared mutable state*
-that any agent can address, and MCP Apps treats it as *per-agent isolated
-instances* that no other agent can reach. Everything else follows.
+**These configurations divide responsibilities differently.** In the tested
+shared mappings, json-render and A2UI retain shared mutable state; in the tested
+one-server-per-agent MCP Apps topology, separate app instances retain values.
+These are configuration observations, not protocol-wide properties.
 
-**If your agents are yours, and the job is to present them as one answer**,
-A2UI is the closest fit. The surface is an explicit boundary, a second agent can
-continue a first agent's view without the user seeing a seam, and the
-JSON-Pointer data model means agents touching different subtrees genuinely do
-not interfere. You will still build a control-id-to-agent routing table, and you
-will still have no approval gate.
+**In the tested A2UI adapter**, surface IDs and JSON-Pointer mappings support the
+observed shared-surface fixture, while action routing uses a control-id-to-agent
+table. This fixture does not test an approval gate or hostile writers.
 
-**If your agents are third-party, or any of them can move money**, MCP Apps is
-the only one of the three that gives you enforcement rather than convention. A
-view is bound to one server, so a click is attributable by construction, and
-tool visibility is a real authorization boundary. The price is steep and
-structural: agents cannot share a surface at all, so composing several agents'
-output into one coherent answer becomes your layout problem, not the protocol's.
+**In the tested MCP Apps adapter/topology**, connection binding supplies the
+originating-agent identity rather than the payload, and separate instances leave
+multi-agent layout to the host. The installed host visibility handler rejects
+one model-only call; SDK-default \`oncalltool\` forwards it. This measured
+specification-versus-SDK gap is not a security guarantee.
 
-**json-render is the strongest single-agent streaming format of the three** and
-the weakest multi-agent one, for the same reason: the flat element map makes
-every patch cheap and every element reachable by every writer. Its \`confirm\`
-block is the only declarative consent primitive in the comparison — but the
-agent drawing the button decides whether to include it, which makes it a good
-default rather than a control.
+**In the tested json-render mapping**, a flat shared element map permits the
+observed overwrite. Its \`confirm\` block is adapter-observed metadata, not an
+independently tested authorization control.
 
-**The gap none of the three closes: agent identity in the payload.** Neither
-json-render's \`Spec\`/\`UIElement\` nor A2UI's four message types has a field
-for the agent that produced a piece of UI. MCP Apps gets identity only as a side
-effect of binding views to connections, which is also what stops it composing.
-An orchestrator that wants both composition and attribution has to invent an
-envelope today.
+**Payload identity in these fixtures is limited.** The inspected json-render and
+A2UI payload shapes lack an agent field; in this MCP Apps topology the host gets
+identity from connection binding, not payload content. This does not rule out an
+application envelope or other topology.
 
 ## A finding about MCP Apps worth stating separately
 
-SEP-1865 says a host MUST reject a \`tools/call\` from an app for a tool that is
-not app-visible. That rule is delegated to the host, and the reference
-\`AppBridge\` does not implement it. \`AppBridge.connect()\` installs:
+The inspected specification describes a host visibility requirement. Locally,
+the installed SDK-default \`AppBridge.connect()\` handler forwards the call; the
+tested host installs a separate handler that rejects one model-only call:
 
 \`\`\`js
 this.oncalltool = async (params, extra) =>
   this._client.request({ method: "tools/call", params }, { signal: extra.mcpReq.signal });
 \`\`\`
 
-No visibility check. The SDK exports \`isToolVisibilityModelOnly\` for host
-authors to apply themselves, so a host that never overrides \`oncalltool\`
-type-checks cleanly and ships the spec's central security guarantee switched
-off. The harness runs scenario 3 both ways — \`enforceVisibility: true\` and
-\`false\` — and the privileged tool call succeeds in the second, which is why the
-same protocol appears as **🔒 enforced** and **🟠 out-of-band** depending on one
-line in the host.
+The SDK exports \`isToolVisibilityModelOnly\` for host authors to apply. The
+harness runs scenario 3 with \`enforceVisibility: true\` and \`false\`; the
+model-only call is rejected in the installed-handler path and forwarded in the
+SDK-default path. This is a measured specification-versus-SDK gap in this host,
+not a claim that MCP Apps itself enforces or refuses calls.
 
 ## Two things only the browser run shows
 

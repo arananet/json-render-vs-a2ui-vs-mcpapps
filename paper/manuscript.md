@@ -1,6 +1,7 @@
 ---
 title: "Shared UI State and Host Enforcement: An Empirical Technical Note on Three Agent-UI Configurations"
 author: Eduardo Arana
+orcid: 0009-0000-6435-6872
 date: "22 September 2026 (UTC) — local draft; human review pending"
 subtitle: Arananet
 lang: en
@@ -14,21 +15,25 @@ colorlinks: true
 Reused identifiers produce different retained states under the shared and
 separated mappings of three concrete tested configurations: json-render, A2UI,
 and MCP Apps with their local adapters and hosts. In a fixed-order write probe,
-Node assertions establish replacement of the json-render summary and retention
-of both summaries in separate MCP instances. The MCP browser fixture executes
-only the two summary writes, omitting Node's preceding detail writes; it does
-not validate the same full S2 scenario. Executed browser assertions show
-finance's headline visible and risk's absent in the A2UI surface. The tested MCP host rejects a model-only
-tool call when its enforcing handler is installed; the permissive variant
-forwards that call. Interpretation must therefore name the adapter mapping,
-namespace/topology, and enforcement site together with the SDK or protocol.
+Node assertions establish the four-write outcome: replacement of the
+json-render summary and retention of both summaries in separate MCP instances.
+Every browser run instead exercises a separate two-write summary fixture; it
+corroborates the rendered outcome only for that fixture and does not validate
+the Node four-write scenario. Executed A2UI browser assertions show finance's
+headline visible and risk's absent, not an exact node count. The installed
+enforcing host handler rejects one model-only tool call; SDK-default `oncalltool`
+forwards it, a measured specification-versus-SDK gap. Interpretation must
+therefore name the adapter mapping, namespace/topology, and enforcement site
+together with the SDK or protocol.
 This empirical technical note with private local evidence audits an existing deterministic
 TypeScript harness across surface handoff, fixed-order identifier collision,
 and action round-trip. A claim-to-check mapping distinguishes supported,
 partial, and proposed claims; routing to every intended control owner remains
 partial, and a matched-topology intervention remains proposed, not performed.
 The evidence supports configuration-specific findings, not isolated protocol
-causality or rankings. No LLM experiment or performance measurement is reported.
+causality or rankings: protocol effects cannot be separated from adapter and
+topology here, and a matched-topology comparison remains proposed, not
+performed. No LLM experiment or performance measurement is reported.
 Human scientific and editorial review remains pending.
 
 Browser provenance note: retained historical screenshots predate the S2 rename.
@@ -51,7 +56,9 @@ SDK or protocol: those choices are part of the observed system, not incidental
 implementation details.
 
 This empirical technical note with private local evidence examines three concrete tested
-configurations, not three protocols in isolation. Its contribution is an
+configurations, not three protocols in isolation. Protocol effects cannot be
+separated from adapter and topology here; a matched-topology comparison remains
+proposed, not performed. Its contribution is an
 auditable account of a small deterministic harness: research questions, a
 falsifiable hypothesis, bounded findings, an evidence map, and a local
 reproduction procedure. UI descriptions, execution environments, and
@@ -69,7 +76,9 @@ RQ2: What survives a fixed-order identifier-collision probe in the configured na
 Only the one specified sequential write order is observed; it cannot generalize
 to alternative orders, scheduling or concurrency.
 
-RQ3: Which local bookkeeping and host decisions determine action routing and model-only tool rejection?
+RQ3: In the tested paths, which local bookkeeping and host decisions determine
+action routing and one model-only tool rejection? In this MCP Apps topology,
+originating-agent identity comes from connection binding, not the payload.
 
 # Methodology
 
@@ -283,13 +292,14 @@ behavior or protection against an omitted confirmation binding. A2UI has no
 privileged gate implemented in this adapter; that is not a proof that its hosts
 or trusted catalog components cannot impose one.
 
-For MCP Apps, the [host](../src/adapters/mcp-apps/host.ts) installs its enforcing
+For MCP Apps, the [host](../src/adapters/mcp-apps/host.ts) installs one enforcing
 `oncalltool` handler after `bridge.connect`. The handler looks up the tool and
-rejects model-only visibility. The [bridge tests](../tests/protocol/mcp-apps-bridge.test.ts)
+rejects one model-only call. The [bridge tests](../tests/protocol/mcp-apps-bridge.test.ts)
 check successful app-visible calls, rejection messages and refusal records, and
 successful model-only calls when enforcement is disabled. The permissive host
-variant forwards that call. This is evidence about the tested SDK and handler
-installation order, not every MCP host or SDK release. R4 reports the external
+variant forwards that call. This is a measured specification-versus-SDK gap for
+the installed enforcing host handler and SDK-default `oncalltool`, not a
+security guarantee or evidence about every MCP host or SDK release. R4 reports the external
 premise that the inspected extension specification assigns visibility
 enforcement to the host, but that premise is unverified within this artifact.
 
@@ -405,7 +415,10 @@ per-test timing or other run-level equivalence is claimed. No completed executio
 discarded, and the immutable current-source run is
 `paper/evidence/browser-s2-fixed-order-QDL9iC9j/`. Neither completed run is an independent
 reproduction: both ran on the same machine, from the same checkout, in the same
-session. The suite does not comprehensively test adversarial inputs, identity forgery, transport authentication, CSP, cross-server policy, authorization revocation, or arbitrary concurrent schedules. No completed security review is claimed.
+session. No adversarial, forged-identity, CSP, or cross-server test was run.
+The suite also does not comprehensively test transport authentication,
+authorization revocation, or arbitrary concurrent schedules. No completed
+security review is claimed.
 
 **Classification scope.** The matrix contains many individually classified
 configuration/scenario cells. Because these are deterministic code-behavior
@@ -423,13 +436,15 @@ archive. No latency, throughput, cost, user study, or model capability was measu
 
 # Data availability
 
-No archival identifier is asserted for the regenerated current-source evidence
-described below. A final archival deposit remains pending review of this
-evidence chain. The canonical editable manuscript, harness, frozen v0.1
-Markdown snapshot, and versioned evidence records are available only as local
-repository evidence in this artifact. No deposited release, public repository
-URL, or archival identifier is asserted. This does not establish independent
-reproduction, peer review, or protocol causality.
+The repository is the current source. No version-specific DOI exists yet; the
+prior Zenodo DOI predates this revision, and final-version deposit remains
+pending. The canonical editable manuscript, harness, frozen v0.1 Markdown
+snapshot, and versioned evidence records are available as repository evidence
+in this artifact. This does not establish independent reproduction, peer review,
+or protocol causality.
+
+The code license is MIT. A distinct text, figure, and evidence license remains a
+pending human decision; none is asserted for this revision.
 
 # Reproducibility
 
@@ -461,10 +476,15 @@ This session is an agent-assisted local rerun of existing checks. It establishes
 neither independent-person reproduction nor human approval. The previous session's
 reported dependency installation is not a fresh `npm ci` execution in this record.
 Missing checks and failed attempts remain visible rather than being counted as
-passes. The full paper suite is currently blocked/failed: the execution ledger's
-latest recorded run reports 29 passed and 2 failed integration input. `evidence/paper-checks.txt` is an older
-8-test passing transcript, not final-state validation. OpenSpec command success
-cannot prove every acceptance criterion.
+passes. The post-change `node --test tests/paper/*.test.mjs` run reports 30
+passed and 3 failed tests. The still-failing tests are `generated LaTeX
+corresponds to the editable manuscript` (the Markdown edit makes
+`manuscript.tex` stale), `PDF build manifest matches the current manuscript,
+tooling, figures and PDF` (the manifest records the prior Markdown hash), and
+`private archive extracts with exact hashes, complete fixture inputs and real
+selected evidence` (it requires `PAPER_BROWSER_EVIDENCE`). `evidence/paper-checks.txt` is an older 8-test passing transcript, not
+final-state validation. OpenSpec command success cannot prove every acceptance
+criterion.
 
 The complete local Vitest run passed 24 tests across three files and TypeScript
 checking passed. The standalone `report:check` command failed when tsx attempted
@@ -499,18 +519,24 @@ browser findings are historical; the complete
 current browser-source provenance for the renamed fixture.
 
 Across three concrete tested configurations, handoff placement and retained
-values reflect the chosen shared or separated mappings. The S2 assertions check
-json-render's replaced summary and MCP's two retained summaries; executed A2UI
-DOM assertions show finance's headline visible and risk's absent. H1 has only
-fixture-specific support: Node S2 has four writes, while browser MCP executes
-only risk/summary then finance/summary and cannot validate the full Node fixture.
-Neither fixture tests concurrency, scheduling, interleaving, or randomization. MCP model-only
-tool rejection depends on the tested enforcing host handler, while correct
-routing for every control remains only partially checked. Interpretation must
-name the adapter mapping, namespace/topology, and enforcement site together
-with the SDK or protocol. These results do not isolate protocol causality,
+values reflect the chosen shared or separated mappings. Node assertions
+establish the four-write S2 outcome: json-render's replaced summary and MCP's
+two retained summaries. Every browser run is a separate two-write summary
+fixture; executed A2UI DOM assertions show finance's headline visible and risk's
+absent, and browser MCP executes only risk/summary then finance/summary. Those
+browser observations corroborate rendered outcomes only for their own fixtures
+and cannot validate the Node four-write fixture. Neither fixture tests
+concurrency, scheduling, interleaving, or randomization. MCP model-only tool
+rejection is measured behavior of one installed enforcing host handler, whereas
+SDK-default `oncalltool` forwards it; this is a specification-versus-SDK gap,
+not a security guarantee. In the tested topology, originating-agent identity
+comes from connection binding rather than the payload, while correct routing for
+every control remains only partially checked. Protocol effects cannot be
+separated from adapter and topology here; a matched-topology comparison remains
+proposed, not performed. These results do not isolate protocol causality,
 establish protocol-level collision enforcement, or establish unavoidable
-incompatibility between composition and security.
+incompatibility between composition and security. No adversarial,
+forged-identity, CSP, or cross-server test was run.
 Integrations remain possible, and trusted catalogs retain meaningful security
 properties.
 

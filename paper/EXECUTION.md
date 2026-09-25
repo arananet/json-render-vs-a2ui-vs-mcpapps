@@ -1,5 +1,17 @@
 # Local execution record
 
+## Pending human decisions
+
+- Final version-specific DOI and archival deposit.
+- A text/figure/data license distinct from the code's MIT license.
+- Network lookup and pinning of upstream R1–R3 commits.
+- Whether to authorize any new experiment: matched topology, alternative orders,
+  repeated runs, or adversarial tests.
+
+The repository is the current source. No version-specific DOI exists yet; the
+prior Zenodo DOI predates this revision, and final-version deposit remains
+pending. None of these decisions or experiments was performed in this update.
+
 Current status: editorially revised 10-page English PDF and clean TeX source
 bundle generated locally; human scientific/editorial review pending. The latest
 operations are in **Editorial and evidence revision** below. Earlier sessions,

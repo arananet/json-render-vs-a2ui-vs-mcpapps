@@ -79,11 +79,11 @@ export class McpAppsAdapter implements ProtocolAdapter {
       this.tracer.record(
         "compose.shared-surface",
         "NOT_EXPRESSIBLE",
-        `Agents ${JSON.stringify(otherAgentsOnSurface)} and "${agent}" cannot compose into one ` +
+        `In this tested mapping, agents ${JSON.stringify(otherAgentsOnSurface)} and "${agent}" do not compose into one ` +
           `surface. Each has its own App instance, its own sandboxed iframe and its own origin, so ` +
           `what the user gets is N stacked panels rather than one view. Laying them out — ordering, ` +
           `sizing, deciding which is primary, reconciling their headings — is entirely the host's ` +
-          `problem, and the protocol gives the host nothing to work with beyond ` +
+          `problem in this topology, and the inspected mapping uses only ` +
           `ui/notifications/size-changed. For an orchestrator whose whole job is to present several ` +
           `agents' work as one answer, this is the sharpest edge in MCP Apps.`,
         { surfaceId, separateInstances: [...otherAgentsOnSurface, agent] },
@@ -144,22 +144,19 @@ export class McpAppsAdapter implements ProtocolAdapter {
     this.tracer.record(
       "handoff.provenance",
       "ENFORCED",
-      `The flip side is that attribution is not something an agent can claim — it is a property of ` +
+        `In this topology, attribution is not taken from an agent claim — it is a property of ` +
         `the connection. Each view is reachable only through the AppBridge the host created for one ` +
-        `server, so the host knows a view is ${from}'s without reading anything the view sent. ` +
-        `Neither json-render nor A2UI can offer that, because in both of them any writer can address ` +
-        `any part of the tree.`,
+          `server, so the host knows a view is ${from}'s without reading payload content. This is a ` +
+          `tested connection-binding observation, not a protocol-wide claim.`,
       { bindings: [...this.instances.values()].map((i) => ({ key: i.key, agent: i.agent })) },
     );
 
     this.tracer.record(
       "handoff.isolation",
       "ENFORCED",
-      `Views are cross-origin sandboxed iframes with a host-constructed CSP; the default policy is ` +
-        `default-src 'none' with connect-src 'none', and the host MUST NOT widen it beyond the ` +
-        `domains the resource declared. A compromised or confused agent cannot reach into another ` +
-        `agent's rendered surface, read its DOM, or call its server. In the other two protocols the ` +
-        `blast radius of one bad agent is the whole surface.`,
+        `The tested host creates separate sandboxed iframes with a host-constructed CSP. This is a ` +
+          `configuration observation only: no adversarial, forged-identity, CSP, or cross-server test ` +
+          `was run, so it is not a validated isolation defense.`,
       { defaultCsp: "default-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'" },
     );
 
@@ -202,8 +199,8 @@ export class McpAppsAdapter implements ProtocolAdapter {
         `The view's tools/call arrived over the AppBridge the host created for agent ` +
           `"${instance.agent}"'s server. The orchestrator therefore knows the originating agent from ` +
           `the channel the message came in on, with no control-id table to maintain and nothing in ` +
-          `the payload to trust. This is the one protocol of the three where a click is attributable ` +
-          `by construction.`,
+          `the payload to trust. This is a tested connection-binding observation, not a protocol-wide ` +
+          `attribution claim.`,
         { agent: instance.agent, tool: toolName, boundResourceUri: instance.hosted.resourceUri },
       );
 
@@ -214,11 +211,9 @@ export class McpAppsAdapter implements ProtocolAdapter {
       this.tracer.record(
         "action.approval-gate",
         "ENFORCED",
-        `The host refused the view's tools/call for "${toolName}": ${reason}. The tool's ` +
-          `_meta.ui.visibility is ["model"], so a view may not invoke it however the agent drew the ` +
-          `button. The refusal happens in the host, above the server, and the agent that authored ` +
-          `the UI has no way to talk its way past it — which is a materially stronger guarantee than ` +
-          `a confirmation dialog the same agent could have chosen not to request.`,
+        `The installed host handler refused the view's tools/call for "${toolName}": ${reason}. ` +
+          `The tool's _meta.ui.visibility is ["model"]. This one rejection is measured handler ` +
+          `behavior, not a security guarantee; SDK-default oncalltool forwards the corresponding call.`,
         { tool: toolName, visibility: ["model"], refusals: instance.hosted.refusals },
       );
 

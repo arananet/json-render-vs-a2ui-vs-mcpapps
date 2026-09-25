@@ -5,6 +5,10 @@ Arananet. It re-executes existing local checks; it is not an independent-person
 reproduction or a replication of another study. See [EXECUTION.md](EXECUTION.md)
 for commands actually run and the limits of the evidence.
 
+The repository is the current source. No version-specific DOI exists yet; the
+prior Zenodo DOI predates this revision, and final-version deposit remains
+pending.
+
 ## Inputs and prerequisites
 
 - Actual tested HEAD for the immutable recorded browser execution:
@@ -335,7 +339,9 @@ weaker evidence behind confirmation and provenance labels.
 
 The nine restored screenshots are historical artifacts. `docs/COMPARISON.md`
 now reflects the corrected S2 identity and report key; its images remain historical.
-The retained IPv4 archive contains pre-rename captures. `report:check` checks
+The retained IPv4 archives and SHA-256 manifests are tracked and distributed
+with the immutable execution record; the retained IPv4 archive contains
+pre-rename captures. `report:check` checks
 consistency without rewriting that report. The normal browser command excludes
 `@screenshot`; the documented two-spec command includes it. Browser MCP fixtures are not identical to the Node
 scenario, particularly the omitted S2 detail blocks.

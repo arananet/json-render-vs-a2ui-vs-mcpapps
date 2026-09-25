@@ -15,7 +15,8 @@ test("manuscript identifies the author, affiliation, and review state", () => {
 });
 
 test("H1 is bounded to the actual fixed-order S2 script and existing assertions", () => {
-  assert.match(manuscript, /H1:/);
+  assert.match(manuscript, /H1a \(Node, four writes\)/);
+  assert.match(manuscript, /H1b \(browser, two writes\)/);
   assert.match(manuscript, /fixed-order identifier-collision probe, not actual concurrency or a scheduling benchmark/);
   const source = readFileSync(resolve(root, "src/scenarios/s2-fixed-order-collision.ts"), "utf8");
   const writes = [...source.matchAll(/await orchestrator\.emit\(SURFACE, "(risk|finance)", \{\s+id: "([^"]+)"/g)];

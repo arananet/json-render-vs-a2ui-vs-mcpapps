@@ -1,9 +1,10 @@
 # Browser Evidence Status
 
 [current-browser-run](current-browser-run/) is the tracked relative symlink to the canonical
-current-source browser execution. Its source snapshots, stable build hashes,
-successful 18-test Playwright report, and nine screenshot hashes document that
-run; its `environment.json` commit hash matches `provenance.txt` and the
+current-source browser execution; it currently resolves to immutable
+`browser-s2-fixed-order-QDL9iC9j/`. Its source snapshots, stable build hashes,
+successful 18-test Playwright report, and tracked screenshot archives with their
+SHA-256 manifests document that run; its `environment.json` commit hash matches `provenance.txt` and the
 private-review manifest.
 
 `scripts/paper-browser-run.sh` retains every newly created suffixed directory.
@@ -11,6 +12,7 @@ Only after a zero-exit run passes `validateBrowserEvidence` does it atomically
 replace `current-browser-run` with a relative symlink to that directory. Live
 documentation and packaging should use this stable path; immutable ledgers may
 name their original suffixed run for historical provenance.
+It remains a mutable pointer, not an immutable citation.
 
 The collector wrapper is itself a provenance input. Therefore, after changing
 that wrapper, the existing target remains an immutable record but cannot
