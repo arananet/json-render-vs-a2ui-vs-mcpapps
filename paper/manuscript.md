@@ -448,9 +448,11 @@ archive. No latency, throughput, cost, user study, or model capability was measu
 
 # Data availability
 
-The archived releases are available at https://doi.org/10.5281/zenodo.22896881,
-which resolves to the latest version. The harness code is released under the
-Apache License 2.0; the manuscript, figures and evidence records under CC BY 4.0.
+The exact evidence reported here is archived as v0.2.0 at
+https://doi.org/10.5281/zenodo.22965404. The concept DOI,
+https://doi.org/10.5281/zenodo.22896881, resolves to the latest version. The
+harness code is released under the Apache License 2.0; the manuscript, figures
+and evidence records under CC BY 4.0.
 The root `LICENSE` and package metadata identify the code license. The canonical editable manuscript, harness, frozen v0.1
 Markdown snapshot, and versioned evidence records are available as repository
 evidence in this artifact. This does not establish independent reproduction,

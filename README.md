@@ -8,6 +8,8 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22896882.svg)](https://doi.org/10.5281/zenodo.22896882)
 
+Cite: v0.2.0 evidence [10.5281/zenodo.22965404](https://doi.org/10.5281/zenodo.22965404); all versions [10.5281/zenodo.22896881](https://doi.org/10.5281/zenodo.22896881).
+
 > Three real UI-testing scenarios comparing json-render, A2UI and MCP Apps for
 > multi-agent orchestration.
 

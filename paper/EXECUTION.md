@@ -6,10 +6,13 @@
 - Whether to authorize any new experiment: matched topology, alternative orders,
   repeated runs, or adversarial tests.
 
-The archived release is available at https://doi.org/10.5281/zenodo.22896881,
-which resolves to the latest version. The harness code is released under the
-Apache License 2.0; the manuscript, figures and evidence records under CC BY 4.0. None of
-the remaining decisions or experiments was performed in this update.
+The evidence reported in this paper is archived as v0.2.0 at
+https://doi.org/10.5281/zenodo.22965404, release commit
+`1bbe20136441217c4305b5fd473fe9710815ee33`. The concept DOI,
+https://doi.org/10.5281/zenodo.22896881, resolves to the latest version. The
+harness code is released under the Apache License 2.0; the manuscript, figures
+and evidence records under CC BY 4.0. None of the remaining decisions or
+experiments was performed in this update.
 
 Current status: editorially revised 10-page English PDF and clean TeX source
 bundle generated locally; human scientific/editorial review pending. The latest
