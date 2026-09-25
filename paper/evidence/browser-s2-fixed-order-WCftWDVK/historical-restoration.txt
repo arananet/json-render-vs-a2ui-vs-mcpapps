@@ -1,0 +1,9 @@
+docs/screenshots/s1-a2ui.png: OK
+docs/screenshots/s1-json-render.png: OK
+docs/screenshots/s1-mcp-apps.png: OK
+docs/screenshots/s2-a2ui.png: OK
+docs/screenshots/s2-json-render.png: OK
+docs/screenshots/s2-mcp-apps.png: OK
+docs/screenshots/s3-a2ui.png: OK
+docs/screenshots/s3-json-render.png: OK
+docs/screenshots/s3-mcp-apps.png: OK
