@@ -220,7 +220,7 @@ bash scripts/openspec verify <slug>
 
 ## License
 
-[MIT](LICENSE)
+[Apache-2.0](LICENSE)
 
 ## Developer
 
