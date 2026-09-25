@@ -448,7 +448,7 @@ the Apache License 2.0; the manuscript, figures and evidence records under CC BY
 (see LICENSING.md). The canonical editable manuscript, harness, frozen v0.1 Markdown
 snapshot, and versioned evidence records are available as repository evidence in
 this artifact. This does not establish independent reproduction, peer review, or
-protocol causality.grep -rn "NNNNNNNN" paper/ CITATION.cff veritas.yaml
+protocol causality.
 
 # Reproducibility
 
