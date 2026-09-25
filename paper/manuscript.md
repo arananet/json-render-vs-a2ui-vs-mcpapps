@@ -442,13 +442,13 @@ archive. No latency, throughput, cost, user study, or model capability was measu
 
 # Data availability
 
-The archived release is available at https://doi.org/10.5281/zenodo.22896881,
-which resolves to the latest version. The harness code is released under the MIT
-licence; the manuscript, figures and evidence records under CC BY 4.0. The
-canonical editable manuscript, harness, frozen v0.1 Markdown snapshot, and
-versioned evidence records are available as repository evidence in this artifact.
-This does not establish independent reproduction, peer review, or protocol
-causality.
+This version is archived at https://doi.org/10.5281/zenodo.NNNNNNNN; all versions
+are at https://doi.org/10.5281/zenodo.22896881. The harness code is released under
+the Apache License 2.0; the manuscript, figures and evidence records under CC BY 4.0
+(see LICENSING.md). The canonical editable manuscript, harness, frozen v0.1 Markdown
+snapshot, and versioned evidence records are available as repository evidence in
+this artifact. This does not establish independent reproduction, peer review, or
+protocol causality.grep -rn "NNNNNNNN" paper/ CITATION.cff veritas.yaml
 
 # Reproducibility
 
