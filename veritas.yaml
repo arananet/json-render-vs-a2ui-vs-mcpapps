@@ -74,7 +74,7 @@ gate:
       expires: 2026-12-31
 
 thesis:
-  - "Reusing an identifier overwrites in shared mappings and is retained in separate MCP instances."
+  - "Under the tested configurations and one fixed write order, reusing an identifier overwrites in the shared mappings and is retained in separate MCP instances."
   - "Model-only tool rejection depends on the installed host handler, not the SDK default."
 
 metadata:
