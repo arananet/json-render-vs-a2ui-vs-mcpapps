@@ -6,17 +6,19 @@ reproduction or a replication of another study. See [EXECUTION.md](EXECUTION.md)
 for commands actually run and the limits of the evidence.
 
 The archived release is available at https://doi.org/10.5281/zenodo.22896881,
-which resolves to the latest version. The harness code is released under the MIT
-licence; the manuscript, figures and evidence records under CC BY 4.0.
+which resolves to the latest version. The harness code is released under the
+Apache License 2.0; the manuscript, figures and evidence records under CC BY 4.0.
 
 ## Inputs and prerequisites
 
-- Actual tested HEAD for the immutable recorded browser execution:
-  `91a0b7a5191947a4ad284e276227564586c88f82`, as recorded in that execution's
-  `environment.json` and `provenance.txt`. The earlier maintenance base
-  `f552114ef3ae7a3a94b601d8b246265daed3779e` and later bookkeeping commits are
-  historical records, not the tested browser revision. Record `git rev-parse HEAD`
-  and `git status --short --untracked-files=all` for your own run.
+- Actual tested HEAD for the canonical immutable current browser execution
+  `paper/evidence/browser-s2-fixed-order-cFIGKT5C/`:
+  `378aabee42a69c61edc7d7a37c934465b4a66e30`, recorded with Node `v23.5.0`
+  at `2026-09-25T18:33:49Z`. `current-browser-run` resolves to this directory.
+  The `QDL9iC9j/` record at `91a0b7a5191947a4ad284e276227564586c88f82` is
+  superseded historical evidence, not the current reproduction target. Record
+  `git rev-parse HEAD` and `git status --short --untracked-files=all` for your
+  own run.
 - Node >=22, npm, the existing `package-lock.json`, Bash, Git, Ruby >=2.6 for
   OpenSpec, and local dependencies. A fresh installation normally uses
   `npm ci --no-audit --no-fund`; it may require network access. Do not interpret
@@ -32,10 +34,10 @@ licence; the manuscript, figures and evidence records under CC BY 4.0.
   This machine has `$HOME/Library/Caches/ms-playwright`; `/opt/pw-browsers`
   must not be assumed. No browser download or sandbox bypass is part of this run.
 
-On the recorded machine, select Node explicitly in each shell:
+On the canonical recorded browser execution's machine, Node was:
 
 ```bash
-export PATH="$HOME/.nvm/versions/node/v22.23.2/bin:$PATH"
+export PATH="/opt/homebrew/Cellar/node/23.5.0/bin:$PATH"
 node --version
 npm --version
 ```
@@ -72,11 +74,13 @@ commit, tag, archival release, DOI registration, or independent reproduction has
 occurred. Hashes identify retained bytes; they do not establish a clean-clone
 reproduction or human review.
 
-The historical private archive and manifest are retained in the execution
-ledger as pre-rename evidence only. Conclusions in this guide exclude reliance
-on those unavailable private materials. A current private bundle and readable
-manifest may be regenerated from the post-rename browser execution, but neither
-package establishes independent reproduction or review.
+The historical private archive and readable manifest are retained as
+pre-`cFIGKT5C` evidence only: `private-review-manifest.json` identifies
+`QDL9iC9j/` and must not be used as provenance for the canonical current run.
+Conclusions in this guide exclude reliance on those unavailable private
+materials. A current private bundle and readable manifest may be regenerated
+from `browser-s2-fixed-order-cFIGKT5C/`, but neither package establishes
+independent reproduction or review.
 
 Private packaging fails closed unless `PAPER_BROWSER_EVIDENCE` selects an
 actual outer-terminal execution directory. The validator requires complete
@@ -94,12 +98,13 @@ It is a mutable relative symlink to the canonical immutable execution directory;
 it is not an immutable citation. Inspect its JSON report,
 stdout/stderr, preview/build logs, source/build snapshots, command record, exit
 status, capture hashes and restoration record. Use its repository-relative path
-as `PAPER_BROWSER_EVIDENCE` for the private-bundle test
-and any future generation. Rebuild current paper derivatives first. The current
-archive's readable manifest is `paper/evidence/private-review-manifest.json`; it
-is an exact extraction of the archive's `PRIVATE-MANIFEST.json`. Do not rewrite
-historical logs, change external review configuration, or use old browser bytes
-as current proof.
+as `PAPER_BROWSER_EVIDENCE` for the private-bundle test; select
+`paper/evidence/browser-s2-fixed-order-cFIGKT5C` rather than the mutable pointer
+for any future generation. Rebuild current paper derivatives first. The current
+archive's readable manifest is `paper/evidence/private-review-manifest.json`, a
+historical `QDL9iC9j/` extraction rather than a current archive manifest. Do not
+rewrite historical logs, change external review configuration, or use old browser
+bytes as current proof.
 The private archive is not a publicly distributed release.
 The archive includes locked dependencies as manifests, not installed packages;
 Node >=22, matching Chromium, npm dependencies, Pandoc, Graphviz, Tectonic with
@@ -160,17 +165,20 @@ localhost resolved to IPv6 first. The successful wrapper used the existing
 `reuseExistingServer` option with an explicitly started IPv4 listener. No browser
 test, assertion, adapter, or configuration file changed. The server was stopped.
 
-### Recorded current execution after the S2 rename
+### Canonical current execution after the S2 rename
 
 The following command was run from the repository root in an outer terminal
 with browser/listener permissions:
 
 ```bash
-PATH="$HOME/.nvm/versions/node/v22.23.2/bin:$PATH" bash scripts/paper-browser-run.sh
+PATH="/opt/homebrew/Cellar/node/23.5.0/bin:$PATH" bash scripts/paper-browser-run.sh
 ```
 
-It completed at `2026-09-22T11:42:17Z` with exit status 0, 18 expected passing
-tests and no skipped, flaky, or unexpected tests. The wrapper builds with
+The canonical immutable execution is
+`paper/evidence/browser-s2-fixed-order-cFIGKT5C/`, captured at
+`2026-09-25T18:33:49Z` from `378aabee42a69c61edc7d7a37c934465b4a66e30` with
+Node `v23.5.0`; it has exit status 0, 18 expected passing tests and no skipped,
+flaky, or unexpected tests. The wrapper builds with
 `npm run build`, starts exactly
 `node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 5178 --strictPort`,
 then runs `env -u CI PLAYWRIGHT_JSON_OUTPUT_FILE=<new-directory>/playwright-ipv4.json
@@ -203,16 +211,17 @@ retain the failure and do not weaken tests or modify adapters to obtain a pass.
 Independent documentation inspection can still establish partial evidence.
 
 ```bash
+# Required order before a full paper-suite attempt.
 node scripts/paper-figures.mjs
 node scripts/paper.mjs latex
 node scripts/paper.mjs check
 node scripts/paper.mjs pdf
-# Optional/blocked: do not treat this as a primary reproduction command. The
-# use the stable repository-root `veritas.yaml` for the current artifact
-# configuration.
-# node --test tests/paper/*.test.mjs
+PAPER_BROWSER_EVIDENCE=paper/evidence/browser-s2-fixed-order-cFIGKT5C \
+  node --test tests/paper/*.test.mjs
+# Only after the preceding steps succeed:
+PAPER_BROWSER_EVIDENCE=paper/evidence/browser-s2-fixed-order-cFIGKT5C \
+  node scripts/paper.mjs private-bundle
 node scripts/paper.mjs bundle
-node scripts/paper.mjs private-bundle
 npm test -- tests/protocol/scenarios.test.ts -t S2
 npm test
 npm run typecheck
@@ -228,7 +237,11 @@ bash scripts/openspec verify reproducible-protocol-comparison-paper
 bash scripts/openspec status reproducible-protocol-comparison-paper
 ```
 
-The focused tests use Node's built-in runner and are separate from the existing
+The retained paper-suite transcript is not green (33 tests: 30 passed, 3
+failed), so this paper package is not release-ready. The ordered sequence above
+is the required regeneration and environment setup for a future full-suite
+attempt; it is not evidence that the failures have been resolved. The focused
+tests use Node's built-in runner and are separate from the existing
 Vitest configuration. Run `latex` before the tests if no generated LaTeX is
 present. `check` regenerates LaTeX in memory and compares it without rewriting;
 `pdf` requires fresh LaTeX and uses Tectonic's `--only-cached --untrusted` mode.
@@ -311,9 +324,12 @@ in the archive. The bundle was compiled locally from its extracted root.
 The editable Markdown, template, Lua presentation filter, Mermaid sources,
 converter, and scientific evidence remain in the repository. Repository-relative
 evidence hyperlinks require this checkout; they are not compilation inputs.
-Local Tectonic success is not arXiv TeX Live validation. No upload, submission,
-publication decision, licensing selection, or acceptance claim is made. The
-repository license is unchanged; author human review remains pending.
+Local Tectonic success is not arXiv TeX Live validation. The required TeX
+resources are external and are not distributed in this artifact; PDF generation
+is therefore non-reproducible presentation tooling from the supplied artifact
+alone, rather than a reproduction target. No upload, submission, publication
+decision, licensing selection, or acceptance claim is made. The repository's
+Apache License 2.0 is unchanged; author human review remains pending.
 
 ## Expected semantic outcomes
 

@@ -7,8 +7,8 @@
   repeated runs, or adversarial tests.
 
 The archived release is available at https://doi.org/10.5281/zenodo.22896881,
-which resolves to the latest version. The harness code is released under the MIT
-licence; the manuscript, figures and evidence records under CC BY 4.0. None of
+which resolves to the latest version. The harness code is released under the
+Apache License 2.0; the manuscript, figures and evidence records under CC BY 4.0. None of
 the remaining decisions or experiments was performed in this update.
 
 Current status: editorially revised 10-page English PDF and clean TeX source
@@ -304,7 +304,8 @@ packages. No runtime conversion, JavaScript, network or shell escape is required
 Root compilation and equivalent extracted text were checked locally. This
 implements relevant preparation practices from the inspected official arXiv
 guidance, but does not establish arXiv TeX Live validation or acceptance.
-No licensing choice was made and the repository's MIT license is untouched.
+No licensing choice was made in this recorded attempt; the repository's Apache
+License 2.0 remains authoritative.
 
 Current checksum evidence is `evidence/pdf-visuals/artifacts.sha256`; the older
 `evidence/artifacts.sha256` remains an explicitly historical snapshot. Current
@@ -721,10 +722,19 @@ exact hashes, complete fixture inputs and real selected evidence` fails because
 the run did not set `PAPER_BROWSER_EVIDENCE`. These are current n=1 execution
 results, not a repeated-trial statistic.
 
+The paper package is therefore not release-ready. Before a new full-suite run,
+regenerate derivatives in this order from the final Markdown: `node
+scripts/paper-figures.mjs`, `node scripts/paper.mjs latex`, and `node
+scripts/paper.mjs pdf`; then select the canonical evidence directory with
+`PAPER_BROWSER_EVIDENCE=paper/evidence/browser-s2-fixed-order-cFIGKT5C node
+--test tests/paper/*.test.mjs`. This is the required setup for a future full
+suite attempt; this ledger does not claim that such an attempt was run.
+
 The retained 18-pass browser report and captures remain historical facts only.
 Their browser-test hashes no longer match the renamed tests; they cannot verify
-the post-rename fixture. The private archive and its text manifest are stale and
-remain unchanged. Packaging now requires a supplied `PAPER_BROWSER_EVIDENCE`
+the post-rename fixture. The private archive remains stale; its readable text
+manifest is explicitly relabeled as a historical pre-`cFIGKT5C` record. Packaging
+now requires a supplied `PAPER_BROWSER_EVIDENCE`
 directory with complete matching source hashes before build and after execution,
 stable built-asset hashes, both successful browser specs, new S2 titles, actual
 exit status, and all nine capture hashes, plus fresh paper derivatives. Missing
@@ -732,7 +742,7 @@ or stale evidence fails before any archive write. Tests confirm rejection also
 preserves an existing destination. No provisional verification claim is emitted.
 
 Run the single outer-terminal command documented in [REPRODUCTION.md](REPRODUCTION.md):
-`PATH="$HOME/.nvm/versions/node/v22.23.2/bin:$PATH" bash scripts/paper-browser-run.sh`.
+`PATH="/opt/homebrew/Cellar/node/23.5.0/bin:$PATH" bash scripts/paper-browser-run.sh`.
 It uses built Vite preview at `127.0.0.1:5178` with `--strictPort`, followed by
 `env -u CI` Playwright and the existing server-reuse option. Return the complete
 printed new evidence directory and exit status. It retains source/build hashes,
@@ -764,7 +774,7 @@ directory; the actual full-paper failures above remain unresolved.
 ## Current-source browser execution — 2026-09-22 UTC
 
 The outer-terminal command
-`PATH="$HOME/.nvm/versions/node/v22.23.2/bin:$PATH" bash scripts/paper-browser-run.sh`
+`PATH="/opt/homebrew/Cellar/node/23.5.0/bin:$PATH" bash scripts/paper-browser-run.sh`
 completed at `2026-09-22T11:42:17Z` with exit status 0. Its immutable execution
 directory is `paper/evidence/browser-s2-fixed-order-Iyz55xbG/`. The record
 contains source SHA-256 maps before build and after execution, stable `dist-web`

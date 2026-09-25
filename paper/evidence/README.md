@@ -4,8 +4,9 @@
 current-source browser execution; it currently resolves to immutable
 `browser-s2-fixed-order-cFIGKT5C/`. Its source snapshots, stable build hashes,
 successful 18-test Playwright report, and tracked screenshot archives with their
-SHA-256 manifests document that run; its `environment.json` commit hash matches `provenance.txt` and the
-private-review manifest.
+SHA-256 manifests document that run; its `environment.json` commit hash matches
+`provenance.txt`. The private-review manifest is a separate historical
+pre-`cFIGKT5C` record and is not provenance for this canonical execution.
 
 `scripts/paper-browser-run.sh` retains every newly created suffixed directory.
 Only after a zero-exit run passes `validateBrowserEvidence` does it atomically
@@ -28,8 +29,9 @@ canonical directory referenced by `current-browser-run`:
   placed inside the preceding directory, so it was retained rather than cited as
   canonical; `cFIGKT5C/` is the validated current-pointer execution.
 - `QDL9iC9j/` completed with 18 expected tests against the preceding source
-  snapshot. It is superseded by `cFIGKT5C/`, whose source snapshots include the
-  current adapter, report-generator, and wrapper changes.
+  snapshot. It is a superseded historical record, not a current-source citation;
+  `cFIGKT5C/` is the sole validated current-pointer execution and its source
+  snapshots include the current adapter, report-generator, and wrapper changes.
 - `Iyz55xbG/` (07:42 UTC) completed with 18 expected tests, 0 unexpected and 0
   skipped, against an earlier source state. Its snapshot differs from the
   canonical run in the evidence-collection scripts and in the code under test:

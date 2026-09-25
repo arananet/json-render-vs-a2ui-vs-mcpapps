@@ -253,14 +253,17 @@ finance writer and headline, plus survival of the two uncontested blocks. The
 A2UI Node assertion checks the finance writer from adapter bookkeeping; its
 browser assertion checks headline text. MCP snapshot assertions check both
 headlines in different instances. H1 has fixture-specific support from these
-Node checks and the current-source browser run on 22 September 2026 UTC. A2UI's
+Node checks and the canonical current-source browser run
+`browser-s2-fixed-order-cFIGKT5C/` on 25 September 2026 UTC. A2UI's
 browser assertion checks
 finance's headline visible and risk's headline absent within the surface.
 It does not assert an exact summary node count, despite its test title.
 The execution ledger identifies a raw browser report for the current-source run
 as recording 18 passed tests: nine render assertions and nine screenshot tests.
-The complete [current browser run](./evidence/current-browser-run/) includes
-that report, source snapshots, build hashes, and capture hashes.
+The complete [current browser run](./evidence/current-browser-run/) resolves to
+immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC; commit
+`378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`) and includes that
+report, source snapshots, build hashes, and capture hashes.
 The MCP browser fixture omits Node's risk-detail and finance-detail writes.
 Its two summary assertions are a separate browser result, not corroboration of
 the full four-write Node S2 or support across a common shared fixture.
@@ -329,7 +332,7 @@ paper's evidence statuses, distinct from the adapter outcome vocabulary.
 | --- | --- | --- |
 | C1: S1 yields one shared region or two MCP instances in this topology. | Supported | S1 snapshot region and block assertions; contradicted by missing blocks or different region counts. |
 | C2 / H1a (Node, four writes): Under the tested configurations and one fixed write order, reusing an identifier overwrites in the shared json-render and A2UI mappings and is retained in separate MCP App instances. | Supported | Node headline assertions; contradicted by different retained values. The browser fixture is not evidence for H1a. |
-| C3 / H1b (browser, two writes): Under the tested A2UI shared mapping and fixed write order, the fixture displays finance's headline after the later write. | Supported | The cited [current browser run](./evidence/current-browser-run/) records assertions checking finance visible and risk absent within the surface. It is distinct from H1a and does not assert an exact node count. |
+| C3 / H1b (browser, two writes): Under the tested A2UI shared mapping and fixed write order, the fixture displays finance's headline after the later write. | Supported | The cited [current browser run](./evidence/current-browser-run/) resolves to immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC; commit `378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`) and records assertions checking finance visible and risk absent within the surface. It is distinct from H1a and does not assert an exact node count. |
 | C4: S2 is sequential, with no scheduling test. | Supported | Four awaited emissions in the S2 source; contradicted by an overlapping scheduler in the executed path. |
 | C5: The enforcing MCP handler rejects the model-only call, while the permissive variant forwards it. | Supported | Bridge rejection/refusal and successful-result assertions; contradicted by reversed or identical behavior. |
 | C6: Every MCP S3 control reaches its intended agent. | Partial | Existing test checks some table-free delivery; first-instance selection prevents this stronger inference. |
@@ -352,8 +355,10 @@ For C1–C3 and the tested browser actions, the renamed
 The pre-rename `browser-terminal-20260922T013449Z-zH4HTK/` records are historical
 only and are not claim-support evidence for this fixture. The execution ledger
 records the single cited [current browser run](./evidence/current-browser-run/),
-whose report, source snapshots, build hashes, and capture hashes bind the
-current browser claim for this fixture. Other retained browser directories have
+which resolves to immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September
+2026 UTC; commit `378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`).
+Its report, source snapshots, build hashes, and capture hashes bind the current
+browser claim for this fixture. Other retained browser directories have
 different source snapshots and are execution records, not redundant confirmation
 of this claim.
 This does not make the distinct MCP browser fixture corroborate the four-write
@@ -419,7 +424,8 @@ for `src/adapters/mcp-apps/adapter.ts`, `src/orchestrator/types.ts`, and
 not repeated trials; no mean, variance, or stability statistic is claimed. No
 per-test timing or other run-level equivalence is claimed. No completed execution was
 discarded, and the immutable current-source run is
-`paper/evidence/current-browser-run/`. Neither completed run is an independent
+`paper/evidence/browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC;
+commit `378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`). Neither completed run is an independent
 reproduction: both ran on the same machine, from the same checkout, in the same
 session. No adversarial, forged-identity, CSP, or cross-server test was run.
 The suite also does not comprehensively test transport authentication,
@@ -444,8 +450,8 @@ archive. No latency, throughput, cost, user study, or model capability was measu
 
 The archived releases are available at https://doi.org/10.5281/zenodo.22896881,
 which resolves to the latest version. The harness code is released under the
-Apache License 2.0; the manuscript, figures and evidence records under CC BY 4.0
-(see LICENSING.md). The canonical editable manuscript, harness, frozen v0.1
+Apache License 2.0; the manuscript, figures and evidence records under CC BY 4.0.
+The root `LICENSE` and package metadata identify the code license. The canonical editable manuscript, harness, frozen v0.1
 Markdown snapshot, and versioned evidence records are available as repository
 evidence in this artifact. This does not establish independent reproduction,
 peer review, or protocol causality.
@@ -503,7 +509,9 @@ changes. New captures were archived separately and historical PNGs restored;
 this is now pre-rename evidence and cannot substantiate the post-rename fixture.
 The required post-rename outer-terminal browser run completed and recorded
 current-source/build hashes, 18 passing tests, and nine capture hashes in the
-[current browser run](./evidence/current-browser-run/). Pandoc produced LaTeX and
+[current browser run](./evidence/current-browser-run/), which resolves to
+immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC; commit
+`378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`). Pandoc produced LaTeX and
 its freshness check passed. The initial Tectonic invocation
 panicked internally (exit 101) in cached-only mode. A later local build used an
 explicit directory bundle assembled from already cached TeX resources and a
@@ -520,8 +528,10 @@ publication acceptance. Human review remains pending.
 S2 observes only the one specified sequential write order and cannot generalize
 to alternative orders, scheduling or concurrency. The retained pre-rename
 browser findings are historical; the complete
-[current browser run](./evidence/current-browser-run/) supplies
-current browser-source provenance for the renamed fixture.
+[current browser run](./evidence/current-browser-run/), resolving to immutable
+`browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC; commit
+`378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`), supplies current
+browser-source provenance for the renamed fixture.
 
 Across three concrete tested configurations, handoff placement and retained
 values reflect the chosen shared or separated mappings. Under the tested

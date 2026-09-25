@@ -19,9 +19,11 @@ Its states are checked against `tests/protocol/scenarios.test.ts` and
 executed DOM assertion establishes finance visible and risk absent, with no
 exact node-count check. The retained [browser report](../evidence/browser-terminal-20260922T013449Z-zH4HTK/playwright-ipv4.json)
 supports only pre-rename observations in the box and caption. The separate
-[post-rename immutable browser run](../evidence/browser-s2-fixed-order-QDL9iC9j/),
-also available through the current-run symlink, records current-source and
-build hashes, 18 passing tests, and nine capture hashes for the renamed fixture.
+[post-rename immutable browser run](../evidence/browser-s2-fixed-order-cFIGKT5C/)
+of 25 September 2026 UTC, also available through the current-run symlink,
+records current-source and build hashes, 18 passing tests, and nine capture
+hashes for the renamed fixture. `QDL9iC9j/` is retained only as a superseded
+historical run.
 MCP browser fixtures omit the Node detail
 blocks; a separate figure box identifies its two summary writes. This is not
 full Node S2 validation or support across a common fixture. It is not a timing chart or a
