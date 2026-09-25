@@ -28,7 +28,7 @@ test("H1 is bounded to the actual fixed-order S2 script and existing assertions"
   assert.doesNotMatch(source, /concurrent|parallel|interleav|schedule/i);
   for (const section of ["# Research questions", "## A falsifiable local hypothesis", "## RQ2: Fixed-order identifier collision", "# Conclusion"]) {
     const text = manuscript.split(section)[1].split(/\n#{1,2} /)[0].replace(/\s+/g, " ");
-    assert.match(text, /only the one specified sequential write order/i);
+    assert.match(text, /(one fixed write order|only the one specified sequential write order)/i);
     assert.match(text, /cannot generalize to alternative orders, scheduling or concurrency/);
   }
 });

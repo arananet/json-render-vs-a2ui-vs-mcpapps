@@ -28,7 +28,7 @@ pages the browser suite asserts against.
 | **Attribute a write to an agent**<br><sub>Can the host tell which agent produced a given piece of UI?</sub> | ❌ not expressible | ❌ not expressible | 🔒 enforced |
 | **Isolate agents from each other**<br><sub>Can one agent read or overwrite another's rendered surface?</sub> | ❌ not expressible | 🟡 caveat | 🔒 enforced |
 | **Compose into one view**<br><sub>Can several agents present as a single answer?</sub> | 🟡 caveat | ✅ supported | ❌ not expressible |
-| **Retain both summaries after a fixed-order collision**<br><sub>What happens when two agents write the same id?</sub> | 🔴 write lost | 🔴 write lost | 🔒 enforced by conformant host |
+| **Retain both summaries after a fixed-order collision**<br><sub>What happens when two agents write the same id?</sub> | 🔴 write lost | 🔴 write lost | 🧩 separate instances in tested topology |
 | **Route an action to its agent**<br><sub>Does the event say which agent should handle it?</sub> | 🟠 out-of-band | 🟠 out-of-band | ✅ supported |
 | **Gate a privileged action**<br><sub>Can anything below the agent withhold a dangerous action?</sub> | 🟡 caveat | ❌ not expressible | 🔒 enforced |
 
@@ -36,8 +36,8 @@ Outcome vocabulary records adapter classifications, not protocol rankings:
 **✅ supported** observed in the tested adapter · **🟡 caveat** observed with a
 limitation · **🟠 out-of-band** used harness/orchestrator bookkeeping ·
 **❌ not expressible** was not represented by this tested mapping · **🔒 enforced**
-was checked on the tested path · **🔒 enforced by conformant host** records
-separate instances in the tested topology · **🔴 write lost** content was
+was checked on the tested path · **🧩 separate instances in tested topology**
+records per-instance separation in this adapter/topology · **🔴 write lost** content was
 overwritten in the tested shared mapping.
 
 ## What the matrix means if you are building an orchestrator
@@ -183,7 +183,7 @@ Rendered regions the user ends up with: **2** (`trip::planner`, `trip::booking`)
 
 > In this tested mapping, agents ["planner"] and "booking" do not compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem in this topology, and the inspected mapping uses only ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced by conformant host
+**compose.identifier-collision** — 🧩 separate instances in tested topology
 
 > In this tested one-server-per-agent adapter/topology configuration, component ids live inside separate app instances, so "booking" reusing block id "reservation" does not overwrite anything ["planner"] rendered. This is configuration-scoped instance separation, not protocol-level collision enforcement; a matched-topology comparison is required for that stronger claim.
 
@@ -229,7 +229,7 @@ Rendered regions the user ends up with: **2** (`briefing::risk`, `briefing::fina
 
 > In this tested mapping, agents ["risk"] and "finance" do not compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem in this topology, and the inspected mapping uses only ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced by conformant host
+**compose.identifier-collision** — 🧩 separate instances in tested topology
 
 > In this tested one-server-per-agent adapter/topology configuration, component ids live inside separate app instances, so "finance" reusing block id "finance-detail" does not overwrite anything ["risk"] rendered. This is configuration-scoped instance separation, not protocol-level collision enforcement; a matched-topology comparison is required for that stronger claim.
 
@@ -283,7 +283,7 @@ Rendered regions the user ends up with: **2** (`checkout::cart`, `checkout::paym
 
 > In this tested mapping, agents ["cart"] and "payments" do not compose into one surface. Each has its own App instance, its own sandboxed iframe and its own origin, so what the user gets is N stacked panels rather than one view. Laying them out — ordering, sizing, deciding which is primary, reconciling their headings — is entirely the host's problem in this topology, and the inspected mapping uses only ui/notifications/size-changed. For an orchestrator whose whole job is to present several agents' work as one answer, this is the sharpest edge in MCP Apps.
 
-**compose.identifier-collision** — 🔒 enforced by conformant host
+**compose.identifier-collision** — 🧩 separate instances in tested topology
 
 > In this tested one-server-per-agent adapter/topology configuration, component ids live inside separate app instances, so "payments" reusing block id "pay" does not overwrite anything ["cart"] rendered. This is configuration-scoped instance separation, not protocol-level collision enforcement; a matched-topology comparison is required for that stronger claim.
 

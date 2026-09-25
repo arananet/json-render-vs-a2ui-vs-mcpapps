@@ -8,8 +8,9 @@ const manuscript = readFileSync(resolve(root, "paper/manuscript.md"), "utf8");
 const abstract = manuscript.split("# Abstract\n")[1].split("\n# Introduction")[0].replace(/\s+/g, " ");
 
 test("abstract leads with configuration-specific findings and their interpretation", () => {
-  assert.match(abstract, /^ Reused identifiers/);
-  assert.match(abstract, /three concrete tested configurations/);
+  assert.match(abstract, /^ Under the tested configurations and one fixed write order/);
+  assert.match(abstract, /overwrites in the shared json-render and A2UI mappings and is retained in separate MCP App instances/);
+  assert.match(abstract, /tested configurations/);
   assert.match(abstract, /adapter mapping, namespace\/topology, and enforcement site/);
   assert.match(abstract, /installed enforcing host handler rejects one model-only tool call; SDK-default `oncalltool` forwards/);
   assert.match(abstract, /empirical technical note with private local evidence/);
@@ -38,7 +39,8 @@ test("results, S2 caption and conclusion distinguish writer maps from rendered e
   assert.match(caption, /C3, supported/);
   assert.match(caption, /not an exact node count/);
   const conclusion = manuscript.split("# Conclusion\n")[1].split("\n# AI-assistance disclosure")[0].replace(/\s+/g, " ");
-  assert.match(conclusion, /Node assertions establish the four-write S2 outcome/);
+  assert.match(conclusion, /Under the tested configurations and one fixed write order/);
+  assert.match(conclusion, /overwrites in the shared json-render and A2UI mappings and is retained in separate MCP App instances/);
   assert.match(conclusion, /cannot validate the Node four-write fixture/);
   assert.match(conclusion, /every control remains only partially checked/);
   assert.match(conclusion, /Future experiments are explicitly pending/);

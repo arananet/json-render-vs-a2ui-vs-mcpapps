@@ -91,7 +91,7 @@ export class McpAppsAdapter implements ProtocolAdapter {
 
       this.tracer.record(
         "compose.identifier-collision",
-        "ENFORCED_BY_CONFORMANT_HOST",
+        "SUPPORTED_WITH_CAVEAT",
         `In this tested one-server-per-agent adapter/topology configuration, component ids live ` +
           `inside separate app instances, so "${agent}" reusing block id "${block.id}" does not overwrite ` +
           `anything ${JSON.stringify(otherAgentsOnSurface)} rendered. This is configuration-scoped ` +

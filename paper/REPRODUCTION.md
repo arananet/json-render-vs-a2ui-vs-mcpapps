@@ -5,9 +5,9 @@ Arananet. It re-executes existing local checks; it is not an independent-person
 reproduction or a replication of another study. See [EXECUTION.md](EXECUTION.md)
 for commands actually run and the limits of the evidence.
 
-The repository is the current source. No version-specific DOI exists yet; the
-prior Zenodo DOI predates this revision, and final-version deposit remains
-pending.
+The archived release is available at https://doi.org/10.5281/zenodo.22896881,
+which resolves to the latest version. The harness code is released under the MIT
+licence; the manuscript, figures and evidence records under CC BY 4.0.
 
 ## Inputs and prerequisites
 
@@ -88,10 +88,10 @@ Archive path safety, exact member hashes/sizes, fixture coverage, relative impor
 and screenshot integrity checks remain required; a local record is not a signed
 attestation or independent reproduction.
 
-The reviewed repository package includes the immutable execution directory
-[`paper/evidence/browser-s2-fixed-order-QDL9iC9j/`](evidence/browser-s2-fixed-order-QDL9iC9j/).
-`current-browser-run` is a mutable relative symlink that currently targets this
-directory; it is not an immutable citation. Inspect this directory's JSON report,
+The reviewed repository package includes the stable
+[`paper/evidence/current-browser-run/`](evidence/current-browser-run/) path.
+It is a mutable relative symlink to the canonical immutable execution directory;
+it is not an immutable citation. Inspect its JSON report,
 stdout/stderr, preview/build logs, source/build snapshots, command record, exit
 status, capture hashes and restoration record. Use its repository-relative path
 as `PAPER_BROWSER_EVIDENCE` for the private-bundle test
@@ -153,7 +153,7 @@ The [commands and exit status](evidence/browser-terminal-20260922T013449Z-zH4HTK
 [JSON report](evidence/browser-terminal-20260922T013449Z-zH4HTK/playwright-ipv4.json),
 [stdout](evidence/browser-terminal-20260922T013449Z-zH4HTK/playwright-ipv4.stdout.txt),
 [empty stderr](evidence/browser-terminal-20260922T013449Z-zH4HTK/playwright-ipv4.stderr.txt),
-and the immutable current-source [JSON report](evidence/browser-s2-fixed-order-QDL9iC9j/playwright-ipv4.json)
+and the current-source [JSON report](evidence/current-browser-run/playwright-ipv4.json)
 record the retained browser result.
 The default managed preview had timed out after 60000 ms with zero tests;
 localhost resolved to IPv6 first. The successful wrapper used the existing
@@ -187,8 +187,8 @@ sources or rebuild assets while it runs. Preserve the printed directory path and
 actual exit status; do not regenerate the historical private archive or text
 manifest from this record.
 
-The immutable current-source [capture hashes](evidence/browser-s2-fixed-order-QDL9iC9j/ipv4-post-run-screenshots.sha256)
-and [restoration evidence](evidence/browser-s2-fixed-order-QDL9iC9j/historical-restoration.txt)
+The current-source [capture hashes](evidence/current-browser-run/ipv4-post-run-screenshots.sha256)
+and [restoration evidence](evidence/current-browser-run/historical-restoration.txt)
 identify the retained PNG captures. These captures do not
 confirms the preexisting screenshots were restored. These captures do not
 establish historical reproduction or every-control routing. These bytes predate

@@ -73,6 +73,14 @@ interface Cell {
   detail: string;
 }
 
+function outcomeLabel(capability: string, protocol: ProtocolId, outcome: Outcome): string {
+  if (capability === "compose.identifier-collision" && protocol === "mcp-apps") {
+    return "🧩 separate instances in tested topology";
+  }
+
+  return OUTCOME_LABELS[outcome];
+}
+
 function collect(runs: ScenarioRun[]): Map<string, Map<ProtocolId, Cell>> {
   const grid = new Map<string, Map<ProtocolId, Cell>>();
 
@@ -143,7 +151,7 @@ function perScenario(runs: ScenarioRun[]): string {
         if (seen.has(trace.capability)) continue;
         seen.add(trace.capability);
         sections.push(
-          `\n**${trace.capability}** — ${OUTCOME_LABELS[trace.outcome]}\n\n> ${stabilise(trace.detail)}\n`,
+          `\n**${trace.capability}** — ${outcomeLabel(trace.capability, protocol, trace.outcome)}\n\n> ${stabilise(trace.detail)}\n`,
         );
       }
     }
@@ -161,7 +169,7 @@ function matrix(grid: Map<string, Map<ProtocolId, Cell>>): string {
     const row = grid.get(capability.id)!;
     const cells = PROTOCOLS.map((p) => {
       const cell = row.get(p);
-      return cell ? OUTCOME_LABELS[cell.outcome] : "—";
+      return cell ? outcomeLabel(capability.id, p, cell.outcome) : "—";
     });
     rows.push(`| **${capability.label}**<br><sub>${capability.question}</sub> | ${cells.join(" | ")} |`);
   }
@@ -206,8 +214,8 @@ Outcome vocabulary records adapter classifications, not protocol rankings:
 **✅ supported** observed in the tested adapter · **🟡 caveat** observed with a
 limitation · **🟠 out-of-band** used harness/orchestrator bookkeeping ·
 **❌ not expressible** was not represented by this tested mapping · **🔒 enforced**
-was checked on the tested path · **🔒 enforced by conformant host** records
-separate instances in the tested topology · **🔴 write lost** content was
+was checked on the tested path · **🧩 separate instances in tested topology**
+records per-instance separation in this adapter/topology · **🔴 write lost** content was
 overwritten in the tested shared mapping.
 
 ## What the matrix means if you are building an orchestrator

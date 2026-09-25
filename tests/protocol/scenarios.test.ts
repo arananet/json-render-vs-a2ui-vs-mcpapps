@@ -110,7 +110,7 @@ describe("S2 — fixed-order identifier collision", () => {
   it("MCP Apps cannot lose a write, and cannot compose either", async () => {
     const run = await runScenario("s2-fixed-order-collision", "mcp-apps");
 
-    expect(outcomeOf(run.traces, "compose.identifier-collision")).toBe("ENFORCED_BY_CONFORMANT_HOST");
+    expect(outcomeOf(run.traces, "compose.identifier-collision")).toBe("SUPPORTED_WITH_CAVEAT");
     expect(outcomeOf(run.traces, "compose.shared-surface")).toBe("NOT_EXPRESSIBLE");
 
     // Both agents' "summary" blocks survive — in different iframes.

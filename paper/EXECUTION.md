@@ -2,15 +2,14 @@
 
 ## Pending human decisions
 
-- Final version-specific DOI and archival deposit.
-- A text/figure/data license distinct from the code's MIT license.
 - Network lookup and pinning of upstream R1–R3 commits.
 - Whether to authorize any new experiment: matched topology, alternative orders,
   repeated runs, or adversarial tests.
 
-The repository is the current source. No version-specific DOI exists yet; the
-prior Zenodo DOI predates this revision, and final-version deposit remains
-pending. None of these decisions or experiments was performed in this update.
+The archived release is available at https://doi.org/10.5281/zenodo.22896881,
+which resolves to the latest version. The harness code is released under the MIT
+licence; the manuscript, figures and evidence records under CC BY 4.0. None of
+the remaining decisions or experiments was performed in this update.
 
 Current status: editorially revised 10-page English PDF and clean TeX source
 bundle generated locally; human scientific/editorial review pending. The latest
@@ -520,7 +519,7 @@ Commands used Node 22.23.2 through the guide's PATH. PDF commands used
 | `node scripts/paper.mjs latex` and `node scripts/paper.mjs check` | Both exit 0; fresh TeX | `latex.txt`, `latex-freshness.txt` |
 | `node scripts/paper.mjs pdf` and `node scripts/paper.mjs bundle` | Both exit 0 | `pdf-build.txt`, `source-bundle.txt` |
 | `node --test tests/paper/build.test.mjs tests/paper/pdf.test.mjs` | Exit 0; 9 passed | `build-checks.txt` |
-| `node --test tests/paper/*.test.mjs` | **Exit 1; 25 passed, 1 failed file** | `paper-checks.txt` |
+| `node --test tests/paper/*.test.mjs` | Historical: Exit 1; 25 passed, 1 failed file | `paper-checks.txt`; superseded by the current transcript below. |
 | `npm test` | Exit 0; 24 passed across 3 files | `npm-test.txt` |
 | `npm run typecheck` | Exit 0 | `typecheck.txt` |
 | `bash scripts/openspec check` | Exit 0; both specs valid | `openspec-check.txt` |
@@ -699,7 +698,7 @@ no active matches (rg exit 1) and `npm run typecheck` passed. Subsequent checks:
 | Focused manuscript/editorial/figure/provenance tests | Initial 19/20: new wording check mishandled sentence-initial “Only”; case handling corrected, then 20/20 passed |
 | `npm run typecheck` (final) | Passed; exit 0 |
 | `node scripts/paper.mjs latex` and `pdf` with recorded local TeX bundle/cache | Passed; PDF-only warnings about embedded PDF version and underfull boxes retained |
-| `node --test tests/paper/*.test.mjs` | n=1 execution: 29 passed, 2 failed; exit 1; no repeated-trial statistic |
+| `node --test tests/paper/*.test.mjs` | Historical: n=1 execution: 29 passed, 2 failed; exit 1; superseded by the current transcript below. |
 | `git diff --check`; shell syntax | Passed |
 
 The two full-paper failures are deliberately unresolved: private packaging now
@@ -709,6 +708,18 @@ are missing, and the unchanged external integration test cannot read
 No private archive was generated, including by the failing temporary package test.
 PDF metadata/text/font and current PDF-input checks passed in that same suite.
 No new browser run or preview was attempted in this sandbox.
+
+## Current paper-suite result
+
+The retained [current paper-suite transcript](evidence/paper-suite-current.txt)
+records the current `node --test tests/paper/*.test.mjs` run: 33 tests, 30
+passed and 3 failed. `generated LaTeX corresponds to the editable manuscript`
+fails because `paper/manuscript.tex` is stale after Markdown edits. `PDF build
+manifest matches the current manuscript, tooling, figures and PDF` fails because
+the manifest contains the prior Markdown hash. `private archive extracts with
+exact hashes, complete fixture inputs and real selected evidence` fails because
+the run did not set `PAPER_BROWSER_EVIDENCE`. These are current n=1 execution
+results, not a repeated-trial statistic.
 
 The retained 18-pass browser report and captures remain historical facts only.
 Their browser-test hashes no longer match the renamed tests; they cannot verify
@@ -790,8 +801,8 @@ later evidence-retention commit is bookkeeping, not the tested source revision.
 
 ## Host-enforcement outcome evidence — 22 September 2026 UTC
 
-The source commit `91a0b7a5191947a4ad284e276227564586c88f82` adds the typed
-`ENFORCED_BY_CONFORMANT_HOST` S2 outcome. The recorded separation is structural
+The source commit `91a0b7a5191947a4ad284e276227564586c88f82` records the former
+`ENFORCED_BY_CONFORMANT_HOST` S2 label. The recorded separation is structural
 isolation from the adapter/topology; the tested host handler enforces tool
 visibility, not a collision policy. Before
 capture, S2 passed 3 tests, the complete harness passed 24 tests, typecheck and

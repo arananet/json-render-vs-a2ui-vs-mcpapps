@@ -12,11 +12,11 @@ colorlinks: true
 
 # Abstract
 
-Reused identifiers produce different retained states under the shared and
-separated mappings of three concrete tested configurations: json-render, A2UI,
-and MCP Apps with their local adapters and hosts. In a fixed-order write probe,
-Node assertions establish the four-write outcome: replacement of the
-json-render summary and retention of both summaries in separate MCP instances.
+Under the tested configurations and one fixed write order, reusing an identifier
+overwrites in the shared json-render and A2UI mappings and is retained in
+separate MCP App instances. Node assertions establish the four-write outcome:
+replacement of the json-render summary and retention of both summaries in
+separate MCP instances.
 Every browser run instead exercises a separate two-write summary fixture; it
 corroborates the rendered outcome only for that fixture and does not validate
 the Node four-write scenario. Executed A2UI browser assertions show finance's
@@ -44,11 +44,11 @@ or turn the fixed-order probe into a common-fixture or concurrency evaluation.
 
 # Introduction
 
-The existing harness exposes two configuration-dependent findings. Reusing a
-summary identifier replaces a value in json-render's shared namespace, whereas
-the MCP adapter's separate instances retain both values. A2UI's shared mapping
-records the later writer; executed browser assertions confirm finance's headline
-is visible and risk's is absent in that surface.
+The existing harness exposes two configuration-dependent findings. Under the
+tested configurations and one fixed write order, reusing a summary identifier
+overwrites in the shared json-render and A2UI mappings and is retained in
+separate MCP App instances. Executed A2UI browser assertions confirm finance's
+headline is visible and risk's is absent in that surface.
 Separately, the tested MCP host rejects a model-only call with an enforcing
 handler but forwards it in the permissive variant. A comparison must identify
 the adapter mapping, namespace/topology, and enforcement site alongside the
@@ -73,8 +73,11 @@ validity limits below delimit the findings; no exhaustive novelty claim is made.
 RQ1: Where do the existing adapters place the output of a scripted surface handoff?
 
 RQ2: What survives a fixed-order identifier-collision probe in the configured namespaces?
-Only the one specified sequential write order is observed; it cannot generalize
-to alternative orders, scheduling or concurrency.
+Under the tested configurations and one fixed write order, does reusing an
+identifier overwrite in the shared json-render and A2UI mappings while being
+retained in separate MCP App instances? This cannot generalize to alternative
+orders, scheduling or concurrency: only the one specified sequential write order
+is observed.
 
 RQ3: In the tested paths, which local bookkeeping and host decisions determine
 action routing and one model-only tool rejection? In this MCP Apps topology,
@@ -192,7 +195,7 @@ it does not establish a host collision-enforcement policy.
 The [report generator](../src/report/generate.ts) takes adapter-authored
 classifications and uses first-recording-wins selection for each capability and
 configuration. It does not independently measure the meaning of `SUPPORTED`,
-`LOST`, `ENFORCED`, `ENFORCED_BY_CONFORMANT_HOST`, or `NOT_EXPRESSIBLE`.
+`SUPPORTED_WITH_CAVEAT`, `LOST`, `ENFORCED`, or `NOT_EXPRESSIBLE`.
 Repeated labels do not constitute independent observations. Timestamp
 normalization makes its Markdown stable but does not validate its interpretation.
 A freshness check establishes correspondence between report and generator, not
@@ -209,7 +212,7 @@ json-render patch assertions do not cover its direct root mutation.
 Specifically, `Tracer.record` stores the outcome supplied by the adapter;
 `outcomeOf` returns the first matching entry. In scenario tests, json-render's
 S3 confirmation check and MCP's permissive S3 check assert these labels only.
-MCP's S2 `ENFORCED_BY_CONFORMANT_HOST`/`NOT_EXPRESSIBLE` labels do not measure
+MCP's S2 `SUPPORTED_WITH_CAVEAT`/`NOT_EXPRESSIBLE` labels do not measure
 collision prevention or impossibility of composition; the former records
 structural isolation in the adapter/topology, not a tested host collision policy.
 Separate assertions check the two retained headline
@@ -262,7 +265,10 @@ The MCP browser fixture omits Node's risk-detail and finance-detail writes.
 Its two summary assertions are a separate browser result, not corroboration of
 the full four-write Node S2 or support across a common shared fixture.
 
-The replacement is consistent with reusing a slot in these shared namespaces.
+Under the tested configurations and one fixed write order, reusing an identifier
+overwrites in the shared json-render and A2UI mappings and is retained in
+separate MCP App instances. The replacement is consistent with reusing a slot
+in these shared namespaces.
 It is not an observed scheduling race. The inspected adapter records a changed
 writer; this trace is not an audit of all conflict signals available in a
 protocol or SDK. Namespacing,
@@ -322,8 +328,8 @@ paper's evidence statuses, distinct from the adapter outcome vocabulary.
 | Claim | Status | Evidence and falsifier |
 | --- | --- | --- |
 | C1: S1 yields one shared region or two MCP instances in this topology. | Supported | S1 snapshot region and block assertions; contradicted by missing blocks or different region counts. |
-| C2 / H1a (Node, four writes): Node S2 overwrites the json-render summary and retains both MCP summaries. | Supported | Node headline assertions; contradicted by different retained values. The browser fixture is not evidence for H1a. |
-| C3 / H1b (browser, two writes): A2UI's fixture displays finance's headline. | Supported | The single cited [immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/) records assertions checking finance visible and risk absent within the surface. It is distinct from H1a and does not assert an exact node count. |
+| C2 / H1a (Node, four writes): Under the tested configurations and one fixed write order, reusing an identifier overwrites in the shared json-render and A2UI mappings and is retained in separate MCP App instances. | Supported | Node headline assertions; contradicted by different retained values. The browser fixture is not evidence for H1a. |
+| C3 / H1b (browser, two writes): Under the tested A2UI shared mapping and fixed write order, the fixture displays finance's headline after the later write. | Supported | The cited [current browser run](./evidence/current-browser-run/) records assertions checking finance visible and risk absent within the surface. It is distinct from H1a and does not assert an exact node count. |
 | C4: S2 is sequential, with no scheduling test. | Supported | Four awaited emissions in the S2 source; contradicted by an overlapping scheduler in the executed path. |
 | C5: The enforcing MCP handler rejects the model-only call, while the permissive variant forwards it. | Supported | Bridge rejection/refusal and successful-result assertions; contradicted by reversed or identical behavior. |
 | C6: Every MCP S3 control reaches its intended agent. | Partial | Existing test checks some table-free delivery; first-instance selection prevents this stronger inference. |
@@ -345,7 +351,7 @@ For C1–C3 and the tested browser actions, the renamed
 [screenshot spec](../tests/browser/screenshots.spec.ts) supplies nine captures.
 The pre-rename `browser-terminal-20260922T013449Z-zH4HTK/` records are historical
 only and are not claim-support evidence for this fixture. The execution ledger
-records the single cited [immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/),
+records the single cited [current browser run](./evidence/current-browser-run/),
 whose report, source snapshots, build hashes, and capture hashes bind the
 current browser claim for this fixture. Other retained browser directories have
 different source snapshots and are execution records, not redundant confirmation
@@ -413,7 +419,9 @@ for `src/adapters/mcp-apps/adapter.ts`, `src/orchestrator/types.ts`, and
 not repeated trials; no mean, variance, or stability statistic is claimed. No
 per-test timing or other run-level equivalence is claimed. No completed execution was
 discarded, and the immutable current-source run is
-`paper/evidence/browser-s2-fixed-order-QDL9iC9j/`. Neither completed run is an independent
+`paper/evidence/current-browser-run/`. `adapter.ts` changed after the canonical
+browser run, so that run's recorded source hash no longer matches the checkout;
+the change is textual only. Neither completed run is an independent
 reproduction: both ran on the same machine, from the same checkout, in the same
 session. No adversarial, forged-identity, CSP, or cross-server test was run.
 The suite also does not comprehensively test transport authentication,
@@ -436,10 +444,13 @@ archive. No latency, throughput, cost, user study, or model capability was measu
 
 # Data availability
 
-The repository is the current source. The archived release is available at https://doi.org/10.5281/zenodo.22896881, which resolves to the latest version. The harness code is released under the MIT licence; the manuscript, figures and evidence records under CC BY 4.0. The canonical editable manuscript, harness, frozen v0.1 Markdown snapshot, and versioned evidence records are available as repository evidence in this artifact. This does not establish independent reproduction, peer review, or protocol causality.
-
-The code license is MIT. A distinct text, figure, and evidence license remains a
-pending human decision; none is asserted for this revision.
+The archived release is available at https://doi.org/10.5281/zenodo.22896881,
+which resolves to the latest version. The harness code is released under the MIT
+licence; the manuscript, figures and evidence records under CC BY 4.0. The
+canonical editable manuscript, harness, frozen v0.1 Markdown snapshot, and
+versioned evidence records are available as repository evidence in this artifact.
+This does not establish independent reproduction, peer review, or protocol
+causality.
 
 # Reproducibility
 
@@ -471,13 +482,14 @@ This session is an agent-assisted local rerun of existing checks. It establishes
 neither independent-person reproduction nor human approval. The previous session's
 reported dependency installation is not a fresh `npm ci` execution in this record.
 Missing checks and failed attempts remain visible rather than being counted as
-passes. The post-change `node --test tests/paper/*.test.mjs` run reports 30
-passed and 3 failed tests. The still-failing tests are `generated LaTeX
-corresponds to the editable manuscript` (the Markdown edit makes
+passes. The retained [current paper-suite transcript](./evidence/paper-suite-current.txt)
+records 33 tests: 30 passed and 3 failed. The failing tests are `generated
+LaTeX corresponds to the editable manuscript` (the Markdown edits leave
 `manuscript.tex` stale), `PDF build manifest matches the current manuscript,
 tooling, figures and PDF` (the manifest records the prior Markdown hash), and
 `private archive extracts with exact hashes, complete fixture inputs and real
-selected evidence` (it requires `PAPER_BROWSER_EVIDENCE`). `evidence/paper-checks.txt` is an older 8-test passing transcript, not
+selected evidence` (the run omits the required `PAPER_BROWSER_EVIDENCE`).
+`evidence/paper-checks.txt` is an older 8-test passing transcript, not
 final-state validation. OpenSpec command success cannot prove every acceptance
 criterion.
 
@@ -510,15 +522,15 @@ publication acceptance. Human review remains pending.
 S2 observes only the one specified sequential write order and cannot generalize
 to alternative orders, scheduling or concurrency. The retained pre-rename
 browser findings are historical; the complete
-[immutable browser run](./evidence/browser-s2-fixed-order-QDL9iC9j/) supplies
+[current browser run](./evidence/current-browser-run/) supplies
 current browser-source provenance for the renamed fixture.
 
 Across three concrete tested configurations, handoff placement and retained
-values reflect the chosen shared or separated mappings. Node assertions
-establish the four-write S2 outcome: json-render's replaced summary and MCP's
-two retained summaries. Every browser run is a separate two-write summary
-fixture; executed A2UI DOM assertions show finance's headline visible and risk's
-absent, and browser MCP executes only risk/summary then finance/summary. Those
+values reflect the chosen shared or separated mappings. Under the tested
+configurations and one fixed write order, reusing an identifier overwrites in
+the shared json-render and A2UI mappings and is retained in separate MCP App
+instances. Node assertions establish the four-write S2 outcome for those
+configurations. Browser MCP executes only risk/summary then finance/summary. Those
 browser observations corroborate rendered outcomes only for their own fixtures
 and cannot validate the Node four-write fixture. Neither fixture tests
 concurrency, scheduling, interleaving, or randomization. MCP model-only tool
