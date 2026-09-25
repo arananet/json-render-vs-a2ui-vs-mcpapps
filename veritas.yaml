@@ -65,13 +65,22 @@ pricing:
     gpt-5.6-luna: {input_per_million: 1.25, output_per_million: 10.0}
 
 gate:
-  fail_on:
-    - critical
-  max_major: 0
   accepted_risks:
     - category: check/reference-integrity/unsupplied
-      reason: "Lockfiles, PDF y versiones previas excluidos para acotar el coste de evaluación."
+      reason: "Lockfiles, PDFs and prior versions excluded to keep evaluation affordable."
+    - category: reproducibility
+      location: paper/manuscript.md
+      reason: "Single-machine browser evidence; independent reproduction is declared as not performed."
       expires: 2026-12-31
+
+thesis:
+  - "Reusing an identifier overwrites in shared mappings and is retained in separate MCP instances."
+  - "Model-only tool rejection depends on the installed host handler, not the SDK default."
+
+metadata:
+  title: "Shared UI State and Host Enforcement: An Empirical Technical Note on Three Agent-UI Configurations"
+  repository: https://github.com/arananet/json-render-vs-a2ui-vs-mcpapps
+  doi: 10.5281/zenodo.22896881
 
 # Nothing executes unless it is listed here.
 execution:

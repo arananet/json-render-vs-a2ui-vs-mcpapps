@@ -436,12 +436,7 @@ archive. No latency, throughput, cost, user study, or model capability was measu
 
 # Data availability
 
-The repository is the current source. No version-specific DOI exists yet; the
-prior Zenodo DOI predates this revision, and final-version deposit remains
-pending. The canonical editable manuscript, harness, frozen v0.1 Markdown
-snapshot, and versioned evidence records are available as repository evidence
-in this artifact. This does not establish independent reproduction, peer review,
-or protocol causality.
+The repository is the current source. The archived release is available at https://doi.org/10.5281/zenodo.22896881, which resolves to the latest version. The harness code is released under the MIT licence; the manuscript, figures and evidence records under CC BY 4.0. The canonical editable manuscript, harness, frozen v0.1 Markdown snapshot, and versioned evidence records are available as repository evidence in this artifact. This does not establish independent reproduction, peer review, or protocol causality.
 
 The code license is MIT. A distinct text, figure, and evidence license remains a
 pending human decision; none is asserted for this revision.
