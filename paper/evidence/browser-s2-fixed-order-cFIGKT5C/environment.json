@@ -1,0 +1,9 @@
+{
+  "capturedAt": "2026-09-25T18:33:49Z",
+  "head": "378aabee42a69c61edc7d7a37c934465b4a66e30",
+  "node": "v23.5.0",
+  "executable": "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+  "npm": null,
+  "platform": "darwin",
+  "architecture": "arm64"
+}

@@ -1,0 +1,22 @@
+
+Running 18 tests using 1 worker
+
+[1/18] [chromium] › tests/browser/render.spec.ts:18:3 › S1 — surface handoff › json-render: both agents' blocks land in one React tree
+[2/18] [chromium] › tests/browser/render.spec.ts:37:3 › S1 — surface handoff › A2UI: the Lit renderer paints both agents into one surface element
+[3/18] [chromium] › tests/browser/render.spec.ts:55:3 › S1 — surface handoff › MCP Apps: the handoff becomes two sandboxed iframes
+[4/18] [chromium] › tests/browser/render.spec.ts:78:3 › S2 — fixed-order identifier collision › json-render: the second agent's summary replaces the first in the DOM
+[5/18] [chromium] › tests/browser/render.spec.ts:91:3 › S2 — fixed-order identifier collision › A2UI: finance's headline visible, risk's headline absent
+[6/18] [chromium] › tests/browser/render.spec.ts:100:3 › S2 — fixed-order identifier collision › MCP Apps: both summaries survive, in separate origins
+[7/18] [chromium] › tests/browser/render.spec.ts:113:3 › S3 — action round-trip › json-render: the click delivers an action name with no agent in it
+[8/18] [chromium] › tests/browser/render.spec.ts:129:3 › S3 — action round-trip › A2UI: the click delivers surfaceId and sourceComponentId, but no agent
+[9/18] [chromium] › tests/browser/render.spec.ts:145:3 › S3 — action round-trip › MCP Apps: the host refuses the view's privileged tool call
+[10/18] [chromium] › tests/browser/screenshots.spec.ts:72:3 › @screenshot S1 — surface handoff › json-render
+[11/18] [chromium] › tests/browser/screenshots.spec.ts:78:3 › @screenshot S1 — surface handoff › a2ui
+[12/18] [chromium] › tests/browser/screenshots.spec.ts:84:3 › @screenshot S1 — surface handoff › mcp-apps
+[13/18] [chromium] › tests/browser/screenshots.spec.ts:94:3 › @screenshot S2 — fixed-order identifier collision › json-render
+[14/18] [chromium] › tests/browser/screenshots.spec.ts:101:3 › @screenshot S2 — fixed-order identifier collision › a2ui
+[15/18] [chromium] › tests/browser/screenshots.spec.ts:107:3 › @screenshot S2 — fixed-order identifier collision › mcp-apps
+[16/18] [chromium] › tests/browser/screenshots.spec.ts:117:3 › @screenshot S3 — action round-trip › json-render
+[17/18] [chromium] › tests/browser/screenshots.spec.ts:124:3 › @screenshot S3 — action round-trip › a2ui
+[18/18] [chromium] › tests/browser/screenshots.spec.ts:131:3 › @screenshot S3 — action round-trip › mcp-apps
+  18 passed (8.2s)

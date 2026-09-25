@@ -195,11 +195,13 @@ export async function buildReport(): Promise<string> {
 
 # json-render vs A2UI vs MCP Apps, for multi-agent orchestration
 
-Three scenarios, three tested SDK/adapter/host configurations, one orchestrator.
-Every outcome below was recorded by an adapter driving the installed SDKs — not
-by reading a specification and forming an opinion about it. Protocol effects
-cannot be separated from adapter or topology here; a matched-topology comparison
-has not been performed.
+One orchestrator runs three scenarios through three tested SDK/adapter/host
+configurations. Every outcome below is an observation of those configurations
+and scripted scenarios, recorded by an adapter driving the installed SDKs — not
+by reading a specification and forming an opinion about it. This report does not
+rank protocols or establish protocol-level causality: protocol effects cannot be
+separated from adapter or topology here, and a matched-topology comparison has
+not been performed.
 
 ${sdkLines}
 

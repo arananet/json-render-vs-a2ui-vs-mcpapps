@@ -419,9 +419,7 @@ for `src/adapters/mcp-apps/adapter.ts`, `src/orchestrator/types.ts`, and
 not repeated trials; no mean, variance, or stability statistic is claimed. No
 per-test timing or other run-level equivalence is claimed. No completed execution was
 discarded, and the immutable current-source run is
-`paper/evidence/current-browser-run/`. `adapter.ts` changed after the canonical
-browser run, so that run's recorded source hash no longer matches the checkout;
-the change is textual only. Neither completed run is an independent
+`paper/evidence/current-browser-run/`. Neither completed run is an independent
 reproduction: both ran on the same machine, from the same checkout, in the same
 session. No adversarial, forged-identity, CSP, or cross-server test was run.
 The suite also does not comprehensively test transport authentication,
@@ -565,23 +563,20 @@ the deterministic harness: no LLM participates in its scenario runs.
 
 # References
 
-R1. Vercel Labs. [json-render repository and README](https://github.com/vercel-labs/json-render).
-Inspected 21 September 2026; live main, upstream commit not retained. Related-work
-description based on this unpinned source is provisional. Local SDK
-context: `@json-render/core` and `@json-render/react` 0.21.0, including the installed
-core README and manifest. Used for catalog/renderer design, not a security proof.
+R1. Vercel Labs. [json-render repository and README](https://github.com/vercel-labs/json-render/tree/3ad381881194e7011ad3ccd6d668033495a06c29).
+Inspected 21 September 2026 at commit `3ad381881194e7011ad3ccd6d668033495a06c29`.
+Local SDK context: `@json-render/core` and `@json-render/react` 0.21.0. Used for
+catalog/renderer design, not a security proof.
 
-R2. A2UI project. [A2UI repository and README](https://github.com/a2ui-project/a2ui)
-(the inspected `google/A2UI` URL redirects here). Inspected 21 September 2026;
-live main, upstream commit not retained. Related-work description based on this
-unpinned source is provisional. Local context: web core and Lit 0.11.0,
-installed web-core README, and adapter-selected v0.9 schema.
+R2. A2UI project. [A2UI repository and README](https://github.com/a2ui-project/a2ui/tree/c08702a4bf8ab22a862cf5de8b5b1542be6081f6)
+(the inspected `google/A2UI` URL redirects here). Inspected 21 September 2026 at
+commit `c08702a4bf8ab22a862cf5de8b5b1542be6081f6`. Local context: web core and
+Lit 0.11.0, and the adapter-selected v0.9 schema.
 
-R3. Model Context Protocol contributors. [MCP Apps SDK repository and README](https://github.com/modelcontextprotocol/ext-apps).
-Inspected 21 September 2026; live main, upstream commit not retained. Related-work
-description based on this unpinned source is provisional. Local
-context: extension, client, core, and server packages 2.0.0; extension README
-and manifests inspected. SDK package version is distinct from wire version.
+R3. Model Context Protocol contributors. [MCP Apps SDK repository and README](https://github.com/modelcontextprotocol/ext-apps/tree/6d9bdc7babf275b759225aa722cbf5510c4c6021).
+Inspected 21 September 2026 at commit `6d9bdc7babf275b759225aa722cbf5510c4c6021`,
+the same revision R4 pins. Local context: extension, client, core and server
+packages 2.0.0. SDK package version is distinct from wire version.
 
 R4. Model Context Protocol contributors. [MCP Apps extension specification, draft/apps.mdx](https://github.com/modelcontextprotocol/ext-apps/blob/6d9bdc7babf275b759225aa722cbf5510c4c6021/specification/draft/apps.mdx).
 Visibility and sandbox/CSP sections inspected 21 September 2026; source path

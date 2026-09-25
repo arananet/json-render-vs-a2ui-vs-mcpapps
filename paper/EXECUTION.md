@@ -789,6 +789,27 @@ release, submission, DOI registration, clean-clone reproduction, or human review
 was performed. The test suite that loads absent `veritas.yaml` remains an
 unchanged external integration blocker.
 
+## Current-source browser execution — 2026-09-25 UTC
+
+The outer-terminal command
+`PATH="$HOME/.nvm/versions/node/v22.23.2/bin:$PATH" bash scripts/paper-browser-run.sh`
+completed with exit status 0. Its immutable execution directory is
+`paper/evidence/browser-s2-fixed-order-cFIGKT5C/`; the wrapper atomically updated
+`paper/evidence/current-browser-run` to that relative target only after
+`validateBrowserEvidence` passed. `environment.json` and `provenance.txt` record
+the source revision `378aabee42a69c61edc7d7a37c934465b4a66e30`, Node `v23.5.0`,
+and capture time `2026-09-25T18:33:49Z`. An earlier same-source execution,
+`00xCRFgA/`, remains immutable but is not canonical because the prior macOS
+wrapper logic followed the existing symlink while replacing it; the corrected
+wrapper produced this execution and the verified pointer update.
+
+The retained Playwright JSON report records 18 expected tests, with 0 skipped,
+unexpected, or flaky tests. The execution directory retains source snapshots
+before and after the run, stable build hashes, the wrapper copy and logs, and
+SHA-256 hashes for nine post-run screenshots. This is one local deterministic
+execution, not a protocol ranking, causal inference, independent reproduction,
+or security review. No historical evidence directory was changed or discarded.
+
 ## Commit-pinned browser execution — 22 September 2026 UTC
 
 Source inputs were committed as `523941cb079e8f88f47011039e6e69d01bc1d414`

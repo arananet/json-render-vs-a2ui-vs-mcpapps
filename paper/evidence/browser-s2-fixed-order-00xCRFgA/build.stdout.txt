@@ -1,0 +1,25 @@
+
+> json-render-vs-a2ui-vs-mcpapps@0.1.0 build
+> vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 691 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist-web/index.html                                   0.70 kB │ gzip:  0.36 kB
+../dist-web/mcp-view.html                                0.71 kB │ gzip:  0.38 kB
+../dist-web/a2ui.html                                    0.93 kB │ gzip:  0.47 kB
+../dist-web/json-render.html                             0.95 kB │ gzip:  0.45 kB
+../dist-web/mcp-apps.html                                0.99 kB │ gzip:  0.48 kB
+../dist-web/assets/style-BMGCmNKB.css                    2.42 kB │ gzip:  0.98 kB
+../dist-web/assets/scenario-D1hp5Xug.js                  0.35 kB │ gzip:  0.27 kB
+../dist-web/assets/modulepreload-polyfill-B5Qt9EMX.js    0.71 kB │ gzip:  0.40 kB
+../dist-web/assets/mcpView-CnNIEmH2.js                   2.57 kB │ gzip:  1.20 kB
+../dist-web/assets/s3-action-roundtrip-CzEDflgA.js       4.01 kB │ gzip:  1.55 kB
+../dist-web/assets/schemas-DqqIKuID.js                  99.19 kB │ gzip: 27.97 kB
+../dist-web/assets/mcpApps-BMSnogsj.js                 180.21 kB │ gzip: 47.38 kB
+../dist-web/assets/app-CJuP4zJb.js                     199.74 kB │ gzip: 51.90 kB
+../dist-web/assets/a2ui-CI3zOU6R.js                    235.68 kB │ gzip: 63.13 kB
+../dist-web/assets/jsonRender-CgUhjIbW.js              292.76 kB │ gzip: 92.42 kB
+✓ built in 2.56s

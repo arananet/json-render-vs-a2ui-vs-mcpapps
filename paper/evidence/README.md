@@ -2,7 +2,7 @@
 
 [current-browser-run](current-browser-run/) is the tracked relative symlink to the canonical
 current-source browser execution; it currently resolves to immutable
-`browser-s2-fixed-order-QDL9iC9j/`. Its source snapshots, stable build hashes,
+`browser-s2-fixed-order-cFIGKT5C/`. Its source snapshots, stable build hashes,
 successful 18-test Playwright report, and tracked screenshot archives with their
 SHA-256 manifests document that run; its `environment.json` commit hash matches `provenance.txt` and the
 private-review manifest.
@@ -19,10 +19,17 @@ that wrapper, the existing target remains an immutable record but cannot
 validate the modified checkout; the next successful outer-terminal run advances
 the pointer only after validation against its captured sources.
 
-Three further `browser-s2-fixed-order-*` directories are retained as
-deprecated/superseded execution records; they are not equivalent to the single
+Other `browser-s2-fixed-order-*` directories are retained as deprecated or
+superseded execution records; they are not equivalent to the single
 canonical directory referenced by `current-browser-run`:
 
+- `00xCRFgA/` completed with 18 expected tests against the same source revision
+  before the wrapper's macOS link-replacement correction. Its temporary link was
+  placed inside the preceding directory, so it was retained rather than cited as
+  canonical; `cFIGKT5C/` is the validated current-pointer execution.
+- `QDL9iC9j/` completed with 18 expected tests against the preceding source
+  snapshot. It is superseded by `cFIGKT5C/`, whose source snapshots include the
+  current adapter, report-generator, and wrapper changes.
 - `Iyz55xbG/` (07:42 UTC) completed with 18 expected tests, 0 unexpected and 0
   skipped, against an earlier source state. Its snapshot differs from the
   canonical run in the evidence-collection scripts and in the code under test:

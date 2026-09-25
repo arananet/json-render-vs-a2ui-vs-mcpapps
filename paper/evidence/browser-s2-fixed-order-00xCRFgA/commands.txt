@@ -66,7 +66,7 @@ EOF
   # Keep completed runs immutable. The tracked relative link is the only mutable
   # browser-evidence entry and changes only after the complete record validates.
   ln -sfn "$browser_evidence_name" paper/evidence/current-browser-run.next
-  mv -fh paper/evidence/current-browser-run.next paper/evidence/current-browser-run
+  mv -f paper/evidence/current-browser-run.next paper/evidence/current-browser-run
   printf 'Updated current browser evidence: paper/evidence/current-browser-run -> %s\n' "$browser_evidence_name"
 fi
 printf 'Return this directory unchanged: %s (Playwright exit %s)\n' "$browser_evidence" "$browser_status"
