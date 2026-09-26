@@ -1,0 +1,75 @@
+{
+  "note": "Written by `veritas build`. Hashes of each derivation's inputs and outputs.",
+  "derivations": {
+    "diagrams": {
+      "command": [
+        "node",
+        "scripts/paper-figures.mjs"
+      ],
+      "kind": "figure",
+      "inputs": {
+        "paper/figures/s2.mmd": "06eff975dad51877abb729a02f0e04a57ce281e7d7d2d6084b40c596978b3b0c",
+        "paper/figures/topology.mmd": "99dd61043ab4813db6dd8ce38243750e988d8810fc07312fd8fbe0d070c6b22a",
+        "scripts/paper-figures.mjs": "ffc7f750b834a6951365d85698ae4ba444ba775e8a5f4da9b625ab4b79d531c9"
+      },
+      "outputs": {
+        "paper/figures/s2.pdf": "c41a13a212bbd356ea52d7c6329c8ee441b22fc64d0f44ad4aef1aaa3c246fc8",
+        "paper/figures/topology.pdf": "b6eb9681fa370ba60b9c55db72e20cc4597a29be85b5f54aaa11defecd567512"
+      },
+      "built_at": "2026-09-26T12:31:58+00:00"
+    },
+    "latex": {
+      "command": [
+        "node",
+        "scripts/paper.mjs",
+        "latex"
+      ],
+      "kind": "file",
+      "inputs": {
+        "paper/figures.lua": "64bca2454d0ec44292b0bfb4980a8db13c2f07f10386e97d228562448f5508e3",
+        "paper/manuscript.md": "bd428a11d9bf356aaa910781046130f8c13d1753ec9e9a2241570d58828b367f",
+        "paper/template.tex": "31ceedad3db7c83ae9580952143f03f0039bd3a57402595293cc9913efc4bbdf",
+        "scripts/paper.mjs": "de4927e31df3bef7603ba0d30e0b50d5ae046da4715bf102e3464e62349a551c"
+      },
+      "outputs": {
+        "paper/manuscript.tex": "57b516cb2ed3498eb405a7d9107f6c7c697423ca6f1749d25b9c6344b75918ef"
+      },
+      "built_at": "2026-09-26T12:31:59+00:00"
+    },
+    "matrix": {
+      "command": [
+        "node",
+        "scripts/paper-matrix.mjs"
+      ],
+      "kind": "figure",
+      "inputs": {
+        "docs/COMPARISON.md": "28090ce2a343306a18af01d1f160b97bf514f46c9462dc421b8faf5ebd5ea49a",
+        "scripts/paper-matrix.mjs": "7222cde0500e59acb94b54fee43a4145ba115fb6fea9d1f2cf8ec0caec32db39"
+      },
+      "outputs": {
+        "paper/figures/matrix.dot": "0a4d7a370cf03ac3dda97e8924e5acf433dc94d6687899094a3dc5b91fe84de3",
+        "paper/figures/matrix.pdf": "88d3ba916a06fc38c21a418378e74dcbdfb0a7811faa62c74d84656b13e82941"
+      },
+      "built_at": "2026-09-26T12:31:59+00:00"
+    },
+    "pdf": {
+      "command": [
+        "node",
+        "scripts/paper.mjs",
+        "pdf"
+      ],
+      "kind": "file",
+      "inputs": {
+        "paper/figures/matrix.pdf": "88d3ba916a06fc38c21a418378e74dcbdfb0a7811faa62c74d84656b13e82941",
+        "paper/figures/s2.pdf": "c41a13a212bbd356ea52d7c6329c8ee441b22fc64d0f44ad4aef1aaa3c246fc8",
+        "paper/figures/topology.pdf": "b6eb9681fa370ba60b9c55db72e20cc4597a29be85b5f54aaa11defecd567512",
+        "paper/manuscript.tex": "57b516cb2ed3498eb405a7d9107f6c7c697423ca6f1749d25b9c6344b75918ef"
+      },
+      "outputs": {
+        "paper/manuscript.pdf": "e27db78c5d10f3fe017f1c47023c9ea80c24eb4e637747be317b4757bafe6b8c",
+        "paper/pdf-build-manifest.json": "33130f0f98bd3a76465f9c01bd95935e3f919bf259905fc1ea32ffc4395bdcfe"
+      },
+      "built_at": "2026-09-26T12:32:01+00:00"
+    }
+  }
+}

@@ -68,7 +68,22 @@ surface. Separately, the tested MCP host rejects a model-only call with
 an enforcing handler but forwards it in the permissive variant. A
 comparison must identify the adapter mapping, namespace/topology, and
 enforcement site alongside the SDK or protocol: those choices are part
-of the observed system, not incidental implementation details.
+of the observed system, not incidental implementation details. Figure
+\ref{fig:matrix} summarizes the adapter-recorded classifications for the
+three configurations.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.70\textheight,keepaspectratio]{./figures/matrix.pdf}
+\caption{Adapter-recorded classifications per capability for the three tested
+configurations. Each cell is the label the adapter recorded while
+driving the installed SDKs through the scripted scenarios (one retained
+execution per scenario; generated from the recorded traces in
+\texttt{docs/COMPARISON.md}). Labels are classifications of these
+configurations, not independent measurements or protocol rankings (C8);
+the collision and host-enforcement rows are backed by separate
+assertions (C2, C5).}\label{fig:matrix}
+\end{figure}
 
 This empirical technical note examines three concrete tested
 configurations, not three protocols in isolation. Protocol effects

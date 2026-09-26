@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import test from "node:test";
 import { mermaidToDot } from "../../scripts/paper-figures.mjs";
+import { OUTCOMES, matrixFromReport, matrixToDot } from "../../scripts/paper-matrix.mjs";
 import { root } from "../../scripts/paper.mjs";
 
 const read = (path) => readFileSync(resolve(root, path), "utf8");
@@ -56,4 +57,17 @@ test("topology states the local identity bound and correct enforcement installat
   assert.match(figure, /permissive default:\\nforwards model-only call/);
   const host = read("src/adapters/mcp-apps/host.ts");
   assert.match(host, /await Promise\.all\(\[bridge\.connect\(hostSide\), app\.connect\(appSide\)\]\);\s+enforce\(\);/);
+});
+
+test("capability matrix figure is generated from the traced comparison report", () => {
+  const matrix = matrixFromReport(read("docs/COMPARISON.md"));
+  assert.deepEqual(matrix.configurations, ["json-render", "A2UI", "MCP Apps"]);
+  assert.equal(matrix.rows.length, 7);
+  assert.equal(read("paper/figures/matrix.dot"), matrixToDot(matrix));
+  assert.ok(readFileSync(resolve(root, "paper/figures/matrix.pdf")).subarray(0, 5).equals(Buffer.from("%PDF-")));
+  const collision = matrix.rows.find(row => row.capability.startsWith("Retain both summaries"));
+  assert.deepEqual(collision.outcomes, ["write lost", "write lost", "separate instances in tested topology"]);
+  const dot = matrixToDot(matrix);
+  for (const row of matrix.rows) for (const label of row.outcomes) assert.ok(dot.includes(OUTCOMES[label][0]));
+  assert.throws(() => matrixFromReport("## The matrix\n| A | B | C | D |\n| - | - | - | - |\n| **x** | ? | ? | ? |\n"));
 });

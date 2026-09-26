@@ -7,6 +7,14 @@ artifact:
   # Frozen evidence: repair agents may never change these.
   frozen:
     - paper/evidence/**
+    # Files that change by design: the evidence index, the stable pointer to
+    # the latest browser run, the private-review manifest and its verifier.
+    - "!paper/evidence/README.md"
+    - "!paper/evidence/current-browser-run"
+    - "!paper/evidence/private-review-manifest.json"
+    - "!paper/evidence/private-corrections-*/*.py"
+  # The built PDF, for the figures judge (renders the pages with figures).
+  pdf: paper/manuscript.pdf
   paths:
     - paper/manuscript.md
     - paper/REPRODUCTION.md
@@ -47,6 +55,26 @@ models:
     tls_verify: ${VERITAS_TLS_VERIFY:-true}
 
 checks:
+  # Every number in the manuscript is traced to the evidence and the sources.
+  numeric-traceability:
+    enabled: true
+    target: paper/manuscript.md
+    severity_on_failure: minor
+    sources: [paper/evidence, docs/COMPARISON.md, package-lock.json, src/scenarios, tests]
+  # Process narration, repeated hashes, abstract shape, uncited figures.
+  presentation:
+    target: paper/manuscript.md
+  # Figures and generated files declared under `derived:` below.
+  derived-freshness:
+    target: paper/manuscript.md
+  frozen-integrity:
+    target: paper/manuscript.md
+  pdf-inspection:
+    target: paper/manuscript.pdf
+  venue:
+    venue: arxiv
+    target: paper/manuscript.pdf
+    source: paper/manuscript.tex
   arxiv-package:
     target: paper/manuscript.tex
   citability:
@@ -89,7 +117,31 @@ metadata:
 
 # Nothing executes unless it is listed here.
 execution:
-  allow: []
+  allow: [node]
+  # The PDF build uses a local TeX bundle when this is set (see scripts/paper.mjs).
+  env_passthrough: [PAPER_TEX_BUNDLE]
+
+# Generated files and how to regenerate them: `veritas build` runs these and
+# records input/output hashes in veritas.lock.json.
+derived:
+  - id: diagrams
+    kind: figure
+    command: [node, scripts/paper-figures.mjs]
+    inputs: [paper/figures/topology.mmd, paper/figures/s2.mmd, scripts/paper-figures.mjs]
+    outputs: [paper/figures/topology.pdf, paper/figures/s2.pdf]
+  - id: matrix
+    kind: figure
+    command: [node, scripts/paper-matrix.mjs]
+    inputs: [docs/COMPARISON.md, scripts/paper-matrix.mjs]
+    outputs: [paper/figures/matrix.pdf, paper/figures/matrix.dot]
+  - id: latex
+    command: [node, scripts/paper.mjs, latex]
+    inputs: [paper/manuscript.md, paper/template.tex, paper/figures.lua, scripts/paper.mjs]
+    outputs: [paper/manuscript.tex]
+  - id: pdf
+    command: [node, scripts/paper.mjs, pdf]
+    inputs: [paper/manuscript.tex, paper/figures/topology.pdf, paper/figures/s2.pdf, paper/figures/matrix.pdf]
+    outputs: [paper/manuscript.pdf, paper/pdf-build-manifest.json]
 
 workspace:
   mode: snapshot          # Codex trabaja sobre una copia, no sobre tu árbol

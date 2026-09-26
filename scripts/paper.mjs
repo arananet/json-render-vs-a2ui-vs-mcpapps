@@ -69,6 +69,7 @@ export function run(mode) {
       "paper/manuscript.md", "paper/manuscript.tex", "paper/template.tex", "paper/figures.lua",
       "scripts/paper.mjs", "scripts/paper-figures.mjs",
       ...["topology", "s2"].flatMap(name => ["mmd", "dot", "pdf"].map(extension => `paper/figures/${name}.${extension}`)),
+      "scripts/paper-matrix.mjs", "docs/COMPARISON.md", "paper/figures/matrix.dot", "paper/figures/matrix.pdf",
     ];
     const hashes = Object.fromEntries([...inputs, "paper/manuscript.pdf"].map(path => [path,
       createHash("sha256").update(readFileSync(resolve(root, path))).digest("hex"),
@@ -84,7 +85,7 @@ export function run(mode) {
   process.stdout.write(mode === "check" ? "LaTeX is fresh\n" : "Generated paper/manuscript.pdf\n");
 }
 
-export const bundleFiles = ["manuscript.tex", "figures/topology.pdf", "figures/s2.pdf"];
+export const bundleFiles = ["manuscript.tex", "figures/topology.pdf", "figures/s2.pdf", "figures/matrix.pdf"];
 
 export function createSourceBundle(destination) {
   const directory = mkdtempSync(resolve(tmpdir(), "paper-source-"));
@@ -117,6 +118,7 @@ export function privateBundleFiles() {
     ...["manuscript.md", "REPRODUCTION.md", "EXECUTION.md", "template.tex", "figures.lua", "manuscript.tex", "manuscript.pdf", "pdf-build-manifest.json"].map(name => `paper/${name}`),
     "paper/figures/README.md", "paper/figures/mermaid-config.json",
     ...["topology", "s2"].flatMap(name => ["mmd", "dot", "pdf", "svg"].map(ext => `paper/figures/${name}.${ext}`)),
+    "scripts/paper-matrix.mjs", ...["dot", "pdf", "svg"].map(ext => `paper/figures/matrix.${ext}`),
     ...["commands.txt", "provenance.txt", "build.stdout.txt", "build.stderr.txt",
       "source-before.json", "built-before.json", "source-after.json", "exit-status.txt",
       "playwright-ipv4.json", "playwright-ipv4.stdout.txt",
