@@ -4,6 +4,9 @@ profile: scientific-paper
 
 artifact:
   max_file_chars: 120000    # por fichero; el manuscrito entra entero, los lockfiles no
+  # Frozen evidence: repair agents may never change these.
+  frozen:
+    - paper/evidence/**
   paths:
     - paper/manuscript.md
     - paper/REPRODUCTION.md
@@ -44,6 +47,8 @@ models:
     tls_verify: ${VERITAS_TLS_VERIFY:-true}
 
 checks:
+  arxiv-package:
+    target: paper/manuscript.tex
   citability:
     type: content-patterns
     enabled: true

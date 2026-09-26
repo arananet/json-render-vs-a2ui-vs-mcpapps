@@ -1,17 +1,19 @@
 {
-  "generatedAt": "2026-09-22T16:18:07.398Z",
+  "generatedAt": "2026-09-26T11:56:50.590Z",
   "command": [
     "tectonic",
     "--only-cached",
     "--untrusted",
     "--keep-logs",
+    "--bundle",
+    "/tmp/claude-0/-home-user-veritas-gate/34a85e31-8c23-5585-a664-35e8300a7224/scratchpad/texbundle",
     "manuscript.tex"
   ],
   "cwd": "paper",
-  "node": "v22.23.2",
+  "node": "v22.22.2",
   "hashes": {
-    "paper/manuscript.md": "352d07386b4e341561b7ed973935f2465c5ee8337dc11bc1c07573818b00fe8b",
-    "paper/manuscript.tex": "71256f5c1b808105de1408ccec0ef8b2fe2bd026a812695de751f13daeca02e4",
+    "paper/manuscript.md": "beafefcd7ef90e88cb0941ebc03c2561d55b04d176fb6dfe73c1596096ccaba5",
+    "paper/manuscript.tex": "21d6c4e6ef4ae5f0233dafb38f6dc460ef8f15fd250794b57757fe6ec6530aba",
     "paper/template.tex": "31ceedad3db7c83ae9580952143f03f0039bd3a57402595293cc9913efc4bbdf",
     "paper/figures.lua": "64bca2454d0ec44292b0bfb4980a8db13c2f07f10386e97d228562448f5508e3",
     "scripts/paper.mjs": "015c473771962e3fb3caf960e95606c45edcdcc0c02877104e269ac0fa8be922",
@@ -22,6 +24,6 @@
     "paper/figures/s2.mmd": "06eff975dad51877abb729a02f0e04a57ce281e7d7d2d6084b40c596978b3b0c",
     "paper/figures/s2.dot": "e5df22296c15e8baec5791847a36490a0835fb61bcd75f572e9ee063b44619cd",
     "paper/figures/s2.pdf": "3ff786f305f362de94fe4ed2fabab865e11add2ef8f6e835c03bf5c80d0a4598",
-    "paper/manuscript.pdf": "7f76379ff199787f83a353e7fc6595c826224a82ba33acedf8c8f07e10ad3a57"
+    "paper/manuscript.pdf": "4f1cecacaefc74b6f9a4de98e8272f9df56b2ca34200ece310c088665122f028"
   }
 }

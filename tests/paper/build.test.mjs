@@ -35,7 +35,7 @@ test("generated LaTeX corresponds to the editable manuscript", () => {
   const generated = renderLatex();
   assertFresh(readFileSync(latexPath, "utf8"), generated);
   assert.match(generated, /\\author\{Eduardo Arana\}/);
-  assert.match(generated, /Arananet/);
+  assert.match(generated, /Independent researcher/);
 });
 
 test("freshness rejects any stale derivative", () => {

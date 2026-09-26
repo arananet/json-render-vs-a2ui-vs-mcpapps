@@ -13,7 +13,8 @@ test("abstract leads with configuration-specific findings and their interpretati
   assert.match(abstract, /tested configurations/);
   assert.match(abstract, /adapter mapping, namespace\/topology, and enforcement site/);
   assert.match(abstract, /installed enforcing host handler rejects one model-only tool call; SDK-default `oncalltool` forwards/);
-  assert.match(abstract, /empirical technical note with private local evidence/);
+  assert.match(abstract, /empirical technical note audits an existing\s+deterministic TypeScript harness/);
+  assert.doesNotMatch(abstract, /private local evidence|provenance note|review remains pending/i);
   assert.match(abstract, /does not validate the Node four-write scenario/);
   assert.match(abstract, /Node assertions establish the four-write outcome/);
   assert.match(abstract, /corroborates the rendered outcome only for that fixture/);
@@ -92,17 +93,17 @@ test("pre-rename browser evidence is historical while the current run verifies t
   assert.match(manuscript, /do not\nestablish historical reproduction/);
 });
 
-test("manuscript removes agent-to-user narration without claiming human review", () => {
+test("manuscript removes agent-to-user narration and records the author's review", () => {
   assert.doesNotMatch(manuscript, /at the user.s request|user.s description|credited there to Eduardo|invocation request|catalog description/i);
   const disclosure = manuscript.split("# AI-assistance disclosure\n")[1].split("\n# References")[0].replace(/\s+/g, " ");
   assert.match(disclosure, /OpenAI Codex coding assistant/);
-  assert.match(disclosure, /Human scientific and editorial review remains pending/);
+  assert.match(disclosure, /The author reviewed all claims, citations, limitations, and the final presentation/);
+  assert.doesNotMatch(manuscript, /review remains pending|human review pending|This session is an agent-assisted/i);
   assert.match(disclosure, /no LLM participates/);
 });
 
-test("unverified reference and historical commit provenance are explicit", () => {
+test("historical commit provenance is explicit", () => {
   const normalized = manuscript.replace(/\s+/g, " ");
-  assert.match(normalized, /Reference review remains pending/);
   assert.match(normalized, /Inputs, tooling, and evaluation configuration are versioned now; commit-level provenance before 22 September 2026 does not identify the complete paper workspace/);
   assert.match(normalized, /Separate paper checks and SHA-256 manifests/);
 });

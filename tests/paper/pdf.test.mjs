@@ -22,7 +22,7 @@ test("PDF contains author, affiliation, numbered figures and resolved references
   assert.match(info, /Author:\s+Eduardo Arana/);
   assert.match(info, /JavaScript:\s+no/);
   const text = execFileSync("pdftotext", ["-layout", pdf, "-"], { encoding: "utf8" }).normalize("NFKC");
-  for (const phrase of ["Eduardo Arana", "Arananet", "Figure 1:", "Figure 2:", "Claim-evidence mapping", "human review pending"]) {
+  for (const phrase of ["Eduardo Arana", "Independent researcher", "Figure 1:", "Figure 2:", "Claim-evidence mapping", "The author reviewed all claims"]) {
     assert.ok(text.includes(phrase), phrase);
   }
   assert.doesNotMatch(text, /\?\?|\uFFFD/);

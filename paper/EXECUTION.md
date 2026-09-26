@@ -14,9 +14,9 @@ harness code is released under the Apache License 2.0; the manuscript, figures
 and evidence records under CC BY 4.0. None of the remaining decisions or
 experiments was performed in this update.
 
-Current status: editorially revised 10-page English PDF and clean TeX source
-bundle generated locally; human scientific/editorial review pending. The latest
-operations are in **Editorial and evidence revision** below. Earlier sessions,
+Current status: the author has reviewed the manuscript (26 September 2026). The
+latest operations are in **Author review and presentation revision** at the end
+of this record. Earlier sessions,
 including their base revisions, status statements, checksums and failures, are
 historical and remain intact. Browser/report-command restrictions persist. This is an
 agent-assisted record, not a signed attestation or independent-person reproduction.
@@ -863,3 +863,31 @@ review.
 - C3/manuscript was stale: the stable linked evidence is present and complete.
 - The pre-rename literal assertion was stale: its report is historical and the current run exists.
 - Provenance wording/test was stale: inputs, tooling, and evaluation configuration are versioned now; only pre-22-Sep commit provenance is incomplete.
+
+## Author review and presentation revision — 26 September 2026 UTC
+
+The author reviewed the manuscript. This revision changes presentation only; no
+claim status, experiment, fixture, or evidence file changed.
+
+- Abstract reduced to one paragraph; process narration (build failures, session
+  notes, review-pending statements) removed from the paper and kept here.
+- Front matter: dated 26 September 2026; affiliation "Independent researcher".
+- Data availability states the public v0.2.0 archive; references to a private
+  archive removed from the paper.
+- Full browser-run commit hash given once (Reproducibility); elsewhere `378aabee`.
+- AI-assistance disclosure records the author's review; Anthropic Claude added.
+- Paper tests updated to the reviewed wording.
+
+Toolchain: Node v22.22.2, Pandoc 3.11, Tectonic 0.16.9 with
+`--only-cached --untrusted` and a local directory bundle (`PAPER_TEX_BUNDLE`).
+
+Commands and results:
+
+- `node scripts/paper.mjs latex` — generated `paper/manuscript.tex`.
+- `node scripts/paper.mjs check` — LaTeX fresh.
+- `PAPER_TEX_BUNDLE=<local bundle> node scripts/paper.mjs pdf` — PDF and
+  `pdf-build-manifest.json` regenerated; no overfull boxes.
+- `npm test` — 24 passed.
+- `npm run typecheck` — passed.
+- `node --test tests/paper/*.mjs` — 32 passed, 1 failed: the private-archive
+  test requires `PAPER_BROWSER_EVIDENCE`, which was not supplied.

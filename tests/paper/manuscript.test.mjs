@@ -8,10 +8,9 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const manuscriptPath = resolve(root, "paper/manuscript.md");
 const manuscript = readFileSync(manuscriptPath, "utf8");
 
-test("manuscript identifies the author, affiliation, and review state", () => {
+test("manuscript identifies the author and affiliation", () => {
   assert.match(manuscript, /^author: Eduardo Arana$/m);
-  assert.match(manuscript, /^subtitle: Arananet$/m);
-  assert.match(manuscript, /human review pending/);
+  assert.match(manuscript, /^subtitle: Independent researcher$/m);
 });
 
 test("H1 is bounded to the actual fixed-order S2 script and existing assertions", () => {

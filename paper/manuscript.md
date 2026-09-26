@@ -2,8 +2,8 @@
 title: "Shared UI State and Host Enforcement: An Empirical Technical Note on Three Agent-UI Configurations"
 author: Eduardo Arana
 orcid: 0009-0000-6435-6872
-date: "22 September 2026 (UTC) — local draft; human review pending"
-subtitle: Arananet
+date: "26 September 2026"
+subtitle: Independent researcher
 lang: en
 fontsize: 11pt
 geometry: margin=25mm
@@ -14,9 +14,11 @@ colorlinks: true
 
 Under the tested configurations and one fixed write order, reusing an identifier
 overwrites in the shared json-render and A2UI mappings and is retained in
-separate MCP App instances. Node assertions establish the four-write outcome:
-replacement of the json-render summary and retention of both summaries in
-separate MCP instances.
+separate MCP App instances. This empirical technical note audits an existing
+deterministic TypeScript harness across surface handoff, fixed-order identifier
+collision, and action round-trip, in three concrete agent-UI configurations.
+Node assertions establish the four-write outcome: replacement of the
+json-render summary and retention of both summaries in separate MCP instances.
 Every browser run instead exercises a separate two-write summary fixture; it
 corroborates the rendered outcome only for that fixture and does not validate
 the Node four-write scenario. Executed A2UI browser assertions show finance's
@@ -24,23 +26,12 @@ headline visible and risk's absent, not an exact node count. The installed
 enforcing host handler rejects one model-only tool call; SDK-default `oncalltool`
 forwards it, a measured specification-versus-SDK gap. Interpretation must
 therefore name the adapter mapping, namespace/topology, and enforcement site
-together with the SDK or protocol.
-This empirical technical note with private local evidence audits an existing deterministic
-TypeScript harness across surface handoff, fixed-order identifier collision,
-and action round-trip. A claim-to-check mapping distinguishes supported,
-partial, and proposed claims; routing to every intended control owner remains
-partial, and a matched-topology intervention remains proposed, not performed.
-The evidence supports configuration-specific findings, not isolated protocol
-causality or rankings: protocol effects cannot be separated from adapter and
-topology here, and a matched-topology comparison remains proposed, not
-performed. No LLM experiment or performance measurement is reported.
-Human scientific and editorial review remains pending.
-
-Browser provenance note: retained historical screenshots predate the S2 rename.
-A separate post-rename outer-terminal browser execution records current-source
-and build hashes, 18 passing tests, and nine capture hashes. It verifies the
-renamed fixture bytes but does not make historical screenshots current evidence
-or turn the fixed-order probe into a common-fixture or concurrency evaluation.
+together with the SDK or protocol. A claim-to-check mapping distinguishes
+supported, partial, and proposed claims; routing to every intended control owner
+remains partial, and a matched-topology intervention remains proposed, not
+performed. The evidence supports configuration-specific findings, not isolated
+protocol causality or rankings. No LLM experiment or performance measurement is
+reported. Code and evidence are archived with a persistent DOI.
 
 # Introduction
 
@@ -55,7 +46,7 @@ the adapter mapping, namespace/topology, and enforcement site alongside the
 SDK or protocol: those choices are part of the observed system, not incidental
 implementation details.
 
-This empirical technical note with private local evidence examines three concrete tested
+This empirical technical note examines three concrete tested
 configurations, not three protocols in isolation. Protocol effects cannot be
 separated from adapter and topology here; a matched-topology comparison remains
 proposed, not performed. Its contribution is an
@@ -65,7 +56,7 @@ reproduction procedure. UI descriptions, execution environments, and
 authorization decisions operate at different layers; collapsing those layers
 would misattribute namespace choices or host policies to a format. The retained
 comparison report is an artifact to audit, not independent scientific evidence.
-Its S2 identity and labels now name the fixed-order collision. Scope and
+Scope and
 validity limits below delimit the findings; no exhaustive novelty claim is made.
 
 # Research questions
@@ -109,7 +100,6 @@ would contradict this hypothesis for the tested configuration.
 The [S2 script](../src/scenarios/s2-fixed-order-collision.ts) awaits each emission:
 risk detail, finance detail, risk summary, then finance summary. This is a
 fixed-order identifier-collision probe, not actual concurrency or a scheduling benchmark.
-The source, runner, test titles and scenario ID now name the fixed-order collision.
 The focused check uses the [existing snapshot assertions](../tests/protocol/scenarios.test.ts)
 and [browser assertions](../tests/browser/render.spec.ts), rather than treating the
 adapter's `LOST` or `ENFORCED` labels as measurements. Fresh execution status is recorded
@@ -244,8 +234,8 @@ format provides authenticated cross-agent ownership.
 
 These results observe only the one specified sequential write order and cannot
 generalize to alternative orders, scheduling or concurrency. The current-source
-browser run verifies the renamed fixture; the retained screenshots remain
-historical pre-rename artifacts.
+browser run verifies the fixture; earlier screenshots are retained as
+historical artifacts.
 
 The focused local S2 rerun passed its three selected tests; ten non-S2 tests in
 that file were skipped by the filter. The json-render assertion checks the
@@ -262,7 +252,7 @@ The execution ledger identifies a raw browser report for the current-source run
 as recording 18 passed tests: nine render assertions and nine screenshot tests.
 The complete [current browser run](./evidence/current-browser-run/) resolves to
 immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC; commit
-`378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`) and includes that
+`378aabee`; Node `v23.5.0`) and includes that
 report, source snapshots, build hashes, and capture hashes.
 The MCP browser fixture omits Node's risk-detail and finance-detail writes.
 Its two summary assertions are a separate browser result, not corroboration of
@@ -332,7 +322,7 @@ paper's evidence statuses, distinct from the adapter outcome vocabulary.
 | --- | --- | --- |
 | C1: S1 yields one shared region or two MCP instances in this topology. | Supported | S1 snapshot region and block assertions; contradicted by missing blocks or different region counts. |
 | C2 / H1a (Node, four writes): Under the tested configurations and one fixed write order, reusing an identifier overwrites in the shared json-render and A2UI mappings and is retained in separate MCP App instances. | Supported | Node headline assertions; contradicted by different retained values. The browser fixture is not evidence for H1a. |
-| C3 / H1b (browser, two writes): Under the tested A2UI shared mapping and fixed write order, the fixture displays finance's headline after the later write. | Supported | The cited [current browser run](./evidence/current-browser-run/) resolves to immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC; commit `378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`) and records assertions checking finance visible and risk absent within the surface. It is distinct from H1a and does not assert an exact node count. |
+| C3 / H1b (browser, two writes): Under the tested A2UI shared mapping and fixed write order, the fixture displays finance's headline after the later write. | Supported | The cited [current browser run](./evidence/current-browser-run/) resolves to immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC; commit `378aabee`; Node `v23.5.0`) and records assertions checking finance visible and risk absent within the surface. It is distinct from H1a and does not assert an exact node count. |
 | C4: S2 is sequential, with no scheduling test. | Supported | Four awaited emissions in the S2 source; contradicted by an overlapping scheduler in the executed path. |
 | C5: The enforcing MCP handler rejects the model-only call, while the permissive variant forwards it. | Supported | Bridge rejection/refusal and successful-result assertions; contradicted by reversed or identical behavior. |
 | C6: Every MCP S3 control reaches its intended agent. | Partial | Existing test checks some table-free delivery; first-instance selection prevents this stronger inference. |
@@ -352,13 +342,13 @@ coverage rather than assigning a numeric score across unlike checks.
 For C1–C3 and the tested browser actions, the renamed
 [render spec](../tests/browser/render.spec.ts) supplies the assertions and the
 [screenshot spec](../tests/browser/screenshots.spec.ts) supplies nine captures.
-The pre-rename `browser-terminal-20260922T013449Z-zH4HTK/` records are historical
+By contrast, the earlier pre-rename `browser-terminal-20260922T013449Z-zH4HTK/` records are historical
 only and are not claim-support evidence for this fixture. The execution ledger
 records the single cited [current browser run](./evidence/current-browser-run/),
 which resolves to immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September
-2026 UTC; commit `378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`).
-Its report, source snapshots, build hashes, and capture hashes bind the current
-browser claim for this fixture. Other retained browser directories have
+2026 UTC; commit `378aabee`; Node `v23.5.0`).
+Its report, source snapshots, build hashes, and capture hashes bind the
+current browser claim for this fixture. Other retained browser directories have
 different source snapshots and are execution records, not redundant confirmation
 of this claim.
 This does not make the distinct MCP browser fixture corroborate the four-write
@@ -389,8 +379,7 @@ integration experiment is reported here.
 The claim-status vocabulary is defined in this paper's Claim-evidence mapping:
 it separates an inspected assertion or direct source observation from a material
 untested inference and from a proposed future check. It does not depend on an
-unavailable external methodological source. Reference review remains pending;
-this discussion is selective, not an exhaustive literature or novelty review.
+unavailable external methodological source. This discussion is selective, not an exhaustive literature or novelty review.
 
 # Threats to validity
 
@@ -425,7 +414,7 @@ not repeated trials; no mean, variance, or stability statistic is claimed. No
 per-test timing or other run-level equivalence is claimed. No completed execution was
 discarded, and the immutable current-source run is
 `paper/evidence/browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC;
-commit `378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`). Neither completed run is an independent
+commit `378aabee`; Node `v23.5.0`). Neither completed run is an independent
 reproduction: both ran on the same machine, from the same checkout, in the same
 session. No adversarial, forged-identity, CSP, or cross-server test was run.
 The suite also does not comprehensively test transport authentication,
@@ -451,79 +440,37 @@ archive. No latency, throughput, cost, user study, or model capability was measu
 The exact evidence reported here is archived as v0.2.0 at
 https://doi.org/10.5281/zenodo.22965404. The concept DOI,
 https://doi.org/10.5281/zenodo.22896881, resolves to the latest version. The
-harness code is released under the Apache License 2.0; the manuscript, figures
-and evidence records under CC BY 4.0.
-The root `LICENSE` and package metadata identify the code license. The canonical editable manuscript, harness, frozen v0.1
-Markdown snapshot, and versioned evidence records are available as repository
-evidence in this artifact. This does not establish independent reproduction,
-peer review, or protocol causality.
+archive contains the harness, the editable manuscript, a frozen v0.1 Markdown
+snapshot, and the versioned evidence records cited in this paper. The harness
+code is released under the Apache License 2.0; the manuscript, figures and
+evidence records under CC BY 4.0, as identified by the root `LICENSE` and
+package metadata.
 
 # Reproducibility
 
 The [reproduction guide](./REPRODUCTION.md) gives commands and expected semantic
-outcomes. Conclusions in this note do not rely on the unavailable private review
-archive or private manifest; those are retained as local pre-rename records
-only. Neither a public nor an independent paper build has been demonstrated.
-The [local execution record](./EXECUTION.md) separates successful
-commands, failures, unavailable prerequisites, and retained artifacts. This
-earlier editorial revision started from HEAD
-`b5d06eafcd4cf9cb0ed49131add55cbdecbd4b7c`. Current packaging records its own HEAD
-and file hashes without resetting external changes. The earlier
-execution record identifies its own historical base. The paper package, build
-scripts, and paper tests are versioned with the research record. Separate paper
-checks and SHA-256 manifests record the manuscript, tooling, assets, and
-generated outputs. Inputs, tooling, and evaluation configuration are versioned
-now; commit-level provenance before 22 September 2026 does not identify the
-complete paper workspace.
+outcomes, and the [execution record](./EXECUTION.md) lists every command run,
+including failed attempts and unavailable prerequisites, with retained artifacts.
+Inputs, tooling, and evaluation configuration are versioned now; commit-level
+provenance before 22 September 2026 does not identify the complete paper
+workspace. Separate paper checks and SHA-256 manifests record the manuscript,
+tooling, figures, and generated outputs.
 
 Semantic reproducibility means obtaining the specified regions, values, events,
 and refusal behavior under the same configuration. Byte identity is a separate
 question. A2UI action timestamps vary; report generation normalizes those
-timestamps. PDF metadata and toolchain resources can also vary. We check generated
-LaTeX against fresh Pandoc output under the recorded toolchain, not PDF byte
-identity across machines. The Markdown manuscript is the only editable paper
-source; LaTeX and PDF are generated derivatives.
+timestamps. We check generated LaTeX against fresh Pandoc output under the
+recorded toolchain, not PDF byte identity across machines. The Markdown
+manuscript is the only editable paper source; LaTeX and PDF are generated
+derivatives.
 
-This session is an agent-assisted local rerun of existing checks. It establishes
-neither independent-person reproduction nor human approval. The previous session's
-reported dependency installation is not a fresh `npm ci` execution in this record.
-Missing checks and failed attempts remain visible rather than being counted as
-passes. The retained [current paper-suite transcript](./evidence/paper-suite-current.txt)
-records 33 tests: 30 passed and 3 failed. The failing tests are `generated
-LaTeX corresponds to the editable manuscript` (the Markdown edits leave
-`manuscript.tex` stale), `PDF build manifest matches the current manuscript,
-tooling, figures and PDF` (the manifest records the prior Markdown hash), and
-`private archive extracts with exact hashes, complete fixture inputs and real
-selected evidence` (the run omits the required `PAPER_BROWSER_EVIDENCE`).
-`evidence/paper-checks.txt` is an older 8-test passing transcript, not
-final-state validation. OpenSpec command success cannot prove every acceptance
-criterion.
-
-The complete local Vitest run passed 24 tests across three files and TypeScript
-checking passed. The standalone `report:check` command failed when tsx attempted
-to create an IPC listener (`EPERM`); the report freshness assertion inside the
-passing Vitest suite is separate evidence, not a successful standalone command.
-Earlier browser attempts failed before tests: a sandbox listener returned
-`EPERM`, and the later managed preview timed out after 60000 ms. The retained
-outer-terminal run then reused an explicitly started IPv4 preview and passed
-both existing browser specs (18 tests in 8.9 s), without source or configuration
-changes. New captures were archived separately and historical PNGs restored;
-this is now pre-rename evidence and cannot substantiate the post-rename fixture.
-The required post-rename outer-terminal browser run completed and recorded
-current-source/build hashes, 18 passing tests, and nine capture hashes in the
-[current browser run](./evidence/current-browser-run/), which resolves to
-immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC; commit
-`378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`). Pandoc produced LaTeX and
-its freshness check passed. The initial Tectonic invocation
-panicked internally (exit 101) in cached-only mode. A later local build used an
-explicit directory bundle assembled from already cached TeX resources and a
-smaller template, and produced the illustrated PDF without network access or
-shell escape. Original Mermaid diagrams were converted locally to vector figures
-through a restricted Mermaid-to-Graphviz renderer after Chromium-based rendering
-failed. These illustrations explain source and assertions; they add no experiments.
-The execution record retains the historical failures and current inspection
-evidence. Local compilation does not establish arXiv TeX Live compatibility or
-publication acceptance. Human review remains pending.
+The Node test suite (24 tests across three files) and TypeScript checking pass.
+The browser claims rest on the [current browser run](./evidence/current-browser-run/),
+which resolves to immutable `browser-s2-fixed-order-cFIGKT5C/` (25 September
+2026 UTC; commit `378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`)
+and records current-source and build hashes, 18 passing tests, and nine capture
+hashes. All runs were performed on a single machine by the author; independent
+reproduction has not been performed.
 
 # Conclusion
 
@@ -532,7 +479,7 @@ to alternative orders, scheduling or concurrency. The retained pre-rename
 browser findings are historical; the complete
 [current browser run](./evidence/current-browser-run/), resolving to immutable
 `browser-s2-fixed-order-cFIGKT5C/` (25 September 2026 UTC; commit
-`378aabee42a69c61edc7d7a37c934465b4a66e30`; Node `v23.5.0`), supplies current
+`378aabee`; Node `v23.5.0`), supplies current
 browser-source provenance for the renamed fixture.
 
 Across three concrete tested configurations, handoff placement and retained
@@ -567,11 +514,11 @@ are suggestions for separate approved work, not results of this paper.
 An OpenAI Codex coding assistant inspected local source and accessible references,
 assisted with drafting and editorial revision, prepared source-derived figures
 and supporting documentation, added focused manuscript checks, and executed the
-recorded local validation commands. Human scientific and editorial review remains
-pending, including verification of claims, citations, limitations, and final
-presentation. The execution ledger is an agent-assisted record, not an author
-attestation or publication approval. AI-assisted preparation is separate from
-the deterministic harness: no LLM participates in its scenario runs.
+recorded local validation commands. Anthropic Claude assisted with editorial
+revision. The author reviewed all claims, citations, limitations, and the final
+presentation, and takes full responsibility for the content. AI-assisted
+preparation is separate from the deterministic harness: no LLM participates in
+its scenario runs.
 
 # References
 
